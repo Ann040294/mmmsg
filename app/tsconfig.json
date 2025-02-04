@@ -1,0 +1,14 @@
+{
+  "references": [
+    {
+      "path": "../packages/ui-kit"
+    }
+  ],
+  "include": [
+    "./src"
+  ],
+  "exclude": [
+    "dist"
+  ],
+  "extends": "../tsconfig.json"
+}
