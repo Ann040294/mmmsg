@@ -11,7 +11,9 @@
     "app"
   ],
   "scripts": {
-    "build": "yarn workspaces run build"
+    "build": "yarn workspaces run build",
+    "dev:app": "yarn workspace app dev",
+    "serve": "yarn workspace app serve"
   },
   "dependencies": {},
   "devDependencies": {}
