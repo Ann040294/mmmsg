@@ -4,14 +4,14 @@ import css from "./Avatar.module.scss"
 import cn from 'classnames'
 import img1 from './img/default.jpg'
 
-type AvatarProps = ImgHTMLAttributes<HTMLImageElement> & {
+export type AvatarProps = ImgHTMLAttributes<HTMLImageElement> & {
     sizes?: 'small' | 'medium' | 'large',
     shape?: 'square' | 'circle'
 };
-
+//TODO: Добавить enum
 const Avatar: FC<AvatarProps> = ({
                                      sizes = 'medium',
-                                     alt = 'Аватарка',
+                                     alt = 'Аватарка', //TODO: Перевод
                                      shape = 'circle',
                                      ...props
                                  }) => {
@@ -26,6 +26,9 @@ const Avatar: FC<AvatarProps> = ({
             sizes === 'medium' && css.medium,
             sizes === 'large' && css.large,
         )}
-        src={img1} {...props}/>
+        src={img1}
+        alt={alt}
+        {...props}
+    />
 }
 export default Avatar;
