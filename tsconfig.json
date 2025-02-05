@@ -1,0 +1,32 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "jsx": "react",
+    "module": "ESNext",
+    "baseUrl": ".",
+    "moduleResolution": "node",
+    "typeRoots": [
+      "./node_modules/@types",
+      "./typings"
+    ],
+    "paths": {
+      "ui-kit": [
+        "ui-kit/"
+      ]
+    },
+    "outDir": "./dist/",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "skipLibCheck": true
+  },
+  "exclude": [
+    "packages/**/tests/**",
+    "packages/**/dist/**"
+  ],
+  "references": [
+    {
+      "path": "./packages/ui-kit"
+    }
+  ]
+}

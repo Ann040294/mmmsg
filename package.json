@@ -1,0 +1,20 @@
+{
+  "name": "mmmsg",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/Ann040294/mmmsg.git",
+  "author": "MMTR",
+  "license": "MIT",
+  "private": "true",
+  "workspaces": [
+    "packages/ui-kit",
+    "app"
+  ],
+  "scripts": {
+    "build": "yarn workspaces run build",
+    "dev:app": "yarn workspace app dev",
+    "serve": "yarn workspace app serve"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}
