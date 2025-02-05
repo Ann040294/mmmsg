@@ -1,0 +1,50 @@
+.root {
+  max-width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.info {
+  max-width: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  .info_row {
+    display: flex;
+    padding-right: 8px;
+    justify-content: space-between;
+    align-items: center;
+
+    .messageChat,
+    .nameChat {
+      padding-right: .5rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .countUnreadMessage {
+      background-color: gray;
+      border-radius: 50%;
+      height: 1.5rem;
+      min-width: 1.5rem;
+      text-align: center;
+      line-height: 1.5rem;
+      color: white;
+    }
+
+    .time{
+      font-size: 0.8rem;
+    }
+
+  }
+
+  p, h3 {
+    margin: 0;
+    padding: 0;
+  }
+}
+
