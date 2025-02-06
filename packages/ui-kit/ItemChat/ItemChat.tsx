@@ -16,18 +16,21 @@ type ItemChatProps = HTMLAttributes<HTMLDivElement> & {
 const ItemChat: FC<ItemChatProps> = (props) => {
 
     return <div className={css.root}>
-        <Avatar {...props.avatarProps}/>
+        <Avatar {...props.avatarProps}/>  {/*TODO Возможна ошибка несоответствия типов. ...AvatarProps | undefined не соответсвует ReactNode | undefined */}
         <div className={css.info}>
             <div className={css.info_row}>
-                <h3 className={css.nameChat}>{props.nameChat}</h3>
-                <p className={css.time}>{props.time}</p>
+                <h3 className={css.name}>{props.nameChat}</h3>
+                {props.time && props.message && <p className={css.time}>{props.time}</p>}
             </div>
             <div className={css.info_row}>
-                <p className={css.messageChat}>{props.message}</p>
-                <p className={css.countUnreadMessage}>{props.countUnreadMessages}</p>
+                {props.message &&
+                    <>
+                        <p className={css.message}>{props.message}</p>
+                            {props.countUnreadMessages &&
+                                <p className={css.countUnreadMessage}>{props.countUnreadMessages}</p>}
+                    </>
+                }
             </div>
-
-
         </div>
     </div>
 }
