@@ -5,39 +5,39 @@ import cn from 'classnames'
 import img1 from './img/default.jpg'
 
 
-export enum SizesAvatar {
+export enum AvatarSizes {
     'small',
     'medium',
     'large'
 }
 
-export enum ShapeAvatar {
+export enum AvatarShapes {
     'square',
     'circle'
 }
 
-export type AvatarProps = ImgHTMLAttributes<HTMLImageElement> & {
-    sizes?: SizesAvatar,
-    shape?: ShapeAvatar
-};
+export interface AvatarProps extends Omit<ImgHTMLAttributes<HTMLImageElement>, 'sizes'> {
+    sizes?: AvatarSizes,
+    shapes?: AvatarShapes
+}
 
 
 const Avatar: FC<AvatarProps> = ({
-                                     sizes = SizesAvatar.medium,
+                                     sizes = AvatarSizes.medium,
                                      alt = 'Аватарка', //TODO: Перевод
-                                     shape = ShapeAvatar.circle,
+                                     shapes = AvatarShapes.circle,
                                      ...props
                                  }) => {
     return <img
         className={cn(
             props.className,
 
-            shape === ShapeAvatar.square && css.img_shape_square,
-            shape === ShapeAvatar.circle && css.img_shape_circle,
+            shapes === AvatarShapes.square && css.img_shape_square,
+            shapes === AvatarShapes.circle && css.img_shape_circle,
 
-            sizes === SizesAvatar.small && css.img_size_small,
-            sizes === SizesAvatar.medium && css.img_size_medium,
-            sizes === SizesAvatar.large && css.img_size_large,
+            sizes === AvatarSizes.small && css.img_size_small,
+            sizes === AvatarSizes.medium && css.img_size_medium,
+            sizes === AvatarSizes.large && css.img_size_large,
         )}
         src={img1}
         alt={alt}
