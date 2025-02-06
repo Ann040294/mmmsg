@@ -1,0 +1,73 @@
+.wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  max-width: 220px;
+}
+
+.label {
+  position: absolute;
+  top: -5px;
+  left: 14px;
+  background: white;
+  padding: 0 5px;
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14px;
+  color: rgba(0, 0, 0, 0.6);
+  transition: all 0.2s ease-in-out;
+  z-index: 1; /* Добавляем z-index, чтобы label был поверх input */
+}
+
+.inputWrapper {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  position: relative;
+}
+
+.input {
+  width: 100%;
+  height: 36px;
+  background: #FFFFFF;
+  border: 1px solid rgba(222, 222, 222);
+  border-radius: 10px;
+  padding-left: 18px; /* Отступ для иконки */
+  padding-top: 8px;
+  padding-bottom: 8px;
+  font-family: 'Lato', sans-serif;
+  font-size: 12px;
+  line-height: 20px;
+  color: black;
+}
+
+.searchInput {
+  background: #F7F7F7;
+  border-radius: 5px;
+  padding-left: 36px; /* Отступ для иконки */
+  border: none;
+}
+
+.searchIcon {
+  position: absolute;
+  left: 10px;
+  font-size: 18px;
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.input:focus + .label,
+.input:not(:placeholder-shown) + .label {
+  top: -10px;
+  transform: translateY(0); /* Плавно поднимем label */
+  font-size: 10px;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.input::placeholder {
+  color: rgba(0, 0, 0, 0.4);
+  font-size: 12px;
+  line-height: 14px;
+}
