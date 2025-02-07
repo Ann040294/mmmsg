@@ -3,7 +3,6 @@ import css from "./Avatar.module.scss"
 import cn from 'classnames'
 import {AvatarProps, AvatarShapes, AvatarSizes} from "./types";
 import {UserOutlined} from "@ant-design/icons";
-import defaultAvatar from './img/default.jpg'
 
 
 const Avatar: FC<AvatarProps> = ({
@@ -26,7 +25,6 @@ const Avatar: FC<AvatarProps> = ({
                 props.src ?
                     <img
                         className={classString}
-                        src={defaultAvatar}
                         alt={alt}
                         {...props}
                     /> :

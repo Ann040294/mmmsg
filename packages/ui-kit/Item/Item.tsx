@@ -7,7 +7,14 @@ import {ItemProps} from "./types";
 const Item: FC<ItemProps> = (props) => {
 
     return <div className={css.root}>
-        {props.hasAvatar && <Avatar {...props.avatarProps}/>}
+        {
+            props.hasAvatar &&
+            <Avatar shape={props.avatarShape}
+                    size={props.avatarSize}
+                    src={props.avatarSrc}
+                    alt={props.title}
+            />
+        }
         <div className={css.info}>
             <div className={css.infoRow}>
                 <h3 className={css.title}>{props.title}</h3>
