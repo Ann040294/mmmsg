@@ -1,21 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import {ChatItem} from "ui-kit";
-import {AvatarSizes} from "ui-kit/Avatar/Avatar";
+import {AvatarShapes, AvatarSizes} from "ui-kit/Avatar";
+import {Item} from "ui-kit";
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
     <React.StrictMode>
-        <div style={{width: '360px'}}>
-            <ChatItem
+        <div style={{width: '500px'}}>
+            <Item
                 avatarProps={{
                     src: 'https://fotoblik.ru/wp-content/uploads/2023/09/kogda-liudi-ukhodiat-otpuskai-sudba-2.webp',
                     alt: '',
-                    sizes: AvatarSizes.large,
+                    size: AvatarSizes.large,
+                    shape: AvatarShapes.circle
                 }}
-                nameChat={'Test Testovich1 '}
-                message={'How Are you?'}
-                time={'12:32'}
-                countUnreadMessages={1}
+                title={'Test Testovich1'}
+                description={'How Are you?'}
+                badge={'12'}
+                hasAvatar
             />
         </div>
 
