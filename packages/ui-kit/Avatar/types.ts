@@ -1,14 +1,14 @@
 import {MouseEvent} from "react";
 
 export enum AvatarSizes {
-    'small' = 'small',
-    'medium' = 'medium',
-    'large' = 'large',
+    SMALL = 'small',
+    MEDIUM = 'medium',
+    LARGE = 'large',
 }
 
 export enum AvatarShapes {
-    'square' = 'square',
-    'circle' = 'circle',
+    SQUARE = 'square',
+    CIRCLE = 'circle',
 }
 
 export interface AvatarProps {

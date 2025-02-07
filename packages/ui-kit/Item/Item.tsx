@@ -1,7 +1,8 @@
 import React, {FC} from "react";
-import css from './Item.module.scss'
 import {Avatar} from "../Avatar";
 import {ItemProps} from "./types";
+
+import css from './Item.module.scss'
 
 
 const Item: FC<ItemProps> = (props) => {
@@ -10,7 +11,6 @@ const Item: FC<ItemProps> = (props) => {
         {
             props.hasAvatar &&
             <Avatar shape={props.avatarShape}
-                    size={props.avatarSize}
                     src={props.avatarSrc}
                     alt={props.title}
             />
@@ -18,17 +18,15 @@ const Item: FC<ItemProps> = (props) => {
         <div className={css.info}>
             <div className={css.infoRow}>
                 <h3 className={css.title}>{props.title}</h3>
+                {
+                    props.badge &&
+                    <p className={css.badge}>{props.badge}</p>
+                }
             </div>
             <div className={css.infoRow}>
                 {
                     props.description &&
-                    <>
-                        <p className={css.description}>{props.description}</p>
-                        {
-                            props.badge &&
-                            <p className={css.badge}>{props.badge}</p>
-                        }
-                    </>
+                    <p className={css.description}>{props.description}</p>
                 }
             </div>
         </div>

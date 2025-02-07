@@ -1,17 +1,19 @@
 import React, {FC} from "react";
-import css from "./Avatar.module.scss"
 import cn from 'classnames'
+import UserOutlined from "@ant-design/icons/UserOutlined";
 import {AvatarProps, AvatarShapes, AvatarSizes} from "./types";
-import {UserOutlined} from "@ant-design/icons";
+
+import css from "./Avatar.module.scss"
 
 
 const Avatar: FC<AvatarProps> = ({
-                                     size = AvatarSizes.medium,
+                                     size = AvatarSizes.MEDIUM,
                                      alt = 'Аватарка', //TODO: Перевод
-                                     shape = AvatarShapes.circle,
+                                     shape = AvatarShapes.CIRCLE,
                                      className,
                                      ...props
                                  }) => {
+
     const classString = cn(
         className,
         css[shape],
@@ -19,22 +21,17 @@ const Avatar: FC<AvatarProps> = ({
         !props.src && css.default
     )
 
-    return (
-        <>
-            {
-                props.src ?
-                    <img
-                        className={classString}
-                        alt={alt}
-                        {...props}
-                    /> :
-                    <div className={classString}>
-                        <UserOutlined/>
-                    </div>
-            }
-        </>
-    )
+    if (!props.src) {
+        return <div className={classString}>
+            <UserOutlined/>
+        </div>
+    }
 
+    return <img
+        className={classString}
+        alt={alt}
+        {...props}
+    />
 }
 
 export default Avatar;
