@@ -6,42 +6,55 @@ import cn from "classnames";
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   className?: string;
   label?: string;
-  error?: string;
-  type?: "text" | "search"; // Новый пропс для типа
+  error?: boolean;
+  errorMessage?: string;
+  type?: "text" | "search" | "message";
+  iconLeft?: React.ReactNode;
+  iconRight?: React.ReactNode;
 }
 
 export const Input: FC<InputProps> = ({
   className,
   label,
   error,
-  type = "text", // По умолчанию обычный текст
+  errorMessage,
+  type = "text",
+  iconLeft,
+  iconRight,
   ...props
 }) => {
   return (
     <div
       className={cn(cls.wrapper, className, {
         [cls.searchMode]: type === "search",
+        [cls.messageMode]: type === "message",
       })}
     >
-      {/* Показываем label только если это НЕ search */}
-      {label && type !== "search" && (
-        <label className={cls.label}>{label}</label>
+      {label && type !== "search" && type !== "message" && (
+        <label className={cn(cls.label, { [cls.labelError]: error })}>
+          {label}
+        </label>
       )}
-
-      {/* Поле ввода с иконкой */}
       <div className={cn(cls.inputWrapper)}>
-        {type === "search" && <span className={cls.searchIcon}>🔍</span>}{" "}
-        {/* Иконка всегда показывается */}
+        {iconLeft && <span className={cls.iconLeft}>{iconLeft}</span>}
         <input
           className={cn(cls.input, {
             [cls.searchInput]: type === "search",
+            [cls.messageInput]: type === "message",
             [cls.error]: error,
           })}
           {...props}
         />
+        {type === "message" && <span className={cls.iconRight}>📷</span>}
+        {iconRight && type !== "message" && (
+          <span className={cls.iconRight}>{iconRight}</span>
+        )}
       </div>
-
-      {error && <span className={cls.errorMessage}>{error}</span>}
+      {error && (
+        <span className={cls.errorMessage}>
+          {errorMessage || "Что-то пошло не так!"}{" "}
+        </span>
+      )}
     </div>
   );
 };
