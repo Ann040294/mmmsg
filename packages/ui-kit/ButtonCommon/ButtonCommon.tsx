@@ -1,12 +1,7 @@
 // import React from 'react';
 import React, {FC} from "react";
 import "./ButtonCommon.scss";
-import {ButtonHTMLAttributes} from 'react';
-
-type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
-    text: string;
-    option?: 'primary' | 'secondary';
-};
+import {ButtonProps} from './type';
 
 const ButtonCommon: React.FC<ButtonProps> = ({text, option = 'primary', className, ...props}) => {
 
