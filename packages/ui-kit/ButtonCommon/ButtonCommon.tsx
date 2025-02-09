@@ -2,7 +2,7 @@ import React, {FC} from "react";
 import "./ButtonCommon.scss";
 import {ButtonProps} from './type';
 
-const ButtonCommon: React.FC<ButtonProps> = ({text, option = 'primary', className, ...props}) => {
+const ButtonCommon:React.FC<ButtonProps> = ({text, option = 'primary', className, ...props}) => {
 
     const buttonClasses = `button button_${option} ${className || ''}`.trim();
 
