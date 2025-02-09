@@ -1,4 +1,3 @@
-// import React from 'react';
 import React, {FC} from "react";
 import "./ButtonCommon.scss";
 import {ButtonProps} from './type';
