@@ -1,10 +1,17 @@
 import React, {FC} from "react";
-import "./ButtonCommon.scss";
-import {ButtonProps} from './type';
+import cn from 'classnames'
+import {ButtonProps, ButtonVariants} from './types';
 
-const ButtonCommon:React.FC<ButtonProps> = ({text, option = 'primary', className, ...props}) => {
+import css from "./ButtonCommon.module.scss"
 
-    const buttonClasses = `button button_${option} ${className || ''}`.trim();
+const ButtonCommon:FC<ButtonProps> = ({
+                                          text,
+                                          variant = ButtonVariants.PRIMARY,
+                                          ...props}) => {
+
+    const buttonClasses = cn(
+        `${css.button}
+        ${css[variant]}`);
 
     return (
         <button className={buttonClasses}>

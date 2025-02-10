@@ -1,28 +1,28 @@
 .button {
   display: inline-block;
   padding: 12px 50px;
-  border-radius: 8px;
   border: none;
+  border-radius: 8px;
   text-align: center;
   cursor: pointer;
   transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-.button_primary {
+.primary {
   background-color: #000000; //TODO: исправить в задаче темы
   color: #ffffff;  //TODO: исправить в задаче темы
+
+  &:hover {
+    background-color: #222222; //TODO: исправить в задаче темы
+  }
 }
 
-  :hover {
-  background-color: #222; //TODO: исправить в задаче темы
-}
-
-.button_secondary {
+.secondary {
   background-color: #ffffff; //TODO: исправить в задаче темы
   color: #333333;  //TODO: исправить в задаче темы
   border: 2px solid #000000; //TODO: исправить в задаче темы
-}
 
-  :hover {
-  background-color: #f5f5f5;  //TODO: исправить в задаче темы
+  &:hover {
+    background-color: #f5f5f5;  //TODO: исправить в задаче темы
+  }
 }
