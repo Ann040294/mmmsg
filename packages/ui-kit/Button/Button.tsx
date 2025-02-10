@@ -4,7 +4,7 @@ import {ButtonProps, ButtonVariants} from './types';
 
 import css from "./ButtonCommon.module.scss"
 
-const ButtonCommon:FC<ButtonProps> = ({
+const Button:FC<ButtonProps> = ({
                                           text,
                                           variant = ButtonVariants.PRIMARY,
                                           ...props}) => {
@@ -20,4 +20,4 @@ const ButtonCommon:FC<ButtonProps> = ({
     );
 };
 
-export default ButtonCommon;
+export default Button;
