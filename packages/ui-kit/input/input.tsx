@@ -1,16 +1,26 @@
-import React, { FC, InputHTMLAttributes } from "react";
+import React, { FC } from "react";
 import cls from "./input.module.scss";
 import cn from "classnames";
+import { ErrorMessage } from "../ErrorMessage/ErrorMessage";
 
-// Пропсы для Input
-interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+enum InputType {
+  Text = "text",
+  Search = "search",
+  Message = "message",
+}
+
+interface InputProps {
   className?: string;
   label?: string;
   error?: boolean;
   errorMessage?: string;
-  type?: "text" | "search" | "message";
+  type?: InputType;
+  required?: boolean;
   iconLeft?: React.ReactNode;
   iconRight?: React.ReactNode;
+  placeholder?: string;
+  value?: string;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 export const Input: FC<InputProps> = ({
@@ -18,42 +28,49 @@ export const Input: FC<InputProps> = ({
   label,
   error,
   errorMessage,
-  type = "text",
+  type = InputType.Text,
+  required,
   iconLeft,
   iconRight,
+  placeholder,
+  value,
+  onChange,
   ...props
 }) => {
   return (
     <div
       className={cn(cls.wrapper, className, {
-        [cls.searchMode]: type === "search",
-        [cls.messageMode]: type === "message",
+        [cls.searchMode]: type === InputType.Search,
+        [cls.messageMode]: type === InputType.Message,
       })}
     >
-      {label && type !== "search" && type !== "message" && (
+      {/* Label */}
+      {label && type !== InputType.Search && type !== InputType.Message && (
         <label className={cn(cls.label, { [cls.labelError]: error })}>
           {label}
         </label>
       )}
+
       <div className={cn(cls.inputWrapper)}>
         {iconLeft && <span className={cls.iconLeft}>{iconLeft}</span>}
         <input
-          className={cn(cls.input, {
-            [cls.searchInput]: type === "search",
-            [cls.messageInput]: type === "message",
-            [cls.error]: error,
-          })}
+          className={cn(cls.input, { [cls.error]: error })}
+          placeholder={placeholder}
+          value={value}
+          onChange={onChange}
           {...props}
         />
-        {type === "message" && <span className={cls.iconRight}>📷</span>}
-        {iconRight && type !== "message" && (
+        {type === InputType.Message && (
+          <span className={cls.iconRight}>📷</span>
+        )}
+        {iconRight && type !== InputType.Message && (
           <span className={cls.iconRight}>{iconRight}</span>
         )}
       </div>
-      {error && (
-        <span className={cls.errorMessage}>
-          {errorMessage || "Что-то пошло не так!"}{" "}
-        </span>
+
+      {/* Используем готовый `ErrorMessage`, если ошибка есть */}
+      {error && required && errorMessage && (
+        <ErrorMessage message={errorMessage} />
       )}
     </div>
   );

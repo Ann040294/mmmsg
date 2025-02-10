@@ -11,14 +11,13 @@
   position: absolute;
   top: -5px;
   left: 14px;
-  background: white;
+  background: #FFFFFF;
   padding: 0 5px;
   font-family: 'Lato', sans-serif;
   font-weight: 400;
-  font-size: 12px;
+  font-size: 14px;
   line-height: 14px;
-  color: rgba(0, 0, 0, 0.6);
-  transition: all 0.2s ease-in-out;
+  color: #666666;
   z-index: 1;
 }
 
@@ -33,13 +32,13 @@
   width: 100%;
   height: 36px;
   background: #FFFFFF;
-  border: 1px solid rgba(222, 222, 222);
+  border: 1px solid #dedede;
   border-radius: 10px;
   padding: 8px 14px;
   font-family: 'Lato', sans-serif;
   font-size: 12px;
   line-height: 20px;
-  color: black;
+  color: #000000;
 }
 
 .searchInput {
@@ -60,40 +59,24 @@
   position: absolute;
   left: 10px;
   font-size: 18px;
-  color: rgba(0, 0, 0, 1);
 }
 
 .iconRight {
   position: absolute;
   right: 10px;
   font-size: 18px;
-  color: rgba(0, 0, 0, 1);
 }
 
 .input::placeholder {
-  color: rgba(0, 0, 0, 0.4);
+  color: #999999;
   font-size: 12px;
   line-height: 14px;
 }
 
-.error {
-  background: #FFD8D8; 
-  border: 1px solid red; 
-}
-
 .labelError {
+  background: #FFD8D8;
+}
+
+.input.error {
   background-color: #FFD8D8;
-}
-
-.errorMessage {
-  color: red;
-  font-size: 12px;
-  margin-top: 5px;
-  display: flex;
-  align-items: center;
-}
-
-.errorMessage::before {
-  content: "❌";
-  margin-right: 5px;
 }
