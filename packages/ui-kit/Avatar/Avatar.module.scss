@@ -1,0 +1,36 @@
+.large {
+  height: 70px;
+  width: 70px;
+  min-width: 70px;
+  font-size: 35px;
+}
+
+.small {
+  height: 30px;
+  width: 30px;
+  min-width: 30px;
+  font-size: 15px;
+}
+
+.medium {
+  height: 50px;
+  width: 50px;
+  min-width: 50px;
+  font-size: 25px
+}
+
+.circle {
+  border-radius: 50%;
+}
+
+.square {
+  border-radius: 20%;
+}
+
+.default {
+  display: flex;
+  justify-content: center;
+  background-color: gray; //TODO: исправить в задаче темы
+  color: white; //TODO: исправить в задаче темы
+}
+
