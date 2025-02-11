@@ -1,15 +1,17 @@
 import React from "react";
-import cls from "./errorMessage.module.scss";
+import css from "./errorMessage.module.scss";
 
 interface ErrorMessageProps {
   message: string;
 }
 
-export const ErrorMessage: React.FC<ErrorMessageProps> = ({ message }) => {
+const ErrorMessage: React.FC<ErrorMessageProps> = ({ message }) => {
   return (
-    <div className={cls.errorMessage}>
-      <span className={cls.icon}>❌</span>
-      <span className={cls.message}>{message}</span>
+    <div className={css.errorMessage}>
+      <span className={css.icon}>❌</span>
+      <span className={css.message}>{message}</span>
     </div>
   );
 };
+
+export default ErrorMessage;

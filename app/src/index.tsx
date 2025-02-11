@@ -26,7 +26,7 @@ const App = () => {
       <Input
         label="Username"
         placeholder="Enter your username"
-        error={error}
+        hasError={error}
         errorMessage={errorMessage}
         value={inputValue}
         onChange={handleChange}

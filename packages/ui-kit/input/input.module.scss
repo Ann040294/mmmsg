@@ -5,78 +5,78 @@
   align-items: flex-start;
   width: 100%;
   max-width: 340px;
-}
 
-.label {
-  position: absolute;
-  top: -5px;
-  left: 14px;
-  background: #FFFFFF;
-  padding: 0 5px;
-  font-family: 'Lato', sans-serif;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 14px;
-  color: #666666;
-  z-index: 1;
-}
+  .label {
+    position: absolute;
+    top: -5px;
+    left: 14px;
+    background: #FFFFFF;
+    padding: 0 5px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 14px;
+    color: #666666;
+    z-index: 1;
 
-.inputWrapper {
-  display: flex;
-  align-items: center;
-  width: 100%;
-  position: relative;
-}
+    &.error {
+      background: #FFD8D8;
+    }
+  }
 
-.input {
-  width: 100%;
-  height: 36px;
-  background: #FFFFFF;
-  border: 1px solid #dedede;
-  border-radius: 10px;
-  padding: 8px 14px;
-  font-family: 'Lato', sans-serif;
-  font-size: 12px;
-  line-height: 20px;
-  color: #000000;
-}
+  .inputWrapper {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    position: relative;
+  }
 
-.searchInput {
-  background: #F7F7F7;
-  border-radius: 5px;
-  padding-left: 36px;
-  border: none;
-}
+  .input {
+    width: 100%;
+    height: 36px;
+    background: #FFFFFF;
+    border: 1px solid #dedede;
+    border-radius: 10px;
+    padding: 8px 14px;
+    font-family: 'Lato', sans-serif;
+    font-size: 12px;
+    line-height: 20px;
+    color: #000000;
 
-.messageInput {
-  background: #F7F7F7;
-  border-radius: 20px;
-  padding-right: 36px;
-  border: none;
-}
+    &.error {
+      background-color: #FFD8D8;
+    }
 
-.iconLeft {
-  position: absolute;
-  left: 10px;
-  font-size: 18px;
-}
+    &::placeholder {
+      color: #999999;
+      font-size: 12px;
+      line-height: 14px;
+    }
+  }
 
-.iconRight {
-  position: absolute;
-  right: 10px;
-  font-size: 18px;
-}
+  .searchInput {
+    background: #F7F7F7;
+    border-radius: 5px;
+    padding-left: 36px;
+    border: none;
+  }
 
-.input::placeholder {
-  color: #999999;
-  font-size: 12px;
-  line-height: 14px;
-}
+  .messageInput {
+    background: #F7F7F7;
+    border-radius: 20px;
+    padding-right: 36px;
+    border: none;
+  }
 
-.labelError {
-  background: #FFD8D8;
-}
+  .iconLeft {
+    position: absolute;
+    left: 10px;
+    font-size: 18px;
+  }
 
-.input.error {
-  background-color: #FFD8D8;
+  .iconRight {
+    position: absolute;
+    right: 10px;
+    font-size: 18px;
+  }
 }

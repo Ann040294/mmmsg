@@ -1,0 +1,58 @@
+%text {
+  padding: 0;
+  margin: 0;
+
+}
+
+.root {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px;
+  border-radius: 8px;
+
+  &:hover{
+    cursor: pointer;
+    background-color:rgb(1,1,1,0.15); //TODO: исправить в задаче темы
+  }
+}
+
+.info {
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  &Row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .title,
+    .description {
+      @extend %text;
+
+      padding-right: 8px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .description {
+      color: #AAAAAA; //TODO: исправить в задаче темы
+    }
+
+    .badge {
+      margin: 0;
+      padding: 0 8px;
+      height: 20px;
+      line-height: 20px;
+      font-size: 14px;
+      border-radius: 12px;
+      font-weight: bold;
+      background-color: #8A8894; //TODO: исправить в задаче темы
+      color: white; //TODO: исправить в задаче темы
+    }
+  }
+}
