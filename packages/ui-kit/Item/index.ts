@@ -1,2 +1,1 @@
-export * from './types'
-export {default as Item} from './Item'
+export { default as Item } from './Item';

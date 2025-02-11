@@ -6,6 +6,7 @@
   "author": "MMTR",
   "license": "MIT",
   "private": "true",
+  "type": "module",
   "workspaces": [
     "packages/ui-kit",
     "app"
@@ -16,5 +17,18 @@
     "serve": "yarn workspace app serve"
   },
   "dependencies": {},
-  "devDependencies": {}
+  "devDependencies": {
+    "@eslint/js": "^9.20.0",
+    "@stylistic/eslint-plugin-js": "^3.1.0",
+    "eslint": "8.57.1",
+    "eslint-config-prettier": "^10.0.1",
+    "eslint-plugin-newline-destructuring": "^1.2.2",
+    "eslint-plugin-react": "^7.37.4",
+    "eslint-plugin-react-hooks": "^5.1.0",
+    "eslint-plugin-react-refresh": "^0.4.19",
+    "eslint-plugin-simple-import-sort": "^12.1.1",
+    "globals": "^15.14.0",
+    "prettier": "^3.5.0",
+    "typescript-eslint": "^8.23.0"
+  }
 }
