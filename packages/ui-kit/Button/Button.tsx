@@ -1,20 +1,21 @@
-import React, {FC} from "react";
-import cn from 'classnames'
-import {ButtonProps, ButtonVariants} from './types';
+import React, { FC } from 'react';
+import cn from 'classnames';
+import { Variants } from './types';
 
-import css from "./ButtonCommon.module.scss"
+import css from './Button.module.scss';
 
-const Button:FC<ButtonProps> = ({
-                                          text,
-                                          variant = ButtonVariants.PRIMARY,
-                                          ...props}) => {
+export interface ButtonProps {
+    text: string;
+    variant?: Variants;
+}
 
-    const buttonClasses = cn(
-        `${css.button}
-        ${css[variant]}`);
-
+const Button: FC<ButtonProps> = ({
+                                     text,
+                                     variant = Variants.PRIMARY,
+                                     ...props
+                                 }) => {
     return (
-        <button className={buttonClasses}>
+        <button className={cn(css.button, css[variant])}>
             {text}
         </button>
     );

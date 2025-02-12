@@ -1,9 +1,4 @@
-export enum ButtonVariants {
+export enum Variants {
     PRIMARY = 'primary',
     SECONDARY = 'secondary',
-}
-
-export interface ButtonProps {
-    text: string;
-    variant?: ButtonVariants;
 }
