@@ -1,7 +1,8 @@
+@import "../styles/typography.scss";
+
 %text {
   padding: 0;
   margin: 0;
-
 }
 
 .root {
@@ -11,9 +12,9 @@
   padding: 8px;
   border-radius: 8px;
 
-  &:hover{
+  &:hover {
     cursor: pointer;
-    background-color:rgb(1,1,1,0.15); //TODO: исправить в задаче темы
+    background-color: rgb(1, 1, 1, 0.15); //TODO: исправить в задаче темы
   }
 }
 
@@ -37,6 +38,10 @@
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
+    }
+
+    .title {
+      @include headline-5();
     }
 
     .description {
