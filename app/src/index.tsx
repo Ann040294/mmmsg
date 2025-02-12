@@ -1,6 +1,6 @@
-import ReactDOM from "react-dom/client";
-import React, { useState } from "react";
+import React from 'react';
+import ReactDOM from 'react-dom/client';
 
-ReactDOM.createRoot(document.getElementById("root")!).render(
-  <React.StrictMode></React.StrictMode>
+ReactDOM.createRoot(document.getElementById('root')!).render(
+    <React.StrictMode></React.StrictMode>,
 );
