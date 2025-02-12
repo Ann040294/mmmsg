@@ -25,7 +25,7 @@ const Item: FC<ItemProps> = (props) => {
             )}
             <div className={css.info}>
                 <div className={css.infoRow}>
-                    <h3 className={css.title}>{props.title}</h3>
+                    <div className={css.title}>{props.title}</div>
                     {props.badge && <p className={css.badge}>{props.badge}</p>}
                 </div>
                 <div className={css.infoRow}>

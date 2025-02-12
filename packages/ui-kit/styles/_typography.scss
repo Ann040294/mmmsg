@@ -1,0 +1,97 @@
+$font-family-primary: 'Lato', sans-serif;
+$font-family-secondary: 'Nunino', sans;
+
+$font-size-text-primary-desktop: 16px;
+$font-size-text-primary-tablet: 14px;
+$font-size-text-primary-mobile: 14px;
+
+
+//headline
+
+////desktop
+$font-size-h1-desktop: 56px/#{110%};
+$font-h1-desktop: bold #{$font-size-h1-desktop} $font-family-primary;
+
+$font-size-h2-desktop: 48px/#{120%};
+$font-h2-desktop: bold $font-size-h2-desktop $font-family-primary;
+
+$font-size-h3-desktop: 32px/#{120%};
+$font-h3-desktop: bold $font-size-h3-desktop $font-family-primary;
+
+$font-size-h4-desktop: 24px/#{120%};
+$font-h4-desktop: bold $font-size-h4-desktop $font-family-primary;
+
+$font-size-h5-desktop: 18px/#{120%};
+$font-h5-desktop: bold 18px $font-family-primary;
+
+////tablet
+$font-size-h1-tablet: 48px/#{110%};
+$font-h1-tablet: bold $font-size-h1-tablet $font-family-primary;
+
+$font-size-h2-tablet: 32px/#{120%};
+$font-h2-tablet: bold $font-size-h2-tablet $font-family-primary;
+
+$font-size-h3-tablet: 24px/#{120%};
+$font-h3-tablet: bold $font-size-h3-tablet $font-family-primary;
+
+$font-size-h4-tablet: 18px/#{120%};
+$font-h4-tablet: bold $font-size-h4-tablet $font-family-primary;
+
+$font-size-h5-tablet: 16px/#{120%};
+$font-h5-tablet: bold $font-size-h5-tablet $font-family-primary;
+
+
+////mobile
+$font-size-h1-mobile: 24px/#{120%};
+$font-h1-mobile: bold $font-size-h1-mobile $font-family-primary;
+
+$font-size-h2-mobile: 20px/#{120%};
+$font-h2-mobile: bold $font-size-h2-mobile $font-family-primary;
+
+$font-size-h3-mobile: 18px/#{120%};
+$font-h3-mobile: bold $font-size-h3-mobile $font-family-primary;
+
+$font-size-h4-mobile: 16px/#{120%};
+$font-h4-mobile: bold $font-size-h4-mobile $font-family-primary;
+
+$font-size-h5-mobile: 14px/#{120%};
+$font-h5-mobile: bold $font-size-h5-mobile $font-family-primary;
+
+
+//button/link
+$font-size-button-large: 20px;
+$font-size-button-medium: 16px;
+$font-size-button-small: 14px;
+
+$font-size-link-large: 20px;
+$font-size-link-medium: 16px;
+$font-size-link-small: 14px;
+
+//Fields
+$font-size-text-placeholder: 16px;
+$font-size-text-title: 12px;
+$font-size-text-description: 12px;
+
+//mixins
+//TODO: media запросы
+@mixin headline-1() {
+  font: $font-h1-desktop;
+}
+
+@mixin headline-2() {
+  font: $font-h2-desktop;
+}
+
+@mixin headline-3() {
+  font: $font-h3-desktop;
+}
+
+@mixin headline-4() {
+  font: $font-h4-desktop;
+}
+
+@mixin headline-5() {
+  font: $font-h5-desktop;
+}
+
+
