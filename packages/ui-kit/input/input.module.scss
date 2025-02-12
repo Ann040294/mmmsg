@@ -43,6 +43,10 @@
     line-height: 20px;
     color: #000000;
 
+    &:focus {
+      outline: none;
+    }
+
     &.error {
       background-color: #FFD8D8;
     }
@@ -52,20 +56,26 @@
       font-size: 12px;
       line-height: 14px;
     }
-  }
 
-  .searchInput {
-    background: #F7F7F7;
-    border-radius: 5px;
-    padding-left: 36px;
-    border: none;
-  }
+    &.searchInput {
+      background: #f7f7f7;
+      border-radius: 5px;
+      padding-left: 36px;
+      border: none;
+    }
+  
+    &.messageInput {
+      background: #f7f7f7;
+      border-radius: 5px;
+      padding-right: 36px;
+      padding-left: 36px;
+      border: none;
+    }
 
-  .messageInput {
-    background: #F7F7F7;
-    border-radius: 20px;
-    padding-right: 36px;
-    border: none;
+    &:disabled {
+      background: #e0e0e0;
+      cursor: not-allowed;
+    }
   }
 
   .iconLeft {

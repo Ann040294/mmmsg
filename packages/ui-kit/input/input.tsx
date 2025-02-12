@@ -1,56 +1,59 @@
 import React, { FC } from "react";
 import css from "./input.module.scss";
 import cn from "classnames";
-import ErrorMessage from "../ErrorMessage";
-import { InputProps, InputType } from "./types";
+import Message from "../Message";
+import { InputProps } from "./types";
+import {
+  CameraOutlined,
+  SearchOutlined,
+  PaperClipOutlined,
+} from "@ant-design/icons";
 
 const Input: FC<InputProps> = ({
   className,
   label,
   hasError,
-  errorMessage,
-  type = InputType.Text,
+  message,
+  variant = "text",
   isRequired,
   isDisabled,
-  iconLeft,
-  iconRight,
   placeholder,
   value,
   onChange,
   ...props
 }) => {
   return (
-    <div
-      className={cn(css.wrapper, className, {
-        [css.searchMode]: type === InputType.Search,
-        [css.messageMode]: type === InputType.Message,
-      })}
-    >
-      {/* Label */}
-      {label && type !== InputType.Search && type !== InputType.Message && (
+    <div className={cn(css.wrapper, className)}>
+      {label && variant !== "search" && variant !== "message" && (
         <label className={cn(css.label, { [css.error]: hasError })}>
           {label}
         </label>
       )}
 
       <div className={cn(css.inputWrapper)}>
-        {iconLeft && <span className={css.iconLeft}>{iconLeft}</span>}
+        {variant === "search" && <SearchOutlined className={css.iconLeft} />}
+
+        {variant === "message" && (
+          <PaperClipOutlined className={css.iconLeft} />
+        )}
+
         <input
-          className={cn(css.input, { [css.error]: hasError })}
+          className={cn(css.input, {
+            [css.searchInput]: variant === "search",
+            [css.messageInput]: variant === "message",
+            [css.error]: hasError,
+          })}
           placeholder={placeholder}
           value={value}
           onChange={onChange}
+          disabled={isDisabled}
           {...props}
         />
-        {type === InputType.Message && (
-          <span className={css.iconRight}>📷</span>
-        )}
-        {iconRight && type !== InputType.Message && (
-          <span className={css.iconRight}>{iconRight}</span>
-        )}
+
+        {variant === "message" && <CameraOutlined className={css.iconRight} />}
       </div>
 
-      {hasError && errorMessage && <ErrorMessage message={errorMessage} />}
+      {hasError && message && <Message type="error" message={message} />}
     </div>
   );
 };

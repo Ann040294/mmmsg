@@ -1,0 +1,29 @@
+.messageContainer {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  padding: 10px;
+  border-radius: 5px;
+  color: #000;
+}
+
+.message {
+  font-size: 14px;
+}
+
+.icon {
+  font-size: 18px;
+  margin-right: 8px;
+
+  &.error {
+    color: #ff0000;
+  }
+
+  &.success {
+    color: #008000;
+  }
+
+  &.info {
+    color: #ffa500;
+  }
+}
