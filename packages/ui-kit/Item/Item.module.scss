@@ -41,7 +41,7 @@
     }
 
     .title {
-      font: $font-h5-desktop
+      @include headline-5();
     }
 
     .description {
