@@ -1,4 +1,4 @@
-import React, { CSSProperties, FC, ReactNode } from 'react';
+import { CSSProperties, FC, ReactNode } from 'react';
 import cn from 'classnames';
 
 import css from './Layout.module.scss';
