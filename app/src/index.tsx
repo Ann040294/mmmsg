@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom/client';
-import { Input } from 'ui-kit';
+import { Input, InputVariants } from 'ui-kit';
 import SearchOutlined from '@ant-design/icons/SearchOutlined';
-
-import Notice from 'ui-kit/Notice'; // Импорт компонента Message
 
 const App = () => {
     const [value, setValue] = useState('');
@@ -23,33 +21,31 @@ const App = () => {
             setErrorMessage('');
         }
     };
+    console.log(hasError);
 
     return (
         <div style={{ padding: 20 }}>
             <h1>Test Inputs</h1>
             <Input
-                variant="fullfield"
+                label={''}
+                variant={InputVariants.FILLED}
                 placeholder="Search..."
                 value={value}
                 iconLeft={<SearchOutlined />}
+                iconRight={<SearchOutlined />}
                 onChange={handleChange}
             />
             <br />
             <Input
-                variant="inputWithLabel"
+                variant={InputVariants.OUTLINED}
                 placeholder="Type your message..."
                 label="Username"
                 value={value}
                 hasError={hasError}
+                message={errorMessage}
                 onChange={handleChange}
             />
-            {hasError && errorMessage && (
-                <Notice
-                    type="error"
-                    message={errorMessage}
-                />
-            )}
-            <button onClick={handleValidate}>Validate</button>{' '}
+            <button onClick={handleValidate}>Validate</button>
         </div>
     );
 };
