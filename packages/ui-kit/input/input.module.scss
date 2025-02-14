@@ -10,17 +10,17 @@
     position: absolute;
     top: -5px;
     left: 14px;
-    background: #FFFFFF;
+    background: #fff;
     padding: 0 5px;
     font-family: 'Lato', sans-serif;
     font-weight: 400;
     font-size: 14px;
     line-height: 14px;
-    color: #666666;
+    color: #666;
     z-index: 1;
 
     &.error {
-      background: #FFD8D8;
+      background: #ffd8d8;
     }
   }
 
@@ -34,42 +34,41 @@
   .input {
     width: 100%;
     height: 36px;
-    background: #FFFFFF;
+    background: #fff;
     border: 1px solid #dedede;
     border-radius: 10px;
     padding: 8px 14px;
     font-family: 'Lato', sans-serif;
     font-size: 12px;
     line-height: 20px;
-    color: #000000;
+    color: #000;
 
     &:focus {
       outline: none;
     }
 
     &.error {
-      background-color: #FFD8D8;
+      background-color: #ffd8d8;
     }
 
     &::placeholder {
-      color: #999999;
+      color: #999;
       font-size: 12px;
       line-height: 14px;
     }
 
-    &.searchInput {
+    &.fullfield {
       background: #f7f7f7;
       border-radius: 5px;
-      padding-left: 36px;
       border: none;
-    }
-  
-    &.messageInput {
-      background: #f7f7f7;
-      border-radius: 5px;
-      padding-right: 36px;
-      padding-left: 36px;
-      border: none;
+
+      &.hasIconLeft {
+        padding-left: 36px;
+      }
+
+      &.hasIconRight {
+        padding-right: 36px;
+      }
     }
 
     &:disabled {
@@ -78,15 +77,16 @@
     }
   }
 
-  .iconLeft {
+  .icon {
     position: absolute;
-    left: 10px;
     font-size: 18px;
-  }
 
-  .iconRight {
-    position: absolute;
-    right: 10px;
-    font-size: 18px;
+    &.left {
+      left: 10px;
+    }
+
+    &.right {
+      right: 10px;
+    }
   }
 }

@@ -3,9 +3,11 @@ export interface InputProps {
     label?: string;
     hasError?: boolean;
     message?: string;
-    variant?: 'text' | 'search' | 'message';
+    variant?: 'inputWithLabel' | 'fullfield'; //вынести в enum
     isRequired?: boolean;
     isDisabled?: boolean;
+    iconLeft?: React.ReactNode;
+    iconRight?: React.ReactNode;
     placeholder?: string;
     value?: string;
     onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;

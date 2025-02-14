@@ -1,72 +1,67 @@
-import React, { FC } from 'react';
+import React, { FC, useCallback } from 'react';
 import cn from 'classnames';
-import {
-    CameraOutlined,
-    PaperClipOutlined,
-    SearchOutlined,
-} from '@ant-design/icons';
 
-import Message from '../Message';
+import Notice from '../Notice';
 
 import { InputProps } from './types';
 
-import css from './input.module.scss';
+import css from './Input.module.scss';
 
 const Input: FC<InputProps> = ({
     className,
     label,
     hasError,
     message,
-    variant = 'text',
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    isRequired,
+    variant = 'inputWithLabel',
     isDisabled,
     placeholder,
     value,
     onChange,
+    iconLeft,
+    iconRight,
     ...props
 }) => {
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
         onChange?.(e);
-    };
+    }, [onChange]);
+    
+    const inputClasses = cn(css.input, css[variant], {
+        [css.inputWithLabel]: variant === 'inputWithLabel', // --
+        [css.fullfield]: variant === 'fullfield', //--
+        [css.error]: hasError,
+        [css.hasIconLeft]: iconLeft,
+        [css.hasIconRight]: iconRight,
+    });
 
     return (
         <div className={cn(css.wrapper, className)}>
-            {label && variant !== 'search' && variant !== 'message' && (
+            {label && variant === 'inputWithLabel' && ( // -variant
                 <label className={cn(css.label, { [css.error]: hasError })}>
                     {label}
                 </label>
             )}
 
             <div className={cn(css.inputWrapper)}>
-                {variant === 'search' && (
-                    <SearchOutlined className={css.iconLeft} />
-                )}
-
-                {variant === 'message' && (
-                    <PaperClipOutlined className={css.iconLeft} />
+                {iconLeft && (
+                    <span className={cn(css.icon, css.left)}>{iconLeft}</span>
                 )}
 
                 <input
                     placeholder={placeholder}
                     value={value}
                     disabled={isDisabled}
-                    className={cn(css.input, {
-                        [css.searchInput]: variant === 'search',
-                        [css.messageInput]: variant === 'message',
-                        [css.error]: hasError,
-                    })}
+                    className={inputClasses} //cn
                     onChange={handleChange}
                     {...props}
                 />
 
-                {variant === 'message' && (
-                    <CameraOutlined className={css.iconRight} />
+                {iconRight && (
+                    <span className={cn(css.icon, css.right)}>{iconRight}</span>
                 )}
             </div>
 
             {hasError && message && (
-                <Message
+                <Notice
                     type="error"
                     message={message}
                 />
