@@ -1,10 +1,10 @@
-import React, { FC, HTMLAttributes } from 'react';
+import React, { FC } from 'react';
 
 import { Avatar, AvatarShapes } from '../Avatar';
 
-import css from './Item.module.scss';
+import css from './Card.module.scss';
 
-interface ItemProps extends HTMLAttributes<HTMLDivElement> {
+interface CardProps {
     title: string;
     description?: string;
     badge?: string;
@@ -13,7 +13,7 @@ interface ItemProps extends HTMLAttributes<HTMLDivElement> {
     avatarSrc?: string;
 }
 
-const Item: FC<ItemProps> = (props) => {
+const Card: FC<CardProps> = (props) => {
     return (
         <div className={css.root}>
             {props.hasAvatar && (
@@ -38,4 +38,4 @@ const Item: FC<ItemProps> = (props) => {
     );
 };
 
-export default Item;
+export default Card;
