@@ -34,3 +34,29 @@
   color: white; //TODO: исправить в задаче темы
 }
 
+.hidden {
+  display: none ;
+}
+
+.animated {
+  background: radial-gradient(#a88fc2 25%,  #fe7bad 75%);
+  background-size: 100% 100%;
+  animation: gradient 3s ease infinite;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 100px
+}
+
+@keyframes gradient {
+  0% {
+    background-size: 100% 100%;
+  }
+  50% {
+    background-size: 200% 200%;
+  }
+  100% {
+    background-size: 100% 100%;
+  }
+
+}
+

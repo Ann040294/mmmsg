@@ -1,6 +1,7 @@
 import { FC, MouseEvent, useCallback, useState } from 'react';
 import cn from 'classnames';
 import IconUserOutlined from '@ant-design/icons/UserOutlined';
+import IconWarningOutlined from '@ant-design/icons/WarningOutlined';
 
 import { AvatarShapes, AvatarSizes } from './types';
 
@@ -28,19 +29,28 @@ const Avatar: FC<AvatarProps> = ({
 
     const handleOnError = useCallback(() => {
         setHasError(true);
-    }, [setHasError]);
+    }, []);
 
     const classString = cn(
         className,
         css[shape],
         css[size],
         (!props.src || hasError) && css.default,
+        css.animated,
     );
 
-    if (!props.src || hasError) {
+    if (!props.src) {
         return (
             <div className={classString}>
                 <IconUserOutlined />
+            </div>
+        );
+    }
+
+    if (hasError) {
+        return (
+            <div className={classString}>
+                <IconWarningOutlined />
             </div>
         );
     }

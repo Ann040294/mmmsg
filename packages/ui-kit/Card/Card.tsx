@@ -16,7 +16,7 @@ interface CardProps {
 const Card: FC<CardProps> = (props) => {
     return (
         <div className={css.root}>
-            {!props.isHiddenAvatar && props.avatarSrc && (
+            {!props.isHiddenAvatar && (
                 <Avatar
                     shape={props.avatarShape}
                     src={props.avatarSrc}
