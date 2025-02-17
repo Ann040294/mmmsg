@@ -8,7 +8,7 @@ interface CardProps {
     title: string;
     description?: string;
     badge?: string;
-    hasAvatar?: boolean;
+    isHiddenAvatar?: boolean;
     avatarShape?: AvatarShapes;
     avatarSrc?: string;
 }
@@ -16,7 +16,7 @@ interface CardProps {
 const Card: FC<CardProps> = (props) => {
     return (
         <div className={css.root}>
-            {props.hasAvatar && (
+            {!props.isHiddenAvatar && props.avatarSrc &&(
                 <Avatar
                     shape={props.avatarShape}
                     src={props.avatarSrc}

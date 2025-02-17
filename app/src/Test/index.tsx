@@ -23,9 +23,16 @@ const Test = () => {
         </Layout>
         <Layout>
             <Card title="Item" description="description" avatarSrc={'description'}/>
-            <Card hasAvatar title="Item" description="description" avatarSrc={'description'}/>
-            <Card hasAvatar title="Item" description="description" avatarSrc={avatar}/>
-            <Card hasAvatar title={'555'} avatarSrc={avatar}/>
+            <Card title="Item" description="description" avatarSrc={avatar}/>
+            <Card title={'555'} avatarSrc={avatar}/>
+            <Card isHiddenAvatar title={'555'} avatarSrc={avatar}/>
+            <Card isHiddenAvatar title={'555'} badge={'123'}/>
+            <Card isHiddenAvatar title={'555'} description={'test'}/>
+            <Card isHiddenAvatar title={'555'} description={'test'} badge={'123'}/>
+            <Card title={'555'} avatarSrc={avatar}/>
+            <Card title={'555'} badge={'123'}/>
+            <Card title={'555'} description={'test'}/>
+            <Card title={'555'} description={'test'} badge={'123'} avatarSrc={avatar}/>
         </Layout>
 
         <Layout>
