@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom/client';
 import { Input, InputVariants } from 'ui-kit';
 import SearchOutlined from '@ant-design/icons/SearchOutlined';
 
+import { NoticeTypes } from 'ui-kit/Notice/types';
+
 const App = () => {
     const [value, setValue] = useState('');
     const [hasError, setHasError] = useState(false);
@@ -37,11 +39,11 @@ const App = () => {
             />
             <br />
             <Input
-                variant={InputVariants.OUTLINED}
+                variant={InputVariants.FILLED}
                 placeholder="Type your message..."
                 label="Username"
                 value={value}
-                hasError={hasError}
+                noticeType={hasError ? NoticeTypes.ERROR : undefined}
                 message={errorMessage}
                 onChange={handleChange}
             />

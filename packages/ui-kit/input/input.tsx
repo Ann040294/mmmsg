@@ -1,7 +1,7 @@
 import React, { FC, useCallback } from 'react';
 import cn from 'classnames';
 
-import Notice from '../Notice';
+import Notice, { NoticeTypes } from '../Notice';
 
 import { InputVariants } from './types';
 
@@ -10,23 +10,22 @@ import css from './Input.module.scss';
 export interface InputProps {
     className?: string;
     label?: string;
-    hasError?: boolean;
     message?: string;
+    noticeType?: NoticeTypes;
     variant: InputVariants;
-    isRequired?: boolean;
     isDisabled?: boolean;
-    iconLeft?: React.ReactNode;
-    iconRight?: React.ReactNode;
     placeholder?: string;
     value?: string;
+    iconLeft?: React.ReactNode;
+    iconRight?: React.ReactNode; //после подключения компонента ICon задать тип Icon. В App задавать иконку без ёлочек
     onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 const Input: FC<InputProps> = ({
     className,
     label,
-    hasError,
     message,
+    noticeType: validateType,
     variant,
     isDisabled,
     placeholder,
@@ -43,35 +42,42 @@ const Input: FC<InputProps> = ({
         [onChange],
     );
 
+    //const isError = validateType === NoticeTypes.ERROR && !!message;
+
     return (
-        //частично перенести стили из input в input wrapper(он будет главенствующий)
         <div className={cn(css.wrapper, className)}>
-            {!!label && <label className={cn(css.label)}>{label}</label>}
+            {label && (
+                <label
+                    className={cn(
+                        css.label,
+                        !!validateType && css[validateType],
+                    )}
+                >
+                    {label}
+                </label>
+            )}
+
             <div className={cn(css.inputWrapper, css[variant])}>
-                {iconLeft && (
-                    <span className={cn(css.icon, css.left)}>{iconLeft}</span>
-                )}
+                {iconLeft && <div className={css.icon}>{iconLeft}</div>}
 
                 <input
                     placeholder={placeholder}
                     value={value}
                     disabled={isDisabled}
-                    className={cn(css.input, {
-                        [css.error]: hasError,
-                        //уходим, так как стили в inputWrapper. Уходим от .right и .left
-                        [css.hasIconLeft]: iconLeft,
-                        [css.hasIconRight]: iconRight,
-                    })}
+                    className={cn(
+                        css.input,
+                        !!validateType && css[validateType],
+                    )}
                     onChange={handleChange}
                     {...props}
                 />
-                {iconRight && (
-                    <span className={cn(css.icon, css.right)}>{iconRight}</span>
-                )}
+
+                {iconRight && <div className={css.icon}>{iconRight}</div>}
             </div>
-            {hasError && !!message && (
+
+            {validateType && message && (
                 <Notice
-                    type="error"
+                    type={validateType}
                     message={message}
                 />
             )}
