@@ -23,7 +23,6 @@ const Avatar: FC<AvatarProps> = ({
     className,
     ...props
 }) => {
-
     const [hasError, setHasError] = useState<boolean>(false);
 
     const handleOnError = () => {
