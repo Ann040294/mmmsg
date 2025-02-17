@@ -1,3 +1,5 @@
+@import "../styles/color.scss";
+
 .button {
   display: inline-block;
   padding: 12px 50px;
@@ -9,20 +11,20 @@
 }
 
 .primary {
-  background-color: #000000; //TODO: исправить в задаче темы
-  color: #ffffff; //TODO: исправить в задаче темы
+  background-color: $neutral-dark-color;
+  color: $neutral-white-color;
 
   &:hover {
-    background-color: #222222; //TODO: исправить в задаче темы
+    background-color: $neutral-dark-gray-color;
   }
 }
 
 .secondary {
-  background-color: #ffffff; //TODO: исправить в задаче темы
-  color: #333333; //TODO: исправить в задаче темы
-  border: 2px solid #000000; //TODO: исправить в задаче темы
+  background-color: $neutral-white-color;
+  color: $neutral-darken-gray-color;
+  border: 2px solid $neutral-dark-color;
 
   &:hover {
-    background-color: #f5f5f5; //TODO: исправить в задаче темы
+    background-color: $neutral-light-color;
   }
 }

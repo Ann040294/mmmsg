@@ -1,3 +1,5 @@
+@import "../styles/color.scss";
+
 .large {
   height: 70px;
   width: 70px;
@@ -30,7 +32,7 @@
 .default {
   display: flex;
   justify-content: center;
-  background-color: gray; //TODO: исправить в задаче темы
-  color: white; //TODO: исправить в задаче темы
+  background-color: $neutral-light-gray-color;
+  color: $neutral-white-color;
 }
 
