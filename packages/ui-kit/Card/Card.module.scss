@@ -6,11 +6,16 @@
 }
 
 .root {
+  --avatar-size: 50px;
+  --card-padding: 8px;
+
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 8px;
+  padding: var(--card-padding);
   border-radius: 8px;
+  height: calc(var(--avatar-size) + var(--card-padding) * 2);
+  box-sizing: border-box;
 }
 
 .info {
@@ -19,6 +24,7 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
+  height: 100%;
 
   &Row {
     display: flex;
