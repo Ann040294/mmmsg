@@ -11,7 +11,30 @@ $neutral-darken-gray-color: #5d5d5d;
 $neutral-dark-gray-color: #333333;
 $neutral-dark-color: #000000;
 
-$container-color: $neutral-white-color;
 $input-msg-color: $neutral-light-color;
-$viewer-obtained-color: #d9d9d9;
-$viewer-sent-color: #43a5dc;
+
+$msg-incoming-color: #d9d9d9;
+$msg-outgoing-color: #43a5dc;
+
+//avatar
+$avatar-bg-default: $neutral-light-gray-color;
+$avatar-color-default: $neutral-white-color;
+
+//button
+$btn-primary-dg-default: $neutral-dark-color;
+$btn-primary-bg-hover-default: $neutral-dark-gray-color;
+$btn-primary-color-default: $neutral-white-color;
+
+$btn-secondary-dg-default: $neutral-white-color;
+$btn-secondary-bg-hover-default: $neutral-light-color;
+$btn-secondary-color-default: $neutral-darken-gray-color;
+
+//item
+$item-bg-default: $neutral-dark-gray-color;
+$item-bg-hover-default: $neutral-light-color;
+
+$item-color-default: $neutral-white-color;
+$item-description-color-default: $neutral-light-gray-color;
+
+//layout
+$layout-bg-default: $neutral-white-color;

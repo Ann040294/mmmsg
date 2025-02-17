@@ -15,7 +15,7 @@
 
   &:hover {
     cursor: pointer;
-    background-color: $neutral-light-color;
+    background-color: $item-bg-hover-default;
   }
 }
 
@@ -46,7 +46,7 @@
     }
 
     .description {
-      color: $neutral-light-gray-color;
+      color: $item-description-color-default;
     }
 
     .badge {
@@ -57,8 +57,8 @@
       font-size: 14px;
       border-radius: 12px;
       font-weight: bold;
-      background-color: $neutral-dark-gray-color;
-      color: $neutral-white-color;
+      background-color: $item-bg-default;
+      color: $item-color-default;
     }
   }
 }
