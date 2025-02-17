@@ -18,7 +18,7 @@ const Test = () => {
             <Avatar src={avatar}/>
         </Layout>
         <Layout>
-            <Button text={'PRIMARY'} variant={ButtonVariants.PRIMARY} size={ButtonSize.LARGE}/>
+            <Button text={'PRIMARY'} variant={ButtonVariants.PRIMARY} size={ButtonSize.FULL_WIDTH}/>
             <Button text={'SECONDARY'} variant={ButtonVariants.SECONDARY}/>
             <Button text={'SEC'} variant={ButtonVariants.PRIMARY} size={ButtonSize.SMALL}/>
         </Layout>
