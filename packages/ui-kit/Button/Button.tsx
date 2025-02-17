@@ -7,15 +7,17 @@ import css from './Button.module.scss';
 export interface ButtonProps {
     text: string;
     variant?: Variants;
+    onClick: () => void;
 }
 
 const Button: FC<ButtonProps> = ({
                                      text,
                                      variant = Variants.PRIMARY,
+                                     onClick,
                                      ...props
                                  }) => {
     return (
-        <button className={cn(css.button, css[variant])}>
+        <button className={cn(css.button, css[variant])} onClick={onClick}>
             {text}
         </button>
     );
