@@ -1,4 +1,4 @@
-//$primary-gradient-color: linear-gradient(to bottom, $brand-secondary-color, $brand-tertiary-color, $brand-primary-color);
+$primary-gradient-color: linear-gradient(to bottom, $brand-secondary-color, $brand-tertiary-color, $brand-primary-color);
 
 $brand-primary-color: #2e90fa;
 $brand-secondary-color: #fe7bad;
@@ -11,7 +11,7 @@ $neutral-darken-gray-color: #5d5d5d;
 $neutral-dark-gray-color: #333333;
 $neutral-dark-color: #000000;
 
-$container-color: #efefef;
+$container-color: $neutral-white-color;
 $input-msg-color: $neutral-light-color;
 $viewer-obtained-color: #d9d9d9;
 $viewer-sent-color: #43a5dc;
