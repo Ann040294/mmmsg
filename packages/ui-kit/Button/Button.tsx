@@ -1,23 +1,23 @@
-import React, { FC } from 'react';
+import React, {FC} from 'react';
 import cn from 'classnames';
-import { Variants } from './types';
+
+import {Variants} from './types';
 
 import css from './Button.module.scss';
 
 export interface ButtonProps {
     text: string;
     variant?: Variants;
-    onClick: () => void;
+    handleClick: () => void;
 }
 
 const Button: FC<ButtonProps> = ({
                                      text,
                                      variant = Variants.PRIMARY,
-                                     onClick,
-                                     ...props
+                                     handleClick
                                  }) => {
     return (
-        <button className={cn(css.button, css[variant])} onClick={onClick}>
+        <button className={cn(css.button, css[variant])} onClick={handleClick}>
             {text}
         </button>
     );
