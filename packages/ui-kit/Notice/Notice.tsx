@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 import cn from 'classnames';
 
 import { Icon } from '../Icon';
@@ -21,7 +21,7 @@ const Notice: FC<NoticeProps> = ({ type, message }) => {
                 icon={IconComponent}
                 className={cn(css.icon, css[type])}
             />
-            <span className={css.message}>{message}</span>
+            <span className={cn(css.message, css[type])}>{message}</span>
         </div>
     );
 };

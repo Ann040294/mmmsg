@@ -1,4 +1,4 @@
-@use '../styles/typography.scss';
+@use '../styles/typography' as typ;
 
 .wrapper {
   position: relative;
@@ -13,9 +13,9 @@
     top: -5px;
     left: 14px;
     padding: 0 5px;
-    font-family: 'Lato', sans-serif;
+    font-family: typ.$font-family-primary;
     font-weight: 400;
-    font-size: 14px;
+    font-size: typ.$font-size-text-primary-desktop;
     line-height: 14px;
     color: #666;
     z-index: 1;
@@ -46,9 +46,10 @@
     }
 
     &.outlined {
-      background: transparent;
+      background: #ffffff;
       border: 1px solid #ccc;
       border-radius: 5px;
+      padding: 0 10px;
     }
 
     &.filled {
@@ -65,34 +66,27 @@
       flex-grow: 1;
       height: 100%;
       border: none;
-      padding: 8px 14px;
-      font-family: 'Lato', sans-serif;
-      font-size: 16px;
+      padding: 0 10px;
+      font-family: typ.$font-family-primary;
+      font-size: typ.$font-family-primary;
       line-height: 20px;
       color: #000;
       background-color: transparent;
       
-  
       &:focus {
         outline: none;
-        //border: 1px solid #000;
       }
-  
+
       &:disabled {
-        background: #e0e0e0;
         cursor: not-allowed;
+        background-color: #e0e0e0;
       }
   
       &::placeholder {
         color: #999;
-        font-size: 12px;
+        font-size: typ.$font-size-text-placeholder;
         line-height: 14px;
       }
     }
-  }
-
-  .icon {
-    font-size: 18px;
-    margin: 0 5px;
   }
 }

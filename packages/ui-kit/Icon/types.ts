@@ -1,3 +1,3 @@
-import CloseOutlined from '@ant-design/icons/CloseOutlined';
+import SearchOutlined from '@ant-design/icons/SearchOutlined';
 
-export type Icon = typeof CloseOutlined;
+export type IconType = typeof SearchOutlined;
