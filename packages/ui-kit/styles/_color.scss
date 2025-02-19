@@ -1,4 +1,4 @@
-$primary-gradient-color: linear-gradient(to bottom, $brand-secondary-color, $brand-tertiary-color, $brand-primary-color);
+$primary-gradient-color: linear-gradient(to bottom, #fe7bad, #a88fc2, #2e90fa);
 
 $brand-primary-color: #2e90fa;
 $brand-secondary-color: #fe7bad;
@@ -28,7 +28,7 @@ $btn-color-primary: $neutral-white-color;
 
 $btn-bg-secondary: $neutral-white-color;
 $btn-bg-hover-secondary: $neutral-light-color;
-$btn-color-secondary: $neutral-darken-gray-color;
+$btn-color-secondary: $neutral-dark-color;
 
 //item
 $card-description-color: $neutral-light-gray-color;
