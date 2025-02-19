@@ -4,8 +4,6 @@ import ExclamationCircleOutlined from '@ant-design/icons/ExclamationCircleOutlin
 
 import { Icon } from '../Icon/types';
 
-//import { Icon } from '../Icon';
-
 export enum NoticeTypes {
     ERROR = 'error',
     SUCCESS = 'success',
