@@ -8,16 +8,16 @@ import css from './Button.module.scss';
 export interface ButtonProps {
     text: string;
     variant?: Variants;
-    handleClick: () => void;
+    onClick: () => void;
 }
 
 const Button: FC<ButtonProps> = ({
                                      text,
                                      variant = Variants.PRIMARY,
-                                     handleClick
+                                     onClick
                                  }) => {
     return (
-        <button className={cn(css.button, css[variant])} onClick={handleClick}>
+        <button className={cn(css.button, css[variant])} onClick={onClick}>
             {text}
         </button>
     );
