@@ -1,3 +1,5 @@
+@use "ui-kit/styles/index";
+
 @use 'ui-kit/styles/color' as col;
 
 .wrap {
@@ -7,8 +9,12 @@
   padding: 20px;
 }
 
-.buttons {
+.layout {
   width: 400px;
+}
+
+.buttons {
+  @extend .layout;
   background: col.$primary-gradient-color;
 
   & :nth-child(2n) {

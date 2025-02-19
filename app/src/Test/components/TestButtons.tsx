@@ -1,10 +1,11 @@
+import { FC } from 'react';
 import { Layout } from 'ui-kit';
 
 import { Button, ButtonSize, ButtonVariants } from 'ui-kit/Button';
 
 import css from '../style.module.scss';
 
-export const TestButtons = () => {
+export const TestButtons: FC = () => {
     const handleAnyClick = () => alert(42);
 
     return (
