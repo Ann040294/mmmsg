@@ -1,6 +1,17 @@
-.test {
+@use 'ui-kit/styles/color' as col;
+
+.wrap {
   background: gray;
   height: max-content;
   display: flex;
   padding: 20px;
+}
+
+.buttons {
+  width: 400px;
+  background: col.$primary-gradient-color;
+
+  & :nth-child(2n) {
+    margin: 5px;
+  }
 }
