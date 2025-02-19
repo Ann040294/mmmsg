@@ -1,3 +1,3 @@
 export { default as Avatar } from './Avatar/Avatar';
-export { default as Item } from './Item/Item';
+export { default as Card } from './Card/Card';
 export { default as Layout } from './Layout/Layout';

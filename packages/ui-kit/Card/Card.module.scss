@@ -1,5 +1,4 @@
 @import "../styles/typography.scss";
-@import "../styles/color.scss";
 
 %text {
   padding: 0;
@@ -8,23 +7,19 @@
 
 .root {
   display: flex;
-  align-items: center;
-  gap: 8px;
+  gap: 4px;
   padding: 8px;
   border-radius: 8px;
-
-  &:hover {
-    cursor: pointer;
-    background-color: $item-bg-hover-default;
-  }
+  box-sizing: border-box;
 }
 
 .info {
   width: 100%;
   overflow: hidden;
   display: flex;
+  justify-content: space-between;
   flex-direction: column;
-  gap: 8px;
+  padding: 4px;
 
   &Row {
     display: flex;
@@ -46,7 +41,7 @@
     }
 
     .description {
-      color: $item-description-color-default;
+      color: #AAAAAA; //TODO: исправить в задаче темы
     }
 
     .badge {
@@ -57,8 +52,8 @@
       font-size: 14px;
       border-radius: 12px;
       font-weight: bold;
-      background-color: $item-bg-default;
-      color: $item-color-default;
+      background-color: #8A8894; //TODO: исправить в задаче темы
+      color: white; //TODO: исправить в задаче темы
     }
   }
 }
