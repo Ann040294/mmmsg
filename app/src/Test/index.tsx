@@ -4,9 +4,10 @@ import { Input, InputVariants } from 'ui-kit';
 import CloseOutlined from '@ant-design/icons/CloseOutlined';
 import SearchOutlined from '@ant-design/icons/SearchOutlined';
 
-import { AvatarShapes, AvatarSizes } from 'ui-kit/Avatar';
-import { Button, Variants } from 'ui-kit/Button';
 import { NoticeTypes } from 'ui-kit/Notice';
+import {AvatarShapes, AvatarSizes} from 'ui-kit/Avatar';
+import {Button, ButtonSize, ButtonVariants} from 'ui-kit/Button';
+
 
 import css from './style.module.scss';
 

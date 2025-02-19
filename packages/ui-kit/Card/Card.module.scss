@@ -1,4 +1,5 @@
 @import "../styles/typography.scss";
+@import "../styles/color.scss";
 
 %text {
   padding: 0;
@@ -41,7 +42,7 @@
     }
 
     .description {
-      color: #AAAAAA; //TODO: исправить в задаче темы
+      color: $card-description-color;
     }
 
     .badge {
@@ -52,8 +53,8 @@
       font-size: 14px;
       border-radius: 12px;
       font-weight: bold;
-      background-color: #8A8894; //TODO: исправить в задаче темы
-      color: white; //TODO: исправить в задаче темы
+      background-color: $card-bg-badge;
+      color: $card-color;
     }
   }
 }
