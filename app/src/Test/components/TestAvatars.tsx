@@ -5,11 +5,9 @@ import { AvatarShapes, AvatarSizes } from 'ui-kit/Avatar';
 
 import { avatar1, avatar2 } from '../meta/avatars';
 
-import css from '../style.module.scss';
-
 export const TestAvatars: FC = () => {
     return (
-        <Layout className={css.layout}>
+        <Layout>
             <h5>src</h5>
             <h6>nope</h6>
             <Avatar />

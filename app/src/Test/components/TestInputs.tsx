@@ -3,48 +3,84 @@ import { Input, InputVariants, Layout } from 'ui-kit';
 import CloseOutlined from '@ant-design/icons/CloseOutlined';
 import SearchOutlined from '@ant-design/icons/SearchOutlined';
 
+import { Button, ButtonSize, ButtonVariants } from 'ui-kit/Button';
 import { NoticeTypes } from 'ui-kit/Notice';
 
 import css from '../style.module.scss';
 
 export const TestInputs: FC = () => {
     const [value, setValue] = useState('');
+    const [variant, setVariant] = useState(InputVariants.OUTLINED);
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         setValue(e.target.value);
     };
+    const handleButton = () => {
+        setVariant((prevState) =>
+            prevState === InputVariants.OUTLINED
+                ? InputVariants.FILLED
+                : InputVariants.OUTLINED,
+        );
+    };
 
     return (
-        <Layout className={css.layout}>
-            <h5>Outlined without Icons</h5>
+        <Layout className={css.inputs}>
+            <h5>variant / full</h5>
             <Input
                 variant={InputVariants.OUTLINED}
+                placeholder={InputVariants.OUTLINED}
+                label={InputVariants.OUTLINED}
+                iconLeft={SearchOutlined}
+                iconRight={SearchOutlined}
+                value={value}
+                onChange={handleChange}
+            />
+            <Input
+                variant={InputVariants.FILLED}
+                placeholder={InputVariants.FILLED}
+                label={InputVariants.FILLED}
+                iconLeft={SearchOutlined}
+                iconRight={SearchOutlined}
+                value={value}
+                onChange={handleChange}
+            />
+            <Button
+                isFullWidth
+                text={'test it: ' + variant}
+                variant={ButtonVariants.SECONDARY}
+                size={ButtonSize.SMALL}
+                onClick={handleButton}
+            />
+            <h5>Icons</h5>
+            <h6>without</h6>
+            <Input
+                variant={variant}
                 placeholder="Enter text..."
                 value={value}
                 onChange={handleChange}
             />
 
-            <h5>Outlined with Left Icon</h5>
+            <h6>Only Left</h6>
             <Input
-                variant={InputVariants.OUTLINED}
+                variant={variant}
                 placeholder="Search..."
                 iconLeft={SearchOutlined}
                 value={value}
                 onChange={handleChange}
             />
 
-            <h5>Outlined with Right Icon</h5>
+            <h6>Only Right</h6>
             <Input
-                variant={InputVariants.OUTLINED}
+                variant={variant}
                 placeholder="Enter text..."
                 iconRight={CloseOutlined}
                 value={value}
                 onChange={handleChange}
             />
 
-            <h5>Outlined with Both Icons</h5>
+            <h6>Both Icons</h6>
             <Input
-                variant={InputVariants.OUTLINED}
+                variant={variant}
                 placeholder="Enter text..."
                 iconLeft={SearchOutlined}
                 iconRight={CloseOutlined}
@@ -52,18 +88,18 @@ export const TestInputs: FC = () => {
                 onChange={handleChange}
             />
 
-            <h5>Outlined with Label</h5>
+            <h5>Label</h5>
             <Input
-                variant={InputVariants.OUTLINED}
+                variant={variant}
                 label="Username"
                 placeholder="Enter your username"
                 value={value}
                 onChange={handleChange}
             />
 
-            <h5>Outlined with Error</h5>
+            <h5>Error</h5>
             <Input
-                variant={InputVariants.OUTLINED}
+                variant={variant}
                 placeholder="Enter text..."
                 noticeType={NoticeTypes.ERROR}
                 message="Something went wrong"
@@ -71,9 +107,9 @@ export const TestInputs: FC = () => {
                 onChange={handleChange}
             />
 
-            <h5>Outlined with Error and with label</h5>
+            <h6>& Label</h6>
             <Input
-                variant={InputVariants.OUTLINED}
+                variant={variant}
                 label="Username"
                 placeholder="Enter text..."
                 noticeType={NoticeTypes.ERROR}
@@ -82,86 +118,29 @@ export const TestInputs: FC = () => {
                 onChange={handleChange}
             />
 
-            <h5>Filled without Icons</h5>
-            <Input
-                variant={InputVariants.FILLED}
-                placeholder="Enter text..."
-                value={value}
-                onChange={handleChange}
-            />
-
-            <h5>Filled with Left Icon</h5>
-            <Input
-                variant={InputVariants.FILLED}
-                placeholder="Search..."
-                iconLeft={SearchOutlined}
-                value={value}
-                onChange={handleChange}
-            />
-
-            <h5>Filled with Right Icon</h5>
-            <Input
-                variant={InputVariants.FILLED}
-                placeholder="Enter text..."
-                iconRight={CloseOutlined}
-                value={value}
-                onChange={handleChange}
-            />
-
-            <h5>Filled with Both Icons</h5>
-            <Input
-                variant={InputVariants.FILLED}
-                placeholder="Enter text..."
-                iconLeft={SearchOutlined}
-                iconRight={CloseOutlined}
-                value={value}
-                onChange={handleChange}
-            />
-
-            <h5>Filled with Label</h5>
-            <Input
-                variant={InputVariants.FILLED}
-                label="Username"
-                placeholder="Enter your username"
-                value={value}
-                onChange={handleChange}
-            />
-
-            <h5>Filled with Label and Both Icons</h5>
-            <Input
-                variant={InputVariants.FILLED}
-                label="Username"
-                placeholder="Enter your username"
-                value={value}
-                iconLeft={SearchOutlined}
-                iconRight={CloseOutlined}
-                onChange={handleChange}
-            />
-
-            <h5>Filled with Error</h5>
-            <Input
-                variant={InputVariants.FILLED}
-                placeholder="Enter text..."
-                noticeType={NoticeTypes.ERROR}
-                message="Something went wrong"
-                value={value}
-                onChange={handleChange}
-            />
-
-            <h5>Disabled Outlined</h5>
+            <h5>Disabled</h5>
             <Input
                 isDisabled
-                variant={InputVariants.OUTLINED}
+                variant={variant}
                 placeholder="Disabled input"
                 value=""
             />
-
-            <h5>Disabled Filled</h5>
+            <h6>& Label</h6>
             <Input
                 isDisabled
-                variant={InputVariants.FILLED}
+                label="Username"
+                variant={variant}
                 placeholder="Disabled input"
                 value=""
+            />
+            <h6>& Error</h6>
+            <Input
+                isDisabled
+                label="Username"
+                variant={variant}
+                placeholder="Disabled input"
+                value=""
+                noticeType={NoticeTypes.ERROR}
             />
         </Layout>
     );

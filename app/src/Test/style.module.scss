@@ -2,22 +2,34 @@
 
 @use 'ui-kit/styles/color' as col;
 
-.wrap {
-  background: gray;
-  height: max-content;
+.column {
+  @extend .grad;
   display: flex;
-  padding: 20px;
+  flex-direction: column;
+  margin-top: 20px;
+  gap: 20px;
+}
+
+.row {
+  @extend .grad;
+  display: flex;
+  margin-top: 20px;
+  gap: 20px;
+
 }
 
 .layout {
   width: 400px;
 }
 
-.buttons {
-  @extend .layout;
+.grad {
   background: col.$primary-gradient-color;
+}
 
-  & :nth-child(2n) {
-    margin: 5px;
+.inputs {
+  @extend .layout;
+
+  &>:nth-child(n) {
+    margin: 10px;
   }
 }
