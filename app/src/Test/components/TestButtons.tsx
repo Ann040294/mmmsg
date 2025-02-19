@@ -10,69 +10,63 @@ export const TestButtons: FC = () => {
 
     return (
         <Layout className={css.buttons}>
+            <h5>variant</h5>
             <Button
-                text={'PRIMARY'}
+                text={ButtonVariants.PRIMARY}
                 variant={ButtonVariants.PRIMARY}
+                onClick={handleAnyClick}
+            />
+            <Button
+                text={ButtonVariants.SECONDARY}
+                variant={ButtonVariants.SECONDARY}
+                onClick={handleAnyClick}
+            />
+
+            <h5>size</h5>
+            <Button
+                text={ButtonSize.SMALL}
                 size={ButtonSize.SMALL}
                 onClick={handleAnyClick}
             />
             <Button
-                text={'PRIMARY'}
-                variant={ButtonVariants.PRIMARY}
+                text={ButtonSize.MEDIUM}
                 size={ButtonSize.MEDIUM}
                 onClick={handleAnyClick}
             />
             <Button
-                text={'PRIMARY'}
-                variant={ButtonVariants.PRIMARY}
+                text={ButtonSize.LARGE}
                 size={ButtonSize.LARGE}
                 onClick={handleAnyClick}
             />
+            <h6>def size & variant</h6>
             <Button
-                text={'PR'}
-                variant={ButtonVariants.PRIMARY}
+                text={'def'}
+                onClick={handleAnyClick}
+            />
+            <h5>text</h5>
+            <Button
+                text={'text'}
                 onClick={handleAnyClick}
             />
             <Button
-                text={'PRIMARY PRIMARY'}
+                text={'text text'}
                 onClick={handleAnyClick}
             />
             <Button
                 text={
-                    'PRIMARY PRIMARY PRIMARY PRIMARY PRIMARY PRIMARY PRIMARY PRIMARY'
+                    'text text text text text text text text text text text text text text text text text text text text text text text text text text text text text'
                 }
                 onClick={handleAnyClick}
             />
-            <Button
-                text={'SECONDARY'}
-                variant={ButtonVariants.SECONDARY}
-                size={ButtonSize.SMALL}
-                onClick={handleAnyClick}
-            />
-            <Button
-                text={'MEDIUM'}
-                variant={ButtonVariants.SECONDARY}
-                size={ButtonSize.MEDIUM}
-                onClick={handleAnyClick}
-            />
-            <Button
-                text={'LARGE'}
-                variant={ButtonVariants.SECONDARY}
-                size={ButtonSize.LARGE}
-                onClick={handleAnyClick}
-            />
+            <h5>Full Width</h5>
             <Button
                 isFullWidth={true}
-                text={'isFullWidth={true}'}
-                variant={ButtonVariants.SECONDARY}
-                size={ButtonSize.SMALL}
+                text={'true'}
                 onClick={handleAnyClick}
             />
             <Button
                 isFullWidth={false}
-                text={'isFullWidth={false}'}
-                variant={ButtonVariants.SECONDARY}
-                size={ButtonSize.SMALL}
+                text={'false'}
                 onClick={handleAnyClick}
             />
         </Layout>
