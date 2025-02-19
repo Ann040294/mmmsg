@@ -1,0 +1,31 @@
+@mixin icon-colors {
+  &.error {
+    color: #ff0000; //TO-DO
+  }
+  &.success {
+    color: #008000; //TO-DO
+  }
+  &.info {
+    color: #ffa500; //TO-DO
+  }
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  padding: 10px;
+  border-radius: 5px;
+  color: #000000; //TO-DO
+}
+
+.message {
+  font-size: 14px;
+  @include icon-colors;
+}
+
+.icon {
+  font-size: 18px;
+  margin-right: 8px;
+  @include icon-colors; 
+}
