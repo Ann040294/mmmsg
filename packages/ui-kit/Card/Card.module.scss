@@ -7,23 +7,19 @@
 
 .root {
   display: flex;
-  align-items: center;
-  gap: 8px;
+  gap: 4px;
   padding: 8px;
   border-radius: 8px;
-
-  &:hover {
-    cursor: pointer;
-    background-color: rgb(1, 1, 1, 0.15); //TODO: исправить в задаче темы
-  }
+  box-sizing: border-box;
 }
 
 .info {
   width: 100%;
   overflow: hidden;
   display: flex;
+  justify-content: space-between;
   flex-direction: column;
-  gap: 8px;
+  padding: 4px;
 
   &Row {
     display: flex;

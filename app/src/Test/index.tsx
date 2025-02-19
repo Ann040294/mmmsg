@@ -1,7 +1,7 @@
-import {Avatar, Item, Layout} from 'ui-kit';
+import {Avatar, Card, Layout} from 'ui-kit';
 
 import {AvatarShapes, AvatarSizes} from 'ui-kit/Avatar';
-import {Button, ButtonSize, ButtonVariants} from 'ui-kit/Button';
+import {Button, Variants} from 'ui-kit/Button';
 
 import css from './style.module.scss';
 
@@ -18,15 +18,28 @@ const Test = () => {
             <Avatar src={avatar}/>
         </Layout>
         <Layout>
-            <Button text={'PRIMARY'} variant={ButtonVariants.PRIMARY} size={ButtonSize.FULL_WIDTH}/>
-            <Button text={'SECONDARY'} variant={ButtonVariants.SECONDARY}/>
-            <Button text={'SEC'} variant={ButtonVariants.PRIMARY} size={ButtonSize.SMALL}/>
+            <Button text={'PRIMARY'} variant={Variants.PRIMARY}/>
+            <Button text={'SECONDARY'} variant={Variants.SECONDARY}/>
         </Layout>
-        <Layout>
-            <Item title="Item" description="description" avatarSrc={'description'}/>
-            <Item hasAvatar title="Item" description="description" avatarSrc={'description'}/>
-            <Item hasAvatar title="Item" description="description" avatarSrc={avatar}/>
-            <Item hasAvatar title={'555'} avatarSrc={avatar}/>
+        <Layout style={{width: '500px'}}>
+            <Card title="ломаный src" description="description" avatarSrc={'description'}/>
+            <Card title="без badge" description="description" avatarSrc={avatar}/>
+            <Card title={'без описания'} avatarSrc={avatar}/>
+            <Card isHiddenAvatar title={'без описания и аватарки с указанием src'} avatarSrc={avatar}/>
+            <Card isHiddenAvatar title={'без описания и аватарки с указанием src;badge'} badge={'123'}/>
+            <Card isHiddenAvatar title={'без аватарки'} description={'test'}/>
+            <Card isHiddenAvatar title={'без аватарки с badge'} description={'test'} badge={'123'}/>
+            <Card title={'с аватаркой, без описания'} avatarSrc={avatar}/>
+            <Card title={'без передачи src; badge'} badge={'123'}/>
+            <Card title={'без передачи src'} description={'test'}/>
+            <Card title={'заполнен полностью'} description={'test'} badge={'123'} avatarSrc={avatar}/>
+            <Card title={'пустая строка в src'} description={'test'} badge={'123'} avatarSrc={''}/>
+            <Card title={'ломаный src; badge'} description={'test'} badge={'123'} avatarSrc={'description'}/>
+            <Card title={'ломанная ссылка в src;'} description={'test'} badge={'123'} avatarSrc={'https://png.pngtree.com/thumb_back/fw800/background/20230610/pngtree-picture-of-a-blue-bird-on-a-black-background-image_2937385'}/>
+            <Card title={'три точки в конце три точки в конце три точки в конце'}
+                  description={avatar}
+                  badge={'123'}
+                  avatarSrc={'https://png.pn g tree.c om/thumb_back/fw 800/background /20230610/pngtree-picture-of-a-blue-bird-on-a-black-background-image_2937385'}/>
         </Layout>
 
         <Layout>
