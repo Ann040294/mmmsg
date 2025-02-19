@@ -14,13 +14,13 @@ const Test = () => {
         <>
             <Layout className={css.column}>
                 <TestIcons />
-                <TestNotices />
             </Layout>
             <Layout className={css.row}>
                 <TestAvatars />
                 <TestCards />
                 <TestInputs />
                 <TestButtons />
+                <TestNotices />
             </Layout>
         </>
     );
