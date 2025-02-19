@@ -1,7 +1,7 @@
 import {Avatar, Card, Layout} from 'ui-kit';
 
 import {AvatarShapes, AvatarSizes} from 'ui-kit/Avatar';
-import {Button, Variants} from 'ui-kit/Button';
+import {Button, ButtonSize, ButtonVariants} from 'ui-kit/Button';
 
 import css from './style.module.scss';
 
@@ -18,8 +18,8 @@ const Test = () => {
             <Avatar src={avatar}/>
         </Layout>
         <Layout>
-            <Button text={'PRIMARY'} variant={Variants.PRIMARY} onClick={() => alert('PRIMARY')}/>
-            <Button text={'SECONDARY'} variant={Variants.SECONDARY} onClick={() => alert('SECONDARY')}/>
+            <Button text={'656565'} variant={ButtonVariants.PRIMARY} size={ButtonSize.LARGE} onClick={() => alert('PRIMARY')}/>
+            <Button text={'SECONDARY'} variant={ButtonVariants.SECONDARY} size={ButtonSize.SMALL} onClick={() => alert('SECONDARY')} isFullWidth/>
         </Layout>
         <Layout style={{width: '500px'}}>
             <Card title="ломаный src" description="description" avatarSrc={'description'}/>

@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import cn from 'classnames';
 
-import {ButtonSize, ButtonVariants} from './types';
+import { ButtonSize, ButtonVariants } from './types';
 
 import css from './Button.module.scss';
 
@@ -9,20 +9,24 @@ export interface ButtonProps {
     text: string;
     variant?: ButtonVariants;
     size?: ButtonSize;
-    variant?: Variants;
+    isFullWidth?: boolean;
     onClick: () => void;
 }
 
 const Button: FC<ButtonProps> = ({
                                      text,
                                      variant = ButtonVariants.PRIMARY,
-                                     size = ButtonSize.MEDIUM
-                                     variant = Variants.PRIMARY,
-                                     onClick
+                                     size = ButtonSize.MEDIUM,
+                                     isFullWidth = false,
+                                     onClick,
                                  }) => {
     return (
-        <button className={cn(css.button, css[variant], css[size])}>
-        <button className={cn(css.button, css[variant])} onClick={onClick}>
+        <button className={cn(
+            css.button,
+            css[variant],
+            css[size],
+            { [css.fullWidth]: isFullWidth })}
+                onClick={onClick}>
             {text}
         </button>
     );

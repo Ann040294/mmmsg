@@ -7,5 +7,4 @@ export enum ButtonSize {
     SMALL = 'small',
     MEDIUM = 'medium',
     LARGE = 'large',
-    FULL_WIDTH = 'full_width',
 }
