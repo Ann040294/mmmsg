@@ -1,7 +1,7 @@
 import React, { FC, useCallback } from 'react';
 import cn from 'classnames';
 
-import { IconType } from '../Icon/types';
+import { Icon } from '../Icon/types';
 import Notice, { NoticeTypes } from '../Notice';
 
 import { InputVariants } from './types';
@@ -17,8 +17,8 @@ export interface InputProps {
     isDisabled?: boolean;
     placeholder?: string;
     value?: string;
-    iconLeft?: IconType;
-    iconRight?: IconType;
+    iconLeft?: Icon;
+    iconRight?: Icon;
     onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
@@ -32,8 +32,8 @@ const Input: FC<InputProps> = ({
     placeholder,
     value,
     onChange,
-    iconLeft,
-    iconRight,
+    iconLeft: IconLeftComponent,
+    iconRight: IconRightComponent,
     ...props
 }) => {
     const handleChange = useCallback(
@@ -43,29 +43,32 @@ const Input: FC<InputProps> = ({
         [onChange],
     );
 
-    const isError = validateType === NoticeTypes.ERROR;
-
     return (
         <div className={cn(css.wrapper, className)}>
             {label && <label className={cn(css.label)}>{label}</label>}
 
             <div
-                className={cn(css.inputWrapper, css[variant], {
-                    [css.error]: isError,
-                })}
+                className={cn(
+                    css.inputWrapper,
+                    css[variant],
+                    !!validateType && css[validateType],
+                )}
             >
-                {iconLeft && React.createElement(iconLeft)}
+                {IconLeftComponent && <IconLeftComponent />}
 
                 <input
                     placeholder={placeholder}
                     value={value}
                     disabled={isDisabled}
-                    className={cn(css.input, { [css.error]: isError })}
+                    className={cn(
+                        css.input,
+                        !!validateType && css[validateType],
+                    )}
                     onChange={handleChange}
                     {...props}
                 />
 
-                {iconRight && React.createElement(iconRight)}
+                {IconRightComponent && <IconRightComponent />}
             </div>
 
             {validateType && message && (

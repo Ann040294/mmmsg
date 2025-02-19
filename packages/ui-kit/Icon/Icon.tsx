@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import cn from 'classnames';
 
-import { IconType } from './types';
+import { Icon as IconType } from './types';
 
 import css from './Icon.module.scss';
 
