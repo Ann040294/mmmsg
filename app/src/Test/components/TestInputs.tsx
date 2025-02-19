@@ -59,7 +59,6 @@ export const TestInputs: FC = () => {
                 value={value}
                 onChange={handleChange}
             />
-
             <h6>Only Left</h6>
             <Input
                 variant={variant}
@@ -68,7 +67,6 @@ export const TestInputs: FC = () => {
                 value={value}
                 onChange={handleChange}
             />
-
             <h6>Only Right</h6>
             <Input
                 variant={variant}
@@ -77,7 +75,6 @@ export const TestInputs: FC = () => {
                 value={value}
                 onChange={handleChange}
             />
-
             <h6>Both Icons</h6>
             <Input
                 variant={variant}
@@ -87,7 +84,6 @@ export const TestInputs: FC = () => {
                 value={value}
                 onChange={handleChange}
             />
-
             <h5>Label</h5>
             <Input
                 variant={variant}
@@ -96,7 +92,6 @@ export const TestInputs: FC = () => {
                 value={value}
                 onChange={handleChange}
             />
-
             <h5>Error</h5>
             <Input
                 variant={variant}
@@ -106,7 +101,6 @@ export const TestInputs: FC = () => {
                 value={value}
                 onChange={handleChange}
             />
-
             <h6>& Label</h6>
             <Input
                 variant={variant}
@@ -117,7 +111,10 @@ export const TestInputs: FC = () => {
                 value={value}
                 onChange={handleChange}
             />
-
+            <h5>Success</h5>
+            no yet
+            <h5>Warning</h5>
+            no yet
             <h5>Disabled</h5>
             <Input
                 isDisabled

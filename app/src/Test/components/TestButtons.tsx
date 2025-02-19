@@ -69,7 +69,7 @@ export const TestButtons: FC = () => {
             />
             <Button
                 variant={variant}
-                text={'text text'}
+                text={'text text text text text'}
                 onClick={handleAnyClick}
             />
             <Button
@@ -92,6 +92,12 @@ export const TestButtons: FC = () => {
                 text={'false'}
                 onClick={handleAnyClick}
             />
+            <h5>Disabled</h5>
+            no yet
+            <h5>Loading</h5>
+            no yet
+            <h5>States</h5>
+            no yet
         </Layout>
     );
 };
