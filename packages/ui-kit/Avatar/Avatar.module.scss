@@ -37,7 +37,7 @@
 }
 
 .animated {
-  background: radial-gradient(#a88fc2 25%,  #fe7bad 75%); //TODO: исправить в задаче темы(скорее всего добавить в отдельную переменную)
+  background: $avatar-gradient-animated;
   background-size: 100% 100%;
   animation: gradient 3s ease infinite;
   background-repeat: no-repeat;

@@ -11,20 +11,20 @@
 }
 
 .primary {
-  background-color: $btn-primary-dg-default;
-  color: $btn-primary-color-default;
+  background-color: $btn-bg-primary;
+  color: $btn-color-primary;
 
   &:hover {
-    background-color: $btn-primary-bg-hover-default;
+    background-color: $btn-bg-hover-primary;
   }
 }
 
 .secondary {
-  background-color: $btn-secondary-dg-default;
-  color: $btn-secondary-color-default;
+  background-color: $btn-bg-secondary;
+  color: $btn-color-secondary;
   border: 2px solid $neutral-dark-color;
 
   &:hover {
-    background-color: $btn-secondary-bg-hover-default;
+    background-color: $btn-bg-hover-secondary;
   }
 }

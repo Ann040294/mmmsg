@@ -19,22 +19,22 @@ $msg-outgoing-color: #43a5dc;
 //avatar
 $avatar-bg-default: $neutral-light-gray-color;
 $avatar-color-default: $neutral-white-color;
+$avatar-gradient-animated: radial-gradient(#a88fc2 25%,  #fe7bad 75%);
 
 //button
-$btn-primary-dg-default: $neutral-dark-color;
-$btn-primary-bg-hover-default: $neutral-dark-gray-color;
-$btn-primary-color-default: $neutral-white-color;
+$btn-bg-primary: $neutral-dark-color;
+$btn-bg-hover-primary: $neutral-dark-gray-color;
+$btn-color-primary: $neutral-white-color;
 
-$btn-secondary-dg-default: $neutral-white-color;
-$btn-secondary-bg-hover-default: $neutral-light-color;
-$btn-secondary-color-default: $neutral-darken-gray-color;
+$btn-bg-secondary: $neutral-white-color;
+$btn-bg-hover-secondary: $neutral-light-color;
+$btn-color-secondary: $neutral-darken-gray-color;
 
 //item
-$item-bg-default: $neutral-dark-gray-color;
-$item-bg-hover-default: $neutral-light-color;
+$card-description-color: $neutral-light-gray-color;
 
-$item-color-default: $neutral-white-color;
-$item-description-color-default: $neutral-light-gray-color;
+$card-bg-badge: $neutral-darken-gray-color;
+$card-color: $neutral-white-color;
 
 //layout
-$layout-bg-default: $neutral-white-color;
+$layout-bg: $neutral-white-color;
