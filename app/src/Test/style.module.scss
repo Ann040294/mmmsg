@@ -1,6 +1,23 @@
-.test {
+@use "ui-kit/styles/index";
+
+@use 'ui-kit/styles/color' as col;
+
+.wrap {
   background: gray;
   height: max-content;
   display: flex;
   padding: 20px;
+}
+
+.layout {
+  width: 400px;
+}
+
+.buttons {
+  @extend .layout;
+  background: col.$primary-gradient-color;
+
+  & :nth-child(2n) {
+    margin: 5px;
+  }
 }
