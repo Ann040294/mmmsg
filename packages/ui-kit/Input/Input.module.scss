@@ -1,0 +1,95 @@
+@use '../styles/typography' as typ;
+
+.wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  max-width: 340px;
+
+  .label {
+    position: absolute;
+    top: -5px;
+    left: 14px;
+    padding: 0 5px;
+    font-family: typ.$font-family-primary;
+    font-weight: 400;
+    font-size: typ.$font-size-text-primary-desktop;
+    line-height: 14px;
+    color: #666;
+    z-index: 1;
+
+    &::before {
+      position: relative;
+      display: block;
+      width: 100%;
+      content: '';
+      background-color: #ffffff;
+      height: 1px;
+      top: 5px;
+      z-index: -1;
+    }
+  }
+
+  .inputWrapper {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    position: relative;
+    height: 56px;
+    box-sizing: border-box;
+    border: 1px solid #ffffff;
+
+    &:has(.input:focus) {
+      border: 1px solid #000;
+    }
+
+    &:has(.input:disabled) {
+      background-color: #e0e0e0;
+    }
+
+    &.outlined {
+      background: #ffffff;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 0 10px;
+    }
+
+    &.filled {
+      background: #f7f7f7;
+      border-radius: 5px;
+      padding: 0 10px;
+    }
+
+    &.error {
+      background-color: #ffd8d8;
+    }
+
+    .input {
+      flex-grow: 1;
+      height: 100%;
+      border: none;
+      padding: 0 10px;
+      font-family: typ.$font-family-primary;
+      font-size: typ.$font-family-primary;
+      line-height: 20px;
+      color: #000;
+      background-color: transparent;
+      
+      &:focus {
+        outline: none;
+      }
+      
+      &:disabled {
+        cursor: not-allowed;
+      }
+  
+      &::placeholder {
+        color: #999;
+        font-size: typ.$font-size-text-placeholder;
+        line-height: 14px;
+      }
+    }
+  }
+}

@@ -18,8 +18,8 @@ const Test = () => {
             <Avatar src={avatar}/>
         </Layout>
         <Layout>
-            <Button text={'PRIMARY'} variant={Variants.PRIMARY}/>
-            <Button text={'SECONDARY'} variant={Variants.SECONDARY}/>
+            <Button text={'PRIMARY'} variant={Variants.PRIMARY} onClick={() => alert('PRIMARY')}/>
+            <Button text={'SECONDARY'} variant={Variants.SECONDARY} onClick={() => alert('SECONDARY')}/>
         </Layout>
         <Layout style={{width: '500px'}}>
             <Card title="ломаный src" description="description" avatarSrc={'description'}/>

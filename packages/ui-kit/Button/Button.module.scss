@@ -1,52 +1,30 @@
-@import "../styles/typography.scss";
+@import "../styles/color.scss";
 
 .button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  box-sizing: border-box;
-  text-align: center;
-  font-size: $font-size-button-medium;
-  padding: 0 50px;
-  min-width: 200px;
-  height: 40px;
+  display: inline-block;
+  padding: 12px 50px;
   border: none;
   border-radius: 8px;
+  text-align: center;
   cursor: pointer;
   transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 .primary {
-  background-color: #000000; //TODO: исправить в задаче темы
-  color: #ffffff; //TODO: исправить в задаче темы
+  background-color: $btn-bg-primary;
+  color: $btn-color-primary;
 
   &:hover {
-    background-color: #222222; //TODO: исправить в задаче темы
+    background-color: $btn-bg-hover-primary;
   }
 }
 
 .secondary {
-  background-color: #ffffff; //TODO: исправить в задаче темы
-  color: #333333; //TODO: исправить в задаче темы
-  border: 2px solid #000000; //TODO: исправить в задаче темы
+  background-color: $btn-bg-secondary;
+  color: $btn-color-secondary;
+  border: 2px solid $neutral-dark-color;
 
   &:hover {
-    background-color: #f5f5f5; //TODO: исправить в задаче темы
+    background-color: $btn-bg-hover-secondary;
   }
-}
-
-.large {
-  padding: 0 55px;
-  min-width: 250px;
-  font-size: $font-size-button-large;
-}
-
-.small {
-  padding: 0 45px;
-  min-width: 150px;
-  font-size: $font-size-button-small;
-}
-
-.full_width {
-  width: 100%;
 }

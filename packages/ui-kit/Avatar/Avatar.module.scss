@@ -1,3 +1,5 @@
+@import "../styles/color.scss";
+
 .large {
   height: 70px;
   width: 70px;
@@ -30,12 +32,12 @@
 .default {
   display: flex;
   justify-content: center;
-  background-color: gray; //TODO: исправить в задаче темы
-  color: white; //TODO: исправить в задаче темы
+  background-color: $avatar-bg-default;
+  color: $avatar-color-default;
 }
 
 .animated {
-  background: radial-gradient(#a88fc2 25%,  #fe7bad 75%); //TODO: исправить в задаче темы(скорее всего добавить в отдельную переменную)
+  background: $avatar-gradient-animated;
   background-size: 100% 100%;
   animation: gradient 3s ease infinite;
   background-repeat: no-repeat;
