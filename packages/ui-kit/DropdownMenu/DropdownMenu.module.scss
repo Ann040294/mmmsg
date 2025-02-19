@@ -1,45 +1,9 @@
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
 
-.root {
-  position: relative;
-}
-
-.menu {
-  position: absolute;
-  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(-20px);
-  transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s;
-
-  &.active {
-    opacity: 1;
-    visibility: visible;
-
-  }
-
-  &.bottom{
-    transform: translateY(0);
-  }
-
-  &.up{
-    transform: translateY(-120%)
-  }
-
-  .list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-
-    .item:not(:last-child, :first-child) {
-      margin: 8px 0;
-    }
+  .item:not(:last-child, :first-child) {
+    margin: 8px 0;
   }
 }
-
-
-//.menu li a {
-//  text-decoration: none;
-//  color: #333333;
-//  padding: 15px 20px;
-//  display: block;
-//}

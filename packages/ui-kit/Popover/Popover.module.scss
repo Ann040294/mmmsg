@@ -1,0 +1,25 @@
+.root {
+  position: relative;
+}
+
+.body {
+  position: absolute;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-20px);
+  transition: opacity 0.4s, transform 0.4s, visibility 0.4s;
+
+  &.active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  &.bottom {
+    transform: translateY(0); //TODO: Сросить про разный эффект появления
+  }
+
+  &.up {
+    transform: translateY(0)
+  }
+}
