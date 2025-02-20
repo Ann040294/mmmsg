@@ -3,18 +3,19 @@ import { DropdownMenu, Layout } from 'ui-kit';
 import UserIcon from '@ant-design/icons/UserOutlined';
 
 import { DropdownTrigger } from 'ui-kit/DropdownMenu/types';
+import {Button} from "ui-kit/Button";
 
 const TestDropdown: FC = () => {
 
     return (
-        <Layout>
+        <Layout style={{height: '50px'}}>
             <div>
                 <DropdownMenu
                     trigger={DropdownTrigger.HOVER}
                     options={[
                         {
                             key: '1',
-                            text: '12345235432534',
+                            text: '459584546',
                             icon: UserIcon,
                         },
                         {
@@ -44,9 +45,7 @@ const TestDropdown: FC = () => {
                         },
                     ]}
                 >
-                    <button>
-                        Example
-                    </button>
+                    <Button text={'Example'} onClick={()=>{}}></Button>
                 </DropdownMenu>
             </div>
         </Layout>
