@@ -1,38 +1,35 @@
-import { FC, ReactNode, useRef, useState } from 'react';
+import {FC, ReactNode, RefObject, useRef} from 'react';
 import cn from 'classnames';
 
 import { Layout } from '../index';
 
 import { isElementAtBottom } from './utils/isElementAtBottom';
-import { PopoverTrigger } from './types';
+import { isElementAtTop } from './utils/isElementAtTop';
 
 import css from './Popover.module.scss';
 
 interface PopoverProps {
     children: ReactNode;
-    label?: string;
-    trigger?: PopoverTrigger;
     className?: string;
+    isOpen?: boolean;
+    ref?: RefObject<HTMLDivElement | null>
 }
 
 const Popover: FC<PopoverProps> = (props) => {
-    const [isActive, setIsActive] = useState<boolean>(false);
-    const dropdownRef = useRef<HTMLDivElement>(null);
-    const handleOnTrigger = () => setIsActive((prevState) => !prevState);
+    const popoverRef = useRef<HTMLDivElement>(null);
 
     return (
-        <div className={css.root}>
-            <button onClick={handleOnTrigger}>{props.label}</button>
-            {/*TODO: Button заменить*/}
+        <div ref={props.ref} className={css.root}>
             <Layout
-                ref={dropdownRef}
+                ref={popoverRef}
                 className={cn(
                     css.body,
                     props.className,
-                    isActive && css.active,
-                    isElementAtBottom(dropdownRef.current) //лучше без тернарного
-                        ? css.up
-                        : css.bottom,
+                    props.isOpen && css.active,
+
+                    isElementAtBottom(popoverRef.current) && !isElementAtTop(popoverRef.current) && css.up,
+
+                    (!isElementAtBottom(popoverRef.current) || (isElementAtBottom(popoverRef.current) && isElementAtTop(popoverRef.current))) && css.bottom,
                 )}
             >
                 {props.children}

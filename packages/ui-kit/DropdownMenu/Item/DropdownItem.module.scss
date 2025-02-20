@@ -1,37 +1,25 @@
 .root {
-  position: relative;
   border-radius: 4px;
   width: 100%;
-  padding: 5px 12px;
+  padding: 5px 8px;
   box-sizing: border-box;
   font-size: 14px;
-
-  //&:not(:last-child, :first-child) {
-  //  margin: 4px 0;
-  //}
 
   &:hover {
     cursor: pointer;
     background-color: #5d5d5d;
   }
 
-  .icon{
-    position: absolute;
-    right: 4px;
-  }
 }
 
-.block{
+.block {
   display: flex;
   gap: 4px;
   align-content: center;
 }
 
-.disabled{
+.disabled {
   background-color: #5d5d5d;
 }
 
-.selected{
-  background-color: red;
-}
 
