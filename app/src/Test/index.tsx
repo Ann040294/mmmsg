@@ -3,6 +3,7 @@ import { Layout } from 'ui-kit';
 import { TestAvatars } from './components/TestAvatars';
 import { TestButtons } from './components/TestButtons';
 import { TestCards } from './components/TestCards';
+import { TestCircleButtons } from './components/TestCircleButtons';
 import { TestIcons } from './components/TestIcons';
 import { TestInputs } from './components/TestInputs';
 import { TestNotices } from './components/TestNotices';
@@ -21,6 +22,7 @@ const Test = () => {
                 <TestInputs />
                 <TestButtons />
                 <TestNotices />
+                <TestCircleButtons />
             </Layout>
         </>
     );

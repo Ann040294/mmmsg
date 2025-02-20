@@ -1,0 +1,44 @@
+.button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    cursor: pointer;
+    background: transparent;
+
+    .icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #e0e0e0;
+        border-radius: 50%;
+    }
+
+    .label {
+        margin-top: 4px;
+        font-size: 14px;
+        color: #000;
+    }
+
+    &.small {
+        .icon {
+            width: 24px;
+            height: 24px;
+        }
+    }
+
+    &.medium {
+        .icon {
+            width: 34px;
+            height: 34px;
+        }
+    }
+
+    &.large {
+        .icon {
+            width: 48px;
+            height: 48px;
+        }
+    }
+}
