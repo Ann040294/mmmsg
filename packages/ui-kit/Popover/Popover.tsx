@@ -3,14 +3,16 @@ import cn from 'classnames';
 
 import { Layout } from '../index';
 
-import css from './Popover.module.scss';
 import { isElementAtBottom } from './utils/isElementAtBottom';
 import { PopoverTrigger } from './types';
+
+import css from './Popover.module.scss';
 
 interface PopoverProps {
     children: ReactNode;
     label?: string;
     trigger?: PopoverTrigger;
+    className?: string;
 }
 
 const Popover: FC<PopoverProps> = (props) => {
@@ -26,8 +28,9 @@ const Popover: FC<PopoverProps> = (props) => {
                 ref={dropdownRef}
                 className={cn(
                     css.body,
+                    props.className,
                     isActive && css.active,
-                    isElementAtBottom(dropdownRef.current)
+                    isElementAtBottom(dropdownRef.current) //лучше без тернарного
                         ? css.up
                         : css.bottom,
                 )}

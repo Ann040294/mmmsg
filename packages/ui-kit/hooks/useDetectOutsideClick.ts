@@ -5,8 +5,7 @@ const useDetectOutsideClick = <T extends HTMLElement | null>(
     initialState: boolean,
 ) => {
     const [isActive, setIsActive] = useState<boolean>(initialState);
-    console.log('cur', element.current);
-    console.log('isAc', isActive);
+
     useEffect(() => {
 
         const PageOnClickEvent = (event: MouseEvent) => {

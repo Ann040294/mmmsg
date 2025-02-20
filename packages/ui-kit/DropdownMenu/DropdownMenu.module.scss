@@ -1,9 +1,10 @@
+.root {
+  padding: 8px 4px;
+}
+
 .list {
   list-style: none;
   padding: 0;
   margin: 0;
-
-  .item:not(:last-child, :first-child) {
-    margin: 8px 0;
-  }
 }
+
