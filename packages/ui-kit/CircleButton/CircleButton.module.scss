@@ -1,4 +1,10 @@
+@use '../styles/typography' as typ;
+
 .button {
+    --icon-bg-color: rgba(255, 255, 255, 0.3);
+    --icon-color: #ffffff;
+    --label-color: #ffffff;
+
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -7,38 +13,48 @@
     cursor: pointer;
     background: transparent;
 
-    .icon {
+    &:disabled {
+        cursor: not-allowed;
+        opacity: 0.6;
+    }
+
+    .iconWrap {
         display: flex;
         align-items: center;
         justify-content: center;
-        background-color: #e0e0e0;
+        background-color: var(--icon-bg-color);
         border-radius: 50%;
+        color: var(--icon-color);
+
+        width: var(--icon-size);
+        height: var(--icon-size);
+
+        .icon {
+            font-size: var(--icon-font-size);
+        }
+
+        &.small {
+            --icon-size: 40px;
+            --icon-font-size: 22px
+
+        }
+    
+        &.medium {
+            --icon-size: 48px;
+            --icon-font-size: 26px
+        }
+    
+        &.large {
+            --icon-size: 56px;
+            --icon-font-size: 30px
+        }
     }
 
     .label {
+        font-family: typ.$font-family-primary;
         margin-top: 4px;
-        font-size: 14px;
-        color: #000;
+        font-size: typ.$font-size-button-small;
+        color: var(--label-color);
     }
-
-    &.small {
-        .icon {
-            width: 24px;
-            height: 24px;
-        }
-    }
-
-    &.medium {
-        .icon {
-            width: 34px;
-            height: 34px;
-        }
-    }
-
-    &.large {
-        .icon {
-            width: 48px;
-            height: 48px;
-        }
-    }
+    
 }

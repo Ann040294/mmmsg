@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, MouseEvent } from 'react';
 import cn from 'classnames';
 
 import { Icon } from '../Icon';
@@ -8,11 +8,13 @@ import { CircleButtonSize } from './types';
 
 import css from './CircleButton.module.scss';
 
-export interface CircleButtonProps
-    extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+export interface CircleButtonProps {
+    isDisabled?: boolean;
+    className?: string;
     icon: IconType;
     label?: string;
     size?: CircleButtonSize;
+    onClick: (e: MouseEvent<HTMLButtonElement>) => void;
 }
 
 const CircleButton: FC<CircleButtonProps> = ({
@@ -20,15 +22,20 @@ const CircleButton: FC<CircleButtonProps> = ({
     label,
     size = CircleButtonSize.MEDIUM,
     className,
-    ...props
+    isDisabled = false,
+    onClick: handleClick,
 }) => {
     return (
         <button
-            className={cn(css.button, css[size], className)}
-            {...props}
+            className={cn(css.button, className)}
+            disabled={isDisabled}
+            onClick={handleClick}
         >
-            <span className={css.icon}>
-                <Icon icon={icon} />
+            <span className={cn(css.iconWrap, css[size])}>
+                <Icon
+                    icon={icon}
+                    className={css.icon}
+                />
             </span>
             {label && <span className={css.label}>{label}</span>}
         </button>
