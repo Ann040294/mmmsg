@@ -1,116 +1,66 @@
-import { FC, ReactNode, useCallback, useEffect, useRef, useState } from 'react';
+import { FC, ReactNode } from 'react';
 
+import useDetectOutsideClick from '../hooks/useDetectOutsideClick';
+import { useIsOpen } from '../hooks/useIsOpen';
+import { EventHandlerPair, useListeners } from '../hooks/useListeners';
 import Popover from '../Popover/Popover';
+import { PopoverPosition } from '../Popover/types';
 
 import Item, { MenuItemProps } from './Item/Item';
 import { DropdownTrigger } from './types';
 
 import css from './DropdownMenu.module.scss';
-import useDetectOutsideClick from '../hooks/useDetectOutsideClick';
 
 interface DropdownMenuProps {
     options: MenuItemProps[];
     children?: ReactNode;
     trigger?: DropdownTrigger;
+    position?: PopoverPosition;
 }
 
 const DropdownMenu: FC<DropdownMenuProps> = ({
     trigger = DropdownTrigger.CLICK,
     ...props
 }) => {
-    const [isOpen, setIsOpen] = useState<boolean>(false);
+    const { isOpen, open, toggle, close } = useIsOpen();
 
-    const handleOnClick = useCallback(() => {
-        setIsOpen((prev) => !prev);
-    }, []);
+    const childrenRef = useDetectOutsideClick<HTMLDivElement | null>(close);
 
-    const handleOnHoverOpen = useCallback(() => {
-        setIsOpen(true);
-    }, []);
+    const createEventPairs = (): EventHandlerPair[] => {
+        if (trigger === DropdownTrigger.CLICK) return [['click', toggle]];
+        else if (trigger === DropdownTrigger.HOVER)
+            return [
+                ['mouseenter', open],
+                ['mouseleave', close],
+            ];
 
-    const handleOnHoverClose = useCallback(() => {
-        setIsOpen(false);
-    }, []);
+        return [];
+    };
 
-    const childrenRef = useDetectOutsideClick<HTMLDivElement>(handleOnClick);
-    const popoverRef = useRef<HTMLDivElement>(null);
-
-    useEffect(() => {
-        if (childrenRef.current) {
-            switch (trigger) {
-                case DropdownTrigger.CLICK: {
-                    childrenRef.current.addEventListener(
-                        'click',
-                        handleOnClick,
-                    );
-                    break;
-                }
-                case DropdownTrigger.HOVER: {
-                    childrenRef.current.addEventListener(
-                        'mouseenter',
-                        handleOnHoverOpen,
-                    );
-                    popoverRef.current?.addEventListener(
-                        'mouseenter',
-                        handleOnHoverOpen,
-                    );
-                    childrenRef.current.addEventListener(
-                        'mouseleave',
-                        handleOnHoverClose,
-                    );
-                    popoverRef.current?.addEventListener(
-                        'mouseleave',
-                        handleOnHoverClose,
-                    );
-                    break;
-                }
-                default:
-                    break;
-            }
-
-            return () => {
-                childrenRef.current?.removeEventListener(
-                    'click',
-                    handleOnClick,
-                );
-                childrenRef.current?.removeEventListener(
-                    'mouseenter',
-                    handleOnHoverOpen,
-                );
-                childrenRef.current?.removeEventListener(
-                    'mouseleave',
-                    handleOnHoverClose,
-                );
-                popoverRef.current?.removeEventListener(
-                    'mouseenter',
-                    handleOnHoverOpen,
-                );
-                popoverRef.current?.removeEventListener(
-                    'mouseleave',
-                    handleOnHoverClose,
-                );
-            };
-        }
-    });
+    useListeners(childrenRef, createEventPairs());
 
     return (
-        <>
-            <div ref={childrenRef}>{props.children}</div>
+        <div
+            ref={childrenRef}
+            className={css.root}
+        >
+            <div style={{ height: '100%' }}>{props.children}</div>
             <Popover
-                ref={popoverRef}
+                position={props.position}
                 isOpen={isOpen}
-                className={css.root}
+                className={css.popover}
+                anchorElement={childrenRef.current}
             >
                 <ul className={css.list}>
                     {props.options.map((item, index) => (
                         <Item
                             {...item}
-                            key={item.key || index} // Индекс передавать не очень
+                            key={item.key || index}
                         />
                     ))}
                 </ul>
             </Popover>
-        </>
+        </div>
     );
 };
 export default DropdownMenu;

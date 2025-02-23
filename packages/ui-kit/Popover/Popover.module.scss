@@ -1,9 +1,13 @@
 .root {
   position: relative;
+  height: 100%;
 }
 
 .body {
+  margin: 0;
+  box-sizing: border-box;
   position: absolute;
+  z-index: 1000;
   box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
   opacity: 0;
   visibility: hidden;
@@ -15,11 +19,39 @@
     visibility: visible;
   }
 
+  &.top {
+    left: 50%;
+    top: -100%;
+    transform: translateY(calc(-100% - 4px)) translateX(-50%);
+  }
+
   &.bottom {
+    bottom: 100%;
+    left: 50%;
+    transform: translateY(calc(100% + 4px)) translateX(-50%);
+  }
+
+  &.left {
+    top: -50%;
+    left: 0;
+    transform: translateY(-50%) translateX(calc(-100% - 4px));
+  }
+
+  &.right{
+    right: 0;
+    top: -50%;
+    transform: translateY(-50%) translateX(calc(100% + 4px));
+  }
+
+  &.leftBottom {
+    left: 0;
+    transform: translateY(-100%) translateX(-100%);
+  }
+
+  &.bottomRight {
+    right: 0;
     transform: translateY(0);
   }
 
-  &.up {
-    transform: translateY(-120%)
-  }
+
 }
