@@ -1,10 +1,7 @@
-@use '../styles/typography' as typ;
+@use '../styles/typography.scss' as typ;
+@use '../styles/button.scss' as btn;
 
 .button {
-    --icon-bg-color: rgba(255, 255, 255, 0.3);
-    --icon-color: #ffffff;
-    --label-color: #ffffff;
-
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -12,6 +9,8 @@
     border: none;
     cursor: pointer;
     background: transparent;
+    gap: 4px;
+    padding: 0;
 
     &:disabled {
         cursor: not-allowed;
@@ -22,9 +21,9 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        background-color: var(--icon-bg-color);
+        background-color: btn.$circle-button-bg-color;
         border-radius: 50%;
-        color: var(--icon-color);
+        color: btn.$circle-button-icon-color;
 
         width: var(--icon-size);
         height: var(--icon-size);
@@ -34,27 +33,26 @@
         }
 
         &.small {
-            --icon-size: 40px;
+            --icon-size: #{btn.$circle-button-s-size};
             --icon-font-size: 22px
 
         }
     
         &.medium {
-            --icon-size: 48px;
+            --icon-size: #{btn.$circle-button-m-size};
             --icon-font-size: 26px
         }
     
         &.large {
-            --icon-size: 56px;
+            --icon-size: #{btn.$circle-button-l-size};
             --icon-font-size: 30px
         }
     }
 
     .label {
         font-family: typ.$font-family-primary;
-        margin-top: 4px;
         font-size: typ.$font-size-button-small;
-        color: var(--label-color);
+        color: btn.$circle-button-label-color;
     }
     
 }

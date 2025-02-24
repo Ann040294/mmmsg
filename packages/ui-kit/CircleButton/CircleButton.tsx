@@ -8,7 +8,7 @@ import { CircleButtonSize } from './types';
 
 import css from './CircleButton.module.scss';
 
-export interface CircleButtonProps {
+interface CircleButtonProps {
     isDisabled?: boolean;
     className?: string;
     icon: IconType;
