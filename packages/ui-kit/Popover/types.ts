@@ -3,6 +3,12 @@ export enum PopoverPosition {
     RIGHT = 'right', // TODO: На другую задачу
     TOP = 'top',
     BOTTOM = 'bottom',
-    LEFT_BOTTOM = 'leftBottom',
-    BOTTOM_RIGHT = 'bottomRight',
+    LEFT_END = 'leftEnd',
+    BOTTOM_END = 'bottomEnd',
+    RIGHT_END = 'rightEnd',
+    TOP_END = 'topEnd',
+    TOP_START = 'topStart',
+    BOTTOM_START = 'bottomStart',
+    LEFT_START = 'leftStart',
+    RIGHT_START = 'rightStart',
 }

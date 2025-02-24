@@ -6,7 +6,6 @@ export const useListeners = <T extends HTMLElement | null>(
     element: RefObject<T>,
     eventHandlers: EventHandlerPair[],
 ) => {
-
     useEffect(() => {
         for (const [trigger, handler] of eventHandlers) {
             element.current?.addEventListener(trigger, handler);

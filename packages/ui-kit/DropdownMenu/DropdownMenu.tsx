@@ -44,7 +44,7 @@ const DropdownMenu: FC<DropdownMenuProps> = ({
             ref={childrenRef}
             className={css.root}
         >
-            <div style={{ height: '100%' }}>{props.children}</div>
+            <div>{props.children}</div>
             <Popover
                 position={props.position}
                 isOpen={isOpen}

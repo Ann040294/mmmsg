@@ -1,7 +1,6 @@
 import { useCallback, useState } from 'react';
 
 export const useIsOpen = (initialState=false) => {
-
     const [isOpen, setIsOpen] = useState<boolean>(initialState);
 
     const handleChangeToggle = useCallback(() => {

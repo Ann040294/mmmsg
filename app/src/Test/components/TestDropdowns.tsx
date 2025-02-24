@@ -1,10 +1,9 @@
 import { FC } from 'react';
-import { Avatar, Card, DropdownMenu, Layout } from 'ui-kit';
+import { Avatar, DropdownMenu, Layout } from 'ui-kit';
 import UserIcon from '@ant-design/icons/UserOutlined';
 
 import { Button } from 'ui-kit/Button';
 import { PopoverPosition } from 'ui-kit/Popover/types';
-import { DropdownTrigger } from 'ui-kit/DropdownMenu/types';
 
 const TestDropdowns: FC = () => {
     return (
@@ -13,7 +12,6 @@ const TestDropdowns: FC = () => {
         >
             <div id={'1'}>
                 <DropdownMenu
-                    trigger={DropdownTrigger.HOVER}
                     position={PopoverPosition.BOTTOM}
                     options={[
                         {
@@ -41,10 +39,13 @@ const TestDropdowns: FC = () => {
                             key: '5',
                             text: '987',
                             isDisabled: true,
+                            icon: UserIcon,
+                            onClick: ()=>alert()
                         },
                         {
                             key: '6',
                             text: '9844',
+                            onClick: ()=>alert('Drop')
                         },
                     ]}
                 >
@@ -100,7 +101,6 @@ const TestDropdowns: FC = () => {
             <div id={'3'}>
                 <DropdownMenu
                     position={PopoverPosition.BOTTOM_RIGHT}
-                    // trigger={DropdownTrigger.HOVER}
                     options={[
                         {
                             key: '1',
@@ -145,7 +145,7 @@ const TestDropdowns: FC = () => {
                 style={{ width: 'fit-content' }}
             >
                 <DropdownMenu
-                    position={PopoverPosition.LEFT_BOTTOM}
+                    position={PopoverPosition.RIGHT}
                     // trigger={DropdownTrigger.HOVER}
                     options={[
                         {
@@ -198,7 +198,7 @@ const TestDropdowns: FC = () => {
                 style={{ width: 'fit-content' }}
             >
                 <DropdownMenu
-                    position={PopoverPosition.RIGHT}
+                    position={PopoverPosition.TOP}
                     // trigger={DropdownTrigger.HOVER}
                     options={[
                         {
@@ -251,8 +251,6 @@ const TestDropdowns: FC = () => {
                     >
                         TEST
                     </div>
-                    <Avatar />
-                    <Card title={'terst'} />
                 </DropdownMenu>
             </div>
         </Layout>

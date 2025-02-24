@@ -1,4 +1,4 @@
-import { ChangeEvent, FC, useState } from 'react';
+import { ChangeEvent, FC, useRef, useState } from 'react';
 import { Input, InputVariants, Layout } from 'ui-kit';
 import CloseOutlined from '@ant-design/icons/CloseOutlined';
 import SearchOutlined from '@ant-design/icons/SearchOutlined';
@@ -6,6 +6,7 @@ import SearchOutlined from '@ant-design/icons/SearchOutlined';
 import { NoticeTypes } from 'ui-kit/Notice';
 
 import css from '../style.module.scss';
+import Popover from 'ui-kit/Popover/Popover';
 
 export const TestInputs: FC = () => {
     const [value, setValue] = useState('');
@@ -13,6 +14,9 @@ export const TestInputs: FC = () => {
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         setValue(e.target.value);
     };
+
+    const test = useRef<HTMLButtonElement>(null);
+    const [test1, setTest1] = useState(false);
 
     return (
         <Layout className={css.layout}>
@@ -163,6 +167,15 @@ export const TestInputs: FC = () => {
                 placeholder="Disabled input"
                 value=""
             />
+            <button ref={test} onClick={()=>setTest1(prev=>!prev)}>Examp</button>
+            {test.current && (
+                <Popover
+                    anchorElement={test.current}
+                    isOpen={test1}
+                >
+                    Test
+                </Popover>
+            )}
         </Layout>
     );
 };

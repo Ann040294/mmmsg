@@ -1,15 +1,22 @@
+@use '../../styles/lists' as lists;
+@use '../../styles/typography' as typography;
+
 .root {
   border-radius: 4px;
   width: 100%;
   padding: 5px 8px;
   box-sizing: border-box;
-  font-size: 14px;
+  font-size: typography.$font-size-text-primary-desktop;
 
   &:hover {
     cursor: pointer;
-    background-color: #5d5d5d;
+    background-color: lists.$list-item-hover-color;
   }
 
+  &.disabled {
+    cursor: not-allowed;
+    color: lists.$list-item-disabled-color;
+  }
 }
 
 .block {
@@ -18,8 +25,6 @@
   align-content: center;
 }
 
-.disabled {
-  background-color: #5d5d5d;
-}
+
 
 

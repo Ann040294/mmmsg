@@ -1,9 +1,16 @@
 .root {
   position: relative;
-  height: 100%;
 }
 
 .body {
+
+  --sizeW: 1px; //default value
+  --sizeH: 1px;
+  --sizePadding: 4px;
+  --X: 0;
+  --Y: 0;
+
+
   margin: 0;
   box-sizing: border-box;
   position: absolute;
@@ -11,7 +18,8 @@
   box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
   opacity: 0;
   visibility: hidden;
-  transform: translateY(-20px);
+  //transform: translateY(-20px);
+  transform: translateY(var(--Y)) translateX(var(--X));
   transition: opacity 0.4s, transform 0.4s, visibility 0.4s;
 
   &.active {
@@ -20,38 +28,30 @@
   }
 
   &.top {
-    left: 50%;
-    top: -100%;
-    transform: translateY(calc(-100% - 4px)) translateX(-50%);
+    --Y: calc(var(--sizeH) / -1 - 100% - var(--sizePadding));
   }
 
   &.bottom {
-    bottom: 100%;
-    left: 50%;
-    transform: translateY(calc(100% + 4px)) translateX(-50%);
+    --Y: var(--sizePadding);
   }
 
   &.left {
-    top: -50%;
     left: 0;
-    transform: translateY(-50%) translateX(calc(-100% - 4px));
+    --X: calc(-100% - var(--sizePadding));
   }
 
-  &.right{
+  &.right {
     right: 0;
-    top: -50%;
-    transform: translateY(-50%) translateX(calc(100% + 4px));
+    --X: calc(100% + var(--sizePadding));
   }
 
-  &.leftBottom {
+  &.start {
     left: 0;
-    transform: translateY(-100%) translateX(-100%);
   }
 
-  &.bottomRight {
+  &.end {
+
     right: 0;
-    transform: translateY(0);
   }
-
-
 }
+

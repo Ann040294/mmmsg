@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, MouseEvent } from 'react';
 import cn from 'classnames';
 
 import { Icon as IconType } from '../../Icon/types';
@@ -6,11 +6,11 @@ import { Icon as IconType } from '../../Icon/types';
 import css from './DropdownItem.module.scss';
 
 export interface MenuItemProps {
-    key: string | number;
+    key: string | number; //обязательно
     icon?: IconType;
     text?: string;
     className?: string;
-    onClick?: () => void;
+    onClick?: () => void; //item
     isDisabled?: boolean;
 }
 
@@ -18,8 +18,15 @@ const Item: FC<MenuItemProps> = ({
     className,
     isDisabled,
     icon: Icon,
-    ...props
+    onClick,
+    text,
 }) => {
+    const handleOnClick = (event: MouseEvent<HTMLLIElement>) => {
+        if (isDisabled) {
+            event.preventDefault();
+        } else if (onClick) onClick();
+    };
+
     return (
         <li
             className={cn(
@@ -28,10 +35,10 @@ const Item: FC<MenuItemProps> = ({
                 Icon && css.block,
                 isDisabled && css.disabled,
             )}
-            {...props}
+            onClick={handleOnClick}
         >
             {Icon && <Icon />}
-            {props.text}
+            {text}
         </li>
     );
 };

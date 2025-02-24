@@ -1,20 +1,18 @@
-import { FC, ReactNode, RefObject, useRef } from 'react';
+import { FC, ReactNode, RefObject, useMemo, useRef } from 'react';
+import { createPortal } from 'react-dom';
 import cn from 'classnames';
 
 import { Layout } from '../index';
 
-import { isElementAtBottom } from './utils/isElementAtBottom';
-import { isElementAtTop } from './utils/isElementAtTop';
-
-import css from './Popover.module.scss';
 import { PopoverPosition } from './types';
-import { createPortal } from 'react-dom';
+
+import css from './Popover1.module.scss';
 
 interface PopoverProps {
+    isOpen: boolean;
     anchorElement: HTMLElement | null;
     children: ReactNode;
     isDisablePortal?: boolean;
-    isOpen?: boolean; // лучше сделать обязательным
     className?: string;
     ref?: RefObject<HTMLDivElement | null>;
     position?: PopoverPosition;
@@ -25,16 +23,28 @@ const Popover: FC<PopoverProps> = ({
     position = PopoverPosition.BOTTOM,
     ...props
 }) => {
+
     const popoverRef = useRef<HTMLDivElement>(null);
 
-    const isElementTop =
-        isElementAtBottom(popoverRef.current) &&
-        !isElementAtTop(popoverRef.current);
+    // const isElementBottom =
+    //     isElementAtBottom(popoverRef.current) &&
+        // !isElementAtTop(popoverRef.current);
 
-    const isElementBottom =
-        !isElementAtBottom(popoverRef.current) ||
-        (isElementAtBottom(popoverRef.current) &&
-            isElementAtTop(popoverRef.current));
+    // const isElementBottom =
+    //     !isElementAtBottom(popoverRef.current) ||
+    //     (isElementAtBottom(popoverRef.current) &&
+    //         isElementAtTop(popoverRef.current));
+
+    const getAnchorElementSizes = useMemo(() => {
+        if (props.anchorElement) {
+            const { height, width } =
+                props.anchorElement.getBoundingClientRect();
+
+            return [height, width];
+        }
+
+        return [0, 0];
+    }, [props.anchorElement]);
 
     const component = (
         <div
@@ -43,12 +53,16 @@ const Popover: FC<PopoverProps> = ({
         >
             <Layout
                 ref={popoverRef}
+                style={{
+                    '--sizeH': getAnchorElementSizes[0] + 'px',
+                    '--sizeW': getAnchorElementSizes[1] + 'px',
+                }}
                 className={cn(
                     css.body,
                     css[position],
                     props.className,
                     props.isOpen && css.active,
-                    // isElementTop && css.top,
+                    // isElementBottom && css.top,
                     // isElementBottom && css.bottom,
                 )}
             >
@@ -57,8 +71,11 @@ const Popover: FC<PopoverProps> = ({
         </div>
     );
 
-    if (isDisablePortal || !props.anchorElement) return component;
-    else return createPortal(component, props.anchorElement);
+    if (isDisablePortal || !props.anchorElement) {
+        return component;
+    } else {
+        return createPortal(component, props.anchorElement);
+    }
 };
 
 export default Popover;
