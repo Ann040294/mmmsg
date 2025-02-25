@@ -36,7 +36,6 @@ const TestDropdowns: FC = () => {
                 />
             </DropdownMenu>
             <DropdownMenu
-                trigger={DropdownTrigger.HOVER}
                 position={position}
                 side={side}
                 options={Object.values(PopoverSide).map((item) => ({
