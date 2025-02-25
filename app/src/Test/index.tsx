@@ -17,12 +17,12 @@ const Test = () => {
                 <TestIcons />
             </Layout>
             <Layout className={css.row}>
-                <TestAvatars />
+                {/*<TestAvatars />
                 <TestCards />
                 <TestInputs />
                 <TestButtons />
+                <TestCircleButtons /> */}
                 <TestNotices />
-                <TestCircleButtons />
             </Layout>
         </>
     );

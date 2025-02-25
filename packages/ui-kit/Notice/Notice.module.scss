@@ -1,12 +1,16 @@
+@use '../styles/color.scss' as clr;
 @mixin icon-colors {
   &.error {
-    color: #ff0000; //TO-DO
+    color: clr.$notice-color-error;
   }
   &.success {
-    color: #008000; //TO-DO
+    color: clr.$notice-color-success;
   }
   &.info {
-    color: #ffa500; //TO-DO
+    color: clr.$notice-color-info;
+  }
+  &.warning {
+    color: clr.$notice-color-warning;
   }
 }
 
@@ -16,7 +20,7 @@
   font-size: 14px;
   padding: 10px;
   border-radius: 5px;
-  color: #000000; //TO-DO
+  color: clr.$neutral-dark-color;
 }
 
 .message {

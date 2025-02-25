@@ -9,9 +9,9 @@ import stylisticJs from '@stylistic/eslint-plugin-js';
 
 /** @type {import('eslint').Linter.Config[]} */
 export default [
-    {files: ['**/*.{js,ts,jsx,tsx}']},
+    { files: ['**/*.{js,ts,jsx,tsx}'] },
     {
-        languageOptions: {globals: globals.browser},
+        languageOptions: { globals: globals.browser },
     },
     pluginJs.configs.recommended,
     ...tseslint.configs.recommended,
@@ -27,7 +27,7 @@ export default [
         rules: {
             'react-hooks/rules-of-hooks': 'error',
             'react-hooks/exhaustive-deps': 'warn',
-            'newline-destructuring/newline': ['warn', {items: 1}],
+            'newline-destructuring/newline': ['warn', { items: 1 }],
             'react/react-in-jsx-scope': 'off',
             '@/newline-before-return': 'warn',
             'react/jsx-wrap-multilines': [
@@ -83,7 +83,7 @@ export default [
                     groups: [
                         // Packages. react related packages come first.
                         ['^react', '^@{0}\\w', '^@?\\w'],
-                        ['^ui-kit/(.*)$'],
+                        ['^ui-kit', '^ui-kit/(.*)$'],
                         ['^@app/[a-zA-Z]+$'], //TODO: Исправить при ошибке с импортами в app
                         // Side effect imports.
                         ['^\\u0000'],

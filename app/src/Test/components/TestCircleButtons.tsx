@@ -1,7 +1,7 @@
 import { FC } from 'react';
-import { CircleButton } from 'ui-kit';
 import MessageOutlined from '@ant-design/icons/MessageOutlined';
 
+import { CircleButton } from 'ui-kit';
 import { CircleButtonSize } from 'ui-kit/CircleButton';
 
 export const TestCircleButtons: FC = () => {
@@ -26,7 +26,7 @@ export const TestCircleButtons: FC = () => {
             />
 
             <CircleButton
-                icon={MessageOutlined} //
+                icon={MessageOutlined}
                 label="Чаты"
                 size={CircleButtonSize.LARGE}
                 onClick={handleClick}
