@@ -12,6 +12,11 @@ export enum NoticeTypes {
     WARNING = 'warning',
 }
 
+export enum NoticeForm {
+    DEFAULT = 'default',
+    FILLED = 'filled',
+}
+
 export const NoticeTypesMap: Readonly<Record<NoticeTypes, Icon>> = {
     [NoticeTypes.ERROR]: CloseOutlined,
     [NoticeTypes.SUCCESS]: CheckCircleOutlined,

@@ -26,13 +26,55 @@
   overflow-wrap: break-word;
 }
 
-.message {
-  font-size: 14px;
-  @include icon-colors;
+.default {
+  .message {
+    font-size: 14px;
+    @include icon-colors;
+  }
+
+  .icon {
+    font-size: 18px;
+    margin-right: 8px;
+    @include icon-colors; 
+  }
 }
 
-.icon {
-  font-size: 18px;
-  margin-right: 8px;
-  @include icon-colors; 
+.filled {
+  border: 1px solid;
+  background-color: transparent;
+  color: clr.$neutral-dark-color;
+
+  &.error {
+    background-color: clr.$notice-bg-error;
+    border-color: clr.$notice-color-error;
+  }
+
+  &.success {
+    background-color: clr.$notice-bg-success;
+    border-color: clr.$notice-color-success;
+  }
+
+  &.info {
+    background-color: clr.$notice-bg-info;
+    border-color: clr.$notice-color-info;
+  }
+
+  &.warning {
+    background-color: clr.$notice-bg-warning;
+    border-color: clr.$notice-color-warning;
+  }
+
+  .icon {
+    margin-right: 8px;
+    @include icon-colors;
+  }
+
+  .message {
+    color: clr.$neutral-dark-color;
+  }
+
+  .icon,
+  .message {
+    border: none;
+}
 }
