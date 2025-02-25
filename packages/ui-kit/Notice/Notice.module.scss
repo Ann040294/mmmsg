@@ -21,6 +21,9 @@
   padding: 10px;
   border-radius: 5px;
   color: clr.$neutral-dark-color;
+  max-width: 100%;
+  word-break: break-all;
+  overflow-wrap: break-word;
 }
 
 .message {
