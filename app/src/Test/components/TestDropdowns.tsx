@@ -1,258 +1,88 @@
-import { FC } from 'react';
-import { Avatar, DropdownMenu, Layout } from 'ui-kit';
+import { FC, useState } from 'react';
+import { DropdownMenu, Layout } from 'ui-kit';
 import UserIcon from '@ant-design/icons/UserOutlined';
 
 import { Button } from 'ui-kit/Button';
-import { PopoverPosition } from 'ui-kit/Popover/types';
+import { DropdownTrigger } from 'ui-kit/DropdownMenu';
+import { PopoverPosition, PopoverSide } from 'ui-kit/Popover';
 
 const TestDropdowns: FC = () => {
+
+    const [position, setPosition] = useState<PopoverPosition>(PopoverPosition.BOTTOM,);
+
+    const [side, setSide] = useState<PopoverSide>(PopoverSide.START);
+
     return (
         <Layout
-            style={{ display: 'flex', flexDirection: 'column', gap: '300px' }}
+            style={{
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '10px',
+                padding: '50px',
+            }}
         >
-            <div id={'1'}>
-                <DropdownMenu
-                    position={PopoverPosition.BOTTOM}
-                    options={[
-                        {
-                            key: '1',
-                            text: '459584546',
-                            icon: UserIcon,
-                        },
-                        {
-                            key: '2',
-                            text: '123',
-                            icon: UserIcon,
-                        },
-                        {
-                            key: '3',
-                            text: '4567',
-                            icon: UserIcon,
-                            isDisabled: true,
-                        },
-                        {
-                            key: '4',
-                            text: '987',
-                            icon: UserIcon,
-                        },
-                        {
-                            key: '5',
-                            text: '987',
-                            isDisabled: true,
-                            icon: UserIcon,
-                            onClick: ()=>alert()
-                        },
-                        {
-                            key: '6',
-                            text: '9844',
-                            onClick: ()=>alert('Drop')
-                        },
-                    ]}
-                >
-                    <Button
-                        text={'Example'}
-                        onClick={() => {}}
-                    ></Button>
-                </DropdownMenu>
-            </div>
-            <div id={'2'}>
-                <DropdownMenu
-                    position={PopoverPosition.TOP}
-                    // trigger={DropdownTrigger.HOVER}
-                    options={[
-                        {
-                            key: '1',
-                            text: '459584546',
-                            icon: UserIcon,
-                        },
-                        {
-                            key: '2',
-                            text: '123',
-                            icon: UserIcon,
-                        },
-                        {
-                            key: '3',
-                            text: '4567',
-                            icon: UserIcon,
-                            isDisabled: true,
-                        },
-                        {
-                            key: '4',
-                            text: '987',
-                            icon: UserIcon,
-                        },
-                        {
-                            key: '5',
-                            text: '987',
-                            isDisabled: true,
-                        },
-                        {
-                            key: '6',
-                            text: '9844',
-                        },
-                    ]}
-                >
-                    <Button
-                        text={'Example'}
-                        onClick={() => {}}
-                    ></Button>
-                </DropdownMenu>
-            </div>
-            <div id={'3'}>
-                <DropdownMenu
-                    position={PopoverPosition.BOTTOM_RIGHT}
-                    options={[
-                        {
-                            key: '1',
-                            text: '459584546',
-                            icon: UserIcon,
-                        },
-                        {
-                            key: '2',
-                            text: '123',
-                            icon: UserIcon,
-                        },
-                        {
-                            key: '3',
-                            text: '4567',
-                            icon: UserIcon,
-                            isDisabled: true,
-                        },
-                        {
-                            key: '4',
-                            text: '987',
-                            icon: UserIcon,
-                        },
-                        {
-                            key: '5',
-                            text: '987',
-                            isDisabled: true,
-                        },
-                        {
-                            key: '6',
-                            text: '9844',
-                        },
-                    ]}
-                >
-                    <Button
-                        text={'Example'}
-                        onClick={() => {}}
-                    ></Button>
-                </DropdownMenu>
-            </div>
-            <div
-                id={'4'}
-                style={{ width: 'fit-content' }}
+            <DropdownMenu
+                position={position}
+                side={side}
+                options={Object.values(PopoverPosition).map((item) => ({
+                    id: item,
+                    text: item,
+                    onClick: () => setPosition(item),
+                }))}
             >
-                <DropdownMenu
-                    position={PopoverPosition.RIGHT}
-                    // trigger={DropdownTrigger.HOVER}
-                    options={[
-                        {
-                            key: '1',
-                            text: '459584546',
-                            icon: UserIcon,
-                        },
-                        {
-                            key: '2',
-                            text: '123',
-                            icon: UserIcon,
-                        },
-                        {
-                            key: '3',
-                            text: '4567',
-                            icon: UserIcon,
-                            isDisabled: true,
-                        },
-                        {
-                            key: '4',
-                            text: '987',
-                            icon: UserIcon,
-                        },
-                        {
-                            key: '5',
-                            text: '987',
-                            isDisabled: true,
-                        },
-                        {
-                            key: '6',
-                            text: '9844',
-                        },
-                        {
-                            key: '7',
-                            text: '987',
-                            isDisabled: true,
-                        },
-                        {
-                            key: '8',
-                            text: '9844',
-                        },
-                    ]}
-                >
-                    <Avatar />
-                </DropdownMenu>
-            </div>
-
-            <div
-                id={'5'}
-                style={{ width: 'fit-content' }}
+                <Button
+                    text={'Position'}
+                    onClick={() => {}}
+                />
+            </DropdownMenu>
+            <DropdownMenu
+                trigger={DropdownTrigger.HOVER}
+                position={position}
+                side={side}
+                options={Object.values(PopoverSide).map((item) => ({
+                    id: item,
+                    text: item,
+                    onClick: () => setSide(item),
+                }))}
             >
-                <DropdownMenu
-                    position={PopoverPosition.TOP}
-                    // trigger={DropdownTrigger.HOVER}
-                    options={[
-                        {
-                            key: '1',
-                            text: '459584546',
-                            icon: UserIcon,
+                <Button
+                    text={'Side'}
+                    onClick={() => {}}
+                />
+            </DropdownMenu>
+            <DropdownMenu
+                position={position}
+                side={side}
+                options={[
+                    {
+                        id: '1',
+                        text: 'text',
+                    },
+                    {
+                        id: '2',
+                        text: 'isDisable',
+                        isDisabled: true,
+                    },
+                    {
+                        id: '3',
+                        text: 'with Icon',
+                        icon: UserIcon,
+                    },
+                    {
+                        id: '4',
+                        text: 'onClick ',
+                        icon: UserIcon,
+                        onClick: (item) => {
+                            alert(item.id);
                         },
-                        {
-                            key: '2',
-                            text: '123',
-                            icon: UserIcon,
-                        },
-                        {
-                            key: '3',
-                            text: '4567',
-                            icon: UserIcon,
-                            isDisabled: true,
-                        },
-                        {
-                            key: '4',
-                            text: '987',
-                            icon: UserIcon,
-                        },
-                        {
-                            key: '5',
-                            text: '987',
-                            isDisabled: true,
-                        },
-                        {
-                            key: '6',
-                            text: '9844',
-                        },
-                        {
-                            key: '7',
-                            text: '987',
-                            isDisabled: true,
-                        },
-                        {
-                            key: '8',
-                            text: '9844',
-                        },
-                    ]}
-                >
-                    <div
-                        style={{
-                            width: '300px',
-                            height: '300px',
-                            backgroundColor: 'red',
-                        }}
-                    >
-                        TEST
-                    </div>
-                </DropdownMenu>
-            </div>
+                    },
+                ]}
+            >
+                <Button
+                    text={'Example'}
+                    onClick={() => {}}
+                />
+            </DropdownMenu>
         </Layout>
     );
 };

@@ -10,7 +10,6 @@
   --X: 0;
   --Y: 0;
 
-
   margin: 0;
   box-sizing: border-box;
   position: absolute;
@@ -18,7 +17,6 @@
   box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
   opacity: 0;
   visibility: hidden;
-  //transform: translateY(-20px);
   transform: translateY(var(--Y)) translateX(var(--X));
   transition: opacity 0.4s, transform 0.4s, visibility 0.4s;
 
@@ -46,12 +44,39 @@
   }
 
   &.start {
-    left: 0;
+
+    &.left,
+    &.right {
+      --Y: calc(var(--sizeH) / -1);
+    }
   }
 
   &.end {
 
-    right: 0;
+    &.left,
+    &.right {
+      --Y: -100%;
+    }
+
+    &.bottom,
+    &.top {
+      right: 0;
+    }
+  }
+
+  &.center {
+
+    &.top,
+    &.bottom {
+      top: 0;
+      left: 50%;
+      --X: -50%
+    }
+
+    &.left,
+    &.right {
+      --Y: calc(var(--sizeH) / -2 - 50%)
+    }
   }
 }
 

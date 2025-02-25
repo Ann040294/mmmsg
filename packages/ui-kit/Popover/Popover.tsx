@@ -4,9 +4,9 @@ import cn from 'classnames';
 
 import { Layout } from '../index';
 
-import { PopoverPosition } from './types';
+import { PopoverPosition, PopoverSide } from './types';
 
-import css from './Popover1.module.scss';
+import css from './Popover.module.scss';
 
 interface PopoverProps {
     isOpen: boolean;
@@ -16,24 +16,17 @@ interface PopoverProps {
     className?: string;
     ref?: RefObject<HTMLDivElement | null>;
     position?: PopoverPosition;
+    side?: PopoverSide;
 }
 
 const Popover: FC<PopoverProps> = ({
     isDisablePortal = false,
     position = PopoverPosition.BOTTOM,
+    side = PopoverSide.CENTER,
     ...props
 }) => {
 
     const popoverRef = useRef<HTMLDivElement>(null);
-
-    // const isElementBottom =
-    //     isElementAtBottom(popoverRef.current) &&
-        // !isElementAtTop(popoverRef.current);
-
-    // const isElementBottom =
-    //     !isElementAtBottom(popoverRef.current) ||
-    //     (isElementAtBottom(popoverRef.current) &&
-    //         isElementAtTop(popoverRef.current));
 
     const getAnchorElementSizes = useMemo(() => {
         if (props.anchorElement) {
@@ -60,10 +53,9 @@ const Popover: FC<PopoverProps> = ({
                 className={cn(
                     css.body,
                     css[position],
+                    css[side],
                     props.className,
                     props.isOpen && css.active,
-                    // isElementBottom && css.top,
-                    // isElementBottom && css.bottom,
                 )}
             >
                 {props.children}

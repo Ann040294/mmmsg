@@ -6,25 +6,29 @@ import { Icon as IconType } from '../../Icon/types';
 import css from './DropdownItem.module.scss';
 
 export interface MenuItemProps {
-    key: string | number; //обязательно
+    id: string | number;
     icon?: IconType;
     text?: string;
     className?: string;
-    onClick?: () => void; //item
+    onClick?: (item: MenuItemCompactType) => void;
     isDisabled?: boolean;
 }
+
+export type MenuItemCompactType = Pick<MenuItemProps, 'id' | 'text'>;
 
 const Item: FC<MenuItemProps> = ({
     className,
     isDisabled,
     icon: Icon,
     onClick,
-    text,
+    ...item
 }) => {
+
+
     const handleOnClick = (event: MouseEvent<HTMLLIElement>) => {
         if (isDisabled) {
             event.preventDefault();
-        } else if (onClick) onClick();
+        } else if (onClick) onClick(item);
     };
 
     return (
@@ -38,7 +42,7 @@ const Item: FC<MenuItemProps> = ({
             onClick={handleOnClick}
         >
             {Icon && <Icon />}
-            {text}
+            {item.text}
         </li>
     );
 };
