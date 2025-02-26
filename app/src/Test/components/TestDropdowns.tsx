@@ -1,7 +1,7 @@
-import { FC, useMemo, useState } from 'react';
+import {FC, useMemo, useRef, useState} from 'react';
 import UserIcon from '@ant-design/icons/UserOutlined';
 
-import { DropdownMenu, Layout } from 'ui-kit';
+import {DropdownMenu, Layout, Popover} from 'ui-kit';
 import { Button } from 'ui-kit/Button';
 import { PopoverPosition, PopoverSide } from 'ui-kit/Popover';
 
@@ -10,6 +10,9 @@ const TestDropdowns: FC = () => {
         PopoverPosition.BOTTOM,
     );
     const [side, setSide] = useState<PopoverSide>(PopoverSide.START);
+    const [isOpenPopover, setIsOpenPopover] = useState<boolean>(false);
+
+    const refButton = useRef<HTMLButtonElement>(null)
 
     const optionsPosition = useMemo(() => {
         return Object.values(PopoverPosition).map((item) => ({
@@ -27,6 +30,10 @@ const TestDropdowns: FC = () => {
         }));
     }, []);
 
+    const handleOnClick = ()=>{
+        setIsOpenPopover(prev =>!prev)
+    }
+
     return (
         <Layout
             style={{
@@ -42,7 +49,7 @@ const TestDropdowns: FC = () => {
                 options={optionsPosition}
             >
                 <Button
-                    text={'Position'}
+                    text={`Position ${position}`}
                     onClick={() => {}}
                 />
             </DropdownMenu>
@@ -52,7 +59,7 @@ const TestDropdowns: FC = () => {
                 options={optionsSide}
             >
                 <Button
-                    text={'Side'}
+                    text={`Side ${side}`}
                     onClick={() => {}}
                 />
             </DropdownMenu>
@@ -94,6 +101,11 @@ const TestDropdowns: FC = () => {
                     onClick={() => {}}
                 />
             </DropdownMenu>
+
+            <button ref={refButton} onClick={handleOnClick}>Popover</button>
+            <Popover isOpen={isOpenPopover} anchorElement={refButton.current}>
+                <p>Это содержимое Popover</p>
+            </Popover>
         </Layout>
     );
 };
