@@ -4,7 +4,7 @@ export type EventHandlerPair = [keyof HTMLElementEventMap, () => void];
 
 export const useListeners = <T extends HTMLElement | null>(
     element: RefObject<T>,
-    eventHandlers: EventHandlerPair[],
+    eventHandlers: EventHandlerPair[]
 ) => {
     useEffect(() => {
         for (const [trigger, handler] of eventHandlers) {

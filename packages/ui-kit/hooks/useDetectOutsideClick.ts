@@ -6,7 +6,7 @@ const useDetectOutsideClick = <T extends HTMLElement | null>(
     const refObject = useRef<T>(null);
 
     useEffect(() => {
-        const PageOnClickEvent = (event: MouseEvent) => {
+        const pageOnClickEvent = (event: MouseEvent) => {
             if (
                 refObject.current !== null &&
                 !refObject.current.contains(event.target as Node)
@@ -16,10 +16,10 @@ const useDetectOutsideClick = <T extends HTMLElement | null>(
         };
 
         if (refObject.current) {
-            window.addEventListener('click', PageOnClickEvent);
+            window.addEventListener('click', pageOnClickEvent);
         }
 
-        return () => window.removeEventListener('click', PageOnClickEvent);
+        return () => window.removeEventListener('click', pageOnClickEvent);
     }, [callback]);
 
     return refObject;

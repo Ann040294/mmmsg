@@ -3,6 +3,7 @@ import { FC, ReactNode } from 'react';
 import useDetectOutsideClick from '../hooks/useDetectOutsideClick';
 import { useIsOpen } from '../hooks/useIsOpen';
 import { EventHandlerPair, useListeners } from '../hooks/useListeners';
+
 import { Popover, PopoverPosition, PopoverSide } from '../Popover';
 
 import Item, { MenuItemProps } from './Item/Item';
@@ -23,18 +24,19 @@ const DropdownMenu: FC<DropdownMenuProps> = ({
     options,
     ...props
 }) => {
-
     const { isOpen, open, toggle, close } = useIsOpen();
 
     const childrenRef = useDetectOutsideClick<HTMLDivElement | null>(close);
 
     const createEventPairs = (): EventHandlerPair[] => {
-        if (trigger === DropdownTrigger.CLICK) return [['click', toggle]];
-        else if (trigger === DropdownTrigger.HOVER)
+        if (trigger === DropdownTrigger.CLICK) {
+            return [['click', toggle]];
+        } else if (trigger === DropdownTrigger.HOVER) {
             return [
                 ['mouseenter', open],
                 ['mouseleave', close],
             ];
+        }
 
         return [];
     };
