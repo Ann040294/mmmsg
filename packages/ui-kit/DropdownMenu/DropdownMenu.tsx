@@ -31,7 +31,9 @@ const DropdownMenu: FC<DropdownMenuProps> = ({
     const createEventHandles = useMemo((): EventHandler[] => {
         if (trigger === DropdownTrigger.CLICK) {
             return [['click', toggle]];
-        } else if (trigger === DropdownTrigger.HOVER) {
+        }
+
+        if (trigger === DropdownTrigger.HOVER) {
             return [
                 ['mouseenter', open],
                 ['mouseleave', close],

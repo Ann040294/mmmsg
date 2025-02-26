@@ -10,8 +10,8 @@ export interface MenuItemProps {
     icon?: IconType;
     text?: string;
     className?: string;
-    onClick?: (item: MenuItemCompactType) => void;
     isDisabled?: boolean;
+    onClick?: (item: MenuItemCompactType) => void;
 }
 
 export type MenuItemCompactType = Pick<MenuItemProps, 'id' | 'text'>;
