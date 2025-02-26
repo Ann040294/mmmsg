@@ -1,5 +1,5 @@
-@import "../styles/typography.scss";
-@import "../styles/color.scss";
+@use "../styles/typography.scss" as typography;
+@use "../styles/color.scss" as colors;
 
 %text {
   padding: 0;
@@ -38,11 +38,11 @@
     }
 
     .title {
-      @include headline-5();
+      @include typography.headline-5();
     }
 
     .description {
-      color: $card-description-color;
+      color: colors.$card-description-color;
     }
 
     .badge {
@@ -53,8 +53,8 @@
       font-size: 14px;
       border-radius: 12px;
       font-weight: bold;
-      background-color: $card-bg-badge;
-      color: $card-color;
+      background-color: colors.$card-bg-badge;
+      color: colors.$card-color;
     }
   }
 }
