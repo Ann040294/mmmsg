@@ -33,6 +33,7 @@ const Item: FC<MenuItemProps> = ({
 
     return (
         <li
+            title={item.text}
             className={cn(
                 css.root,
                 className,
@@ -42,7 +43,7 @@ const Item: FC<MenuItemProps> = ({
             onClick={handleOnClick}
         >
             {Icon && <Icon />}
-            {item.text}
+            <p className={css.text}>{item.text}</p>
         </li>
     );
 };

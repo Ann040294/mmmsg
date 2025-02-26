@@ -13,9 +13,9 @@ const Popover: FC<PopoverProps> = ({
 }) => {
     if (isDisablePortal || !props.anchorElement) {
         return <PopoverWrapper {...props} />;
-    } else {
-        return createPortal(<PopoverWrapper {...props} />, props.anchorElement);
     }
+
+    return createPortal(<PopoverWrapper {...props} />, props.anchorElement);
 };
 
 export default Popover;

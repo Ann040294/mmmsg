@@ -5,4 +5,6 @@ export const isElementAtTop = (element: HTMLElement | null) => {
 
         return top <= rect.height;
     }
+
+    return null;
 };

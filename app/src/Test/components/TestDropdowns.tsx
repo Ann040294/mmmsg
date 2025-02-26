@@ -1,7 +1,7 @@
-import { FC, useMemo, useRef, useState } from 'react';
+import { FC, useMemo, useState } from 'react';
 import UserIcon from '@ant-design/icons/UserOutlined';
 
-import { DropdownMenu, Layout, Popover } from 'ui-kit';
+import { DropdownMenu, Layout } from 'ui-kit';
 import { Button } from 'ui-kit/Button';
 import { PopoverPosition, PopoverSide } from 'ui-kit/Popover';
 
@@ -10,9 +10,6 @@ const TestDropdowns: FC = () => {
         PopoverPosition.BOTTOM,
     );
     const [side, setSide] = useState<PopoverSide>(PopoverSide.START);
-
-    const [open, setOpen] = useState(false);
-    const ref = useRef<HTMLButtonElement>(null);
 
     const optionsPosition = useMemo(() => {
         return Object.values(PopoverPosition).map((item) => ({
@@ -97,23 +94,6 @@ const TestDropdowns: FC = () => {
                     onClick={() => {}}
                 />
             </DropdownMenu>
-
-            <button
-                ref={ref}
-                onClick={() => setOpen((prev) => !prev)}
-            >
-                Popover
-            </button>
-            <Popover
-                isOpen={open}
-                anchorElement={ref.current}
-                position={position}
-                side={side}
-            >
-                <p>
-                    TRARARARARTRARARARARATRARARARARATRARARTRARARARARTRARARARARATRARARARARATRARARARARATRARARARARAATRARARARARTRARARARARATRARARARARATRARARARARATRARARARARAATRARARARARTRARARARARATRARARARARATRARARARARATRARARARARAATRARARARARTRARARARARATRARARARARATRARARARARATRARARARARAATRARARARARTRARARARARATRARARARARATRARARARARATRARARARARAATRARARARARTRARARARARATRARARARARATRARARARARATRARARARARAATRARARARARTRARARARARATRARARARARATRARARARARATRARARARARAAARARATRARARARARAA
-                </p>
-            </Popover>
         </Layout>
     );
 };

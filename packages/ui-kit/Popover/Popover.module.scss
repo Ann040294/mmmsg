@@ -1,3 +1,5 @@
+@use '../styles/color' as colors;
+
 .root {
   position: relative;
 }
@@ -13,7 +15,7 @@
   box-sizing: border-box;
   position: absolute;
   z-index: 1000;
-  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 1px 8px rgba(colors.$neutral-dark-color, 0.3);
   opacity: 0;
   visibility: hidden;
   transform: translateY(var(--Y)) translateX(var(--X));
