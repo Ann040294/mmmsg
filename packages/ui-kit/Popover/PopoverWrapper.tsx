@@ -24,7 +24,7 @@ const PopoverWrapper: FC<PopoverWrapperProps> = ({
 }) => {
     const popoverRef = useRef<HTMLDivElement>(null);
 
-    const getAnchorElementSizes = useMemo(() => {
+    const anchorElementSizes = useMemo(() => {
         if (props.anchorElement) {
             const { height, width } =
                 props.anchorElement.getBoundingClientRect();
@@ -43,8 +43,8 @@ const PopoverWrapper: FC<PopoverWrapperProps> = ({
             <Layout
                 ref={popoverRef}
                 style={{
-                    '--sizeH': getAnchorElementSizes[0] + 'px',
-                    '--sizeW': getAnchorElementSizes[1] + 'px',
+                    '--sizeH': anchorElementSizes[0] + 'px',
+                    '--sizeW': anchorElementSizes[1] + 'px',
                 }}
                 className={cn(
                     css.body,
