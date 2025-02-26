@@ -1,0 +1,4 @@
+@use './color' as colors;
+
+$list-item-hover-color: colors.$neutral-light-color;
+$list-item-disabled-color: colors.$neutral-light-gray-color;

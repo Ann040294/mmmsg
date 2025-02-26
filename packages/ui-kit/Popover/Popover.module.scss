@@ -1,0 +1,83 @@
+@use '../styles/color' as colors;
+
+.root {
+  position: relative;
+}
+
+.body {
+  --sizeW: 0;
+  --sizeH: 0;
+  --sizePadding: 4px;
+  --X: 0;
+  --Y: 0;
+
+  margin: 0;
+  box-sizing: border-box;
+  position: absolute;
+  z-index: 1000;
+  box-shadow: 0 1px 8px rgba(colors.$neutral-dark-color, 0.3);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(var(--Y)) translateX(var(--X));
+  transition: opacity 0.4s, transform 0.4s, visibility 0.4s;
+
+  &.active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  &.top {
+    --Y: calc(var(--sizeH) / -1 - 100% - var(--sizePadding));
+  }
+
+  &.bottom {
+    --Y: var(--sizePadding);
+  }
+
+  &.left {
+    left: 0;
+    --X: calc(-100% - var(--sizePadding));
+  }
+
+  &.right {
+    right: 0;
+    --X: calc(100% + var(--sizePadding));
+  }
+
+  &.start {
+
+    &.left,
+    &.right {
+      --Y: calc(var(--sizeH) / -1);
+    }
+  }
+
+  &.end {
+
+    &.left,
+    &.right {
+      --Y: -100%;
+    }
+
+    &.bottom,
+    &.top {
+      right: 0;
+    }
+  }
+
+  &.center {
+
+    &.top,
+    &.bottom {
+      top: 0;
+      left: 50%;
+      --X: -50%
+    }
+
+    &.left,
+    &.right {
+      --Y: calc(var(--sizeH) / -2 - 50%)
+    }
+  }
+}
+
