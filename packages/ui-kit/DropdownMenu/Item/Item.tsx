@@ -23,12 +23,12 @@ const Item: FC<MenuItemProps> = ({
     onClick,
     ...item
 }) => {
-
-
     const handleOnClick = (event: MouseEvent<HTMLLIElement>) => {
         if (isDisabled) {
             event.preventDefault();
-        } else if (onClick) onClick(item);
+        } else if (onClick) {
+            onClick(item);
+        }
     };
 
     return (
