@@ -103,7 +103,7 @@ const TestDropdowns: FC = () => {
             </DropdownMenu>
 
             <button ref={refButton} onClick={handleOnClick}>Popover</button>
-            <Popover isOpen={isOpenPopover} anchorElement={refButton.current}>
+            <Popover isOpen={isOpenPopover} anchorElement={refButton.current} position={position} side={side}>
                 <p>Это содержимое Popover</p>
             </Popover>
         </Layout>
