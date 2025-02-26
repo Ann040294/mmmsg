@@ -1,12 +1,12 @@
 import { FC, ReactNode, useMemo } from 'react';
 
-import useDetectOutsideClick from '../hooks/useDetectOutsideClick';
+import { useDetectOutsideClick } from '../hooks/useDetectOutsideClick';
 import { useIsOpen } from '../hooks/useIsOpen';
-import { EventHandlerPair, useListeners } from '../hooks/useListeners';
+import { EventHandler, useListeners } from '../hooks/useListeners';
 
 import { Popover, PopoverPosition, PopoverSide } from '../Popover';
 
-import Item, { MenuItemProps } from './Item/Item';
+import { Item, MenuItemProps } from './Item';
 import { DropdownTrigger } from './types';
 
 import css from './DropdownMenu.module.scss';
@@ -28,7 +28,7 @@ const DropdownMenu: FC<DropdownMenuProps> = ({
 
     const childrenRef = useDetectOutsideClick<HTMLDivElement | null>(close);
 
-    const createEventHandles = useMemo((): EventHandlerPair[] => {
+    const createEventHandles = useMemo((): EventHandler[] => {
         if (trigger === DropdownTrigger.CLICK) {
             return [['click', toggle]];
         } else if (trigger === DropdownTrigger.HOVER) {

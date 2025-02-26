@@ -1,10 +1,10 @@
 import { RefObject, useEffect } from 'react';
 
-export type EventHandlerPair = [keyof HTMLElementEventMap, () => void];
+export type EventHandler = [keyof HTMLElementEventMap, () => void];
 
 export const useListeners = <T extends HTMLElement | null>(
     element: RefObject<T>,
-    eventHandlers: EventHandlerPair[]
+    eventHandlers: EventHandler[]
 ) => {
     useEffect(() => {
         for (const [trigger, handler] of eventHandlers) {
