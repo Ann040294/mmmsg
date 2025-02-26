@@ -1,12 +1,12 @@
-@use '../styles/color.scss' as clr;
+@use '../styles/color.scss' as color;
 
 //notice
-$notice-color-default: clr.$neutral-dark-color;
-$notice-error-color: clr.$state-error-color;
-$notice-success-color: clr.$state-success-color;
-$notice-info-color: clr.$state-info-color;;
-$notice-warning-color: clr.$state-warning-color;;
-$notice-error-bg: clr.$state-error-bg;
-$notice-success-bg: clr.$state-success-bg;
-$notice-info-bg: clr.$state-info-bg;
-$notice-warning-bg: clr.$state-warning-bg;
+$notice-color-default: color.$neutral-dark-color;
+$notice-error-color: color.$state-error-color;
+$notice-success-color: color.$state-success-color;
+$notice-info-color: color.$state-info-color;
+$notice-warning-color: color.$state-warning-color;
+$notice-error-bg: color.$state-error-bg;
+$notice-success-bg: color.$state-success-bg;
+$notice-info-bg: color.$state-info-bg;
+$notice-warning-bg: color.$state-warning-bg;

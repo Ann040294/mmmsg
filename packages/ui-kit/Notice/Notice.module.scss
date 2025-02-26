@@ -1,19 +1,18 @@
-@use '../styles/color.scss' as clr;
-@use '../styles/notice.scss' as ntc;
-@mixin icon-colors {
-  &.error {
-    color: ntc.$notice-error-color;
+@use '../styles/color.scss' as color;
+@use '../styles/notice.scss' as notice;
+
+  .error {
+    color: notice.$notice-error-color;
   }
-  &.success {
-    color: ntc.$notice-success-color;
+  .success {
+    color: notice.$notice-success-color;
   }
-  &.info {
-    color: ntc.$notice-info-color;
+  .info {
+    color: notice.$notice-info-color;
   }
-  &.warning {
-    color: ntc.$notice-warning-color;
+  .warning {
+    color: notice.$notice-warning-color;
   }
-}
 
 .container {
   display: flex;
@@ -21,7 +20,7 @@
   font-size: 14px;
   padding: 10px;
   border-radius: 5px;
-  color: clr.$neutral-dark-color;
+  color: color.$neutral-dark-color;
   max-width: 100%;
   word-break: break-all;
   overflow-wrap: break-word;
@@ -30,62 +29,61 @@
 .default {
   .message {
     font-size: 14px;
-    @include icon-colors;
   }
 
   .icon {
     font-size: 18px;
-    margin-right: 8px;
-    @include icon-colors; 
+    margin-right: 8px; 
   }
 }
 
 .filled {
   background-color: transparent;
-  color: clr.$neutral-dark-color;
-
+  
+  &:not(.icon){
+    color: color.$neutral-dark-color;
+  }
   &.error {
-    background-color: ntc.$notice-error-bg;
+    background-color: notice.$notice-error-bg;
   }
 
   &.success {
-    background-color: ntc.$notice-success-bg;
+    background-color: notice.$notice-success-bg;
   }
 
   &.info {
-    background-color: ntc.$notice-info-bg;
+    background-color: notice.$notice-info-bg;
   }
 
   &.warning {
-    background-color: ntc.$notice-warning-bg;
+    background-color: notice.$notice-warning-bg;
   }
 
   .icon {
     margin-right: 8px;
-    @include icon-colors;
   }
 
   .message {
-    color: clr.$neutral-dark-color;
+    color: color.$neutral-dark-color;
   }
 
-  &.withBorder {
+  &.border {
     border: 1px solid;
 
     &.error {
-      border-color: ntc.$notice-error-color;
+      border-color: notice.$notice-error-color;
     }
 
     &.success {
-      border-color: ntc.$notice-success-color;
+      border-color: notice.$notice-success-color;
     }
 
     &.info {
-      border-color: ntc.$notice-info-color;
+      border-color: notice.$notice-info-color;
     }
 
     &.warning {
-      border-color: ntc.$notice-warning-color;
+      border-color: notice.$notice-warning-color;
     }
   }
 
