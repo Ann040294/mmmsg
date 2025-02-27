@@ -36,7 +36,7 @@ const Avatar: FC<AvatarProps> = ({
         css[shape],
         css[size],
         (!props.src || hasError) && css.default,
-        hasError && css.animated,
+        props.src && css.animated,
     );
     if (!props.src) {
         return (
