@@ -18,8 +18,8 @@ export interface PopoverWrapperProps {
 }
 
 const PopoverWrapper: FC<PopoverWrapperProps> = ({
-    position = PopoverPosition.BOTTOM,
-    side = PopoverSide.CENTER,
+    position = PopoverPosition.CENTER,
+    side = PopoverSide.BOTTOM,
     ...props
 }) => {
     const popoverRef = useRef<HTMLDivElement>(null);

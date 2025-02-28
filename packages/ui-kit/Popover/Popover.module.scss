@@ -70,8 +70,7 @@
     &.top,
     &.bottom {
       top: 0;
-      left: 50%;
-      --X: -50%
+      --X: calc((var(--sizeW) - 100%) / 2);
     }
 
     &.left,

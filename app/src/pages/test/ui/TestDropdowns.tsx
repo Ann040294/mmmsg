@@ -7,9 +7,9 @@ import { PopoverPosition, PopoverSide } from 'ui-kit/Popover';
 
 const TestDropdowns: FC = () => {
     const [position, setPosition] = useState<PopoverPosition>(
-        PopoverPosition.BOTTOM,
+        PopoverPosition.CENTER,
     );
-    const [side, setSide] = useState<PopoverSide>(PopoverSide.START);
+    const [side, setSide] = useState<PopoverSide>(PopoverSide.BOTTOM);
     const [isOpenPopover, setIsOpenPopover] = useState<boolean>(false);
 
     const refElm1 = useRef<HTMLDivElement>(null);
@@ -47,24 +47,24 @@ const TestDropdowns: FC = () => {
             }}
         >
             <DropdownMenu
-                position={PopoverPosition.RIGHT}
-                options={optionsPosition}
-            >
-                <Button
-                    isFullWidth
-                    variant={ButtonVariants.SECONDARY}
-                    text={`Side: ${position}`}
-                    onClick={handleClickFake}
-                />
-            </DropdownMenu>
-            <DropdownMenu
-                position={PopoverPosition.RIGHT}
+                side={PopoverSide.RIGHT}
                 options={optionsSide}
             >
                 <Button
                     isFullWidth
                     variant={ButtonVariants.SECONDARY}
-                    text={`Position: ${side}`}
+                    text={`Side: ${side}`}
+                    onClick={handleClickFake}
+                />
+            </DropdownMenu>
+            <DropdownMenu
+                side={PopoverSide.RIGHT}
+                options={optionsPosition}
+            >
+                <Button
+                    isFullWidth
+                    variant={ButtonVariants.SECONDARY}
+                    text={`Position: ${position}`}
                     onClick={handleClickFake}
                 />
             </DropdownMenu>
