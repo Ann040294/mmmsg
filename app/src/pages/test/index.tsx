@@ -1,5 +1,7 @@
 import { Layout } from 'ui-kit';
 
+import { ROUTE_CONFIG } from '../../shared/config/routeConfig';
+
 import { TestAvatars } from './ui/TestAvatars';
 import { TestButtons } from './ui/TestButtons';
 import { TestCards } from './ui/TestCards';
@@ -9,7 +11,6 @@ import { TestInputs } from './ui/TestInputs';
 import { TestNotices } from './ui/TestNotices';
 
 import css from './style.module.scss';
-import { ROUTE_CONFIG } from '../../shared/config/routeConfig';
 
 const Test = () => {
     return (
