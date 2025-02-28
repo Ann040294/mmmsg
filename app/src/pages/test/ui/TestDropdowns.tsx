@@ -1,8 +1,8 @@
-import {FC, useMemo, useRef, useState} from 'react';
+import { FC, useMemo, useRef, useState } from 'react';
 import UserIcon from '@ant-design/icons/UserOutlined';
 
-import {DropdownMenu, Layout, Popover} from 'ui-kit';
-import { Button } from 'ui-kit/Button';
+import { DropdownMenu, Layout, Popover } from 'ui-kit';
+import { Button, ButtonVariants } from 'ui-kit/Button';
 import { PopoverPosition, PopoverSide } from 'ui-kit/Popover';
 
 const TestDropdowns: FC = () => {
@@ -12,7 +12,8 @@ const TestDropdowns: FC = () => {
     const [side, setSide] = useState<PopoverSide>(PopoverSide.START);
     const [isOpenPopover, setIsOpenPopover] = useState<boolean>(false);
 
-    const refButton = useRef<HTMLButtonElement>(null)
+    const refElm1 = useRef<HTMLDivElement>(null);
+    const refElm2 = useRef<HTMLDivElement>(null);
 
     const optionsPosition = useMemo(() => {
         return Object.values(PopoverPosition).map((item) => ({
@@ -30,39 +31,44 @@ const TestDropdowns: FC = () => {
         }));
     }, []);
 
-    const handleOnClick = ()=>{
-        setIsOpenPopover(prev =>!prev)
-    }
+    const handleClick = () => {
+        setIsOpenPopover((prev) => !prev);
+    };
+
+    const handleClickFake = () => 42;
 
     return (
         <Layout
             style={{
                 display: 'flex',
                 flexDirection: 'column',
-                gap: '10px',
-                padding: '50px',
+                gap: 10,
+                width: 300,
             }}
         >
             <DropdownMenu
-                position={position}
-                side={side}
+                position={PopoverPosition.RIGHT}
                 options={optionsPosition}
             >
                 <Button
-                    text={`Position ${position}`}
-                    onClick={() => {}}
+                    isFullWidth
+                    variant={ButtonVariants.SECONDARY}
+                    text={`Side: ${position}`}
+                    onClick={handleClickFake}
                 />
             </DropdownMenu>
             <DropdownMenu
-                position={position}
-                side={side}
+                position={PopoverPosition.RIGHT}
                 options={optionsSide}
             >
                 <Button
-                    text={`Side ${side}`}
-                    onClick={() => {}}
+                    isFullWidth
+                    variant={ButtonVariants.SECONDARY}
+                    text={`Position: ${side}`}
+                    onClick={handleClickFake}
                 />
             </DropdownMenu>
+            <div style={{ marginTop: 200 }} />
             <DropdownMenu
                 position={position}
                 side={side}
@@ -97,14 +103,42 @@ const TestDropdowns: FC = () => {
                 ]}
             >
                 <Button
-                    text={'Example'}
-                    onClick={() => {}}
+                    text={'Example Menu'}
+                    onClick={handleClickFake}
                 />
             </DropdownMenu>
 
-            <button ref={refButton} onClick={handleOnClick}>Popover</button>
-            <Popover isOpen={isOpenPopover} anchorElement={refButton.current} position={position} side={side}>
-                <p>Это содержимое Popover</p>
+            <div
+                ref={refElm1}
+                style={{ marginTop: 200 }}
+            >
+                <Button
+                    text={'Example Popover'}
+                    onClick={handleClick}
+                />
+            </div>
+            <Popover
+                isOpen={isOpenPopover}
+                anchorElement={refElm1.current}
+                position={position}
+                side={side}
+            >
+                <p>Это содержимое Popover Popover Popover Popover</p>
+            </Popover>
+
+            <div
+                ref={refElm2}
+                style={{ marginTop: 200 }}
+            >
+                {position}-{side}
+            </div>
+            <Popover
+                isOpen
+                anchorElement={refElm2.current}
+                position={position}
+                side={side}
+            >
+                <p>Always Open Popover</p>
             </Popover>
         </Layout>
     );
