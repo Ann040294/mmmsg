@@ -1,7 +1,8 @@
 import { FC } from 'react';
+
 import { Card, Layout } from 'ui-kit';
 
-import { avatar1 } from '../meta/avatars';
+import { avatar1 } from './meta/avatars';
 
 import css from '../style.module.scss';
 

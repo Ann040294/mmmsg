@@ -1,4 +1,25 @@
 {
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "paths": {
+      "@pages/*": [
+        "./pages/*"
+      ],
+      "@shared/*": [
+        "./shared/*"
+      ],
+      "@widgets/*": [
+        "./widgets/*"
+      ],
+      "@features/*": [
+        "./features/*"
+      ],
+      "@entities/*": [
+        "./entities/*"
+      ]
+    }
+  },
   "references": [
     {
       "path": "../packages/ui-kit"
@@ -9,6 +30,5 @@
   ],
   "exclude": [
     "dist"
-  ],
-  "extends": "../tsconfig.json"
+  ]
 }

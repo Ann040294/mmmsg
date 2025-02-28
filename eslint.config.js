@@ -86,6 +86,11 @@ export default [
                         ['^ui-kit', '^ui-kit/(.*)'],
                         ['hooks', 'hooks/(.*)'],
                         ['^@app/[a-zA-Z]+$'], //TODO: Исправить при ошибке с импортами в app
+                        ['^@pages/(.*)$'],
+                        ['^@widgets/(.*)$'],
+                        ['^@features/(.*)$'],
+                        ['^@entities/(.*)$'],
+                        ['^@shared/(.*)$'],
                         // Side effect imports.
                         ['^\\u0000'],
                         // Parent imports. Put .. last.

@@ -3,7 +3,7 @@ import { FC } from 'react';
 import { Avatar, Layout } from 'ui-kit';
 import { AvatarShapes, AvatarSizes } from 'ui-kit/Avatar';
 
-import { avatar1, avatar2 } from '../meta/avatars';
+import { avatar1, avatar2 } from './meta/avatars';
 
 export const TestAvatars: FC = () => {
     return (
