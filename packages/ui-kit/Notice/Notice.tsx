@@ -11,17 +11,19 @@ interface NoticeProps {
     type: NoticeTypes;
     message: string;
     form?: NoticeForm;
+    hasBorder?: boolean;
 }
 
 const Notice: FC<NoticeProps> = ({
     type,
     message,
     form = NoticeForm.DEFAULT,
+    hasBorder,
 }) => {
     const IconComponent = NoticeTypesMap[type];
 
     return (
-        <div className={cn(css.container, css[type], css[form])}>
+        <div className={cn(css.container, css[type], css[form], { [css.border]: hasBorder })}>
             <Icon
                 icon={IconComponent}
                 className={cn(css.icon, css[form], css[type])}
