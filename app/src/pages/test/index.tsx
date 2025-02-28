@@ -1,12 +1,12 @@
 import { Layout } from 'ui-kit';
 
-import { TestAvatars } from './components/TestAvatars';
-import { TestButtons } from './components/TestButtons';
-import { TestCards } from './components/TestCards';
-import TestDropdowns from './components/TestDropdowns';
-import { TestIcons } from './components/TestIcons';
-import { TestInputs } from './components/TestInputs';
-import { TestNotices } from './components/TestNotices';
+import { TestAvatars } from './ui/TestAvatars';
+import { TestButtons } from './ui/TestButtons';
+import { TestCards } from './ui/TestCards';
+import TestDropdowns from './ui/TestDropdowns';
+import { TestIcons } from './ui/TestIcons';
+import { TestInputs } from './ui/TestInputs';
+import { TestNotices } from './ui/TestNotices';
 
 import css from './style.module.scss';
 
