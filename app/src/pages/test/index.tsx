@@ -9,10 +9,12 @@ import { TestInputs } from './ui/TestInputs';
 import { TestNotices } from './ui/TestNotices';
 
 import css from './style.module.scss';
+import { ROUTE_CONFIG } from '../../shared/config/routeConfig';
 
 const Test = () => {
     return (
         <>
+            <title>{ROUTE_CONFIG.TEST.title}</title>
             <Layout className={css.column}>
                 <TestIcons />
             </Layout>
