@@ -3,7 +3,7 @@ import { FC } from 'react';
 import { Avatar, Layout } from 'ui-kit';
 import { AvatarShapes, AvatarSizes } from 'ui-kit/Avatar';
 
-import { avatar1, avatar2 } from '../meta/avatars';
+import { avatar1, avatar2 } from './meta/avatars';
 
 export const TestAvatars: FC = () => {
     return (
@@ -23,9 +23,9 @@ export const TestAvatars: FC = () => {
             <h6>def</h6>
             <Avatar />
             <h5>size</h5>
-            <Avatar src={avatar2} size={AvatarSizes.SMALL} />
-            <Avatar src={avatar2} size={AvatarSizes.MEDIUM} />
-            <Avatar src={avatar2} size={AvatarSizes.LARGE} />
+            <Avatar size={AvatarSizes.SMALL} />
+            <Avatar size={AvatarSizes.MEDIUM} />
+            <Avatar size={AvatarSizes.LARGE} />
             <h6>def</h6>
             <Avatar />
         </Layout>
