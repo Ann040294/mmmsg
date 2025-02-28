@@ -1,6 +1,6 @@
 import { Layout } from 'ui-kit';
 
-import { ROUTE_CONFIG } from '../../shared/config/routeConfig';
+import { ROUTE_CONFIG } from '@shared/config/routeConfig';
 
 import { TestAvatars } from './ui/TestAvatars';
 import { TestButtons } from './ui/TestButtons';

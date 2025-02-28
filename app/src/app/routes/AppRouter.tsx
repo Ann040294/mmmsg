@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router';
 
-import { HomePage, TestPage } from '../../pages';
+import { HomePage, TestPage } from '@pages/index';
 
 import { routes } from './routes';
 

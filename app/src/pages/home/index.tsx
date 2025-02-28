@@ -2,7 +2,7 @@ import { FC } from 'react';
 
 import { Layout } from 'ui-kit';
 
-import { ROUTE_CONFIG } from '../../shared/config/routeConfig';
+import { ROUTE_CONFIG } from '@shared/config/routeConfig';
 
 import css from './HomePage.module.scss';
 
