@@ -44,18 +44,17 @@
 
         &.small {
             --icon-size: #{btn.$circle-button-s-size};
-            --icon-font-size: 22px
-
+            --icon-font-size: 22px;
         }
     
         &.medium {
             --icon-size: #{btn.$circle-button-m-size};
-            --icon-font-size: 26px
+            --icon-font-size: 26px;
         }
     
         &.large {
             --icon-size: #{btn.$circle-button-l-size};
-            --icon-font-size: 30px
+            --icon-font-size: 30px;
         }
     }
 
