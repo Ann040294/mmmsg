@@ -1,4 +1,4 @@
-@import "../styles/color.scss";
+@use "../styles/color.scss" as colors;
 
 .root {
   object-fit: cover;
@@ -6,7 +6,6 @@
   width: var(--avatar-size);
   min-width: var(--avatar-size);
 }
-
 
 .large {
   --avatar-size: 70px;
@@ -34,14 +33,14 @@
 .default {
   display: flex;
   justify-content: center;
-  background-color: $avatar-bg-default;
-  color: $avatar-color-default;
+  background-color: colors.$avatar-bg-default;
+  color: colors.$avatar-color-default;
 }
 
 .animated {
-  background: $avatar-gradient-animated;
+  background: colors.$avatar-gradient-animated;
   background-size: 100% 100%;
-  animation: gradient 3s ease infinite;
+  animation: gradient 2s ease 10s;
   background-repeat: no-repeat;
   background-position: center;
 }
