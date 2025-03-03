@@ -1,0 +1,11 @@
+.popover {
+  padding: 8px 4px;
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-width: 500px; //TODO: Когда потребуется адаптация, исправить на вычисляемую переменную
+}
+

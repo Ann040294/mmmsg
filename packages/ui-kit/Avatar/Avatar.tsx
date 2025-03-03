@@ -24,7 +24,6 @@ const Avatar: FC<AvatarProps> = ({
     className,
     ...props
 }) => {
-
     const [hasError, setHasError] = useState<boolean>(false);
 
     const handleOnError = useCallback(() => {
@@ -32,13 +31,13 @@ const Avatar: FC<AvatarProps> = ({
     }, []);
 
     const classString = cn(
+        css.root,
         className,
         css[shape],
         css[size],
         (!props.src || hasError) && css.default,
-        css.animated,
+        props.src && css.animated,
     );
-
     if (!props.src) {
         return (
             <div className={classString}>

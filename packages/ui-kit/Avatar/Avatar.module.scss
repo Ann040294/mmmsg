@@ -1,24 +1,25 @@
-@import "../styles/color.scss";
+@use "../styles/color.scss" as colors;
+
+.root {
+  object-fit: cover;
+  height: var(--avatar-size);
+  width: var(--avatar-size);
+  min-width: var(--avatar-size);
+}
 
 .large {
-  height: 70px;
-  width: 70px;
-  min-width: 70px;
+  --avatar-size: 70px;
   font-size: 35px;
 }
 
 .small {
-  height: 30px;
-  width: 30px;
-  min-width: 30px;
+  --avatar-size: 30px;
   font-size: 15px;
 }
 
 .medium {
-  height: 50px;
-  width: 50px;
-  min-width: 50px;
-  font-size: 25px
+  --avatar-size: 50px;
+  font-size: 25px;
 }
 
 .circle {
@@ -32,17 +33,16 @@
 .default {
   display: flex;
   justify-content: center;
-  background-color: $avatar-bg-default;
-  color: $avatar-color-default;
+  background-color: colors.$avatar-bg-default;
+  color: colors.$avatar-color-default;
 }
 
 .animated {
-  background: $avatar-gradient-animated;
+  background: colors.$avatar-gradient-animated;
   background-size: 100% 100%;
-  animation: gradient 3s ease infinite;
+  animation: gradient 2s ease 10s;
   background-repeat: no-repeat;
   background-position: center;
-  border-radius: 100px
 }
 
 @keyframes gradient {
