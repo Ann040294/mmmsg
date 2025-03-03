@@ -1,0 +1,42 @@
+.chat-message {
+  display: flex;
+  margin-bottom: 0.5rem;
+  max-width: 80%;
+  word-wrap: break-word;
+
+  &--sender {
+    justify-content: flex-end;
+    align-self: flex-end;
+    margin-left: auto;
+  }
+
+  &--receiver {
+    justify-content: flex-start;
+    align-self: flex-start;
+    margin-right: auto;
+  }
+
+  &__content {
+    background-color: #f0f0f0;
+    border-radius: 1rem;
+    padding: 0.5rem 1rem;
+    display: flex;
+    flex-direction: column;
+
+    &.chat-message--sender {
+      background-color: #56B3FF;
+      color: white;
+    }
+  }
+
+  &__text {
+    margin: 0;
+    font-size: 1rem;
+  }
+
+  &__timestamp {
+    font-size: 0.75rem;
+    color: #888;
+    align-self: flex-end;
+  }
+}
