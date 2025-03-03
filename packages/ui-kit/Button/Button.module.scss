@@ -1,6 +1,11 @@
+<<<<<<< HEAD
 @import "../styles/color.scss";
 @import "../styles/button.scss";
 @import "../styles/typography.scss";
+=======
+@use "../styles/color.scss" as colors;
+@use "../styles/typography.scss" as typography;
+>>>>>>> dev
 
 .button {
   display: inline-flex;
@@ -8,7 +13,7 @@
   justify-content: center;
   box-sizing: border-box;
   text-align: center;
-  font-size: $font-size-button-medium;
+  font-size: typography.$font-size-button-medium;
   padding: 0 50px;
   min-width: 200px;
   height: 40px;
@@ -19,34 +24,34 @@
 }
 
 .primary {
-  background-color: $btn-bg-primary;
-  color: $btn-color-primary;
+  background-color: colors.$btn-bg-primary;
+  color: colors.$btn-color-primary;
 
   &:hover {
-    background-color: $btn-bg-hover-primary;
+    background-color: colors.$btn-bg-hover-primary;
   }
 }
 
 .secondary {
-  background-color: $btn-bg-secondary;
-  color: $btn-color-secondary;
-  border: 2px solid $neutral-dark-color;
+  background-color: colors.$btn-bg-secondary;
+  color: colors.$btn-color-secondary;
+  border: 2px solid colors.$neutral-dark-color;
 
   &:hover {
-    background-color: $btn-bg-hover-secondary;
+    background-color: colors.$btn-bg-hover-secondary;
   }
 }
 
 .large {
   padding: 0 55px;
   min-width: 250px;
-  font-size: $font-size-button-large;
+  font-size: typography.$font-size-button-large;
 }
 
 .small {
   padding: 0 45px;
   min-width: 150px;
-  font-size: $font-size-button-small;
+  font-size: typography.$font-size-button-small;
 }
 
 .fullWidth {

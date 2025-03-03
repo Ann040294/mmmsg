@@ -1,0 +1,7 @@
+@use 'ui-kit/styles/color' as colors;
+
+html, body {
+  padding: 0;
+  margin: 0;
+  background-color: colors.$neutral-silvery-color;
+}

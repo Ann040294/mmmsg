@@ -1,25 +1,25 @@
-@import './typography.scss';
+@use './typography.scss' as typography;
 
 * {
-  font-family: $font-family-primary;
+  font-family: typography.$font-family-primary;
 }
 
 h1 {
-  @include headline-1()
+  @include typography.headline-1()
 }
 
 h2 {
-  @include headline-2()
+  @include typography.headline-2()
 }
 
 h3 {
-  @include headline-3()
+  @include typography.headline-3()
 }
 
 h4 {
-  @include headline-4()
+  @include typography.headline-4()
 }
 
 h5 {
-  @include headline-5()
+  @include typography.headline-5()
 }

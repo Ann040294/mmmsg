@@ -1,0 +1,33 @@
+@use '../../styles/lists' as lists;
+@use '../../styles/typography' as typography;
+
+.root {
+  border-radius: 4px;
+  padding: 5px 8px;
+  box-sizing: border-box;
+  font-size: typography.$font-size-text-primary-desktop;
+
+  .text {
+    padding: 0;
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &:hover {
+    cursor: pointer;
+    background-color: lists.$list-item-hover-color;
+  }
+
+  &.disabled {
+    cursor: not-allowed;
+    color: lists.$list-item-disabled-color;
+  }
+}
+
+.block {
+  display: flex;
+  gap: 4px;
+}
+

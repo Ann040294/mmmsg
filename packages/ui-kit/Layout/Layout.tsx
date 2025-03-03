@@ -1,21 +1,34 @@
-import { CSSProperties, FC, ReactNode } from 'react';
+import { CSSProperties, FC, ReactNode, RefObject } from 'react';
 import cn from 'classnames';
 
 import css from './Layout.module.scss';
 
 interface LayoutProps {
+    children: ReactNode;
+    hasGradient?: boolean;
     className?: string;
     style?: CSSProperties;
-    children: ReactNode;
+    ref?: RefObject<HTMLDivElement | null>;
 }
 
-const Layout: FC<LayoutProps> = (props) => {
+const Layout: FC<LayoutProps> = ({
+    children,
+    hasGradient,
+    className,
+    style,
+    ref,
+}) => {
     return (
         <div
-            className={cn(css.root, props.className)}
-            style={props.style}
+            style={style}
+            ref={ref}
+            className={cn(
+                css.root,
+                className,
+                hasGradient && css.gradient
+            )}
         >
-            {props.children}
+            {children}
         </div>
     );
 };
