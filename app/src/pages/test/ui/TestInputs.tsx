@@ -1,10 +1,10 @@
 import { ChangeEvent, FC, useState } from 'react';
-import { Layout } from 'ui-kit';
 import CloseOutlined from '@ant-design/icons/CloseOutlined';
 import SearchOutlined from '@ant-design/icons/SearchOutlined';
 
+import { Layout } from 'ui-kit';
 import { Button, ButtonSize, ButtonVariants } from 'ui-kit/Button';
-import { Input, InputVariants } from 'ui-kit/Input'; 
+import { Input, InputVariants } from 'ui-kit/Input';
 import { NoticeTypes } from 'ui-kit/Notice';
 
 import css from '../style.module.scss';

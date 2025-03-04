@@ -21,12 +21,13 @@ const Test = () => {
                 <TestIcons />
             </Layout>
             <Layout className={css.row}>
-                <TestAvatars />
+                {/* <TestAvatars />
                 <TestCards />
                 <TestDropdowns />
                 <TestInputs />
                 <TestButtons />
-                <TestNotices />
+                <TestNotices />*/}
+                
                 <TestCircleButtons />
             </Layout>
         </>

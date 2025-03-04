@@ -9,9 +9,9 @@ import { CircleButtonSize } from './types';
 import css from './CircleButton.module.scss';
 
 interface CircleButtonProps {
+    icon: IconType;
     isDisabled?: boolean;
     className?: string;
-    icon: IconType;
     label?: string;
     size?: CircleButtonSize;
     onClick: (e: MouseEvent<HTMLButtonElement>) => void;
@@ -22,7 +22,7 @@ const CircleButton: FC<CircleButtonProps> = ({
     label,
     size = CircleButtonSize.MEDIUM,
     className,
-    isDisabled = false,
+    isDisabled,
     onClick: handleClick,
 }) => {
     return (
