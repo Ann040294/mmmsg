@@ -1,0 +1,18 @@
+%flex {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.root {
+  @extend %flex;
+
+  height: 100%;
+
+  .item {
+    @extend %flex;
+
+    height: 30%;
+  }
+}

@@ -6,5 +6,13 @@ export const ROUTE_CONFIG = {
     TEST: {
         path: '/test',
         title: 'Тестирование'
+    },
+    PROFILE: {
+        path: '/profile/',
+        title: 'Профиль',
+    },
+    LOGOUT: {
+        path: '/logout',
+        title: 'Выход'
     }
 }
