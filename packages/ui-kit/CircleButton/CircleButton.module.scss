@@ -1,5 +1,5 @@
-@use '../styles/typography.scss' as typ;
-@use '../styles/button.scss' as btn;
+@use '../styles/typography.scss' as typography;
+@use '../styles/button.scss' as button;
 
 .button {
     display: flex;
@@ -18,7 +18,7 @@
     }
 
     &:focus {
-        outline: 2px solid btn.$circle-button-focus-outline;
+        outline: 2px solid button.$circle-button-focus-outline;
     }
 
     &:disabled {
@@ -31,9 +31,9 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        background-color: btn.$circle-button-bg-color;
+        background-color: button.$circle-button-bg-color;
         border-radius: 50%;
-        color: btn.$circle-button-icon-color;
+        color: button.$circle-button-icon-color;
 
         width: var(--icon-size);
         height: var(--icon-size);
@@ -43,24 +43,24 @@
         }
 
         &.small {
-            --icon-size: #{btn.$circle-button-s-size};
+            --icon-size: #{button.$circle-button-s-size};
             --icon-font-size: 22px;
         }
     
         &.medium {
-            --icon-size: #{btn.$circle-button-m-size};
+            --icon-size: #{button.$circle-button-m-size};
             --icon-font-size: 26px;
         }
     
         &.large {
-            --icon-size: #{btn.$circle-button-l-size};
+            --icon-size: #{button.$circle-button-l-size};
             --icon-font-size: 30px;
         }
     }
 
     .label {
-        font-family: typ.$font-family-primary;
-        font-size: typ.$font-size-button-small;
-        color: btn.$circle-button-label-color;
+        font-family: typography.$font-family-primary;
+        font-size: typography.$font-size-button-small;
+        color: button.$circle-button-label-color;
     }
 }
