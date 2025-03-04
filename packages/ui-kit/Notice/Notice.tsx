@@ -23,10 +23,14 @@ const Notice: FC<NoticeProps> = ({
     const IconComponent = NoticeTypesMap[type];
 
     return (
-        <div className={cn(css.container, css[type], css[form], { [css.border]: hasBorder })}>
+        <div
+            className={cn(css.container, css[type], css[form], {
+                [css.border]: hasBorder,
+            })}
+        >
             <Icon
                 icon={IconComponent}
-                className={cn(css.icon, css[form], css[type])}
+                className={cn(css.icon, css[type])}
             />
             <span className={cn(css.message, css[form], css[type])}>
                 {message}
