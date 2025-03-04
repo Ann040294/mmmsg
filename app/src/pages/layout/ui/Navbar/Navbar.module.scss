@@ -9,10 +9,4 @@
   @extend %flex;
 
   height: 100%;
-
-  .item {
-    @extend %flex;
-
-    height: 30%;
-  }
 }

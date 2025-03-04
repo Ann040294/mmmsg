@@ -1,6 +1,6 @@
-import { NavbarItemTypes, NavLinkType } from '@pages/layout/ui/Navbar/types';
-
 import { ROUTE_CONFIG } from '@shared/config/routeConfig';
+
+import { NavbarItemTypes, NavLinkType } from './Item/types';
 
 export const optionsNavbar: NavLinkType[] = [
     {
