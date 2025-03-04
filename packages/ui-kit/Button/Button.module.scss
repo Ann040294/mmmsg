@@ -1,11 +1,6 @@
-<<<<<<< HEAD
-@import "../styles/color.scss";
-@import "../styles/button.scss";
-@import "../styles/typography.scss";
-=======
-@use "../styles/color.scss" as colors;
+@use "../styles/button.scss" as button;
 @use "../styles/typography.scss" as typography;
->>>>>>> dev
+@use "../styles/color.scss" as color;
 
 .button {
   display: inline-flex;
@@ -24,21 +19,21 @@
 }
 
 .primary {
-  background-color: colors.$btn-bg-primary;
-  color: colors.$btn-color-primary;
+  background-color: button.$btn-bg-primary;
+  color: button.$btn-color-primary;
 
   &:hover {
-    background-color: colors.$btn-bg-hover-primary;
+    background-color: button.$btn-bg-hover-primary;
   }
 }
 
 .secondary {
-  background-color: colors.$btn-bg-secondary;
-  color: colors.$btn-color-secondary;
-  border: 2px solid colors.$neutral-dark-color;
+  background-color: button.$btn-bg-secondary;
+  color: button.$btn-color-secondary;
+  border: 2px solid color.$neutral-dark-color;
 
   &:hover {
-    background-color: colors.$btn-bg-hover-secondary;
+    background-color: button.$btn-bg-hover-secondary;
   }
 }
 
