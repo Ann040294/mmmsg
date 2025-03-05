@@ -11,7 +11,7 @@ const LayoutPage: FC = () => {
 
     return (
         <div className={css.root}>
-            <Layout hasGradient>
+            <Layout hasGradient className={css.navbar}>
                 <Navbar options={optionsNavbar} />
             </Layout>
             <Layout>

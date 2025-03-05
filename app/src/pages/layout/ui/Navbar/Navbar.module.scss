@@ -14,7 +14,7 @@
     @extend %flex;
 
     flex-grow: 1;
-    gap: 20px;
+    gap: 10px;
 
     &:last-child {
       flex-grow: 0;
