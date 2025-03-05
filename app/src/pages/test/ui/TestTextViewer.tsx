@@ -6,10 +6,12 @@ export const TestTextViewer: FC = () => {
     return (
         <Layout>
             <TextViewer
+                senderName='Test'
                 text="1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111"
                 timestamp="12:00"
             />
             <TextViewer
+                senderName='Test'
                 text="2222222222222222222222222222222222222222222222222222222222222222222222222"
                 timestamp="12:00"
                 isSender={true}
