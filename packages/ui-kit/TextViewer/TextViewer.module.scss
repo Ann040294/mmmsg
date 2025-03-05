@@ -1,28 +1,26 @@
 @use "../styles/color.scss" as colors;
 @use "../styles/typography" as typography;
 
-.chat {
+.message {
   display: flex;
   max-width: 500px;   //TODO: адаптивность
   margin-bottom: 15px;
-  word-wrap: break-word;
 
   &content {
-    background-color: colors.$msg-incoming-color;
     border-radius: 16px;
     padding: 10px 20px;
     display: flex;
     flex-direction: column;
     max-width: 60%;
-    justify-content: flex-end;
-    align-self: flex-end;
-    margin: 0 0 0 auto;
+    word-wrap: break-word;
 
     &.sender {
       background-color: colors.$msg-outgoing-color;
-      justify-content: flex-start;
-      align-self: flex-start;
       margin: 0 auto 0 0;
+    }
+    &.recipient {
+      background-color: colors.$msg-incoming-color;
+      margin: 0 0 0 auto;
     }
   }
 
@@ -36,3 +34,4 @@
     align-self: flex-end;
   }
 }
+
