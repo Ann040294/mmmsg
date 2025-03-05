@@ -1,19 +1,23 @@
 import { FC } from 'react';
 import { NavLink } from 'react-router';
 
-import { NavbarItemTypesMap, NavLinkType } from './types';
+import { NavbarItemTypesMap, NavLinkTypeExtend } from './types';
 
-const NavbarItem: FC<NavLinkType> = (props) => {
-    const Component = NavbarItemTypesMap[props.type];
+const NavbarItem: FC<NavLinkTypeExtend> = (props) => {
+    const { path, name, isHidden, type, ...componentProps } = props;
 
-    if (props.isHidden) {
+    const Component = NavbarItemTypesMap[type];
+
+    if (isHidden) {
         return null;
     }
 
     return (
-        <NavLink to={props.path}>
-            <Component />
-            <span>{props.name}</span> {/*Удалить как появится circleButton*/}
+        <NavLink
+            to={path}
+            title={name}
+        >
+            <Component {...componentProps} />
         </NavLink>
     );
 };

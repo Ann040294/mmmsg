@@ -1,15 +1,14 @@
 %flex {
   display: flex;
   flex-direction: column;
-  align-items: center;
 }
 
 .root {
   @extend %flex;
 
+  align-items: center;
   height: 100%;
   justify-content: space-between;
-
 
   .item {
     @extend %flex;

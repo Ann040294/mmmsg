@@ -7,7 +7,7 @@ export const optionsNavbar: NavLinkType[][] = [
         {
             path: ROUTE_CONFIG.HOME.path,
             name: ROUTE_CONFIG.HOME.title,
-            type: NavbarItemTypes.AVATAR,
+            type: NavbarItemTypes.BUTTON_CIRCLE,
         },
     ],
     [
