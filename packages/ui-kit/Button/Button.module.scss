@@ -10,7 +10,7 @@
   font-size: typography.$font-size-button-medium;
   padding: 0 50px;
   min-width: 200px;
-  min-height: 40px;
+  min-height: 50px;
   border: none;
   border-radius: 8px;
   cursor: pointer;
@@ -20,6 +20,7 @@
 .primary {
   background-color: colors.$btn-bg-primary;
   color: colors.$btn-color-primary;
+  word-wrap: break-word;
 
   &:hover {
     background-color: colors.$btn-bg-hover-primary;
@@ -37,14 +38,16 @@
 }
 
 .large {
-  padding: 0 55px;
-  min-width: 250px;
+  padding: 0 70px;
+  min-width: 350px;
+  min-height: 60px;
   font-size: typography.$font-size-button-large;
 }
 
 .small {
-  padding: 0 45px;
+  padding: 0 40px;
   min-width: 150px;
+  min-height: 40px;
   font-size: typography.$font-size-button-small;
 }
 
