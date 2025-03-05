@@ -1,7 +1,6 @@
 %flex {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   align-items: center;
 }
 
@@ -9,4 +8,17 @@
   @extend %flex;
 
   height: 100%;
+  justify-content: space-between;
+
+
+  .item {
+    @extend %flex;
+
+    flex-grow: 1;
+    gap: 20px;
+
+    &:last-child {
+      flex-grow: 0;
+    }
+  }
 }

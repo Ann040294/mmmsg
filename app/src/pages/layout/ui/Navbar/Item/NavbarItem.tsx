@@ -13,7 +13,7 @@ const NavbarItem: FC<NavLinkType> = (props) => {
     return (
         <NavLink to={props.path}>
             <Component />
-            <span>{props.name}</span>
+            <span>{props.name}</span> {/*Удалить как появится circleButton*/}
         </NavLink>
     );
 };

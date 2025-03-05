@@ -5,17 +5,24 @@ import { NavbarItem, NavLinkType } from './Item';
 import css from './Navbar.module.scss';
 
 interface NavbarProps {
-    options: NavLinkType[];
+    options: NavLinkType[][];
 }
 
 const Navbar: FC<NavbarProps> = (props) => {
     return (
         <nav className={css.root}>
-            {props.options.map((item) => (
-                <NavbarItem
-                    key={item.path}
-                    {...item}
-                />
+            {props.options.map((option) => (
+                <div
+                    key={option[0].path}
+                    className={css.item}
+                >
+                    {option.map((item) => (
+                        <NavbarItem
+                            key={item.path}
+                            {...item}
+                        />
+                    ))}
+                </div>
             ))}
         </nav>
     );
