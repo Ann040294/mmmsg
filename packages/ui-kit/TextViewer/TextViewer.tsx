@@ -1,26 +1,24 @@
-import React, {FC} from 'react';
+import React, { FC } from 'react';
 import cn from 'classnames';
 
-import css from './TextViewer.module.scss';
+import css from './TextViewer.module.scss'
 
-export interface TextViewer {
+export interface TextViewerProps {
     text: string;
-    isSender: boolean;
-    timestamp?: string;
+    isSender?: boolean;
+    timestamp: string;
 }
 
-const TextViewer: FC<TextViewer> = ({
+const TextViewer: FC<TextViewerProps> = ({
                                         text,
-                                        isSender,
-                                        timestamp
-                                    }
-) => {
+                                        isSender = false,
+                                        timestamp }) => {
     return (
-        <div className={`chat-message ${isSender ? 'chat-message--sender' : 'chat-message--receiver'}`}>
-            <div className="chat-message__content">
-                <p className="chat-message__text">{text}</p>
+        <div className={cn(css.chat)}>
+            <div className={cn(css.chatcontent, {[css.sender]: isSender})}>
+                <p className={cn(css.chattext)}>{text}</p>
                 {timestamp && (
-                    <span className="chat-message__timestamp">{timestamp}</span>
+                    <span className={cn(css.chattimestamp)}>{timestamp}</span>
                 )}
             </div>
         </div>

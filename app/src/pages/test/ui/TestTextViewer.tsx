@@ -1,15 +1,18 @@
-import {FC} from 'react';
-import {Layout} from 'ui-kit';
-import {TextViewer} from 'ui-kit/TextViewer';
+import { FC } from 'react';
 
-import css from '../style.module.scss'
+import { Layout, TextViewer } from 'ui-kit';
 
-const TestTextViewer: FC = () => {
+export const TestTextViewer: FC = () => {
     return (
         <Layout>
-            <TestTextViewer/>
+            <TextViewer text='1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111' timestamp='12:00'/>
+            <TextViewer text='2222222222222222222222222222222222222222222222222222222222222222222222222'
+                        timestamp='12:00'
+                        isSender={true}/>
+            <TextViewer text='1'
+                        timestamp='12:00'/>
+            <TextViewer timestamp='12:01' text='
+            1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111'/>
         </Layout>
     );
 };
-
-export default TestTextViewer;
