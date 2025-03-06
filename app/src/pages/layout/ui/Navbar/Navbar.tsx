@@ -9,10 +9,10 @@ interface NavbarProps {
     options: NavLinkTypeExtend[][];
 }
 
-const Navbar: FC<NavbarProps> = (props) => {
+const Navbar: FC<NavbarProps> = ({ options }) => {
     return (
         <nav className={css.root}>
-            {props.options.map((option) => (
+            {options.map((option) => (
                 <div
                     key={getKeyFromNavLinkArray(option)}
                     className={css.item}
