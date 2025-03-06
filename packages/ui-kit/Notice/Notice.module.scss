@@ -1,22 +1,6 @@
 @use '../styles/color.scss' as color;
 @use '../styles/notice.scss' as notice;
 
-  .error {
-    color: notice.$notice-error-color;
-  }
-
-  .success {
-    color: notice.$notice-success-color;
-  }
-
-  .info {
-    color: notice.$notice-info-color;
-  }
-
-  .warning {
-    color: notice.$notice-warning-color;
-  }
-
 .container {
   display: flex;
   align-items: center;
@@ -25,74 +9,50 @@
   border-radius: 5px;
   color: color.$neutral-dark-color;
   max-width: 100%;
-  word-break: break-all;
+  word-break: break-word;
   overflow-wrap: break-word;
-}
 
-.default {
-  .message {
-    font-size: 14px;
-  }
-
-  .icon {
-    font-size: 18px;
-    margin-right: 8px; 
-  }
-}
-
-.filled {
-  background-color: transparent;
-  
-  &:not(.icon) {
-    color: color.$neutral-dark-color;
-  }
-  
   &.error {
-    background-color: notice.$notice-error-bg;
+    --text-color: #{notice.$notice-error-color};
+    --bg-color: #{notice.$notice-error-bg};
+    --border-color: #{notice.$notice-error-color};
   }
 
   &.success {
-    background-color: notice.$notice-success-bg;
+    --text-color: #{notice.$notice-success-color};
+    --bg-color: #{notice.$notice-success-bg};
+    --border-color: #{notice.$notice-success-color};
   }
 
   &.info {
-    background-color: notice.$notice-info-bg;
+    --text-color: #{notice.$notice-info-color};
+    --bg-color: #{notice.$notice-info-bg};
+    --border-color: #{notice.$notice-info-color};
   }
 
   &.warning {
-    background-color: notice.$notice-warning-bg;
+    --text-color: #{notice.$notice-warning-color};
+    --bg-color: #{notice.$notice-warning-bg};
+    --border-color: #{notice.$notice-warning-color};
   }
 
-  .icon {
-    margin-right: 8px;
-  }
-
-  .message {
-    color: color.$neutral-dark-color;
+  &.filled {
+    background-color: var(--bg-color, transparent);
+    --message-color: #{color.$neutral-dark-color};
   }
 
   &.border {
-    border: 1px solid;
-
-    &.error {
-      border-color: notice.$notice-error-color;
-    }
-
-    &.success {
-      border-color: notice.$notice-success-color;
-    }
-
-    &.info {
-      border-color: notice.$notice-info-color;
-    }
-
-    &.warning {
-      border-color: notice.$notice-warning-color;
-    }
+    border: 1px solid var(--border-color, transparent);
   }
+}
 
-  .icon,
-  .message {
-    border: none;
-  }
+.icon {
+  font-size: 18px;
+  margin-right: 8px;
+  color: var(--text-color);
+}
+
+.message {
+  font-size: 14px;
+  color: var(--message-color, var(--text-color));
 }

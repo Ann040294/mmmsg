@@ -30,9 +30,9 @@ const Notice: FC<NoticeProps> = ({
         >
             <Icon
                 icon={IconComponent}
-                className={cn(css.icon, css[type])}
+                className={css.icon}
             />
-            <span className={cn(css.message, css[type])}>{message}</span>
+            <span className={css.message}>{message}</span>
         </div>
     );
 };
