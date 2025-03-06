@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import { getKeyFromPaths } from './utils/getKeyFromPaths';
+import { getKeyFromNavLinkArray } from './utils/getKeyFromNavLinkArray';
 import { NavbarItem, NavLinkTypeExtend } from './Item';
 
 import css from './Navbar.module.scss';
@@ -14,7 +14,7 @@ const Navbar: FC<NavbarProps> = (props) => {
         <nav className={css.root}>
             {props.options.map((option) => (
                 <div
-                    key={getKeyFromPaths(option)}
+                    key={getKeyFromNavLinkArray(option)}
                     className={css.item}
                 >
                     {option.map((item) => (
