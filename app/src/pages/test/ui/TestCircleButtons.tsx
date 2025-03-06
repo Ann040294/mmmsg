@@ -25,7 +25,7 @@ export const TestCircleButtons: FC = () => {
             />
 
             <CircleButton
-                icon={MessageOutlined} //
+                icon={MessageOutlined}
                 label="Чаты"
                 size={CircleButtonSize.LARGE}
                 onClick={handleClick}
