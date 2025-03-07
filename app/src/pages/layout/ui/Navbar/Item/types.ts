@@ -1,6 +1,8 @@
 import { MouseEvent } from 'react';
 
 import Avatar from 'ui-kit/Avatar/Avatar';
+import { CircleButton } from 'ui-kit/CircleButton';
+import { Icon as IconType } from 'ui-kit/Icon/types';
 
 export enum NavbarItemTypes {
     AVATAR = 'Avatar',
@@ -9,7 +11,7 @@ export enum NavbarItemTypes {
 
 export const NavbarItemTypesMap = {
     [NavbarItemTypes.AVATAR]: Avatar,
-    [NavbarItemTypes.BUTTON_CIRCLE]: Avatar, //TODO: Поменять на ButtonCircle
+    [NavbarItemTypes.BUTTON_CIRCLE]: CircleButton,
 };
 
 type BaseNavLinkType = {
@@ -27,7 +29,11 @@ type AvatarNavLinkType = {
 };
 
 type ButtonCircleNavLinkType = {
-    type: NavbarItemTypes.BUTTON_CIRCLE; //TODO: Дополнить, когда появится ButtonCircle
+    type: NavbarItemTypes.BUTTON_CIRCLE;
+    icon: IconType
+    className?: string;
+    label?: string;
+    onClick?: (e: MouseEvent<HTMLButtonElement>) => void;
 };
 
 export type NavLinkType = BaseNavLinkType & (AvatarNavLinkType | ButtonCircleNavLinkType);

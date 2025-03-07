@@ -1,3 +1,6 @@
+import LogoutOutlined from '@ant-design/icons/LogoutOutlined';
+import MessageOutlined from '@ant-design/icons/MessageOutlined';
+
 import { ROUTE_CONFIG } from '@shared/config/routeConfig';
 
 import { NavbarItemTypes, NavLinkType } from './Item/types';
@@ -8,6 +11,8 @@ export const optionsNavbar: NavLinkType[][] = [
             path: ROUTE_CONFIG.HOME.path,
             name: ROUTE_CONFIG.HOME.title,
             type: NavbarItemTypes.BUTTON_CIRCLE,
+            icon: MessageOutlined,
+            label: ROUTE_CONFIG.HOME.title,
         },
     ],
     [
@@ -19,7 +24,9 @@ export const optionsNavbar: NavLinkType[][] = [
         {
             path: ROUTE_CONFIG.LOGOUT.path,
             name: ROUTE_CONFIG.LOGOUT.title,
-            type: NavbarItemTypes.AVATAR,
+            type: NavbarItemTypes.BUTTON_CIRCLE,
+            icon: LogoutOutlined,
+            label: ROUTE_CONFIG.LOGOUT.title,
         },
     ],
 ];

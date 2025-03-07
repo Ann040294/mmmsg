@@ -1,6 +1,7 @@
 import { FC } from 'react';
 import { NavLink, NavLinkRenderProps } from 'react-router';
 import cn from 'classnames';
+import QuestionCircleOutlined from '@ant-design/icons/QuestionCircleOutlined'
 
 import { NavbarItemTypesMap, NavLinkTypeExtend } from './types';
 
@@ -12,7 +13,7 @@ const NavbarItem: FC<NavLinkTypeExtend> = (props) => {
     const Component = NavbarItemTypesMap[type];
 
     const classNames = ({ isActive }: NavLinkRenderProps): string => {
-        return cn(css.root, isActive && css.active);
+        return cn(css.root, { [css.active]: isActive });
     };
 
     if (isHidden) {
@@ -25,7 +26,7 @@ const NavbarItem: FC<NavLinkTypeExtend> = (props) => {
             title={name}
             className={classNames}
         >
-            <Component {...componentProps} />
+            <Component icon={QuestionCircleOutlined} {...componentProps} />
         </NavLink>
     );
 };
