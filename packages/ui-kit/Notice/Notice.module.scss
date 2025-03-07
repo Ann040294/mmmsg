@@ -7,7 +7,7 @@
   font-size: notice.$notice-text-default-size;
   padding: 10px;
   border-radius: 5px;
-  color: color.$neutral-dark-color;
+  color: var(--text-color);
   max-width: 100%;
   word-break: break-word;
   overflow-wrap: break-word;
@@ -49,10 +49,8 @@
 
 .icon {
   font-size: notice.$notice-icon-size;
-  color: var(--text-color);
 }
 
 .message {
-  font-size: notice.$notice-text-default-size;
-  color: var(--message-color, var(--text-color));
+  color: var(--message-color, inherit);
 }
