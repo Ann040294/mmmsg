@@ -4,13 +4,14 @@
 .container {
   display: flex;
   align-items: center;
-  font-size: 14px;
+  font-size: notice.$notice-text-default-size;
   padding: 10px;
   border-radius: 5px;
   color: color.$neutral-dark-color;
   max-width: 100%;
   word-break: break-word;
   overflow-wrap: break-word;
+  gap: 8px;
 
   &.error {
     --text-color: #{notice.$notice-error-color};
@@ -47,12 +48,11 @@
 }
 
 .icon {
-  font-size: 18px;
-  margin-right: 8px;
+  font-size: notice.$notice-icon-size;
   color: var(--text-color);
 }
 
 .message {
-  font-size: 14px;
+  font-size: notice.$notice-text-default-size;
   color: var(--message-color, var(--text-color));
 }
