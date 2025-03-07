@@ -5,7 +5,7 @@ export const ROUTE_CONFIG = {
     },
     TEST: {
         path: '/test',
-        title: 'Тестирование'
+        title: 'Тестирование',
     },
     PROFILE: {
         path: '/profile/',
@@ -13,6 +13,18 @@ export const ROUTE_CONFIG = {
     },
     LOGOUT: {
         path: '/logout',
-        title: 'Выход'
-    }
-}
+        title: 'Выход',
+    },
+    LOGIN: {
+        path: '/login',
+        title: 'Авторизация',
+    },
+    REGISTER: {
+        path: '/register',
+        title: 'Регистрация',
+    },
+    RESET: {
+        path: '/reset-password',
+        title: 'Смена пароля',
+    },
+};

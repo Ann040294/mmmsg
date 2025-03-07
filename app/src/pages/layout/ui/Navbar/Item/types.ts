@@ -1,8 +1,9 @@
-import { MouseEvent } from 'react';
+import { lazy, MouseEvent } from 'react';
 
-import Avatar from 'ui-kit/Avatar/Avatar';
-import { CircleButton } from 'ui-kit/CircleButton';
 import { Icon as IconType } from 'ui-kit/Icon/types';
+
+const Avatar = lazy(() => import('ui-kit/Avatar/Avatar'));
+const CircleButton = lazy(() => import('ui-kit/CircleButton/CircleButton'));
 
 export enum NavbarItemTypes {
     AVATAR = 'Avatar',
@@ -30,14 +31,17 @@ type AvatarNavLinkType = {
 
 type ButtonCircleNavLinkType = {
     type: NavbarItemTypes.BUTTON_CIRCLE;
-    icon: IconType
+    icon: IconType;
     className?: string;
     label?: string;
     onClick?: (e: MouseEvent<HTMLButtonElement>) => void;
 };
 
-export type NavLinkType = BaseNavLinkType & (AvatarNavLinkType | ButtonCircleNavLinkType);
+export type NavLinkType = BaseNavLinkType &
+    (AvatarNavLinkType | ButtonCircleNavLinkType);
 
 type DeleteType<T> = Partial<Omit<T, 'type'>>;
 
-export type NavLinkTypeExtend = BaseNavLinkType & DeleteType<AvatarNavLinkType> & DeleteType<ButtonCircleNavLinkType>;
+export type NavLinkTypeExtend = BaseNavLinkType &
+    DeleteType<AvatarNavLinkType> &
+    DeleteType<ButtonCircleNavLinkType>;
