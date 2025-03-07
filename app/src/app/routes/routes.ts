@@ -7,4 +7,5 @@ export const routes = {
     login: { ...ROUTE_CONFIG.LOGIN },
     register: { ...ROUTE_CONFIG.REGISTER },
     reset: { ...ROUTE_CONFIG.RESET },
+    not_found: { ...ROUTE_CONFIG.NOT_FOUND },
 };

@@ -27,4 +27,8 @@ export const ROUTE_CONFIG = {
         path: '/reset-password',
         title: 'Смена пароля',
     },
+    NOT_FOUND: {
+        path: '*',
+        title: 'Страница не найдена',
+    }
 };

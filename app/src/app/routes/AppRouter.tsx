@@ -18,7 +18,7 @@ const AppRouter: FC = () => {
         <BrowserRouter>
             <Routes>
                 <Route
-                    path={'*'}
+                    path={routes.not_found.path}
                     element={<NotFoundPage />}
                 />
                 <Route element={<ProtectedRoute />}>
