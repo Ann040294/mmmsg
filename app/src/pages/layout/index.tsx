@@ -3,7 +3,7 @@ import { Outlet } from 'react-router';
 
 import { Layout } from 'ui-kit';
 
-import { Navbar, optionsNavbar } from '@pages/layout/ui/Navbar';
+import { defaultConfig, Navbar } from '@pages/layout/ui/Navbar';
 
 import css from './layout.module.scss';
 
@@ -12,7 +12,7 @@ const LayoutPage: FC = () => {
     return (
         <div className={css.root}>
             <Layout hasGradient className={css.navbar}>
-                <Navbar options={optionsNavbar} />
+                <Navbar options={defaultConfig} />
             </Layout>
             <Layout>
                 <Outlet />

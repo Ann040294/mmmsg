@@ -26,7 +26,7 @@ type AvatarNavLinkType = {
     type: NavbarItemTypes.AVATAR;
     className?: string;
     src?: string;
-    onClick?: (event: MouseEvent<HTMLImageElement>) => void;
+    onClick?: (event: MouseEvent<HTMLElement>) => void;
 };
 
 type ButtonCircleNavLinkType = {
@@ -34,7 +34,7 @@ type ButtonCircleNavLinkType = {
     icon: IconType;
     className?: string;
     label?: string;
-    onClick?: (e: MouseEvent<HTMLButtonElement>) => void;
+    onClick?: (event: MouseEvent<HTMLElement>) => void;
 };
 
 export type NavLinkType = BaseNavLinkType &

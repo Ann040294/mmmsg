@@ -14,7 +14,7 @@ interface AvatarProps {
     src?: string;
     alt?: string;
     srcSet?: string;
-    onClick?: (event: MouseEvent<HTMLImageElement>) => void;
+    onClick?: (event: MouseEvent<HTMLElement>) => void;
 }
 
 const Avatar: FC<AvatarProps> = ({

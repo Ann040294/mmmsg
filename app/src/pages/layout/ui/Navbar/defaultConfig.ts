@@ -5,7 +5,7 @@ import { ROUTE_CONFIG } from '@shared/config/routeConfig';
 
 import { NavbarItemTypes, NavLinkType } from './Item/types';
 
-export const optionsNavbar: NavLinkType[][] = [
+export const defaultConfig: NavLinkType[][] = [
     [
         {
             path: ROUTE_CONFIG.HOME.path,
