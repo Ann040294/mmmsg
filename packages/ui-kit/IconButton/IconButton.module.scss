@@ -1,13 +1,23 @@
 .root {
+  display: inline-block;
+  height: var(--icon-size);
+  width: var(--icon-size);
+
   &.disabled {
     opacity: 0.5;
-    //pointer-events: none;
     cursor: not-allowed;
   }
 }
 
-//.disabled {
-//  opacity: 0.5;
-//  //pointer-events: none;
-//  cursor: not-allowed;
-//}
+.large {
+  --icon-size: 56px;
+  font-size: 24px;
+}
+
+.medium {
+  --icon-size: 48px;
+}
+
+.small {
+  --icon-size: 40px;
+}
