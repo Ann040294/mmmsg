@@ -1,0 +1,30 @@
+@use 'ui-kit/styles/color' as color;
+
+.yearList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 10px;
+}
+
+.itemYear {
+  padding: 6px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  will-change: background-color;
+  transition: background-color .3s ease-in;
+  &:hover {
+    background-color: color.$date-picker-hover;
+  }
+  &.active {
+    background-color: color.$date-picker-selected;
+    color: color.$neutral-white-color
+  }
+}
+
+.itemMonth {
+  @extend .itemYear;
+  width: 33.33%;
+}

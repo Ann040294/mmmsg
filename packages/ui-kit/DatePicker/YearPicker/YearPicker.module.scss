@@ -1,0 +1,38 @@
+@use 'ui-kit/styles/color' as color;
+
+.yearPicker {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+}
+
+.yearBtn {
+    position: relative;
+    padding: 2px 16px 2px 2px;
+    border: none;
+    color: color.$date-picker-year-month;
+    font-weight: 700;
+    cursor: pointer;
+    &.active {
+        .triangle {
+            transform: translateY(-50%) rotate(180deg);
+        }
+    }
+}
+
+.triangle {
+    position: absolute;
+    display: block;
+    width: 0;
+    height: 0;
+    top: 50%;
+    right: 0;
+    will-change: transform;
+    transform: translateY(-50%) rotate(0);
+    transition: transform .3s ease-in;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 4px solid color.$date-picker-year-month;
+    pointer-events: none;
+}

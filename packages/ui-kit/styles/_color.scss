@@ -11,6 +11,9 @@ $neutral-darken-gray-color: #5d5d5d;
 $neutral-dark-gray-color: #333333;
 $neutral-dark-color: #000000;
 $neutral-silvery-color: #d9d9d9;
+$neutral-light-grayish-blue: #EBEBF6;
+$neutral-indigo: #605DEC;
+
 
 $input-msg-color: $neutral-light-color;
 
@@ -30,3 +33,15 @@ $card-color: $neutral-white-color;
 
 //layout
 $layout-bg: $neutral-white-color;
+
+
+//date picker
+$date-picker-shadow: #8E8DD01F;
+$date-picker-hover: #F4F3FE;
+$date-picker-selected: $neutral-indigo;
+$date-picker-header-bg: $neutral-light-grayish-blue;
+$date-picker-year-month: $neutral-indigo;
+$date-picker-month-btn: $neutral-light-gray-color;
+$date-picker-inactive-date: $neutral-light-gray-color;
+$date-picker-date: $neutral-dark-color;
+$date-picker-holidays: $brand-secondary-color;
