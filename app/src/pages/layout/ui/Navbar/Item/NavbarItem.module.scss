@@ -1,0 +1,19 @@
+@use 'ui-kit/styles/color' as colors;
+
+.root {
+  padding: 12px 8px;
+  border-radius: 5px;
+  transition: background-color 200ms ease-in-out;
+  text-decoration: none;
+
+  &:hover {
+    background-color: rgba(colors.$neutral-silvery-color, 0.6);
+  }
+}
+
+.active {
+  background-color: rgba(colors.$neutral-white-color, 0.5);
+  box-shadow: 0 1px 8px rgba(colors.$neutral-dark-color, 0.4);
+}
+
+
