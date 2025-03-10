@@ -1,0 +1,16 @@
+@use 'ui-kit/styles/color' as color;
+
+.datePicker {
+    width: 270px;
+    height: 305px;
+    background-color: color.$neutral-white-color;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 8px 16px 0 color.$date-picker-shadow;
+}
+
+.header {
+    display: block;
+    width: 100%;
+    background-color: color.$date-picker-header-bg;
+}

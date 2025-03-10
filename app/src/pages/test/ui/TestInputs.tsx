@@ -7,6 +7,7 @@ import { Button, ButtonSize, ButtonVariants } from 'ui-kit/Button';
 import { NoticeTypes } from 'ui-kit/Notice';
 
 import css from '../style.module.scss';
+import { DatePicker } from 'ui-kit/DatePicker';
 
 export const TestInputs: FC = () => {
     const [value, setValue] = useState('');
@@ -139,6 +140,7 @@ export const TestInputs: FC = () => {
                 value=""
                 noticeType={NoticeTypes.ERROR}
             />
+            <DatePicker />
         </Layout>
     );
 };
