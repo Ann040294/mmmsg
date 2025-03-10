@@ -1,0 +1,18 @@
+@use "../styles/color.scss" as color;
+
+$btn-bg-primary: color.$neutral-dark-color;
+$btn-bg-hover-primary: color.$neutral-dark-gray-color;
+$btn-color-primary: color.$neutral-white-color;
+
+$btn-bg-secondary: color.$neutral-white-color;
+$btn-bg-hover-secondary: color.$neutral-light-color;
+$btn-color-secondary: color.$neutral-dark-color;
+
+$circle-button-bg-color: rgba(255, 255, 255, 0.3);
+$circle-button-icon-color: color.$neutral-white-color;
+$circle-button-label-color: color.$neutral-white-color;
+$circle-button-focus-outline: #ffffff80;
+
+$circle-button-s-size: 40px;
+$circle-button-m-size: 48px;
+$circle-button-l-size: 56px;
