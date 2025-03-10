@@ -14,7 +14,7 @@ interface CircleButtonProps {
     className?: string;
     label?: string;
     size?: CircleButtonSize;
-    onClick?: (e: MouseEvent<HTMLButtonElement>) => void;
+    onClick?: (e: MouseEvent<HTMLElement>) => void;
 }
 
 const CircleButton: FC<CircleButtonProps> = ({
