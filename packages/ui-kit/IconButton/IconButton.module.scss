@@ -1,23 +1,48 @@
+@use 'ui-kit/styles/button' as button;
+
 .root {
-  display: inline-block;
+  --font-size: 24px;
+
   height: var(--icon-size);
   width: var(--icon-size);
+  font-size: var(--font-size);
+  display: inline-flex;
+  justify-content: center;
+  margin: 0 5px;
+  box-sizing: border-box;
+
+  &:hover, {
+    background-color: button.$btn-bg-third;
+    border: 1px solid button.$btn-hover-border-color;
+    cursor: pointer;
+  }
+
+  &:focus {
+    background-color: button.$btn-bg-third;
+    border: 1px solid button.$btn-focus-border-color;
+  }
 
   &.disabled {
+    background-color: button.$btn-disable-bg-color;
     opacity: 0.5;
     cursor: not-allowed;
+    border: none;
   }
 }
 
 .large {
-  --icon-size: 56px;
-  font-size: 24px;
+  --icon-size: #{button.$btn-size-large};
 }
 
 .medium {
-  --icon-size: 48px;
+  --icon-size: #{button.$btn-size-medium};
 }
 
 .small {
-  --icon-size: 40px;
+  --icon-size: #{button.$btn-size-small};
+}
+
+.extraSmall {
+  --icon-size: #{button.$btn-size-extra-small};
+  --font-size: 16px;
 }
