@@ -7,7 +7,7 @@ import { IconButtonSize } from './types';
 
 import css from './IconButton.module.scss';
 
-export interface IconButtonProps {
+interface IconButtonProps {
     icon: IconType;
     size?: IconButtonSize;
     isDisabled?: boolean;
