@@ -6,18 +6,18 @@ import css from './HeaderPage.module.scss';
 
 interface HeaderPageProps {
     label: string;
-    iconsLeft?: IconItemType[];
-    iconsRight?: IconItemType[];
+    leftIcons?: IconItemType[];
+    rightIcons?: IconItemType[];
 }
 
-const HeaderPage: FC<HeaderPageProps> = ({ label, iconsRight, iconsLeft }) => {
+const HeaderPage: FC<HeaderPageProps> = ({ label, leftIcons, rightIcons }) => {
     return (
         <div className={css.root}>
             <div className={css.item}>
-                {iconsLeft && <IconItems options={iconsLeft} />}
+                {leftIcons && <IconItems options={leftIcons} />}
                 {label}
             </div>
-            {iconsRight && <IconItems options={iconsRight} />}
+            {rightIcons && <IconItems options={rightIcons} />}
         </div>
     );
 };

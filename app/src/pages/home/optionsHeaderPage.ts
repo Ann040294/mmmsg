@@ -3,14 +3,14 @@ import FormOutlined from '@ant-design/icons/FormOutlined';
 
 import { IconItemType } from '@shared/ui/HeaderPage/IconItems/types';
 
-export const iconsLeftHeaderPage: IconItemType[] = [
+export const LeftIconsHeaderPage: IconItemType[] = [
     {
         id: '1',
         icon: ArrowLeftOutlined,
     },
 ];
 
-export const iconsRightHeaderPage: IconItemType[] = [
+export const RightIconsHeaderPage: IconItemType[] = [
     {
         id: '1',
         icon: FormOutlined,
