@@ -1,20 +1,15 @@
-import { FC } from 'react';
+import {FC} from 'react';
 
-import { IconItemType } from './types';
+import {Icon as IconType} from 'ui-kit/Icon/types';
 
 interface IconItemProps {
-    icon: IconItemType;
+    icon: IconType;
     className?: string;
 }
 
-const IconItem: FC<IconItemProps> = ({ icon, className }) => {
-    const Icon = icon.icon;
-
+const IconItem: FC<IconItemProps> = ({icon: Icon}) => {
     return (
-        <Icon
-            className={className}
-            onClick={icon.onClick}
-        />
+        <Icon style={{fontSize: '18px'}}/>
     );
 };
 

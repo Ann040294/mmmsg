@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import IconItem from '@shared/ui/HeaderPage/IconItem/IconItem';
+import IconItems from '@shared/ui/HeaderPage/IconItems/IconItems';
 
 import { IconItemType } from './IconItem/types';
 
@@ -16,27 +16,10 @@ const HeaderPage: FC<HeaderPageProps> = ({ label, iconsRight, iconsLeft }) => {
     return (
         <div className={css.root}>
             <div className={css.item}>
-                {iconsLeft &&
-                    iconsLeft.map((item) => (
-                        <IconItem
-                            key={item.id}
-                            icon={item}
-                            className={css.icon}
-                        />
-                    ))}
-
+                {iconsLeft && <IconItems options={iconsLeft} />}
                 {label}
             </div>
-            <div className={css.item}>
-                {iconsRight &&
-                    iconsRight.map((item) => (
-                        <IconItem
-                            key={item.id}
-                            icon={item}
-                            className={css.icon}
-                        />
-                    ))}
-            </div>
+            {iconsRight && <IconItems options={iconsRight} />}
         </div>
     );
 };

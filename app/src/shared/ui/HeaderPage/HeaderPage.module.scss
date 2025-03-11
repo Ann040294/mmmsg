@@ -11,11 +11,11 @@
     gap: 10px;
   }
 
-  .icon {
-    @include typography.headline-5;
-
-    &:hover {
-      cursor: pointer;
-    }
-  }
+  //.icon {
+  //  @include typography.headline-5;
+  //
+  //  &:hover {
+  //    cursor: pointer;
+  //  }
+  //}
 }
