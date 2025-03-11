@@ -1,7 +1,8 @@
 import { FC } from 'react';
-import { Icon, Layout } from 'ui-kit';
 import AccountBookTwoTone from '@ant-design/icons/AccountBookTwoTone';
 import SearchOutlined from '@ant-design/icons/SearchOutlined';
+
+import { Icon, Layout } from 'ui-kit';
 
 export const TestIcons: FC = () => {
     return (

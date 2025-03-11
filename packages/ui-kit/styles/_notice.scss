@@ -1,0 +1,15 @@
+@use '../styles/color.scss' as color;
+
+//notice
+$notice-color-default: color.$neutral-dark-color;
+$notice-error-color: color.$state-error-color;
+$notice-error-bg: color.$state-error-bg;
+$notice-success-color: color.$state-success-color;
+$notice-success-bg: color.$state-success-bg;
+$notice-info-color: color.$state-info-color;
+$notice-info-bg: color.$state-info-bg;
+$notice-warning-color: color.$state-warning-color;
+$notice-warning-bg: color.$state-warning-bg;
+
+$notice-text-default-size: 14px;
+$notice-icon-size: 18px;
