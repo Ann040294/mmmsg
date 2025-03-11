@@ -1,8 +1,6 @@
 import { FC } from 'react';
 
-import IconItems from '@shared/ui/HeaderPage/IconItems/IconItems';
-
-import { IconItemType } from './IconItem/types';
+import { IconItems, IconItemType } from './IconItems';
 
 import css from './HeaderPage.module.scss';
 

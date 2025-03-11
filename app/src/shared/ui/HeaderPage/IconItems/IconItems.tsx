@@ -1,9 +1,11 @@
 import { FC } from 'react';
 
-import IconItem from '@shared/ui/HeaderPage/IconItem/IconItem';
-import { IconItemType } from '@shared/ui/HeaderPage/IconItem/types';
+import { IconButton } from 'ui-kit';
+import { IconButtonSize } from 'ui-kit/IconButton';
 
-import css from './IconItems.module.scss'
+import { IconItemType } from './types';
+
+import css from './IconItems.module.scss';
 
 interface IconItemsProps {
     options: IconItemType[];
@@ -12,10 +14,11 @@ interface IconItemsProps {
 const IconItems: FC<IconItemsProps> = ({ options }) => {
     return (
         <div className={css.root}>
-            {options.map((item) => (
-                <IconItem
-                    key={item.id}
-                    icon={item.icon}
+            {options.map((option) => (
+                <IconButton
+                    key={option.id}
+                    size={IconButtonSize.EXTRA_SMALL}
+                    {...option}
                 />
             ))}
         </div>

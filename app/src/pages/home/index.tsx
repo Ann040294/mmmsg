@@ -1,7 +1,7 @@
 import { FC } from 'react';
 
 import { ROUTE_CONFIG } from '@shared/config/routeConfig';
-import HeaderPage from '@shared/ui/HeaderPage/HeaderPage';
+import { HeaderPage } from '@shared/ui/HeaderPage';
 
 import { iconsLeftHeaderPage, iconsRightHeaderPage } from './optionsHeaderPage';
 
