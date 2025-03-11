@@ -2,7 +2,7 @@
 @use 'ui-kit/styles/typography' as typography;
 
 .root {
-  --font-size: #{typography.$font-size-icon-normal};
+  --font-size: #{typography.$font-size-icon-medium};
 
   height: var(--icon-size);
   width: var(--icon-size);
@@ -45,5 +45,5 @@
 
 .extraSmall {
   --icon-size: #{button.$btn-size-extra-small};
-  --font-size: #{typography.$font-size-icon-xs};
+  --font-size: #{typography.$font-size-icon-small};
 }
