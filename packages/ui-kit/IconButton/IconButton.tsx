@@ -29,7 +29,7 @@ const IconButton: FC<IconButtonProps> = ({
             return;
         }
 
-        onClick?.()
+        onClick?.();
     };
 
     return (
