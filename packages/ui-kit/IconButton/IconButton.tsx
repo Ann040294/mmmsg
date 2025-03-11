@@ -25,9 +25,11 @@ const IconButton: FC<IconButtonProps> = ({
     const handleOnClick = (event: MouseEvent<HTMLElement>) => {
         if (isDisabled) {
             event.preventDefault();
-        } else if (onClick) {
-            onClick();
+
+            return;
         }
+
+        onClick?.()
     };
 
     return (
