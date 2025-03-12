@@ -6,9 +6,11 @@ import { InputVariants } from 'ui-kit/Input';
 
 import { compactMessagesMock } from '@entities/compactMessage/mock/compactMessagesMock';
 
+import css from './MessageList.module.scss';
+
 const MessageList: FC = () => {
     return (
-        <div>
+        <div className={css.root}>
             <Input
                 variant={InputVariants.FILLED}
                 placeholder={'Поиск...'}

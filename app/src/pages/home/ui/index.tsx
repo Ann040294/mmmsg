@@ -10,16 +10,20 @@ import {
     RIGHT_HEADER_PAGE_BUTTONS,
 } from '../config/configHeaderPage';
 
+import css from './HomePage.module.scss';
+
 const Index: FC = () => {
     return (
         <>
             <title>{ROUTE_CONFIG.HOME.title}</title>
-            <HeaderPage
-                label={ROUTE_CONFIG.HOME.labelPage}
-                rightButtons={RIGHT_HEADER_PAGE_BUTTONS}
-                leftButtons={LEFT_HEADER_PAGE_BUTTONS}
-            />
-            <MessageList />
+            <div className={css.root}>
+                <HeaderPage
+                    label={ROUTE_CONFIG.HOME.labelPage}
+                    rightButtons={RIGHT_HEADER_PAGE_BUTTONS}
+                    leftButtons={LEFT_HEADER_PAGE_BUTTONS}
+                />
+                <MessageList />
+            </div>
         </>
     );
 };
