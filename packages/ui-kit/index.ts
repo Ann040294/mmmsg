@@ -7,4 +7,5 @@ export { default as Card } from './Card/Card';
 export { default as Layout } from './Layout/Layout';
 export { default as DropdownMenu } from './DropdownMenu/DropdownMenu';
 export { default as Popover } from './Popover/Popover';
+export { default as IconButton } from './IconButton/IconButton';
 export { default as TextViewer } from './TextViewer/TextViewer';

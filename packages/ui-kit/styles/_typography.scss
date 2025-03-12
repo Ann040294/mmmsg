@@ -87,6 +87,12 @@ $font-size-text-placeholder: 16px;
 $font-size-text-title: 12px;
 $font-size-text-description: 12px;
 
+//Icons
+$font-size-icon-large: 32px;
+$font-size-icon-medium: 24px;
+$font-size-icon-small: 16px;
+
+
 //mixins
 //TODO: media запросы
 @mixin headline-1() {
