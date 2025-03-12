@@ -1,23 +1,27 @@
 import { FC } from 'react';
 
-import { IconItems, IconItemType } from './IconItems';
+import { ButtonItems, ButtonItemType } from './ButtonItems';
 
 import css from './HeaderPage.module.scss';
 
 interface HeaderPageProps {
     label: string;
-    leftIcons?: IconItemType[];
-    rightIcons?: IconItemType[];
+    leftButtons?: ButtonItemType[];
+    rightButtons?: ButtonItemType[];
 }
 
-const HeaderPage: FC<HeaderPageProps> = ({ label, leftIcons, rightIcons }) => {
+const HeaderPage: FC<HeaderPageProps> = ({
+    label,
+    leftButtons,
+    rightButtons,
+}) => {
     return (
         <div className={css.root}>
             <div className={css.item}>
-                {leftIcons && <IconItems options={leftIcons} />}
+                {leftButtons && <ButtonItems options={leftButtons} />}
                 {label}
             </div>
-            {rightIcons && <IconItems options={rightIcons} />}
+            {rightButtons && <ButtonItems options={rightButtons} />}
         </div>
     );
 };

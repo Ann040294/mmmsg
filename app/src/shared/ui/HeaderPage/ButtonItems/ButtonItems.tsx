@@ -3,15 +3,15 @@ import { FC } from 'react';
 import { IconButton } from 'ui-kit';
 import { IconButtonSize } from 'ui-kit/IconButton';
 
-import { IconItemType } from './types';
+import { ButtonItemType } from './types';
 
-import css from './IconItems.module.scss';
+import css from './ButtonItems.module.scss';
 
-interface IconItemsProps {
-    options: IconItemType[];
+interface ButtonItemsProps {
+    options: ButtonItemType[];
 }
 
-const IconItems: FC<IconItemsProps> = ({ options }) => {
+const ButtonItems: FC<ButtonItemsProps> = ({ options }) => {
     return (
         <div className={css.root}>
             {options.map((option) => (
@@ -25,4 +25,4 @@ const IconItems: FC<IconItemsProps> = ({ options }) => {
     );
 };
 
-export default IconItems;
+export default ButtonItems;

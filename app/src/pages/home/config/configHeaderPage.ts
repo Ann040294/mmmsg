@@ -1,16 +1,16 @@
 import ArrowLeftOutlined from '@ant-design/icons/ArrowLeftOutlined';
 import FormOutlined from '@ant-design/icons/FormOutlined';
 
-import { IconItemType } from '@shared/ui/HeaderPage/IconItems/types';
+import { ButtonItemType } from '@shared/ui/HeaderPage/ButtonItems/types';
 
-export const LeftIconsHeaderPage: IconItemType[] = [
+export const LEFT_HEADER_PAGE_BUTTONS: ButtonItemType[] = [
     {
         id: '1',
         icon: ArrowLeftOutlined,
     },
 ];
 
-export const RightIconsHeaderPage: IconItemType[] = [
+export const RIGHT_HEADER_PAGE_BUTTONS: ButtonItemType[] = [
     {
         id: '1',
         icon: FormOutlined,
