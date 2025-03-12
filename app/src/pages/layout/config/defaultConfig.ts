@@ -3,7 +3,7 @@ import MessageOutlined from '@ant-design/icons/MessageOutlined';
 
 import { ROUTE_CONFIG } from '@shared/config/routeConfig';
 
-import { NavbarItemTypes, NavLinkType } from './Item/types';
+import { NavbarItemTypes, NavLinkType } from '../ui/Navbar/Item/types';
 
 export const defaultConfig: NavLinkType[][] = [
     [
