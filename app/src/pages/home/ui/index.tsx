@@ -1,5 +1,7 @@
 import { FC } from 'react';
 
+import MessageList from '@widgets/MessageList/ui/MessageList';
+
 import { ROUTE_CONFIG } from '@shared/config/routeConfig';
 import { HeaderPage } from '@shared/ui/HeaderPage';
 
@@ -17,6 +19,7 @@ const Index: FC = () => {
                 rightButtons={RIGHT_HEADER_PAGE_BUTTONS}
                 leftButtons={LEFT_HEADER_PAGE_BUTTONS}
             />
+            <MessageList />
         </>
     );
 };
