@@ -2,6 +2,7 @@ export const ROUTE_CONFIG = {
     HOME: {
         path: '/',
         title: 'Главная',
+        labelPage: 'Чаты'
     },
     TEST: {
         path: '/test',
