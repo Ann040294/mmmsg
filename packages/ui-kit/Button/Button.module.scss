@@ -21,6 +21,9 @@
 .primary {
   background-color: button.$btn-bg-primary;
   color: button.$btn-color-primary;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 
   &:hover {
     background-color: button.$btn-bg-hover-primary;
@@ -31,6 +34,9 @@
   background-color: button.$btn-bg-secondary;
   color: button.$btn-color-secondary;
   border: 2px solid color.$neutral-dark-color;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 
   &:hover {
     background-color: button.$btn-bg-hover-secondary;

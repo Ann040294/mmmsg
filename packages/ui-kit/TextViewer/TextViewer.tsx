@@ -19,11 +19,11 @@ const TextViewer: FC<TextViewerProps> = ({
     signature,
 }) => {
     return (
-        <div className={cn(css.message)}>
+        <div className={css.message}>
             <div className={cn(css.messagecontent, css[variant])}>
-                {css[variant] && <span className={cn(css.title)}>{title}</span>}
-                <p className={cn(css.messagetext)}>{text}</p>
-                <span className={cn(css.messagesignature)}>{signature}</span>
+                <span className={css.title}>{title}</span>
+                <p className={css.messagetext}>{text}</p>
+                <span className={css.messagesignature}>{signature}</span>
             </div>
         </div>
     );

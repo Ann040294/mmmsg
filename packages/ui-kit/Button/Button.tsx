@@ -14,19 +14,19 @@ export interface ButtonProps {
 }
 
 const Button: FC<ButtonProps> = ({
-                                     text,
-                                     variant = ButtonVariants.PRIMARY,
-                                     size = ButtonSize.MEDIUM,
-                                     isFullWidth = false,
-                                     onClick: handleClick,
-                                 }) => {
+    text,
+    variant = ButtonVariants.PRIMARY,
+    size = ButtonSize.MEDIUM,
+    isFullWidth = false,
+    onClick: handleClick,
+}) => {
     return (
-        <button className={cn(
-            css.button,
-            css[variant],
-            css[size],
-            { [css.fullWidth]: isFullWidth })}
-                onClick={handleClick}>
+        <button
+            className={cn(css.button, css[variant], css[size], {
+                [css.fullWidth]: isFullWidth,
+            })}
+            onClick={handleClick}
+        >
             {text}
         </button>
     );

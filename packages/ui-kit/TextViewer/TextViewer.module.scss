@@ -29,23 +29,27 @@
     margin: 0;
   }
 
-  &signature {
-    text-align: end;
-    font-size: 12px;
+  %content {
+    font-size: typography.$font-size-text-title;
     width: 100%;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
+  }
+
+  &signature {
+    @extend %content;
+
+    text-align: end;
     color: colors.$neutral-darken-gray-color;
+  }
+
+  .title {
+    @extend %content;
+
+    align-self: flex-start;
   }
 }
 
-.title {
-  align-self: flex-start;
-  font-size: 12px;
-  width: 100%;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
-}
+
 
