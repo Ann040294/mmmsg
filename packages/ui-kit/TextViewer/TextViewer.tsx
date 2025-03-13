@@ -1,34 +1,29 @@
 import React, { FC } from 'react';
 import cn from 'classnames';
 
+import { TextViewerVariant } from './types';
+
 import css from './TextViewer.module.scss';
 
 export interface TextViewerProps {
-    senderName?: string;
     text: string;
-    timestamp: string;
-    isSender?: boolean;
+    variant?: TextViewerVariant;
+    title?: string;
+    signature?: string;
 }
 
 const TextViewer: FC<TextViewerProps> = ({
-    senderName,
+    title,
+    variant = TextViewerVariant.PRIMARY,
     text,
-    timestamp,
-    isSender = false,
+    signature,
 }) => {
     return (
         <div className={cn(css.message)}>
-            <div
-                className={cn(
-                    css.messagecontent,
-                    isSender ? [css.sender] : [css.recipient],
-                )}
-            >
-                {isSender && (
-                    <span className={cn(css.senderName)}>{senderName}</span>
-                )}
+            <div className={cn(css.messagecontent, css[variant])}>
+                {css[variant] && <span className={cn(css.title)}>{title}</span>}
                 <p className={cn(css.messagetext)}>{text}</p>
-                <span className={cn(css.messagetimestamp)}>{timestamp}</span>
+                <span className={cn(css.messagesignature)}>{signature}</span>
             </div>
         </div>
     );

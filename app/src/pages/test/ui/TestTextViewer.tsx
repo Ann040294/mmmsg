@@ -1,27 +1,27 @@
 import { FC } from 'react';
 
 import { Layout, TextViewer } from 'ui-kit';
+import { TextViewerVariant } from 'ui-kit/TextViewer/types';
 
 export const TestTextViewer: FC = () => {
     return (
         <Layout>
             <TextViewer
-                senderName='Test'
+                title="Test Test Test Test Test Test Test Test Test Test Test Test Test"
                 text="1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111"
-                timestamp="12:00"
+                signature="Отправлено"
+                variant={TextViewerVariant.SECONDARY}
             />
             <TextViewer
-                senderName='Test'
                 text="2222222222222222222222222222222222222222222222222222222222222222222222222"
-                timestamp="12:00"
-                isSender={true}
+                signature="авравр авравр варварвар аварар аф аф аф аф афав аф"
             />
             <TextViewer
                 text="1"
-                timestamp="12:00"
+                signature="12:00"
             />
             <TextViewer
-                timestamp="12:01"
+                signature="12:01"
                 text=" 
             1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111"
             />
