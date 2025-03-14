@@ -44,7 +44,11 @@ const Input: FC<InputProps> = ({
     );
 
     return (
-        <div className={cn(css.wrapper, className)}>
+        <div
+            className={cn(css.wrapper, className, {
+                [css.error]: validateType === NoticeTypes.ERROR,
+            })}
+        >
             {label && <label className={cn(css.label)}>{label}</label>}
 
             <div
