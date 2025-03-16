@@ -1,1 +1,0 @@
-export const getAllMessageUser = async (user_id: string) => {};

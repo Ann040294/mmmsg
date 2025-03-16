@@ -1,5 +1,6 @@
 export type CompactMessage = {
-    avatar?: string;
+    idUser: string;
+    avatarSrc?: string;
     fullName: string;
     message: string;
 };

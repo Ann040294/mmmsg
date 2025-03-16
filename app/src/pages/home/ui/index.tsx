@@ -5,14 +5,11 @@ import MessageList from '@widgets/MessageList/ui/MessageList';
 import { ROUTE_CONFIG } from '@shared/config/routeConfig';
 import { HeaderPage } from '@shared/ui/HeaderPage';
 
-import {
-    LEFT_HEADER_PAGE_BUTTONS,
-    RIGHT_HEADER_PAGE_BUTTONS,
-} from '../config/configHeaderPage';
+import { RIGHT_HEADER_PAGE_BUTTONS } from '../config/configHeaderPage';
 
 import css from './HomePage.module.scss';
 
-const Index: FC = () => {
+const HomaPage: FC = () => {
     return (
         <>
             <title>{ROUTE_CONFIG.HOME.title}</title>
@@ -20,7 +17,6 @@ const Index: FC = () => {
                 <HeaderPage
                     label={ROUTE_CONFIG.HOME.labelPage}
                     rightButtons={RIGHT_HEADER_PAGE_BUTTONS}
-                    leftButtons={LEFT_HEADER_PAGE_BUTTONS}
                 />
                 <MessageList />
             </div>
@@ -28,4 +24,4 @@ const Index: FC = () => {
     );
 };
 
-export default Index;
+export default HomaPage;

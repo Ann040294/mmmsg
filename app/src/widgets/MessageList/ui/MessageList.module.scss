@@ -1,3 +1,12 @@
-.root{
-  overflow-Y: scroll;
+@use 'ui-kit/styles/color' as colors;
+
+.cardList {
+  overflow-y: auto;
+  max-height: calc(100vh - 180px);
+  margin: 10px 0;
+
+  & *:hover {
+    background-color: colors.$neutral-light-color;
+    cursor: pointer;
+  }
 }
