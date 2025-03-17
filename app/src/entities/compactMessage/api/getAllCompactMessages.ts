@@ -2,15 +2,11 @@ import { compactMessagesMock } from '@entities/compactMessage/mock/compactMessag
 import { CompactMessage } from '@entities/compactMessage/model/compactMessage';
 
 export const getAllCompactMessages = async (
-    pageSize = 10,
+    page: number,
+    maxSize: number = 10,
 ): Promise<CompactMessage[]> => {
-    pageNumber += 1;
+    const startIndex = (page - 1) * maxSize;
+    const endIndex = Math.min(startIndex + maxSize, compactMessagesMock.length);
 
-    const startIndex = (pageNumber - 1) * pageSize;
-    const endIndex = Math.min(
-        startIndex + pageSize,
-        compactMessagesMock.length,
-    );
-
-    return compactMessagesMock.slice(startIndex, endIndex);
+    return structuredClone(compactMessagesMock).slice(startIndex, endIndex);
 };

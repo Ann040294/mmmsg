@@ -1,4 +1,4 @@
-import { ChangeEvent, FC, useCallback, useEffect, useState } from 'react';
+import {ChangeEvent, FC, useCallback, useEffect, useRef, useState} from 'react';
 import SearchOutlined from '@ant-design/icons/SearchOutlined';
 
 import { Card, Input } from 'ui-kit';
@@ -18,46 +18,70 @@ const MessageList: FC = () => {
     const [compactMessages, setCompactMessages] = useState<CompactMessage[]>(
         [],
     );
-    console.log(compactMessages)
-
+    const [page, setPage] = useState<number>(1);
+    console.log('page_start', page);
+    const rootEl = useRef<HTMLDivElement | null>(null);
     const debounceValue = useDebounce<string>(valueInput, 1000);
-    const rootElement = useInfiniteScroll<HTMLDivElement | null>(() => {
-        getAllCompactMessages(13).then((value) => {
-            setCompactMessages((prevState) => [...prevState, ...value]);
-        });
-    });
+    useInfiniteScroll<HTMLDivElement | null>(() => {
+        setPage((prevState) => prevState + 1);
+    }, rootEl);
+
+    // useEffect(() => {
+    //     if (debounceValue) {
+    //         setCompactMessages([]);
+    //         setPage(1);
+    //         searchCompactMessages(debounceValue).then((value) =>
+    //             setCompactMessages((prevState) => [...prevState, ...value]),
+    //         );
+    //     }
+    // }, [debounceValue]);
+    // useEffect(() => {
+    //     console.log('compactMessages', compactMessages);
+    //     console.log('compactMessagesL', compactMessages.length);
+    // }, [compactMessages]);
+
+    // useEffect(() => {
+    //     console.log('1_first_render_page', page);
+    //
+    //     return ()=>console.log('first_render')
+    // }, []);
+
+    // useEffect(() => {
+    //     console.log('2_rererender', page);
+    //
+    //     return ()=>console.log('rererereender')
+    // }, );
 
     useEffect(() => {
-        getAllCompactMessages(13).then((value) => {
-            setCompactMessages(value);
+        console.log('3_page_render', page);
+
+        // return ()=>console.log('render')
+        getAllCompactMessages(page, 15).then((value) => {
+            console.log('valueGetAll', value);
+
+            return setCompactMessages((prevState) => [...prevState, ...value]);
         });
-    }, []);
+    }, [page]);
 
-    useEffect(() => {
-        searchCompactMessages(debounceValue).then((value) =>
-            setCompactMessages(value),
-        );
-    }, [debounceValue]);
-
-    const handleOnChange = useCallback(
-        (value: ChangeEvent<HTMLInputElement>) => {
-            setValueInput(value.target.value);
-        },
-        [],
-    );
+    // const handleOnChange = useCallback(
+    //     (value: ChangeEvent<HTMLInputElement>) => {
+    //         setValueInput(value.target.value);
+    //     },
+    //     [],
+    // );
 
     return (
         <div>
-            <Input
-                variant={InputVariants.FILLED}
-                placeholder={'Поиск...'}
-                value={valueInput}
-                iconLeft={SearchOutlined}
-                onChange={handleOnChange}
-            />
+            {/*<Input*/}
+            {/*    variant={InputVariants.FILLED}*/}
+            {/*    placeholder={'Поиск...'}*/}
+            {/*    // value={valueInput}*/}
+            {/*    iconLeft={SearchOutlined}*/}
+            {/*    // onChange={handleOnChange}*/}
+            {/*/>*/}
             <div
                 className={css.cardList}
-                ref={rootElement}
+                ref={rootEl}
             >
                 {compactMessages.map((item) => (
                     <Card

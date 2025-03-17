@@ -5,7 +5,7 @@
   max-height: calc(100vh - 180px);
   margin: 10px 0;
 
-  & *:hover {
+  & div:hover {
     background-color: colors.$neutral-light-color;
     cursor: pointer;
   }

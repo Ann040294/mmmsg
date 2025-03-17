@@ -1,9 +1,10 @@
-import { useCallback, useEffect, useRef } from 'react';
+import { RefObject, useCallback, useEffect, useRef } from 'react';
 
 export const useInfiniteScroll = <T extends HTMLElement | null>(
     callback: () => void,
+    rootElement: RefObject<HTMLElement | null>,
 ) => {
-    const rootElement = useRef<T>(null);
+    // const rootElement = useRef<T>(null);
     const lastElement = useRef<ChildNode | null | undefined>(null);
 
     const handleIntersection = useCallback(
@@ -34,5 +35,5 @@ export const useInfiniteScroll = <T extends HTMLElement | null>(
         return () => observer.disconnect();
     }, [handleIntersection, rootElement, lastElement]);
 
-    return rootElement;
+    // return rootElement;
 };
