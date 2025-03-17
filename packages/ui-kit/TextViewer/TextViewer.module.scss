@@ -1,6 +1,14 @@
 @use "../styles/color.scss" as colors;
 @use "../styles/typography" as typography;
 
+  %content {
+    font-size: typography.$font-size-text-title;
+    width: 100%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
 .message {
   display: flex;
   max-width: 500px; //TODO: адаптивность
@@ -29,14 +37,6 @@
     margin: 0;
   }
 
-  %content {
-    font-size: typography.$font-size-text-title;
-    width: 100%;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
-  }
-
   &signature {
     @extend %content;
 
@@ -50,6 +50,3 @@
     align-self: flex-start;
   }
 }
-
-
-
