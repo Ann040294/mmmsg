@@ -12,6 +12,15 @@ $neutral-dark-gray-color: #333333;
 $neutral-dark-color: #000000;
 $neutral-silvery-color: #e8e8e8;
 
+$state-error-color: #ff0000;
+$state-error-bg: #fff2f1;
+$state-success-color: #008000;
+$state-success-bg: #f6ffee;
+$state-info-color: #2e7afb;
+$state-info-bg: #e6f4ff;
+$state-warning-color: #ffa500;
+$state-warning-bg: #fffbe8;
+
 $input-msg-color: $neutral-light-color;
 
 $msg-incoming-color: $neutral-silvery-color;
@@ -22,15 +31,6 @@ $avatar-bg-default: $neutral-light-gray-color;
 $avatar-color-default: $neutral-white-color;
 $avatar-gradient-animated: radial-gradient(#a88fc2 25%,  #fe7bad 75%);
 
-//button
-$btn-bg-primary: $neutral-dark-color;
-$btn-bg-hover-primary: $neutral-dark-gray-color;
-$btn-color-primary: $neutral-white-color;
-
-$btn-bg-secondary: $neutral-white-color;
-$btn-bg-hover-secondary: $neutral-light-color;
-$btn-color-secondary: $neutral-dark-color;
-
 //item
 $card-description-color: $neutral-light-gray-color;
 
@@ -39,3 +39,16 @@ $card-color: $neutral-white-color;
 
 //layout
 $layout-bg: $neutral-white-color;
+
+//notice
+$notice-color-default: $neutral-dark-color;
+$notice-color-error: #ff0000;
+$notice-color-success: #008000;
+$notice-color-info: #2e7afb;
+$notice-color-warning: #ffa500;
+$notice-bg-error: #fff2f1;
+$notice-bg-success: #f6ffee;
+$notice-bg-info: #e6f4ff;
+$notice-bg-warning: #fffbe8;
+
+
