@@ -10,7 +10,7 @@ export interface ButtonProps {
     variant?: ButtonVariants;
     size?: ButtonSize;
     isFullWidth?: boolean;
-    onClick: () => void;
+    onClick?: () => void;
 }
 
 const Button: FC<ButtonProps> = ({
@@ -18,7 +18,7 @@ const Button: FC<ButtonProps> = ({
                                      variant = ButtonVariants.PRIMARY,
                                      size = ButtonSize.MEDIUM,
                                      isFullWidth = false,
-                                     onClick,
+                                     onClick: handleClick,
                                  }) => {
     return (
         <button className={cn(
@@ -26,7 +26,7 @@ const Button: FC<ButtonProps> = ({
             css[variant],
             css[size],
             { [css.fullWidth]: isFullWidth })}
-                onClick={onClick}>
+                onClick={handleClick}>
             {text}
         </button>
     );

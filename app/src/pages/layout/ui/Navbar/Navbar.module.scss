@@ -1,0 +1,22 @@
+%flex {
+  display: flex;
+  flex-direction: column;
+}
+
+.root {
+  @extend %flex;
+
+  align-items: center;
+  height: 100%;
+
+  .item {
+    @extend %flex;
+
+    flex-grow: 1;
+    gap: 10px;
+
+    &:last-child {
+      flex-grow: 0;
+    }
+  }
+}

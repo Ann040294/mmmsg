@@ -1,31 +1,56 @@
-@mixin icon-colors {
-  &.error {
-    color: #ff0000; //TO-DO
-  }
-  &.success {
-    color: #008000; //TO-DO
-  }
-  &.info {
-    color: #ffa500; //TO-DO
-  }
-}
+@use '../styles/color.scss' as color;
+@use '../styles/notice.scss' as notice;
 
 .container {
   display: flex;
   align-items: center;
-  font-size: 14px;
+  font-size: notice.$notice-text-default-size;
   padding: 10px;
   border-radius: 5px;
-  color: #000000; //TO-DO
-}
+  color: var(--text-color);
+  max-width: 100%;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  gap: 8px;
 
-.message {
-  font-size: 14px;
-  @include icon-colors;
+  &.error {
+    --text-color: #{notice.$notice-error-color};
+    --bg-color: #{notice.$notice-error-bg};
+    --border-color: #{notice.$notice-error-color};
+  }
+
+  &.success {
+    --text-color: #{notice.$notice-success-color};
+    --bg-color: #{notice.$notice-success-bg};
+    --border-color: #{notice.$notice-success-color};
+  }
+
+  &.info {
+    --text-color: #{notice.$notice-info-color};
+    --bg-color: #{notice.$notice-info-bg};
+    --border-color: #{notice.$notice-info-color};
+  }
+
+  &.warning {
+    --text-color: #{notice.$notice-warning-color};
+    --bg-color: #{notice.$notice-warning-bg};
+    --border-color: #{notice.$notice-warning-color};
+  }
+
+  &.filled {
+    background-color: var(--bg-color, transparent);
+    --message-color: #{color.$neutral-dark-color};
+  }
+
+  &.border {
+    border: 1px solid var(--border-color, transparent);
+  }
 }
 
 .icon {
-  font-size: 18px;
-  margin-right: 8px;
-  @include icon-colors; 
+  font-size: notice.$notice-icon-size;
+}
+
+.message {
+  color: var(--message-color, inherit);
 }
