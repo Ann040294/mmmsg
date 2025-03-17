@@ -1,6 +1,6 @@
 import { FC, useState } from 'react';
-import { Layout } from 'ui-kit';
 
+import { Layout } from 'ui-kit';
 import { Button, ButtonSize, ButtonVariants } from 'ui-kit/Button';
 
 import css from '../style.module.scss';
@@ -93,7 +93,19 @@ export const TestButtons: FC = () => {
                 onClick={handleAnyClick}
             />
             <h5>Disabled</h5>
-            no yet
+            <Button
+                variant={variant}
+                text={'Disable'}
+                isDisabled={true}
+                onClick={handleAnyClick}
+            />
+            <Button
+                variant={ButtonVariants.PRIMARY}
+                text={'Disable'}
+                size={ButtonSize.LARGE}
+                isDisabled={true}
+                onClick={handleAnyClick}
+            />
             <h5>Loading</h5>
             no yet
             <h5>States</h5>
