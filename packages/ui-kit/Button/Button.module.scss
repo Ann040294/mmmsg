@@ -49,7 +49,12 @@
   font-size: typography.$font-size-button-small;
 }
 
-.fullWidth {
+.fullWidth { 
   width: 100%;
   display: block;
+}
+
+.disable {
+  pointer-events: none;
+  opacity: 0.5;
 }

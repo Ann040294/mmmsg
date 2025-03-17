@@ -10,23 +10,26 @@ export interface ButtonProps {
     variant?: ButtonVariants;
     size?: ButtonSize;
     isFullWidth?: boolean;
+    isDisabled?: boolean;
     onClick?: () => void;
 }
 
 const Button: FC<ButtonProps> = ({
-                                     text,
-                                     variant = ButtonVariants.PRIMARY,
-                                     size = ButtonSize.MEDIUM,
-                                     isFullWidth = false,
-                                     onClick: handleClick,
-                                 }) => {
+    text,
+    variant = ButtonVariants.PRIMARY,
+    size = ButtonSize.MEDIUM,
+    isFullWidth,
+    isDisabled,
+    onClick: handleClick,
+}) => {
     return (
-        <button className={cn(
-            css.button,
-            css[variant],
-            css[size],
-            { [css.fullWidth]: isFullWidth })}
-                onClick={handleClick}>
+        <button
+            className={cn(css.button, css[variant], css[size], {
+                [css.fullWidth]: isFullWidth,
+                [css.disable]: isDisabled,
+            })}
+            onClick={handleClick}
+        >
             {text}
         </button>
     );
