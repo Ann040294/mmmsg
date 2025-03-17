@@ -14,14 +14,14 @@
     border-radius: 16px;
     padding: 10px 20px;
 
-    &.sender {
+    &.secondary {
       margin: 0 auto 0 0;
-      background-color: colors.$msg-outgoing-color;
+      background-color: colors.$msg-incoming-color;
     }
 
-    &.recipient {
+    &.primary {
       margin: 0 0 0 auto;
-      background-color: colors.$msg-incoming-color;
+      background-color: colors.$msg-outgoing-color;
     }
   }
 
@@ -29,15 +29,27 @@
     margin: 0;
   }
 
-  &timestamp {
-    align-self: flex-end;
-    font-size: 12px;  //TODO: уточнить
+  %content {
+    font-size: typography.$font-size-text-title;
+    width: 100%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  &signature {
+    @extend %content;
+
+    text-align: end;
     color: colors.$neutral-darken-gray-color;
+  }
+
+  .title {
+    @extend %content;
+
+    align-self: flex-start;
   }
 }
 
-.senderName {
-  align-self: flex-start;
-  font-size: 18px;  //TODO: уточнить
-}
+
 
