@@ -7,19 +7,15 @@ import { HeaderPage } from '@shared/ui/HeaderPage';
 
 import { RIGHT_HEADER_PAGE_BUTTONS } from '../config/configHeaderPage';
 
-import css from './HomePage.module.scss';
-
 const HomaPage: FC = () => {
     return (
         <>
             <title>{ROUTE_CONFIG.HOME.title}</title>
-            <div className={css.root}>
-                <HeaderPage
-                    label={ROUTE_CONFIG.HOME.labelPage}
-                    rightButtons={RIGHT_HEADER_PAGE_BUTTONS}
-                />
-                <MessageList />
-            </div>
+            <HeaderPage
+                label={ROUTE_CONFIG.HOME.labelPage}
+                rightButtons={RIGHT_HEADER_PAGE_BUTTONS}
+            />
+            <MessageList />
         </>
     );
 };

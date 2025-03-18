@@ -2,11 +2,12 @@
 
 .cardList {
   overflow-y: auto;
-  max-height: calc(100vh - 180px);
-  margin: 10px 0;
+  flex: 1;
 
-  & div:hover {
-    background-color: colors.$neutral-light-color;
-    cursor: pointer;
+  .card {
+    &:hover {
+      background-color: colors.$neutral-light-color;
+      cursor: pointer;
+    }
   }
 }

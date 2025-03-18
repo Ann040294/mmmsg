@@ -2713,5 +2713,5 @@ export const compactMessagesMock: CompactMessage[] = [
         message:
             'sapien ut nunc vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae mauris viverra diam',
         fullName: 'Karole Grzelczak',
-    }
+    },
 ];
