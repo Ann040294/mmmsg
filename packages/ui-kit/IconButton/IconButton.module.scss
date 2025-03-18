@@ -11,6 +11,7 @@
   justify-content: center;
   margin: 0 5px;
   box-sizing: border-box;
+  border-radius: 10px;
 
   &:hover, {
     background-color: button.$btn-bg-third;
