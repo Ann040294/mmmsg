@@ -7,6 +7,8 @@ import { InputVariants } from 'ui-kit/Input';
 import { getAllCompactMessages } from '@entities/compactMessage/api/getAllCompactMessages';
 import { CompactMessage } from '@entities/compactMessage/model/compactMessage';
 
+import { useInfiniteScroll } from '@shared/lib/hooks/useInfiniteScroll';
+
 import css from './MessageList.module.scss';
 
 const MessageList: FC = () => {
@@ -14,12 +16,25 @@ const MessageList: FC = () => {
     const [compactMessages, setCompactMessages] = useState<CompactMessage[]>(
         [],
     );
+    const [page, setPage] = useState<number>(1);
+
+    const rootElement = useInfiniteScroll<HTMLDivElement | null>(() =>
+        setPage((prevState) => prevState + 1),
+    );
 
     useEffect(() => {
-        getAllCompactMessages().then((value) => {
-            setCompactMessages(value);
+        let isLoading = true;
+
+        getAllCompactMessages(page, 15).then((value) => {
+            if (isLoading) {
+                setCompactMessages((prevState) => [...prevState, ...value]);
+            }
         });
-    }, []);
+
+        return () => {
+            isLoading = false;
+        };
+    }, [page]);
 
     const handleOnChange = useCallback(
         (value: ChangeEvent<HTMLInputElement>) => {
@@ -37,7 +52,10 @@ const MessageList: FC = () => {
                 iconLeft={SearchOutlined}
                 onChange={handleOnChange}
             />
-            <div className={css.cardList}>
+            <div
+                className={css.cardList}
+                ref={rootElement}
+            >
                 {compactMessages.map((item) => (
                     <Card
                         key={item.idUser}
