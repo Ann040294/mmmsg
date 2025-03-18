@@ -16,9 +16,7 @@ const MessageList: FC = () => {
     );
 
     useEffect(() => {
-        getAllCompactMessages().then((value) => {
-            setCompactMessages(value);
-        });
+        getAllCompactMessages().then(setCompactMessages);
     }, []);
 
     const handleOnChange = useCallback(
