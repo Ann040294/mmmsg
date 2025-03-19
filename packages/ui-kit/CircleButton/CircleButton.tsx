@@ -27,13 +27,10 @@ const CircleButton: FC<CircleButtonProps> = ({
     isActive,
     onClick: handleClick,
 }) => {
-    const handleMouseDown = (e: MouseEvent<HTMLElement>) => e.preventDefault();
-
     return (
         <button
             className={cn(css.button, className, { [css.active]: isActive })}
             disabled={isDisabled}
-            onMouseDown={handleMouseDown}
             onClick={handleClick}
         >
             <span className={cn(css.iconWrap, css[size])}>
