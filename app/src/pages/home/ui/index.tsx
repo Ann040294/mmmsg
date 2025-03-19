@@ -7,7 +7,7 @@ import { HeaderPage } from '@shared/ui/HeaderPage';
 
 import { RIGHT_HEADER_PAGE_BUTTONS } from '../config/configHeaderPage';
 
-const HomaPage: FC = () => {
+const HomePage: FC = () => {
     return (
         <>
             <title>{ROUTE_CONFIG.HOME.title}</title>
@@ -20,4 +20,4 @@ const HomaPage: FC = () => {
     );
 };
 
-export default HomaPage;
+export default HomePage;
