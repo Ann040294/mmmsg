@@ -1,4 +1,11 @@
-import { ChangeEvent, FC, useCallback, useEffect, useState } from 'react';
+import {
+    ChangeEvent,
+    FC,
+    useCallback,
+    useEffect,
+    useRef,
+    useState,
+} from 'react';
 import SearchOutlined from '@ant-design/icons/SearchOutlined';
 
 import { Card, Input } from 'ui-kit';
@@ -18,21 +25,23 @@ const MessageList: FC = () => {
     );
     const [page, setPage] = useState<number>(1);
 
-    const rootElement = useInfiniteScroll<HTMLDivElement | null>(() =>
-        setPage((prevState) => prevState + 1),
-    );
+    const rootElement = useRef<HTMLDivElement | null>(null);
+
+    useInfiniteScroll<HTMLDivElement | null>(rootElement, () => {
+        setPage((prevState) => prevState + 1);
+    });
 
     useEffect(() => {
-        let isLoading = true;
+        let isMounted = true;
 
         getAllCompactMessages(page, 15).then((value) => {
-            if (isLoading) {
+            if (isMounted) {
                 setCompactMessages((prevState) => [...prevState, ...value]);
             }
         });
 
         return () => {
-            isLoading = false;
+            isMounted = false;
         };
     }, [page]);
 
