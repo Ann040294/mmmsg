@@ -27,10 +27,6 @@ const MessageList: FC = () => {
 
     const rootElement = useRef<HTMLDivElement | null>(null);
 
-    useInfiniteScroll<HTMLDivElement | null>(rootElement, () => {
-        setPage((prevState) => prevState + 1);
-    });
-
     useEffect(() => {
         let isMounted = true;
 
@@ -44,6 +40,12 @@ const MessageList: FC = () => {
             isMounted = false;
         };
     }, [page]);
+
+    const handleInfiniteScroll = useCallback(() => {
+        setPage((prevState) => prevState + 1);
+    }, []);
+
+    useInfiniteScroll<HTMLDivElement | null>(rootElement, handleInfiniteScroll);
 
     const handleOnChange = useCallback(
         (value: ChangeEvent<HTMLInputElement>) => {
@@ -61,6 +63,7 @@ const MessageList: FC = () => {
                 iconLeft={SearchOutlined}
                 onChange={handleOnChange}
             />
+            {page}
             <div
                 className={css.cardList}
                 ref={rootElement}
@@ -74,6 +77,17 @@ const MessageList: FC = () => {
                         title={item.fullName}
                     />
                 ))}
+                {compactMessages.length > 0 && (
+                    <div
+                        style={{
+                            color: 'red',
+                            fontSize: '20px',
+                            height: '60px',
+                        }}
+                    >
+                        last
+                    </div>
+                )}
             </div>
         </>
     );

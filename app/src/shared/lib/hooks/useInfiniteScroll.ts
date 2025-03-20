@@ -5,17 +5,21 @@ export const useInfiniteScroll = <T extends HTMLElement | null>(
     callback: () => void,
 ) => {
     const lastElement = useRef<ChildNode | null | undefined>(null);
-    const previousLastElement = useRef<ChildNode | null>(null);
+    const previousLastElement = useRef<ChildNode | null | undefined>(null);
+    const pagLast = useRef<ChildNode | null | undefined>(null);
 
     const handleIntersection = useCallback(
         (entries: IntersectionObserverEntry[]) => {
+            pagLast.current = rootElement.current?.lastChild?.previousSibling;
             entries.forEach((entry) => {
                 if (
                     entry.isIntersecting &&
                     entry.target === lastElement.current &&
-                    entry.target !== previousLastElement.current
+                    pagLast.current !== previousLastElement.current
                 ) {
-                    previousLastElement.current = lastElement.current;
+                    console.log('st');
+                    // previousLastElement.current = entry.target;
+                    previousLastElement.current = pagLast.current;
                     callback();
                 }
             });
@@ -38,7 +42,7 @@ export const useInfiniteScroll = <T extends HTMLElement | null>(
         return () => {
             observer.disconnect();
         };
-    }, [handleIntersection, rootElement]);
+    }, [handleIntersection, rootElement.current]);
 
     return rootElement;
 };
