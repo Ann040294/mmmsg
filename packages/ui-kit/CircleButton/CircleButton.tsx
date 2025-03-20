@@ -33,7 +33,7 @@ const CircleButton: FC<CircleButtonProps> = ({
             disabled={isDisabled}
             onClick={handleClick}
         >
-            <span className={cn(css.iconWrap, css[size])}>
+            <span className={cn(css.iconWrapper, css[size])}>
                 <Icon
                     icon={icon}
                     className={css.icon}

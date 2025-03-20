@@ -33,7 +33,7 @@
   }
 
   &.active {
-    .iconWrap {
+    .iconWrapper {
       background-color: color.$neutral-white-color;
       color: var(--circle-button-bg-color);
     }
@@ -45,7 +45,7 @@
 
   }
 
-  .iconWrap {
+  .iconWrapper {
     display: flex;
     align-items: center;
     justify-content: center;
