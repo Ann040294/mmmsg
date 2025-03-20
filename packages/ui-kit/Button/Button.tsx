@@ -6,9 +6,9 @@ import { ButtonSize, ButtonVariants } from './types';
 import css from './Button.module.scss';
 
 export interface ButtonProps {
+    text: string;
     variant?: ButtonVariants;
     size?: ButtonSize;
-    text: string;
     isFullWidth?: boolean;
     onClick?: () => void;
 }
