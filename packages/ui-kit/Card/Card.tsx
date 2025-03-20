@@ -1,4 +1,5 @@
 import { FC } from 'react';
+import cn from 'classnames';
 
 import { Avatar, AvatarShapes } from '../Avatar';
 
@@ -6,6 +7,7 @@ import css from './Card.module.scss';
 
 interface CardProps {
     title: string;
+    className?: string;
     description?: string;
     badge?: string;
     isHiddenAvatar?: boolean;
@@ -15,7 +17,7 @@ interface CardProps {
 
 const Card: FC<CardProps> = (props) => {
     return (
-        <div className={css.root}>
+        <div className={cn(css.root, props.className)}>
             {!props.isHiddenAvatar && (
                 <Avatar
                     shape={props.avatarShape}
