@@ -2,7 +2,7 @@ import { RefObject, useCallback, useEffect, useRef } from 'react';
 
 export const useInfiniteScroll = <T extends HTMLElement | null>(
     rootElement: RefObject<T>,
-    trigger: number,
+    trigger: number | string | boolean,
     callback: () => void,
 ) => {
     const lastElement = useRef<ChildNode | null | undefined>(null);
