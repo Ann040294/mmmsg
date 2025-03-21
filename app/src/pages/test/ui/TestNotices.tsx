@@ -1,7 +1,7 @@
 import { FC } from 'react';
 
 import { Layout, Notice } from 'ui-kit';
-import { NoticeForm, NoticeTypes } from 'ui-kit/Notice';
+import { NoticeTypes, NoticeVariant } from 'ui-kit/Notice';
 
 import css from '../style.module.scss';
 
@@ -39,46 +39,46 @@ export const TestNotices: FC = () => {
             <Notice
                 type={NoticeTypes.WARNING}
                 message="Будьте осторожныыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыы !"
-                form={NoticeForm.FILLED}
+                variant={NoticeVariant.FILLED}
             />
             <Notice
                 type={NoticeTypes.SUCCESS}
                 message="Ты молодец!!!"
-                form={NoticeForm.FILLED}
+                variant={NoticeVariant.FILLED}
             />
             <Notice
                 type={NoticeTypes.INFO}
                 message="Полезная инфа"
-                form={NoticeForm.FILLED}
+                variant={NoticeVariant.FILLED}
             />
             <Notice
                 type={NoticeTypes.ERROR}
                 message="Упс, Ошибкенс"
-                form={NoticeForm.FILLED}
+                variant={NoticeVariant.FILLED}
             />
             <Notice
                 type={NoticeTypes.WARNING}
                 message="Будьте осторожны!"
-                form={NoticeForm.FILLED}
-                hasBorder={false}
+                variant={NoticeVariant.FILLED}
+                hasBorder={true}
             />
             <Notice
                 type={NoticeTypes.SUCCESS}
                 message="Ты молодец!!!"
-                form={NoticeForm.FILLED}
-                hasBorder={false}
+                variant={NoticeVariant.FILLED}
+                hasBorder={true}
             />
             <Notice
                 type={NoticeTypes.INFO}
                 message="Полезная инфа"
-                form={NoticeForm.FILLED}
-                hasBorder={false}
+                variant={NoticeVariant.FILLED}
+                hasBorder={true}
             />
             <Notice
                 type={NoticeTypes.ERROR}
                 message="Упс, Ошибкенс"
-                form={NoticeForm.FILLED}
-                hasBorder={false}
+                variant={NoticeVariant.FILLED}
+                hasBorder={true}
             />
         </Layout>
     );
