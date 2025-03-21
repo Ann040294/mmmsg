@@ -8,5 +8,5 @@ export const getAllCompactMessages = async (
     const startIndex = (page - 1) * maxSize;
     const endIndex = Math.min(startIndex + maxSize, compactMessagesMock.length);
 
-    return structuredClone(compactMessagesMock).slice(startIndex, endIndex);
+    return compactMessagesMock.slice(startIndex, endIndex);
 };
