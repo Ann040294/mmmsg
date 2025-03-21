@@ -9,9 +9,11 @@ export const searchCompactMessages = async (
     const startIndex = (page - 1) * maxSize;
     const endIndex = Math.min(startIndex + maxSize, compactMessagesMock.length);
 
-    return compactMessagesMock.filter((compactMessage: CompactMessage) =>
+    const array = compactMessagesMock.filter((compactMessage: CompactMessage) =>
         Object.values(compactMessage).some((value) =>
             value.toLowerCase().includes(substring.toLowerCase()),
         ),
     );
+
+    return array.slice(startIndex, endIndex);
 };

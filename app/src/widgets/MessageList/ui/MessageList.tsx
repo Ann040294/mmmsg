@@ -56,7 +56,9 @@ const MessageList: FC = () => {
                 setPage(1);
                 isWasSearch.current = true;
 
-                searchCompactMessages(valueDebounce).then(setCompactMessages);
+                searchCompactMessages(valueDebounce, page, 15).then(
+                    setCompactMessages,
+                );
             }
         }
 

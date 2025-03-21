@@ -32,6 +32,8 @@ export const useInfiniteScroll = <T extends HTMLElement | null>(
         if (rootElement.current) {
             lastElement.current = rootElement.current?.lastChild;
             if (lastElement.current) {
+                console.log('lastElement', lastElement.current);
+                console.log('rootElement', rootElement.current);
                 observer.current?.observe(lastElement.current as Element);
             }
         }
