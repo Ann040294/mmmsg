@@ -14,7 +14,7 @@ import { InputVariants } from 'ui-kit/Input';
 import { getAllCompactMessages } from '@entities/compactMessage/api/getAllCompactMessages';
 import { CompactMessage } from '@entities/compactMessage/model/compactMessage';
 
-import { useInfiniteScroll } from '@shared/lib/hooks/useInfiniteScroll1';
+import { useInfiniteScroll } from '@shared/lib/hooks/useInfiniteScroll';
 
 import css from './MessageList.module.scss';
 
