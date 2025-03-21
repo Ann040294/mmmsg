@@ -33,8 +33,10 @@
     }
   }
 
-  &.error .label {
-    color: color.$state-error-color; 
+  &.error {
+    .label {
+      color: color.$state-error-color;
+    }
   }
 
   .inputWrapper {
@@ -51,14 +53,29 @@
     }
 
     &:has(.input:disabled) {
-      background-color: color.$neutral-light-gray-color;
+      background-color: rgba(color.$neutral-light-gray-color, 0.7);
     }
 
     &.outlined {
       background: color.$neutral-white-color;
-      border: 1px solid color.$neutral-light-color;
+      border: 1px solid color.$neutral-light-gray-color;
       border-radius: 5px;
       padding: 0 10px;
+
+      &:has(.input:disabled) {
+        border-color: color.$neutral-darken-gray-color;
+        background-color: rgba(color.$neutral-light-gray-color, 0.7);
+      }
+
+      &.error {
+        background: color.$neutral-white-color;
+        border-color: color.$state-error-color;
+
+        &:has(.input:disabled) {
+          border-color: color.$state-error-color;
+          background-color: color.$neutral-light-gray-color;
+        }
+      }
     }
 
     &.filled {
@@ -71,21 +88,6 @@
       background-color: color.$state-error-bg;
     }
 
-    &.outlined.error {
-      background: color.$neutral-white-color;
-      border-color: color.$state-error-color;
-    }
-
-    &.outlined:has(.input:disabled) {
-      border-color: color.$neutral-darken-gray-color;
-      background-color: color.$neutral-light-gray-color;
-    }
-
-    &.outlined.error:has(.input:disabled) {
-      border-color: color.$state-error-color;
-      background-color: color.$neutral-light-gray-color;
-    }
-
     .input {
       flex-grow: 1;
       height: 100%;
@@ -96,15 +98,15 @@
       line-height: 20px;
       color: color.$neutral-dark-color;
       background-color: transparent;
-      
+
       &:focus {
         outline: none;
       }
-      
+
       &:disabled {
         cursor: not-allowed;
       }
-  
+
       &::placeholder {
         color: color.$neutral-darken-gray-color;
         font-size: typography.$font-size-text-placeholder;
