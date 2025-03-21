@@ -14,7 +14,7 @@ import { InputVariants } from 'ui-kit/Input';
 import { getAllCompactMessages } from '@entities/compactMessage/api/getAllCompactMessages';
 import { CompactMessage } from '@entities/compactMessage/model/compactMessage';
 
-import { useInfiniteScroll } from '@shared/lib/hooks/useInfiniteScroll';
+import { useInfiniteScroll } from '@shared/lib/hooks/useInfiniteScroll1';
 
 import css from './MessageList.module.scss';
 
@@ -45,7 +45,11 @@ const MessageList: FC = () => {
         setPage((prevState) => prevState + 1);
     }, []);
 
-    useInfiniteScroll<HTMLDivElement | null>(rootElement, handleInfiniteScroll);
+    useInfiniteScroll<HTMLDivElement | null>(
+        rootElement,
+        handleInfiniteScroll,
+        // compactMessages.length,
+    );
 
     const handleOnChange = useCallback(
         (value: ChangeEvent<HTMLInputElement>) => {
@@ -77,17 +81,7 @@ const MessageList: FC = () => {
                         title={item.fullName}
                     />
                 ))}
-                {compactMessages.length > 0 && (
-                    <div
-                        style={{
-                            color: 'red',
-                            fontSize: '20px',
-                            height: '60px',
-                        }}
-                    >
-                        last
-                    </div>
-                )}
+                <p>last</p>
             </div>
         </>
     );

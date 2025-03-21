@@ -6,21 +6,42 @@ export const useInfiniteScroll = <T extends HTMLElement | null>(
 ) => {
     const lastElement = useRef<ChildNode | null | undefined>(null);
     const previousLastElement = useRef<ChildNode | null | undefined>(null);
-    const pagLast = useRef<ChildNode | null | undefined>(null);
+    const observer = useRef<IntersectionObserver | null>(null);
+    // const array = observer.current?.takeRecords()
+    // const arrayObserverEntry = observer.current?.takeRecords();
+    // const pagLast = useRef<ChildNode | null | undefined>(null);
 
     const handleIntersection = useCallback(
         (entries: IntersectionObserverEntry[]) => {
-            pagLast.current = rootElement.current?.lastChild?.previousSibling;
+            // pagLast.current = rootElement.current?.lastChild?.previousSibling;
             entries.forEach((entry) => {
                 if (
                     entry.isIntersecting &&
                     entry.target === lastElement.current &&
-                    pagLast.current !== previousLastElement.current
+                    entry.target !== previousLastElement.current
                 ) {
                     console.log('st');
-                    // previousLastElement.current = entry.target;
-                    previousLastElement.current = pagLast.current;
+                    console.log('root', rootElement.current);
+                    console.log('last', lastElement.current);
+                    console.log('previous', previousLastElement.current);
+                    console.log('startCode');
+
+                    previousLastElement.current = lastElement.current;
+                    // console.log(
+                    //     previousLastElement.current === lastElement.current,
+                    // );
+                    // previousLastElement.current = pagLast.current;
+
                     callback();
+
+                    lastElement.current = null;
+
+                    console.log('stAfterCallback');
+                    console.log('root', rootElement.current);
+                    console.log('last', lastElement.current);
+                    console.log('previous', previousLastElement.current);
+                    console.log('finishAfterCallback');
+                    // observer.current?.unobserve(lastElement.current as Element);
                 }
             });
         },
@@ -28,21 +49,48 @@ export const useInfiniteScroll = <T extends HTMLElement | null>(
     );
 
     useEffect(() => {
-        const observer = new IntersectionObserver(handleIntersection, {
-            root: rootElement.current,
-        });
+        // const observer = new IntersectionObserver(handleIntersection, {
+        //     root: rootElement.current,
+        // });
 
         if (rootElement.current) {
             lastElement.current = rootElement.current.lastChild;
+
+            console.log('startUseEf');
+            console.log('root', rootElement.current);
+            console.log('last', lastElement.current);
+            console.log('prev', previousLastElement.current);
+            console.log(
+                'prev===last',
+                previousLastElement.current === lastElement.current,
+            );
+            console.log('fUseEf');
+
+            observer.current = new IntersectionObserver(handleIntersection, {
+                root: rootElement.current,
+            });
+            // if (observer.current) {
+            //     observer.current.disconnect();
+            // }
+
+            // observer.current = new IntersectionObserver(handleIntersection, {
+            //     root: rootElement.current,
+            // });
+
             if (lastElement.current) {
-                observer.observe(lastElement.current as Element);
+                observer.current.observe(lastElement.current as Element);
             }
         }
 
         return () => {
-            observer.disconnect();
+            observer.current?.disconnect();
         };
-    }, [handleIntersection, rootElement.current]);
+    }, [
+        handleIntersection,
+        rootElement.current,
+        // previousLastElement.current,
+        // lastElement.current,
+    ]);
 
     return rootElement;
 };
