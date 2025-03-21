@@ -12,8 +12,10 @@ import { Card, Input } from 'ui-kit';
 import { InputVariants } from 'ui-kit/Input';
 
 import { getAllCompactMessages } from '@entities/compactMessage/api/getAllCompactMessages';
+import { searchCompactMessages } from '@entities/compactMessage/api/searchCompactMessages';
 import { CompactMessage } from '@entities/compactMessage/model/compactMessage';
 
+import { useDebounce } from '@shared/lib/hooks/useDebounce';
 import { useInfiniteScroll } from '@shared/lib/hooks/useInfiniteScroll';
 
 import css from './MessageList.module.scss';
@@ -25,21 +27,43 @@ const MessageList: FC = () => {
     );
     const [page, setPage] = useState<number>(1);
 
+    const isWasSearch = useRef<boolean>(false);
+
     const rootElement = useRef<HTMLDivElement | null>(null);
+
+    const valueDebounce = useDebounce<string>(valueInput, 500);
 
     useEffect(() => {
         let isMounted = true;
+        if (valueDebounce === '') {
+            getAllCompactMessages(page, 15).then((value) => {
+                if (isMounted) {
+                    if (isWasSearch.current) {
+                        setCompactMessages(value);
+                        isWasSearch.current = false;
+                    } else {
+                        setCompactMessages((prevState) => [
+                            ...prevState,
+                            ...value,
+                        ]);
+                    }
+                }
+            });
+        } else {
+            console.log('start');
+            if (rootElement.current) {
+                rootElement.current.scrollTop = 0;
+                setPage(1);
+                isWasSearch.current = true;
 
-        getAllCompactMessages(page, 15).then((value) => {
-            if (isMounted) {
-                setCompactMessages((prevState) => [...prevState, ...value]);
+                searchCompactMessages(valueDebounce).then(setCompactMessages);
             }
-        });
+        }
 
         return () => {
             isMounted = false;
         };
-    }, [page]);
+    }, [page, valueDebounce]);
 
     const handleInfiniteScroll = useCallback(() => {
         setPage((prevState) => prevState + 1);
@@ -67,6 +91,7 @@ const MessageList: FC = () => {
                 iconLeft={SearchOutlined}
                 onChange={handleOnChange}
             />
+            {page}
             <div
                 className={css.cardList}
                 ref={rootElement}
