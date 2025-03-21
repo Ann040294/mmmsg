@@ -47,8 +47,8 @@ const MessageList: FC = () => {
 
     useInfiniteScroll<HTMLDivElement | null>(
         rootElement,
+        compactMessages.length,
         handleInfiniteScroll,
-        // compactMessages.length,
     );
 
     const handleOnChange = useCallback(
@@ -67,7 +67,6 @@ const MessageList: FC = () => {
                 iconLeft={SearchOutlined}
                 onChange={handleOnChange}
             />
-            {page}
             <div
                 className={css.cardList}
                 ref={rootElement}
@@ -81,7 +80,6 @@ const MessageList: FC = () => {
                         title={item.fullName}
                     />
                 ))}
-                <p>last</p>
             </div>
         </>
     );
