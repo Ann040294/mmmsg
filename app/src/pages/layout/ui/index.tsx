@@ -18,7 +18,7 @@ const LayoutPage: FC = () => {
             >
                 <Navbar options={defaultConfig} />
             </Layout>
-            <Layout>
+            <Layout className={css.main}>
                 <Outlet />
             </Layout>
             <Layout>
