@@ -17,7 +17,7 @@ const Button: FC<ButtonProps> = ({
     text,
     variant = ButtonVariants.PRIMARY,
     size = ButtonSize.MEDIUM,
-    isFullWidth = false,
+    isFullWidth,
     onClick: handleClick,
 }) => {
     return (

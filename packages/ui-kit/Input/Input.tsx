@@ -44,8 +44,8 @@ const Input: FC<InputProps> = ({
     );
 
     return (
-        <div className={cn(css.wrapper, className)}>
-            {label && <label className={cn(css.label)}>{label}</label>}
+        <div className={cn(css.wrapper, className, css[validateType!])}>
+            {label && <label className={css.label}>{label}</label>}
 
             <div
                 className={cn(

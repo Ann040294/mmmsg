@@ -3,28 +3,28 @@ import cn from 'classnames';
 
 import { Icon } from '../Icon';
 
-import { NoticeForm, NoticeTypes, NoticeTypesMap } from './types';
+import { NoticeTypes, NoticeTypesMap, NoticeVariant } from './types';
 
 import css from './Notice.module.scss';
 
 interface NoticeProps {
     type: NoticeTypes;
     message: string;
-    form?: NoticeForm;
+    variant?: NoticeVariant;
     hasBorder?: boolean;
 }
 
 const Notice: FC<NoticeProps> = ({
     type,
     message,
-    form = NoticeForm.DEFAULT,
+    variant = NoticeVariant.DEFAULT,
     hasBorder,
 }) => {
     const IconComponent = NoticeTypesMap[type];
 
     return (
         <div
-            className={cn(css.container, css[type], css[form], {
+            className={cn(css.container, css[type], css[variant], {
                 [css.border]: hasBorder,
             })}
         >
