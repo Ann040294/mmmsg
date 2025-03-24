@@ -6,7 +6,6 @@
   flex-direction: column;
   align-items: flex-start;
   width: 100%;
-  max-width: 340px;
 
   .label {
     position: absolute;
@@ -76,15 +75,15 @@
       line-height: 20px;
       color: #000;
       background-color: transparent;
-      
+
       &:focus {
         outline: none;
       }
-      
+
       &:disabled {
         cursor: not-allowed;
       }
-  
+
       &::placeholder {
         color: #999;
         font-size: typ.$font-size-text-placeholder;
