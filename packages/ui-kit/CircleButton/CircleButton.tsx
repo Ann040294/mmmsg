@@ -11,6 +11,7 @@ import css from './CircleButton.module.scss';
 interface CircleButtonProps {
     icon: IconType;
     isDisabled?: boolean;
+    isActive?: boolean;
     className?: string;
     label?: string;
     size?: CircleButtonSize;
@@ -23,15 +24,16 @@ const CircleButton: FC<CircleButtonProps> = ({
     size = CircleButtonSize.MEDIUM,
     className,
     isDisabled,
+    isActive,
     onClick: handleClick,
 }) => {
     return (
         <button
-            className={cn(css.button, className)}
+            className={cn(css.button, className, { [css.active]: isActive })}
             disabled={isDisabled}
             onClick={handleClick}
         >
-            <span className={cn(css.iconWrap, css[size])}>
+            <span className={cn(css.iconWrapper, css[size])}>
                 <Icon
                     icon={icon}
                     className={css.icon}

@@ -5,6 +5,7 @@ import { ROUTE_CONFIG } from '@shared/config/routeConfig';
 import { TestAvatars } from './ui/TestAvatars';
 import { TestButtons } from './ui/TestButtons';
 import { TestCards } from './ui/TestCards';
+import { TestCircleButtons } from './ui/TestCircleButtons';
 import TestDropdowns from './ui/TestDropdowns';
 import { TestIcons } from './ui/TestIcons';
 import { TestInputs } from './ui/TestInputs';
@@ -28,6 +29,7 @@ const Test = () => {
                 <TestButtons />
                 <TestNotices />
                 <TestTextViewer/>
+                <TestCircleButtons />
             </Layout>
         </>
     );

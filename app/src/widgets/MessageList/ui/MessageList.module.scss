@@ -1,0 +1,13 @@
+@use 'ui-kit/styles/color' as colors;
+
+.cardList {
+  overflow-y: auto;
+  flex: 1;
+
+  .card {
+    &:hover {
+      background-color: colors.$neutral-light-color;
+      cursor: pointer;
+    }
+  }
+}
