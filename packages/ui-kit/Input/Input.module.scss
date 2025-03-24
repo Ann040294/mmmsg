@@ -1,4 +1,5 @@
-@use '../styles/typography' as typ;
+@use '../styles/typography' as typography;
+@use '../styles/color' as color;
 
 .wrapper {
   position: relative;
@@ -13,11 +14,11 @@
     top: -5px;
     left: 14px;
     padding: 0 5px;
-    font-family: typ.$font-family-primary;
+    font-family: typography.$font-family-primary;
     font-weight: 400;
-    font-size: typ.$font-size-text-primary-desktop;
+    font-size: typography.$font-size-text-primary-desktop;
     line-height: 14px;
-    color: #666;
+    color: color.$neutral-darken-gray-color;
     z-index: 1;
 
     &::before {
@@ -25,10 +26,16 @@
       display: block;
       width: 100%;
       content: '';
-      background-color: #ffffff;
+      background-color: color.$neutral-white-color;
       height: 1px;
       top: 5px;
       z-index: -1;
+    }
+  }
+
+  &.error {
+    .label {
+      color: color.$state-error-color;
     }
   }
 
@@ -39,31 +46,46 @@
     position: relative;
     height: 56px;
     box-sizing: border-box;
-    border: 1px solid #ffffff;
+    border: 1px solid color.$neutral-white-color;
 
     &:has(.input:focus) {
-      border: 1px solid #000;
+      border: 1px solid color.$neutral-dark-color;
     }
 
     &:has(.input:disabled) {
-      background-color: #e0e0e0;
+      background-color: rgba(color.$neutral-light-gray-color, 0.7);
     }
 
     &.outlined {
-      background: #ffffff;
-      border: 1px solid #ccc;
+      background: color.$neutral-white-color;
+      border: 1px solid color.$neutral-light-gray-color;
       border-radius: 5px;
       padding: 0 10px;
+
+      &:has(.input:disabled) {
+        border-color: color.$neutral-darken-gray-color;
+        background-color: rgba(color.$neutral-light-gray-color, 0.7);
+      }
+
+      &.error {
+        background: color.$neutral-white-color;
+        border-color: color.$state-error-color;
+
+        &:has(.input:disabled) {
+          border-color: color.$state-error-color;
+          background-color: color.$neutral-light-gray-color;
+        }
+      }
     }
 
     &.filled {
-      background: #f7f7f7;
+      background: color.$neutral-light-color;
       border-radius: 5px;
       padding: 0 10px;
     }
 
     &.error {
-      background-color: #ffd8d8;
+      background-color: color.$state-error-bg;
     }
 
     .input {
@@ -71,23 +93,23 @@
       height: 100%;
       border: none;
       padding: 0 10px;
-      font-family: typ.$font-family-primary;
-      font-size: typ.$font-family-primary;
+      font-family: typography.$font-family-primary;
+      font-size: typography.$font-size-text-primary-desktop;
       line-height: 20px;
-      color: #000;
+      color: color.$neutral-dark-color;
       background-color: transparent;
-      
+
       &:focus {
         outline: none;
       }
-      
+
       &:disabled {
         cursor: not-allowed;
       }
-  
+
       &::placeholder {
-        color: #999;
-        font-size: typ.$font-size-text-placeholder;
+        color: color.$neutral-darken-gray-color;
+        font-size: typography.$font-size-text-placeholder;
         line-height: 14px;
       }
     }
