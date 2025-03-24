@@ -1,52 +1,52 @@
 @use "../styles/color.scss" as colors;
 @use "../styles/typography" as typography;
 
-  %content {
-    font-size: typography.$font-size-text-title;
-    width: 100%;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
-  }
+%content {
+  width: 100%;
+  display: block;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  font-size: typography.$font-size-text-title;
+}
 
 .block {
   display: flex;
+  flex-direction: column;
   width: 100%;
   margin-bottom: 15px;
+}
 
-  &content {
-    display: flex;
-    flex-direction: column;
-    word-wrap: break-word;
-    max-width: 60%;
-    border-radius: 16px;
-    padding: 10px 20px;
+.content {
+  word-wrap: break-word;
+  max-width: 60%;
+  border-radius: 16px;
+  padding: 10px 20px;
 
-    &.secondary {
-      margin: 0 auto 0 0;
-      background-color: colors.$msg-incoming-color;
-    }
-
-    &.primary {
-      margin: 0 0 0 auto;
-      background-color: colors.$msg-outgoing-color;
-    }
+  &.secondary {
+    margin: 0 auto 0 0;
+    background-color: colors.$msg-incoming-color;
   }
 
-  &text {
-    margin: 0;
+  &.primary {
+    margin: 0 0 0 auto;
+    background-color: colors.$msg-outgoing-color;
   }
+}
 
-  &subText {
-    @extend %content;
+.subText {
+  @extend %content;
 
-    text-align: end;
-    color: colors.$neutral-darken-gray-color;
-  }
+  text-align: end;
+  color: colors.$neutral-darken-gray-color;
+}
 
-  .title {
-    @extend %content;
+.title {
+  @extend %content;
 
-    align-self: flex-start;
-  }
+  align-self: flex-start;
+}
+
+.text {
+  margin: 0;
 }
