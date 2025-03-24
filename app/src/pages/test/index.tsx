@@ -2,6 +2,7 @@ import { Layout } from 'ui-kit';
 
 import { ROUTE_CONFIG } from '@shared/config/routeConfig';
 
+import { TestAction } from './ui/TestAction';
 import { TestAvatars } from './ui/TestAvatars';
 import { TestButtons } from './ui/TestButtons';
 import { TestCards } from './ui/TestCards';
@@ -28,6 +29,7 @@ const Test = () => {
                 <TestButtons />
                 <TestNotices />
                 <TestCircleButtons />
+                <TestAction />
             </Layout>
         </>
     );
