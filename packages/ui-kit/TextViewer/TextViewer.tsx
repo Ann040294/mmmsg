@@ -20,10 +20,10 @@ const TextViewer: FC<TextViewerProps> = ({
 }) => {
     return (
         <div className={css.block}>
-            <div className={cn(css.blockcontent, css[variant])}>
-                <span className={css.title}>{title}</span>
-                <p className={css.blocktext}>{text}</p>
-                <span className={css.blocksubText}>{subText}</span>
+            <div className={cn(css.content, css[variant])}>
+                {title && <span className={css.title}>{title}</span>}
+                <p className={css.text}>{text}</p>
+                {subText && <span className={css.subText}>{subText}</span>}
             </div>
         </div>
     );
