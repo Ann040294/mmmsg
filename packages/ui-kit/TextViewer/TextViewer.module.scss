@@ -9,7 +9,7 @@
     overflow: hidden;
   }
 
-.message {
+.block {
   display: flex;
   max-width: 500px; //TODO: адаптивность
   margin-bottom: 15px;
@@ -37,7 +37,7 @@
     margin: 0;
   }
 
-  &signature {
+  .subText {
     @extend %content;
 
     text-align: end;

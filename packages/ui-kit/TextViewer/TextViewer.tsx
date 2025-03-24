@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 import cn from 'classnames';
 
 import { TextViewerVariant } from './types';
@@ -9,21 +9,21 @@ export interface TextViewerProps {
     text: string;
     variant?: TextViewerVariant;
     title?: string;
-    signature?: string;
+    subText?: string;
 }
 
 const TextViewer: FC<TextViewerProps> = ({
     title,
     variant = TextViewerVariant.PRIMARY,
     text,
-    signature,
+    subText,
 }) => {
     return (
-        <div className={css.message}>
-            <div className={cn(css.messagecontent, css[variant])}>
+        <div className={css.block}>
+            <div className={cn(css.blockcontent, css[variant])}>
                 <span className={css.title}>{title}</span>
-                <p className={css.messagetext}>{text}</p>
-                <span className={css.messagesignature}>{signature}</span>
+                <p className={css.blocktext}>{text}</p>
+                <span className={css.blocksubText}>{subText}</span>
             </div>
         </div>
     );
