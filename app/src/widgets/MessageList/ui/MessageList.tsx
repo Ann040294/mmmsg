@@ -91,7 +91,7 @@ const MessageList: FC = () => {
         <>
             <Input
                 variant={InputVariants.FILLED}
-                placeholder={'Поиск...'}
+                placeholder="Поиск..." /*TODO: Перевод - Translate*/
                 value={valueInput}
                 iconLeft={SearchOutlined}
                 onChange={handleOnChange}
