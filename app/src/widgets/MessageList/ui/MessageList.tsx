@@ -17,6 +17,7 @@ import { CompactMessage } from '@entities/compactMessage/model/compactMessage';
 
 import { useDebounce } from '@shared/lib/hooks/useDebounce';
 import { useInfiniteScroll } from '@shared/lib/hooks/useInfiniteScroll';
+import { useIsToggle } from '@shared/lib/hooks/useIsToggle';
 
 import css from './MessageList.module.scss';
 
@@ -27,37 +28,29 @@ const MessageList: FC = () => {
     );
     const [page, setPage] = useState<number>(1);
 
-    const isWasSearch = useRef<boolean>(false);
-
     const rootElement = useRef<HTMLDivElement | null>(null);
 
     const valueDebounce = useDebounce<string>(valueInput, 500);
 
+    const { toggle, handleChangeToggle } = useIsToggle();
+
     useEffect(() => {
+        if (toggle === undefined) {
+            return;
+        }
+
         let isMounted = true;
+
         if (valueDebounce === '') {
             getAllCompactMessages(page, 15).then((value) => {
                 if (isMounted) {
-                    if (isWasSearch.current) {
-                        setCompactMessages(value);
-                        isWasSearch.current = false;
-                    } else {
-                        setCompactMessages((prevState) => [
-                            ...prevState,
-                            ...value,
-                        ]);
-                    }
+                    setCompactMessages((prevState) => [...prevState, ...value]);
                 }
             });
         } else {
-            console.log('start');
             if (rootElement.current) {
-                rootElement.current.scrollTop = 0;
-                setPage(1);
-                isWasSearch.current = true;
-
-                searchCompactMessages(valueDebounce, page, 15).then(
-                    setCompactMessages,
+                searchCompactMessages(valueDebounce, page, 15).then((value) =>
+                    setCompactMessages((prev) => [...prev, ...value]),
                 );
             }
         }
@@ -65,15 +58,25 @@ const MessageList: FC = () => {
         return () => {
             isMounted = false;
         };
-    }, [page, valueDebounce]);
+    }, [toggle]);
+
+    useEffect(() => {
+        if (rootElement.current) {
+            rootElement.current.scrollTop = 0;
+            setCompactMessages([]);
+            setPage(1);
+            handleChangeToggle();
+        }
+    }, [valueDebounce]);
 
     const handleInfiniteScroll = useCallback(() => {
         setPage((prevState) => prevState + 1);
+        handleChangeToggle();
     }, []);
 
     useInfiniteScroll<HTMLDivElement | null>(
         rootElement,
-        compactMessages.length,
+        compactMessages?.at(-1)?.idUser || '',
         handleInfiniteScroll,
     );
 
