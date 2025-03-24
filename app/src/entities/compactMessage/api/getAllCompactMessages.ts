@@ -1,12 +1,11 @@
 import { compactMessagesMock } from '@entities/compactMessage/mock/compactMessagesMock';
 import { CompactMessage } from '@entities/compactMessage/model/compactMessage';
 
+import { getPaginateArray } from '@shared/lib/utils/getPaginateArray';
+
 export const getAllCompactMessages = async (
     page: number = 1,
-    maxSize: number = 10,
+    maxSize: number = 15,
 ): Promise<CompactMessage[]> => {
-    const startIndex = (page - 1) * maxSize;
-    const endIndex = Math.min(startIndex + maxSize, compactMessagesMock.length);
-
-    return compactMessagesMock.slice(startIndex, endIndex);
+    return getPaginateArray<CompactMessage>(compactMessagesMock, page, maxSize);
 };
