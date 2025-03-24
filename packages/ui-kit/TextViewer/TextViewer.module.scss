@@ -11,7 +11,7 @@
 
 .block {
   display: flex;
-  max-width: 500px; //TODO: адаптивность
+  width: 100%;
   margin-bottom: 15px;
 
   &content {
@@ -37,7 +37,7 @@
     margin: 0;
   }
 
-  .subText {
+  &subText {
     @extend %content;
 
     text-align: end;
