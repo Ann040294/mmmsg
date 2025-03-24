@@ -12,7 +12,7 @@ export enum NoticeTypes {
     WARNING = 'warning',
 }
 
-export enum NoticeForm {
+export enum NoticeVariant {
     DEFAULT = 'default',
     FILLED = 'filled',
 }
