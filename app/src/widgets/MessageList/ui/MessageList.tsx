@@ -96,7 +96,6 @@ const MessageList: FC = () => {
                 iconLeft={SearchOutlined}
                 onChange={handleOnChange}
             />
-            {page}
             <div
                 className={css.cardList}
                 ref={rootElement}
