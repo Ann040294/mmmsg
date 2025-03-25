@@ -14,6 +14,7 @@ import { InputVariants } from 'ui-kit/Input';
 import { getAllCompactMessages } from '@entities/compactMessage/api/getAllCompactMessages';
 import { CompactMessage } from '@entities/compactMessage/model/compactMessage';
 
+import { useIncreaseOrDecrease } from '@shared/lib/hooks/useIncreaseOrDecrease';
 import { useInfiniteScroll } from '@shared/lib/hooks/useInfiniteScroll';
 
 import css from './MessageList.module.scss';
@@ -23,32 +24,33 @@ const MessageList: FC = () => {
     const [compactMessages, setCompactMessages] = useState<CompactMessage[]>(
         [],
     );
-    const [page, setPage] = useState<number>(1);
 
     const rootElement = useRef<HTMLDivElement | null>(null);
+
+    const { count: page, handleIncrease } = useIncreaseOrDecrease(1);
 
     useEffect(() => {
         let isMounted = true;
 
-        getAllCompactMessages(page, 15).then((value) => {
+        (async () => {
+            const valueCompactMessages = await getAllCompactMessages(page, 15);
             if (isMounted) {
-                setCompactMessages((prevState) => [...prevState, ...value]);
+                setCompactMessages((prevState) => [
+                    ...prevState,
+                    ...valueCompactMessages,
+                ]);
             }
-        });
+        })();
 
         return () => {
             isMounted = false;
         };
     }, [page]);
 
-    const handleInfiniteScroll = useCallback(() => {
-        setPage((prevState) => prevState + 1);
-    }, []);
-
     useInfiniteScroll<HTMLDivElement | null>(
         rootElement,
         compactMessages.length,
-        handleInfiniteScroll,
+        handleIncrease,
     );
 
     const handleOnChange = useCallback(
