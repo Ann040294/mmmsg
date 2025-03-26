@@ -16,10 +16,9 @@ import { searchCompactMessages } from '@entities/compactMessage/api/searchCompac
 import { CompactMessage } from '@entities/compactMessage/model/compactMessage';
 
 import { useDebounce } from '@shared/lib/hooks/useDebounce';
+import { useIncreaseOrDecrease } from '@shared/lib/hooks/useIncreaseOrDecrease';
 import { useInfiniteScroll } from '@shared/lib/hooks/useInfiniteScroll';
 import { useIsToggle } from '@shared/lib/hooks/useIsToggle';
-
-import { useIncreaseOrDecrease } from '@shared/lib/hooks/useIncreaseOrDecrease';
 
 import css from './MessageList.module.scss';
 
@@ -46,7 +45,10 @@ const MessageList: FC = () => {
 
         if (valueDebounce === '') {
             (async () => {
-                const valueCompactMessages = await getAllCompactMessages(page, 15);
+                const valueCompactMessages = await getAllCompactMessages(
+                    page,
+                    15,
+                );
                 if (isMounted) {
                     setCompactMessages((prevState) => [
                         ...prevState,
@@ -77,14 +79,14 @@ const MessageList: FC = () => {
     }, [valueDebounce]);
 
     const handleInfiniteScroll = useCallback(() => {
-        setPage((prevState) => prevState + 1);
+        handleIncrease();
         handleChangeToggle();
     }, []);
 
     useInfiniteScroll<HTMLDivElement | null>(
         rootElement,
         compactMessages?.at(-1)?.idUser || '',
-        handleIncrease,
+        handleInfiniteScroll,
     );
 
     const handleOnChange = useCallback(
