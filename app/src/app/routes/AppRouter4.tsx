@@ -1,10 +1,16 @@
 import { FC, lazy } from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router';
+import {
+    BrowserRouter,
+    Outlet,
+    Route,
+    Routes,
+    useLocation,
+} from 'react-router';
 import ProtectedRoute from '@app/routes/ProtectedRoute';
 
 import { routes } from './routes';
 
-const LayoutPage = lazy(() => import('@pages/layout/ui'));
+const LayoutPage = lazy(() => import('@pages/layout/ui/L3'));
 const HomePage = lazy(() => import('@pages/home/ui'));
 const ProfilePage = lazy(() => import('@pages/profile'));
 const TestPage = lazy(() => import('@pages/test'));
@@ -14,6 +20,7 @@ const ResetPage = lazy(() => import('@pages/reset'));
 const NotFoundPage = lazy(() => import('@pages/not-found'));
 
 const AppRouter: FC = () => {
+    // const location = useLocation();
     return (
         <BrowserRouter>
             <Routes>
@@ -31,14 +38,43 @@ const AppRouter: FC = () => {
                             key={routes.profile.path}
                             path={routes.profile.path}
                             element={[
-                                <ProfilePage key={'423432f'} />,
-                                <div key={'423432r'}>TEST4</div>,
+                                // <ProfilePage key={'423432f'} />,
+                                // <div
+                                //     key={'423434f'}
+                                //     style={{ border: '1px solid black' }}
+                                // >
+                                //     Test
+                                // </div>,
+                                <div
+                                    key={'423435f'}
+                                    route={'settings'}
+                                >
+                                    FOR SETTINGS
+                                    {window.location.pathname.includes(
+                                        'settings',
+                                    ) && <Outlet />}
+                                </div>,
+                                <div>
+                                    {window.location.pathname.includes(
+                                        'set1',
+                                    ) && <Outlet />}
+                                </div>,
                             ]}
+                            // element={<ProfilePage />}
                         >
                             <Route
                                 path={'settings'}
-                                element={<div>Test</div>}
-                            />
+                                element={
+                                    <div>
+                                        ID SETTINGS <Outlet />
+                                    </div>
+                                }
+                            >
+                                <Route
+                                    path={'set1'}
+                                    element={<div>ID SET1</div>}
+                                />
+                            </Route>
                         </Route>
                     </Route>
                     <Route

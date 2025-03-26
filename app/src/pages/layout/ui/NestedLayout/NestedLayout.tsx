@@ -1,5 +1,5 @@
 import { FC, ReactNode } from 'react';
-import { Outlet } from 'react-router';
+import { Outlet, useOutlet } from 'react-router';
 
 import { Layout } from 'ui-kit';
 
@@ -9,10 +9,13 @@ interface NestedLayoutProps {
 }
 
 const NestedLayout: FC<NestedLayoutProps> = (props) => {
+    const outlet = useOutlet();
+    const children = outlet?.props.children.props.children;
+    console.log(children);
     return (
         <>
             <Layout className={props.className}>{props.children}</Layout>
-            <Layout>
+            <Layout hasGradient>
                 <Outlet />
             </Layout>
         </>

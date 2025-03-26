@@ -1,5 +1,5 @@
 import { FC, lazy } from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router';
+import { BrowserRouter, Outlet, Route, Routes } from 'react-router';
 import ProtectedRoute from '@app/routes/ProtectedRoute';
 
 import NestedLayout from '@pages/layout/ui/NestedLayout/NestedLayout';
@@ -34,8 +34,32 @@ const AppRouter: FC = () => {
                         >
                             <Route
                                 path={'settings'}
-                                element={<div>Test</div>}
-                            />
+                                element={
+                                    <NestedLayout>
+                                        <div>SETTINGS</div>
+                                    </NestedLayout>
+                                }
+                            >
+                                <Route
+                                    path={'set1'}
+                                    element={
+                                        <div>
+                                            Test1
+                                            <Outlet />
+                                        </div>
+                                    }
+                                >
+                                    <Route
+                                        path={'set3'}
+                                        element={
+                                            <div>
+                                                Test111
+                                                <Outlet />
+                                            </div>
+                                        }
+                                    />
+                                </Route>
+                            </Route>
                         </Route>
                     </Route>
                 </Route>
