@@ -1,8 +1,8 @@
 export const ROUTE_CONFIG = {
     HOME: {
         path: '/',
-        title: 'Главная',
-        labelPage: 'Чаты'
+        title: 'route.home.title',
+        labelPage: 'route.home.labelPage',
     },
     TEST: {
         path: '/test',
@@ -31,5 +31,5 @@ export const ROUTE_CONFIG = {
     NOT_FOUND: {
         path: '*',
         title: 'Страница не найдена',
-    }
+    },
 };
