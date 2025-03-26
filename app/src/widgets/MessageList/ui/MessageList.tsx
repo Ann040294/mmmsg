@@ -19,6 +19,8 @@ import { useDebounce } from '@shared/lib/hooks/useDebounce';
 import { useInfiniteScroll } from '@shared/lib/hooks/useInfiniteScroll';
 import { useIsToggle } from '@shared/lib/hooks/useIsToggle';
 
+import { useIncreaseOrDecrease } from '@shared/lib/hooks/useIncreaseOrDecrease';
+
 import css from './MessageList.module.scss';
 
 const MessageList: FC = () => {
@@ -26,13 +28,14 @@ const MessageList: FC = () => {
     const [compactMessages, setCompactMessages] = useState<CompactMessage[]>(
         [],
     );
-    const [page, setPage] = useState<number>(1);
 
     const rootElement = useRef<HTMLDivElement | null>(null);
 
     const valueDebounce = useDebounce<string>(valueInput, 500);
 
     const { toggle, handleChangeToggle } = useIsToggle();
+
+    const { count: page, handleIncrease } = useIncreaseOrDecrease(1);
 
     useEffect(() => {
         if (toggle === undefined) {
@@ -42,11 +45,15 @@ const MessageList: FC = () => {
         let isMounted = true;
 
         if (valueDebounce === '') {
-            getAllCompactMessages(page, 15).then((value) => {
+            (async () => {
+                const valueCompactMessages = await getAllCompactMessages(page, 15);
                 if (isMounted) {
-                    setCompactMessages((prevState) => [...prevState, ...value]);
+                    setCompactMessages((prevState) => [
+                        ...prevState,
+                        ...valueCompactMessages,
+                    ]);
                 }
-            });
+            })();
         } else {
             if (rootElement.current) {
                 searchCompactMessages(valueDebounce, page, 15).then((value) =>
@@ -77,7 +84,7 @@ const MessageList: FC = () => {
     useInfiniteScroll<HTMLDivElement | null>(
         rootElement,
         compactMessages?.at(-1)?.idUser || '',
-        handleInfiniteScroll,
+        handleIncrease,
     );
 
     const handleOnChange = useCallback(
