@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import AppRouter from './routes/AppRouter';
+import AppRouter from './routes/AppRouter3';
 
 const App: FC = () => {
     return (

@@ -8,6 +8,8 @@ import { Navbar } from '@pages/layout/ui/Navbar';
 import { defaultConfig } from '../config/defaultConfig';
 
 import css from './layout.module.scss';
+import NestedLayout from '@pages/layout/ui/NestedLayout/NestedLayout';
+import NamedOutlet from '@app/routes/Test/NamedOutlet';
 
 const LayoutPage: FC = () => {
     return (
@@ -19,13 +21,10 @@ const LayoutPage: FC = () => {
                 <Navbar options={defaultConfig} />
             </Layout>
             <Layout className={css.main}>
-                <Outlet />
+                <NamedOutlet name={'left'} />
             </Layout>
             <Layout>
-                <span>
-                    Должен отображаться вложенный маршрут или какой-то
-                    стандартный компонент
-                </span>
+                <NamedOutlet name={'right'} />
             </Layout>
         </div>
     );
