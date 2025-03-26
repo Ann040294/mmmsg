@@ -18,7 +18,7 @@ import { CompactMessage } from '@entities/compactMessage/model/compactMessage';
 import { useDebounce } from '@shared/lib/hooks/useDebounce';
 import { useIncreaseOrDecrease } from '@shared/lib/hooks/useIncreaseOrDecrease';
 import { useInfiniteScroll } from '@shared/lib/hooks/useInfiniteScroll';
-import { useIsToggle } from '@shared/lib/hooks/useIsToggle';
+import { useToggled } from '@shared/lib/hooks/useToggled';
 
 import css from './MessageList.module.scss';
 
@@ -32,12 +32,16 @@ const MessageList: FC = () => {
 
     const valueDebounce = useDebounce<string>(valueInput, 500);
 
-    const { toggle, handleChangeToggle } = useIsToggle();
+    const { isToggled, toggle } = useToggled();
 
-    const { count: page, handleIncrease } = useIncreaseOrDecrease(1);
+    const {
+        count: page,
+        setCount: setPage,
+        increase,
+    } = useIncreaseOrDecrease(1);
 
     useEffect(() => {
-        if (toggle === undefined) {
+        if (isToggled === undefined) {
             return;
         }
 
@@ -67,20 +71,20 @@ const MessageList: FC = () => {
         return () => {
             isMounted = false;
         };
-    }, [toggle]);
+    }, [isToggled]);
 
     useEffect(() => {
         if (rootElement.current) {
             rootElement.current.scrollTop = 0;
             setCompactMessages([]);
             setPage(1);
-            handleChangeToggle();
+            toggle();
         }
     }, [valueDebounce]);
 
     const handleInfiniteScroll = useCallback(() => {
-        handleIncrease();
-        handleChangeToggle();
+        increase();
+        toggle();
     }, []);
 
     useInfiniteScroll<HTMLDivElement | null>(
@@ -89,12 +93,9 @@ const MessageList: FC = () => {
         handleInfiniteScroll,
     );
 
-    const handleOnChange = useCallback(
-        (value: ChangeEvent<HTMLInputElement>) => {
-            setValueInput(value.target.value);
-        },
-        [],
-    );
+    const handleChange = useCallback((value: ChangeEvent<HTMLInputElement>) => {
+        setValueInput(value.target.value);
+    }, []);
 
     return (
         <>
@@ -103,7 +104,7 @@ const MessageList: FC = () => {
                 placeholder="Поиск..." /*TODO: Перевод - Translate*/
                 value={valueInput}
                 iconLeft={SearchOutlined}
-                onChange={handleOnChange}
+                onChange={handleChange}
             />
             <div
                 className={css.cardList}

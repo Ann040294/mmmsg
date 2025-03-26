@@ -8,7 +8,7 @@ export const searchCompactMessages = async (
     page: number = 1,
     maxSize: number = 15,
 ): Promise<CompactMessage[]> => {
-    const array = compactMessagesMock.filter((compactMessage: CompactMessage) =>
+    const array = compactMessagesMock.filter((compactMessage) =>
         Object.values(compactMessage).some((value) =>
             value.toLowerCase().includes(substring.toLowerCase()),
         ),
