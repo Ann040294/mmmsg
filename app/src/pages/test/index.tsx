@@ -11,6 +11,7 @@ import TestDropdowns from './ui/TestDropdowns';
 import { TestIcons } from './ui/TestIcons';
 import { TestInputs } from './ui/TestInputs';
 import { TestNotices } from './ui/TestNotices';
+import { TestTextViewer } from './ui/TestTextViewer';
 
 import css from './style.module.scss';
 
@@ -28,6 +29,7 @@ const Test = () => {
                 <TestInputs />
                 <TestButtons />
                 <TestNotices />
+                <TestTextViewer/>
                 <TestCircleButtons />
                 <TestAction />
             </Layout>
