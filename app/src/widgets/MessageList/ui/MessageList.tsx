@@ -22,6 +22,8 @@ import { useToggled } from '@shared/lib/hooks/useToggled';
 
 import css from './MessageList.module.scss';
 
+const MAX_SIZE_ON_PAGE = 15;
+
 const MessageList: FC = () => {
     const [valueInput, setValueInput] = useState<string>('');
     const [compactMessages, setCompactMessages] = useState<CompactMessage[]>(
@@ -51,7 +53,7 @@ const MessageList: FC = () => {
             (async () => {
                 const valueCompactMessages = await getAllCompactMessages(
                     page,
-                    15,
+                    MAX_SIZE_ON_PAGE,
                 );
                 if (isMounted) {
                     setCompactMessages((prevState) => [
@@ -62,7 +64,11 @@ const MessageList: FC = () => {
             })();
         } else {
             if (rootElement.current) {
-                searchCompactMessages(valueDebounce, page, 15).then((value) =>
+                searchCompactMessages(
+                    valueDebounce,
+                    page,
+                    MAX_SIZE_ON_PAGE,
+                ).then((value) =>
                     setCompactMessages((prev) => [...prev, ...value]),
                 );
             }
