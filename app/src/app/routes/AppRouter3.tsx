@@ -4,7 +4,7 @@ import ProtectedRoute from '@app/routes/ProtectedRoute';
 
 import { routes } from './routes';
 
-const LayoutPage = lazy(() => import('@pages/layout/ui'));
+const LayoutPage = lazy(() => import('@pages/layout/ui/L2'));
 const HomePage = lazy(() => import('@pages/home/ui'));
 const ProfilePage = lazy(() => import('@pages/profile'));
 

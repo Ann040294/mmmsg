@@ -1,4 +1,5 @@
 import { FC } from 'react';
+import { Outlet } from 'react-router';
 
 import { Layout } from 'ui-kit';
 
@@ -7,7 +8,6 @@ import { Navbar } from '@pages/layout/ui/Navbar';
 import { defaultConfig } from '../config/defaultConfig';
 
 import css from './layout.module.scss';
-import NamedOutlet from '@app/routes/Test/NamedOutlet';
 
 const LayoutPage: FC = () => {
     return (
@@ -19,10 +19,13 @@ const LayoutPage: FC = () => {
                 <Navbar options={defaultConfig} />
             </Layout>
             <Layout className={css.main}>
-                <NamedOutlet name={'left'} />
+                <Outlet />
             </Layout>
             <Layout>
-                <NamedOutlet name={'right'} />
+                <span>
+                    Должен отображаться вложенный маршрут или какой-то
+                    стандартный компонент
+                </span>
             </Layout>
         </div>
     );
