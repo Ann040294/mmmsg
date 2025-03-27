@@ -15,8 +15,8 @@ import { getAllCompactMessages } from '@entities/compactMessage/api/getAllCompac
 import { searchCompactMessages } from '@entities/compactMessage/api/searchCompactMessages';
 import { CompactMessage } from '@entities/compactMessage/model/compactMessage';
 
+import { useCounter } from '@shared/lib/hooks/useCounter';
 import { useDebounce } from '@shared/lib/hooks/useDebounce';
-import { useIncreaseOrDecrease } from '@shared/lib/hooks/useIncreaseOrDecrease';
 import { useInfiniteScroll } from '@shared/lib/hooks/useInfiniteScroll';
 import { useToggled } from '@shared/lib/hooks/useToggled';
 
@@ -36,11 +36,7 @@ const MessageList: FC = () => {
 
     const { isToggled, toggle } = useToggled();
 
-    const {
-        count: page,
-        setCount: setPage,
-        increase,
-    } = useIncreaseOrDecrease(1);
+    const { count: page, changeCount: setPage, increase } = useCounter(1);
 
     useEffect(() => {
         if (isToggled === undefined) {
@@ -51,10 +47,10 @@ const MessageList: FC = () => {
 
         if (valueDebounce === '') {
             (async () => {
-                const valueCompactMessages = await getAllCompactMessages(
-                    page,
-                    MAX_SIZE_ON_PAGE,
-                );
+                const valueCompactMessages = await getAllCompactMessages({
+                    page: page,
+                    maxSize: MAX_SIZE_ON_PAGE,
+                });
                 if (isMounted) {
                     setCompactMessages((prevState) => [
                         ...prevState,
@@ -64,13 +60,19 @@ const MessageList: FC = () => {
             })();
         } else {
             if (rootElement.current) {
-                searchCompactMessages(
-                    valueDebounce,
-                    page,
-                    MAX_SIZE_ON_PAGE,
-                ).then((value) =>
-                    setCompactMessages((prev) => [...prev, ...value]),
-                );
+                (async () => {
+                    const valueCompactMessages = await searchCompactMessages(
+                        valueDebounce,
+                        {
+                            page: page,
+                            maxSize: MAX_SIZE_ON_PAGE,
+                        },
+                    );
+                    setCompactMessages((prev) => [
+                        ...prev,
+                        ...valueCompactMessages,
+                    ]);
+                })();
             }
         }
 
