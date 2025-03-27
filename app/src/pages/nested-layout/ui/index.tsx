@@ -3,6 +3,8 @@ import { Outlet } from 'react-router';
 
 import { Layout } from 'ui-kit';
 
+import css from './NestedLayout.module.scss';
+
 interface NestedLayoutProps {
     children: ReactNode;
 }
@@ -10,7 +12,7 @@ interface NestedLayoutProps {
 const NestedLayout: FC<NestedLayoutProps> = (props) => {
     return (
         <>
-            <Layout>{props.children}</Layout>
+            <Layout className={css.main}>{props.children}</Layout>
             <Layout>
                 <Outlet />
             </Layout>

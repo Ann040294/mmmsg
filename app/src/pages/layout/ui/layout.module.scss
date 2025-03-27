@@ -8,23 +8,7 @@
   padding: var(--padding-vertical) var(--padding-horizontal);
   gap: var(--padding-horizontal);
   overflow: hidden;
-
-  &:nth-child(2) {
-    height: inherit;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    box-sizing: border-box;
-  }
 }
-
-//.main {
-//  height: inherit;
-//  display: flex;
-//  flex-direction: column;
-//  gap: 10px;
-//  box-sizing: border-box;
-//}
 
 .navbar {
   padding: 8px;
