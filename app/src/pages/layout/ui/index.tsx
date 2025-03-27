@@ -18,15 +18,7 @@ const LayoutPage: FC = () => {
             >
                 <Navbar options={defaultConfig} />
             </Layout>
-            <Layout className={css.main}>
-                <Outlet />
-            </Layout>
-            <Layout>
-                <span>
-                    Должен отображаться вложенный маршрут или какой-то
-                    стандартный компонент
-                </span>
-            </Layout>
+            <Outlet />
         </div>
     );
 };

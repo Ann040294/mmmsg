@@ -5,6 +5,7 @@ import ProtectedRoute from '@app/routes/ProtectedRoute';
 import { routes } from './routes';
 
 const LayoutPage = lazy(() => import('@pages/layout/ui'));
+const NestedLayout = lazy(() => import('@pages/nested-layout/ui'));
 const HomePage = lazy(() => import('@pages/home/ui'));
 const ProfilePage = lazy(() => import('@pages/profile'));
 const TestPage = lazy(() => import('@pages/test'));
@@ -25,21 +26,20 @@ const AppRouter: FC = () => {
                     <Route element={<LayoutPage />}>
                         <Route
                             path={routes.home.path}
-                            element={<HomePage />}
+                            element={
+                                <NestedLayout>
+                                    <HomePage />
+                                </NestedLayout>
+                            }
                         />
                         <Route
-                            key={routes.profile.path}
                             path={routes.profile.path}
-                            element={[
-                                <ProfilePage key={'423432f'} />,
-                                <div key={'423432r'}>TEST4</div>,
-                            ]}
-                        >
-                            <Route
-                                path={'settings'}
-                                element={<div>Test</div>}
-                            />
-                        </Route>
+                            element={
+                                <NestedLayout>
+                                    <ProfilePage />
+                                </NestedLayout>
+                            }
+                        />
                     </Route>
                     <Route
                         path={routes.reset.path}
