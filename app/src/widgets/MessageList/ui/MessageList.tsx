@@ -6,6 +6,7 @@ import {
     useRef,
     useState,
 } from 'react';
+import { useTranslation } from 'react-i18next';
 import SearchOutlined from '@ant-design/icons/SearchOutlined';
 
 import { Card, Input } from 'ui-kit';
@@ -14,6 +15,7 @@ import { InputVariants } from 'ui-kit/Input';
 import { getAllCompactMessages } from '@entities/compactMessage/api/getAllCompactMessages';
 import { CompactMessage } from '@entities/compactMessage/model/compactMessage';
 
+import { ROUTE_CONFIG } from '@shared/config/routeConfig';
 import { useIncreaseOrDecrease } from '@shared/lib/hooks/useIncreaseOrDecrease';
 import { useInfiniteScroll } from '@shared/lib/hooks/useInfiniteScroll';
 
@@ -27,7 +29,10 @@ const MessageList: FC = () => {
 
     const rootElement = useRef<HTMLDivElement | null>(null);
 
-    const { count: page, handleIncrease } = useIncreaseOrDecrease(1);
+    const {
+count: page,
+handleIncrease
+} = useIncreaseOrDecrease(1);
 
     useEffect(() => {
         let isMounted = true;
@@ -60,11 +65,13 @@ const MessageList: FC = () => {
         [],
     );
 
+    const { t } = useTranslation();
+
     return (
         <>
             <Input
                 variant={InputVariants.FILLED}
-                placeholder="Поиск..." /*TODO: Перевод - Translate*/
+                placeholder={t(ROUTE_CONFIG.HOME.searchTitle)}
                 value={valueInput}
                 iconLeft={SearchOutlined}
                 onChange={handleOnChange}
