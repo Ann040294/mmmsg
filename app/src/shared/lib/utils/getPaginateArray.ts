@@ -12,6 +12,7 @@ export const getPaginateArray = <T>(
     if (page < 2) {
         page = 1;
     }
+
     if (maxSize < 1) {
         maxSize = 1;
     }

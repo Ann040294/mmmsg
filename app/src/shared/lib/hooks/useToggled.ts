@@ -9,18 +9,18 @@ export const useToggled = (initialState?: boolean) => {
         setIsToggle((prevState) => !prevState);
     }, []);
 
-    const onToggle = useCallback(() => {
+    const toggleOn = useCallback(() => {
         setIsToggle(true);
     }, []);
 
-    const offToggle = useCallback(() => {
+    const toggleOff = useCallback(() => {
         setIsToggle(false);
     }, []);
 
     return {
         isToggled,
-        onToggle,
-        offToggle,
+        toggleOn,
+        toggleOff,
         toggle,
     };
 };

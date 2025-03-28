@@ -101,8 +101,8 @@ const MessageList: FC = () => {
         handleInfiniteScroll,
     );
 
-    const handleChange = useCallback((value: ChangeEvent<HTMLInputElement>) => {
-        setValueInput(value.target.value);
+    const handleChange = useCallback((event: ChangeEvent<HTMLInputElement>) => {
+        setValueInput(event.target.value);
     }, []);
 
     return (
