@@ -1,35 +1,36 @@
 export const ROUTE_CONFIG = {
     HOME: {
         path: '/',
-        title: 'Главная',
-        labelPage: 'Чаты'
+        title: 'route.home.title',
+        labelPage: 'route.home.labelPage',
+        searchTitle: 'route.home.searchTitle',
     },
     TEST: {
         path: '/test',
-        title: 'Тестирование',
+        title: 'route.test.title',
     },
     PROFILE: {
-        path: '/profile/',
-        title: 'Профиль',
+        path: '/profile',
+        title: 'route.profile.title',
     },
     LOGOUT: {
         path: '/logout',
-        title: 'Выход',
+        title: 'route.logout.title',
     },
     LOGIN: {
         path: '/login',
-        title: 'Авторизация',
+        title: 'route.login.title',
     },
     REGISTER: {
         path: '/register',
-        title: 'Регистрация',
+        title: 'route.register.title',
     },
     RESET: {
         path: '/reset-password',
-        title: 'Смена пароля',
+        title: 'route.reset.title',
     },
     NOT_FOUND: {
         path: '*',
-        title: 'Страница не найдена',
-    }
+        title: 'route.notFound.title',
+    },
 };

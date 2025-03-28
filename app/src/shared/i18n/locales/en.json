@@ -1,0 +1,30 @@
+{
+  "route": {
+    "home": {
+      "title": "Chats",
+      "labelPage": "Chats",
+      "searchTitle": "Search..."
+    },
+    "test": {
+      "title": "Testing"
+    },
+    "profile": {
+      "title": "Profile"
+    },
+    "logout": {
+      "title": "Logout"
+    },
+    "login": {
+      "title": "Login"
+    },
+    "register": {
+      "title": "Register"
+    },
+    "reset": {
+      "title": "Reset Password"
+    },
+    "notFound": {
+      "title": "Page Not Found"
+    }
+  }
+}

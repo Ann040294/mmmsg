@@ -1,0 +1,30 @@
+{
+  "route": {
+    "home": {
+      "title": "Чаты",
+      "labelPage": "Чаты",
+      "searchTitle": "Поиск..."
+    },
+    "test": {
+      "title": "Тестирование"
+    },
+    "profile": {
+      "title": "Профиль"
+    },
+    "logout": {
+      "title": "Выход"
+    },
+    "login": {
+      "title": "Авторизация"
+    },
+    "register": {
+      "title": "Регистрация"
+    },
+    "reset": {
+      "title": "Смена пароля"
+    },
+    "notFound": {
+      "title": "Страница не найдена"
+    }
+  }
+}
