@@ -2,13 +2,13 @@ import { compactMessagesMock } from '@entities/compactMessage/mock/compactMessag
 import { CompactMessage } from '@entities/compactMessage/model/compactMessage';
 
 import {
-    getPaginateArray,
-    paginateSettings,
-} from '@shared/lib/utils/getPaginateArray';
+    getPaginationArray,
+    PaginationSettings,
+} from '@shared/lib/utils/getPaginationArray';
 
 export const searchCompactMessages = (
     substring: string,
-    paginateSettings: paginateSettings,
+    PaginationSettings: PaginationSettings,
 ): Promise<CompactMessage[]> => {
     return new Promise<CompactMessage[]>((resolve) => {
         const array = compactMessagesMock.filter((compactMessage) =>
@@ -18,7 +18,7 @@ export const searchCompactMessages = (
         );
 
         return resolve(
-            getPaginateArray<CompactMessage>(array, paginateSettings),
+            getPaginationArray<CompactMessage>(array, PaginationSettings),
         );
     });
 };

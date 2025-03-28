@@ -2,15 +2,15 @@ import { compactMessagesMock } from '@entities/compactMessage/mock/compactMessag
 import { CompactMessage } from '@entities/compactMessage/model/compactMessage';
 
 import {
-    getPaginateArray,
-    paginateSettings,
-} from '@shared/lib/utils/getPaginateArray';
+    getPaginationArray,
+    PaginationSettings,
+} from '@shared/lib/utils/getPaginationArray';
 
 export const getAllCompactMessages = async (
-    paginateSettings: paginateSettings,
+    PaginationSettings: PaginationSettings,
 ): Promise<CompactMessage[]> => {
-    return getPaginateArray<CompactMessage>(
+    return getPaginationArray<CompactMessage>(
         compactMessagesMock,
-        paginateSettings,
+        PaginationSettings,
     );
 };

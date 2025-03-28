@@ -1,11 +1,11 @@
-export type paginateSettings = {
+export type PaginationSettings = {
     page: number;
     maxSize: number;
 };
 
-export const getPaginateArray = <T>(
+export const getPaginationArray = <T>(
     array: T[],
-    settings: paginateSettings,
+    settings: PaginationSettings,
 ): T[] => {
     let { page, maxSize } = settings;
 
@@ -16,6 +16,7 @@ export const getPaginateArray = <T>(
     if (maxSize < 1) {
         maxSize = 1;
     }
+
     const startIndex = (page - 1) * maxSize;
     const endIndex = Math.min(startIndex + maxSize, array.length);
 
