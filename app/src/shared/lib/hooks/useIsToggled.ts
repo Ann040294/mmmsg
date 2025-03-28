@@ -1,6 +1,6 @@
 import { useCallback, useState } from 'react';
 
-export const useToggled = (initialState?: boolean) => {
+export const useIsToggled = (initialState?: boolean) => {
     const [isToggled, setIsToggle] = useState<boolean | undefined>(
         initialState,
     );

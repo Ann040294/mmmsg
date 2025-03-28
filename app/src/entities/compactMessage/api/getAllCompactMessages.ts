@@ -6,11 +6,13 @@ import {
     PaginationSettings,
 } from '@shared/lib/utils/getPaginationArray';
 
-export const getAllCompactMessages = async (
-    PaginationSettings: PaginationSettings,
+export const getAllCompactMessages = (
+    paginationSettings: PaginationSettings,
 ): Promise<CompactMessage[]> => {
-    return getPaginationArray<CompactMessage>(
-        compactMessagesMock,
-        PaginationSettings,
+    return Promise.resolve(
+        getPaginationArray<CompactMessage>(
+            compactMessagesMock,
+            paginationSettings,
+        ),
     );
 };

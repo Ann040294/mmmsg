@@ -18,7 +18,7 @@ import { CompactMessage } from '@entities/compactMessage/model/compactMessage';
 import { useCounter } from '@shared/lib/hooks/useCounter';
 import { useDebounce } from '@shared/lib/hooks/useDebounce';
 import { useInfiniteScroll } from '@shared/lib/hooks/useInfiniteScroll';
-import { useToggled } from '@shared/lib/hooks/useToggled';
+import { useIsToggled } from '@shared/lib/hooks/useIsToggled';
 
 import css from './MessageList.module.scss';
 
@@ -34,9 +34,9 @@ const MessageList: FC = () => {
 
     const valueDebounce = useDebounce<string>(valueInput, 500);
 
-    const { isToggled, toggle } = useToggled();
+    const { isToggled, toggle } = useIsToggled();
 
-    const { count: page, changeCount: setPage, increase } = useCounter(1);
+    const { count: page, set: setPage, increase } = useCounter(1);
 
     useEffect(() => {
         if (isToggled === undefined) {
@@ -51,6 +51,7 @@ const MessageList: FC = () => {
                     page: page,
                     maxSize: MAX_SIZE_ON_PAGE,
                 });
+
                 if (isMounted) {
                     setCompactMessages((prevState) => [
                         ...prevState,

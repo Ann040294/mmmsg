@@ -7,13 +7,13 @@ export const useCounter = (initialState: number = 0) => {
 
     const decrease = useCallback(() => setCount((prev) => prev - 1), []);
 
-    const changeCount = useCallback((value: number) => {
+    const set = useCallback((value: number) => {
         setCount(value);
     }, []);
 
     return {
         count,
-        changeCount,
+        set,
         increase,
         decrease,
     };
