@@ -3,9 +3,10 @@ import { BrowserRouter, Route, Routes } from 'react-router';
 import ProtectedRoute from '@app/routes/ProtectedRoute';
 
 import { routes } from './routes';
+import { RouteProvider } from '@app/test/RouteContext';
 
 const LayoutPage = lazy(() => import('@pages/layout/ui'));
-const NestedLayout = lazy(() => import('@pages/nested-layout/ui'));
+// const NestedLayout = lazy(() => import('@pages/nested-layout/ui'));
 const HomePage = lazy(() => import('@pages/home/ui'));
 const ProfilePage = lazy(() => import('@pages/profile'));
 const TestPage = lazy(() => import('@pages/test'));
@@ -17,48 +18,47 @@ const NotFoundPage = lazy(() => import('@pages/not-found'));
 const AppRouter: FC = () => {
     return (
         <BrowserRouter>
-            <Routes>
-                <Route
-                    path={routes.not_found.path}
-                    element={<NotFoundPage />}
-                />
-                <Route element={<ProtectedRoute />}>
-                    <Route element={<LayoutPage />}>
+            <RouteProvider>
+                <Routes>
+                    <Route
+                        path={routes.not_found.path}
+                        element={<NotFoundPage />}
+                    />
+                    <Route element={<ProtectedRoute />}>
+                        <Route element={<LayoutPage />}>
+                            <Route
+                                path={routes.home.path}
+                                element={<HomePage />}
+                            />
+                            <Route
+                                path={routes.profile.path}
+                                element={<ProfilePage />}
+                            >
+                                <Route
+                                    path={'settings'}
+                                    element={<div>Test1</div>}
+                                />
+                            </Route>
+                        </Route>
                         <Route
-                            path={routes.home.path}
-                            element={
-                                <NestedLayout>
-                                    <HomePage />
-                                </NestedLayout>
-                            }
+                            path={routes.reset.path}
+                            element={<ResetPage />}
                         />
                         <Route
-                            path={routes.profile.path}
-                            element={
-                                <NestedLayout>
-                                    <ProfilePage />
-                                </NestedLayout>
-                            }
+                            path={routes.test.path}
+                            element={<TestPage />}
                         />
                     </Route>
                     <Route
-                        path={routes.reset.path}
-                        element={<ResetPage />}
+                        path={routes.login.path}
+                        element={<LoginPage />}
                     />
                     <Route
-                        path={routes.test.path}
-                        element={<TestPage />}
+                        path={routes.register.path}
+                        element={<RegisterPage />}
                     />
-                </Route>
-                <Route
-                    path={routes.login.path}
-                    element={<LoginPage />}
-                />
-                <Route
-                    path={routes.register.path}
-                    element={<RegisterPage />}
-                />
-            </Routes>
+                </Routes>
+            </RouteProvider>
         </BrowserRouter>
     );
 };

@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import { Outlet } from 'react-router';
+import NamedOutlet from '@app/test/OutletName';
 
 import { Layout } from 'ui-kit';
 
@@ -18,7 +19,13 @@ const LayoutPage: FC = () => {
             >
                 <Navbar options={defaultConfig} />
             </Layout>
-            <Outlet />
+            <Layout className={css.main}>
+                {/*<NamedOutlet name={'main'} />*/}
+                <Outlet />
+            </Layout>
+            <Layout>
+                <NamedOutlet name={'second'} />
+            </Layout>
         </div>
     );
 };
