@@ -45,31 +45,26 @@ const MessageList: FC = () => {
 
         let isMounted = true;
 
-        let valueCompactMessages: CompactMessage[] = [];
+        let messages: CompactMessage[] = [];
 
-        if (valueDebounce === '') {
-            (async () => {
-                valueCompactMessages = await getAllCompactMessages({
+        (async () => {
+            if (valueDebounce === '') {
+                messages = await getAllCompactMessages({
                     page: page,
                     maxSize: MAX_SIZE_ON_PAGE,
                 });
-            })();
-        } else {
-            if (rootElement.current) {
-                (async () => {
-                    valueCompactMessages = await searchCompactMessages(
-                        valueDebounce,
-                        {
-                            page: page,
-                            maxSize: MAX_SIZE_ON_PAGE,
-                        },
-                    );
-                })();
+            } else {
+                if (rootElement.current) {
+                    messages = await searchCompactMessages(valueDebounce, {
+                        page: page,
+                        maxSize: MAX_SIZE_ON_PAGE,
+                    });
+                }
             }
-        }
+        })();
 
         if (isMounted) {
-            setCompactMessages((prev) => [...prev, ...valueCompactMessages]);
+            setCompactMessages((prev) => [...prev, ...messages]);
         }
 
         return () => {
