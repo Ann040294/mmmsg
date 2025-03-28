@@ -1,0 +1,52 @@
+@use "../styles/textViewer" as textViewer;
+@use "../styles/typography" as typography;
+
+%content {
+  width: 100%;
+  display: block;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  font-size: typography.$font-size-text-title;
+}
+
+.block {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.content {
+  word-wrap: break-word;
+  max-width: 60%;
+  border-radius: 16px;
+  padding: 10px 20px;
+
+  &.secondary {
+    margin: 0 auto 0 0;
+    background-color: textViewer.$textViewer-secondary-color;
+  }
+
+  &.primary {
+    margin: 0 0 0 auto;
+    background-color: textViewer.$textViewer-primary-color;
+  }
+}
+
+.subText {
+  @extend %content;
+
+  text-align: end;
+  color: textViewer.$textViewer-text-color;
+}
+
+.title {
+  @extend %content;
+
+  align-self: flex-start;
+}
+
+.text {
+  margin: 0;
+}
