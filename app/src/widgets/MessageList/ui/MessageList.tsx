@@ -29,10 +29,7 @@ const MessageList: FC = () => {
 
     const rootElement = useRef<HTMLDivElement | null>(null);
 
-    const {
-count: page,
-handleIncrease
-} = useIncreaseOrDecrease(1);
+    const { count: page, handleIncrease } = useIncreaseOrDecrease(1);
 
     useEffect(() => {
         let isMounted = true;

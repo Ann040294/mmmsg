@@ -9,13 +9,7 @@ import { NavbarItemTypesMap, NavLinkTypeExtend } from './types';
 import css from './NavbarItem.module.scss';
 
 const NavbarItem: FC<NavLinkTypeExtend> = (props) => {
-    const {
-path,
-name,
-isHidden,
-type,
-...componentProps
-} = props;
+    const { path, name, isHidden, type, ...componentProps } = props;
     const { t } = useTranslation();
 
     const Component = NavbarItemTypesMap[type];
