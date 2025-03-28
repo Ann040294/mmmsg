@@ -20,11 +20,10 @@ const LayoutPage: FC = () => {
                 <Navbar options={defaultConfig} />
             </Layout>
             <Layout className={css.main}>
-                {/*<NamedOutlet name={'main'} />*/}
                 <Outlet />
             </Layout>
             <Layout>
-                <NamedOutlet name={'second'} />
+                <NamedOutlet />
             </Layout>
         </div>
     );

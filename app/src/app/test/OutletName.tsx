@@ -1,25 +1,38 @@
 import { FC } from 'react';
 import { useRoute } from '@app/test/RouteContext';
-import { routes1 } from '@app/test/test-routes';
+import { useOutlet } from 'react-router';
 
 interface NamedOutletProps {
-    name: string;
+    name?: string;
 }
 
 const NamedOutlet: FC<NamedOutletProps> = ({ name }) => {
     const { currentRoute } = useRoute();
+    const outlet = useOutlet();
+    console.log(outlet?.props.children);
 
-    const matchingRoute = routes1.find((route) => {
-        return route.path === currentRoute;
-    });
+    if (!outlet?.props.children.props.match.route.children) {
+        return !outlet?.props.children.props.children;
+    }
 
-    if (!matchingRoute) {
+    const arr: any[] = outlet?.props.children.props.match.route.children;
+    const ma = arr.find((item) => currentRoute.includes(item.path));
+    console.log('ma', ma);
+    if (!ma) {
         return null;
     }
 
-    const outlets = matchingRoute.outlets;
+    // const matchingRoute = routes1.find((route) => {
+    //     return route.path === currentRoute;
+    // });
+    //
+    // if (!matchingRoute) {
+    //     return null;
+    // }
 
-    return outlets[name];
+    // const outlets = matchingRoute.outlets;
+
+    return ma.element;
 };
 
 export default NamedOutlet;
