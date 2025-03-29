@@ -1,10 +1,10 @@
 import { FC } from 'react';
-import { Outlet } from 'react-router';
-import NamedOutlet from '@app/test/OutletName';
 
 import { Layout } from 'ui-kit';
 
 import { Navbar } from '@pages/layout/ui/Navbar';
+
+import CustomOutlet from '@shared/ui/CustomOutlet/CustomOutlet';
 
 import { defaultConfig } from '../config/defaultConfig';
 
@@ -20,10 +20,10 @@ const LayoutPage: FC = () => {
                 <Navbar options={defaultConfig} />
             </Layout>
             <Layout className={css.main}>
-                <Outlet />
+                <CustomOutlet name={'main'} />
             </Layout>
             <Layout>
-                <NamedOutlet />
+                <CustomOutlet name={'second'} />
             </Layout>
         </div>
     );

@@ -2,34 +2,34 @@ export const ROUTE_CONFIG = {
     HOME: {
         path: '/',
         title: 'Главная',
-        labelPage: 'Чаты'
+        labelPage: 'Чаты',
     },
     TEST: {
-        path: '/test',
+        path: 'test',
         title: 'Тестирование',
     },
     PROFILE: {
-        path: '/profile/',
+        path: 'profile',
         title: 'Профиль',
     },
     LOGOUT: {
-        path: '/logout',
+        path: 'logout',
         title: 'Выход',
     },
     LOGIN: {
-        path: '/login',
+        path: 'login',
         title: 'Авторизация',
     },
     REGISTER: {
-        path: '/register',
+        path: 'register',
         title: 'Регистрация',
     },
     RESET: {
-        path: '/reset-password',
+        path: 'reset-password',
         title: 'Смена пароля',
     },
     NOT_FOUND: {
         path: '*',
         title: 'Страница не найдена',
-    }
+    },
 };
