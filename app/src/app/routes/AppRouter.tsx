@@ -30,7 +30,12 @@ const AppRouter: FC = () => {
                         <Route
                             path={routes.profile.path}
                             element={<ProfilePage />}
-                        />
+                        >
+                            <Route
+                                path={'settings'}
+                                element={<div>Test1</div>}
+                            />
+                        </Route>
                     </Route>
                     <Route
                         path={routes.reset.path}
