@@ -1,0 +1,5 @@
+@use './color' as colors;
+
+$textViewer-primary-color: #73c4ed;
+$textViewer-secondary-color: colors.$neutral-silvery-color;
+$textViewer-text-color: colors.$neutral-darken-gray-color;
