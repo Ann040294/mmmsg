@@ -5,28 +5,29 @@ import { RouteWithOutlet } from '@app/routes/config/types';
 import { CustomOutletNames } from '@app/routes/ui/layout/ui/CustomOutlet/types';
 
 import { getMatchingRoute } from './utils/getMatchingRoute';
+import { getRouterPaths } from './utils/getRouterPaths';
 
 const NotFoundPage = lazy(() => import('@pages/not-found')); //TODO: Заменить на компонент по макету, когда появится
 
 interface CustomOutletProps {
     name: CustomOutletNames;
-    NotFoundRoute?: FC;
+    NotFoundFilled?: FC;
 }
+
+const ROOT_PATH = '/';
 
 const CustomOutlet: FC<CustomOutletProps> = ({
     name,
-    NotFoundRoute = NotFoundPage,
+    NotFoundFilled = NotFoundPage,
 }) => {
     const location = useLocation();
 
     const outlets: Array<RouteWithOutlet | null> = [];
 
-    let paths: string[] = [];
+    let paths: string[] = [ROOT_PATH];
 
-    if (location.pathname === '/') {
-        paths = ['/'];
-    } else {
-        paths = location.pathname.split('/').filter((item) => item !== '');
+    if (location.pathname !== ROOT_PATH) {
+        paths = getRouterPaths(location.pathname);
     }
 
     paths.forEach((item) => {
@@ -36,7 +37,7 @@ const CustomOutlet: FC<CustomOutletProps> = ({
     const route = outlets.find((item) => name === item?.outlet);
 
     if (!route) {
-        return <NotFoundRoute />;
+        return <NotFoundFilled />;
     }
 
     const Component = route.Component;
