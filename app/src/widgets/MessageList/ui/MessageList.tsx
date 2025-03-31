@@ -16,7 +16,6 @@ import { getAllCompactMessages } from '@entities/compactMessage/api/getAllCompac
 import { searchCompactMessages } from '@entities/compactMessage/api/searchCompactMessages';
 import { CompactMessage } from '@entities/compactMessage/model/compactMessage';
 
-import { ROUTE_CONFIG } from '@shared/config/routeConfig';
 import { useCounter } from '@shared/lib/hooks/useCounter';
 import { useDebounce } from '@shared/lib/hooks/useDebounce';
 import { useInfiniteScroll } from '@shared/lib/hooks/useInfiniteScroll';
@@ -104,7 +103,7 @@ const MessageList: FC = () => {
         <>
             <Input
                 variant={InputVariants.FILLED}
-                placeholder={t(ROUTE_CONFIG.HOME.searchTitle)}
+                placeholder={t('home.search.title')}
                 value={valueInput}
                 iconLeft={SearchOutlined}
                 onChange={handleChange}
