@@ -1,12 +1,12 @@
 import { FC } from 'react';
+import { defaultConfig } from '@app/routes/ui/layout/config/defaultConfig';
 
 import { Layout } from 'ui-kit';
 
-import { Navbar } from '@pages/layout/ui/Navbar';
+import { Navbar } from '@widgets/Navbar';
 
-import CustomOutlet from '@shared/ui/CustomOutlet/CustomOutlet';
-
-import { defaultConfig } from '../config/defaultConfig';
+import CustomOutlet from './CustomOutlet/CustomOutlet';
+import { CustomOutletNames } from './CustomOutlet/types';
 
 import css from './layout.module.scss';
 
@@ -20,10 +20,10 @@ const LayoutPage: FC = () => {
                 <Navbar options={defaultConfig} />
             </Layout>
             <Layout className={css.main}>
-                <CustomOutlet name={'main'} />
+                <CustomOutlet name={CustomOutletNames.FIRST} />
             </Layout>
             <Layout>
-                <CustomOutlet name={'second'} />
+                <CustomOutlet name={CustomOutletNames.SECOND} />
             </Layout>
         </div>
     );

@@ -1,4 +1,4 @@
-import { RouteWithOutlet } from '@app/test/routeConfig';
+import { RouteWithOutlet } from '@app/routes/config/types';
 
 export const getMatchingRoute = (
     locationPathname: string,

@@ -1,9 +1,13 @@
 import { lazy } from 'react';
-import { createBrowserRouter, RouteObject } from 'react-router';
+import { createBrowserRouter } from 'react-router';
+import { RouteWithOutlet } from '@app/routes/config/types';
+import { removePropertyOutlet } from '@app/routes/config/utils/removePropertyOutlet';
 import ProtectedRoute from '@app/routes/ProtectedRoute';
-import { routes } from '@app/routes/routes';
 
-const LayoutPage = lazy(() => import('@pages/layout/ui'));
+import { ROUTE_CONFIG } from '@shared/config/routeConfig';
+import { CustomOutletNames } from '@app/routes/ui/layout/ui/CustomOutlet/types';
+
+const LayoutPage = lazy(() => import('@app/routes/ui/layout/ui'));
 const HomePage = lazy(() => import('@pages/home/ui'));
 const ProfilePage = lazy(() => import('@pages/profile'));
 const TestPage = lazy(() => import('@pages/test'));
@@ -12,74 +16,54 @@ const RegisterPage = lazy(() => import('@pages/register'));
 const ResetPage = lazy(() => import('@pages/reset'));
 const NotFoundPage = lazy(() => import('@pages/not-found'));
 
-export type RouteWithOutlet = RouteObject & {
-    outlet?: string;
-    children?: RouteWithOutlet[];
-};
-
-const removeOutlets = (routes: RouteWithOutlet[]) => {
-    return routes.map((route) => {
-        const { outlet, ...rest } = route;
-
-        if (rest.children) {
-            rest.children = removeOutlets(rest.children);
-        }
-
-        return rest;
-    });
-};
-
-export const routeConfig: RouteWithOutlet[] = [
+export const routesConfig: RouteWithOutlet[] = [
     {
         Component: ProtectedRoute,
         children: [
             {
-                path: '',
                 Component: LayoutPage,
                 children: [
                     {
-                        path: '/',
+                        path: ROUTE_CONFIG.HOME.path,
                         Component: HomePage,
-                        outlet: 'main',
+                        outlet: CustomOutletNames.FIRST,
                     },
                     {
-                        path: routes.profile.path,
+                        path: ROUTE_CONFIG.PROFILE.path,
                         Component: ProfilePage,
-                        outlet: 'main',
+                        outlet: CustomOutletNames.FIRST,
                         children: [
                             {
                                 path: 'settings',
-                                Component: NotFoundPage,
-                                outlet: 'second',
+                                Component: RegisterPage,
+                                outlet: CustomOutletNames.SECOND,
                             },
                         ],
                     },
                 ],
             },
             {
-                path: routes.reset.path,
+                path: ROUTE_CONFIG.RESET.path,
                 Component: ResetPage,
             },
             {
-                path: routes.test.path,
+                path: ROUTE_CONFIG.TEST.path,
                 Component: TestPage,
             },
         ],
     },
     {
-        path: routes.login.path,
+        path: ROUTE_CONFIG.LOGIN.path,
         Component: LoginPage,
     },
     {
-        path: routes.register.path,
+        path: ROUTE_CONFIG.REGISTER.path,
         Component: RegisterPage,
     },
     {
-        path: routes.not_found.path,
+        path: ROUTE_CONFIG.NOT_FOUND.path,
         Component: NotFoundPage,
     },
 ];
 
-export const routerForProvider = createBrowserRouter(
-    removeOutlets(routeConfig),
-);
+export const router = createBrowserRouter(removePropertyOutlet(routesConfig));
