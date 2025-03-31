@@ -1,42 +1,47 @@
 import { FC } from 'react';
+import cn from 'classnames';
 import MoreOutlined from '@ant-design/icons/MoreOutlined';
 
 import { DropdownMenu } from '../DropdownMenu';
 import { Icon as IconType } from '../Icon/types';
 import { IconButton, IconButtonSize } from '../IconButton';
-import { PopoverSide } from '../Popover';
+import { PopoverPosition, PopoverSide } from '../Popover';
+
+import css from './Actions.module.scss';
+import { ActionsPosition } from './types';
 
 export interface ActionsProps {
-    iconArr: { text: string; icon: IconType }[];
+    actionsArr: { text: string; icon: IconType }[];
     onClick?: () => void;
+    show?: number;
+    position?: ActionsPosition;
 }
 
 const Actions: FC<ActionsProps> = ({
-    iconArr,
-    onClick: handleClick
+    actionsArr,
+    onClick: handleClick,
+    show = 2,
+    position = ActionsPosition.RIGHT,
 }) => {
-    if (iconArr.length > 3) {
-        return (
-            <DropdownMenu
-                side={PopoverSide.BOTTOM}
-                options={iconArr.map((item) => ({
-                    id: item.text,
-                    text: item.text,
-                    icon: item.icon,
-                }))}
-            >
-                <IconButton
-                    icon={MoreOutlined}
-                    size={IconButtonSize.EXTRA_SMALL}
-                    onClick={handleClick}
-                />
-            </DropdownMenu>
-        );
-    }
-
     return (
-        <div>
-            {iconArr.map((item) => (
+        <div className={cn(css.actions, css[position])}>
+            {actionsArr.slice(show - 1).length > 0 && (
+                <DropdownMenu
+                    side={PopoverSide.BOTTOM}
+                    position={PopoverPosition.CENTER}
+                    options={actionsArr.slice(show).map((item) => ({
+                        id: item.text,
+                        text: item.text,
+                        onClick: handleClick,
+                    }))}
+                >
+                    <IconButton
+                        icon={MoreOutlined}
+                        size={IconButtonSize.EXTRA_SMALL}
+                    />
+                </DropdownMenu>
+            )}
+            {actionsArr.slice(0, show - 1).map((item) => (
                 <IconButton
                     key={item.text}
                     icon={item.icon}
