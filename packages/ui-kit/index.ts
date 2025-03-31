@@ -9,4 +9,4 @@ export { default as DropdownMenu } from './DropdownMenu/DropdownMenu';
 export { default as Popover } from './Popover/Popover';
 export { default as TextViewer } from './TextViewer/TextViewer';
 export { default as IconButton } from './IconButton/IconButton';
-export { default as Action } from './Action/Action';
+export { default as Actions } from './Actions/Actions';
