@@ -1,3 +1,5 @@
+import { useTranslation } from 'react-i18next';
+
 import { Layout } from 'ui-kit';
 
 import { ROUTE_CONFIG } from '@shared/config/routeConfig';
@@ -15,9 +17,11 @@ import { TestTextViewer } from './ui/TestTextViewer';
 import css from './style.module.scss';
 
 const Test = () => {
+    const { t } = useTranslation();
+
     return (
         <>
-            <title>{ROUTE_CONFIG.TEST.title}</title>
+            <title>{t(ROUTE_CONFIG.TEST.title)}</title>
             <Layout className={css.column}>
                 <TestIcons />
             </Layout>
@@ -28,7 +32,7 @@ const Test = () => {
                 <TestInputs />
                 <TestButtons />
                 <TestNotices />
-                <TestTextViewer/>
+                <TestTextViewer />
                 <TestCircleButtons />
             </Layout>
         </>
