@@ -1,6 +1,7 @@
 import { RefObject, useCallback, useEffect, useRef } from 'react';
 
 /**
+ * @description Хук для бесконечной прокрутки
  *
  * @param rootElement - ссылка на корневой элемент, который необходим для наблюдения за пересечением с последним элементом
  * @param trigger - триггер, при котором будет происходить перерасчет последнего элемента
@@ -16,11 +17,8 @@ export const useInfiniteScroll = <T extends HTMLElement | null>(
     const observer = useRef<IntersectionObserver | null>(null);
 
     const handleIntersection = useCallback(
-        (entries: IntersectionObserverEntry[]) => {
-            if (
-                entries[0].isIntersecting &&
-                entries[0].target === lastElement.current
-            ) {
+        ([entry]: IntersectionObserverEntry[]) => {
+            if (entry.isIntersecting && entry.target === lastElement.current) {
                 callback();
             }
         },
