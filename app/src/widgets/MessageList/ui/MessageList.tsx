@@ -6,6 +6,7 @@ import {
     useRef,
     useState,
 } from 'react';
+import { useTranslation } from 'react-i18next';
 import SearchOutlined from '@ant-design/icons/SearchOutlined';
 
 import { Card, Input } from 'ui-kit';
@@ -96,11 +97,13 @@ const MessageList: FC = () => {
         setValueInput(event.target.value);
     }, []);
 
+    const { t } = useTranslation();
+
     return (
         <>
             <Input
                 variant={InputVariants.FILLED}
-                placeholder="Поиск..." /*TODO: Перевод - Translate*/
+                placeholder={t('home.search.title')}
                 value={valueInput}
                 iconLeft={SearchOutlined}
                 onChange={handleChange}
