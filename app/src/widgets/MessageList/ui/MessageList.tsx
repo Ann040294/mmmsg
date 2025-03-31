@@ -12,12 +12,17 @@ import { Card, Input } from 'ui-kit';
 import { InputVariants } from 'ui-kit/Input';
 
 import { getAllCompactMessages } from '@entities/compactMessage/api/getAllCompactMessages';
+import { searchCompactMessages } from '@entities/compactMessage/api/searchCompactMessages';
 import { CompactMessage } from '@entities/compactMessage/model/compactMessage';
 
-import { useIncreaseOrDecrease } from '@shared/lib/hooks/useIncreaseOrDecrease';
+import { useCounter } from '@shared/lib/hooks/useCounter';
+import { useDebounce } from '@shared/lib/hooks/useDebounce';
 import { useInfiniteScroll } from '@shared/lib/hooks/useInfiniteScroll';
+import { useIsToggled } from '@shared/lib/hooks/useIsToggled';
 
 import css from './MessageList.module.scss';
+
+const MAX_SIZE_ON_PAGE = 15;
 
 const MessageList: FC = () => {
     const [valueInput, setValueInput] = useState<string>('');
@@ -27,38 +32,69 @@ const MessageList: FC = () => {
 
     const rootElement = useRef<HTMLDivElement | null>(null);
 
-    const { count: page, handleIncrease } = useIncreaseOrDecrease(1);
+    const valueDebounce = useDebounce<string>(valueInput, 500);
+
+    const { isToggled, toggle } = useIsToggled();
+
+    const { count: page, set: setPage, increase } = useCounter(1);
 
     useEffect(() => {
+        if (isToggled === undefined) {
+            return;
+        }
+
         let isMounted = true;
 
+        let messages: CompactMessage[] = [];
+
         (async () => {
-            const valueCompactMessages = await getAllCompactMessages(page, 15);
-            if (isMounted) {
-                setCompactMessages((prevState) => [
-                    ...prevState,
-                    ...valueCompactMessages,
-                ]);
+            if (valueDebounce === '') {
+                messages = await getAllCompactMessages({
+                    page: page,
+                    maxSize: MAX_SIZE_ON_PAGE,
+                });
+            } else {
+                if (rootElement.current) {
+                    messages = await searchCompactMessages(valueDebounce, {
+                        page: page,
+                        maxSize: MAX_SIZE_ON_PAGE,
+                    });
+                }
             }
         })();
+
+        if (isMounted) {
+            setCompactMessages((prev) => [...prev, ...messages]);
+        }
 
         return () => {
             isMounted = false;
         };
-    }, [page]);
+    }, [isToggled]);
+
+    useEffect(() => {
+        if (rootElement.current) {
+            rootElement.current.scrollTop = 0;
+            setCompactMessages([]);
+            setPage(1);
+            toggle();
+        }
+    }, [valueDebounce]);
+
+    const handleInfiniteScroll = useCallback(() => {
+        increase();
+        toggle();
+    }, []);
 
     useInfiniteScroll<HTMLDivElement | null>(
         rootElement,
-        compactMessages.length,
-        handleIncrease,
+        compactMessages?.at(-1)?.idUser || '',
+        handleInfiniteScroll,
     );
 
-    const handleOnChange = useCallback(
-        (value: ChangeEvent<HTMLInputElement>) => {
-            setValueInput(value.target.value);
-        },
-        [],
-    );
+    const handleChange = useCallback((event: ChangeEvent<HTMLInputElement>) => {
+        setValueInput(event.target.value);
+    }, []);
 
     return (
         <>
@@ -67,7 +103,7 @@ const MessageList: FC = () => {
                 placeholder="Поиск..." /*TODO: Перевод - Translate*/
                 value={valueInput}
                 iconLeft={SearchOutlined}
-                onChange={handleOnChange}
+                onChange={handleChange}
             />
             <div
                 className={css.cardList}
