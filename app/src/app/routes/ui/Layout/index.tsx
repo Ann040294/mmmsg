@@ -1,10 +1,10 @@
 import { FC } from 'react';
-import { defaultConfig } from '@app/routes/ui/layout/config/defaultConfig';
 
 import { Layout } from 'ui-kit';
 
 import { Navbar } from '@widgets/Navbar';
 
+import { defaultConfig } from './config/defaultConfig';
 import CustomOutlet from './CustomOutlet/CustomOutlet';
 import { CustomOutletNames } from './CustomOutlet/types';
 

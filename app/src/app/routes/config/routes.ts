@@ -3,11 +3,11 @@ import { createBrowserRouter } from 'react-router';
 import { RouteWithOutlet } from '@app/routes/config/types';
 import { removePropertyOutlet } from '@app/routes/config/utils/removePropertyOutlet';
 import ProtectedRoute from '@app/routes/ProtectedRoute';
+import { CustomOutletNames } from '@app/routes/ui/Layout/CustomOutlet/types';
 
 import { ROUTE_CONFIG } from '@shared/config/routeConfig';
-import { CustomOutletNames } from '@app/routes/ui/layout/ui/CustomOutlet/types';
 
-const LayoutPage = lazy(() => import('@app/routes/ui/layout/ui'));
+const Layout = lazy(() => import('@app/routes/ui/Layout'));
 const HomePage = lazy(() => import('@pages/home/ui'));
 const ProfilePage = lazy(() => import('@pages/profile'));
 const TestPage = lazy(() => import('@pages/test'));
@@ -21,7 +21,7 @@ export const routesConfig: RouteWithOutlet[] = [
         Component: ProtectedRoute,
         children: [
             {
-                Component: LayoutPage,
+                Component: Layout,
                 children: [
                     {
                         path: ROUTE_CONFIG.HOME.path,

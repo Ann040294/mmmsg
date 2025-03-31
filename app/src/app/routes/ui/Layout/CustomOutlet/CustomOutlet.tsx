@@ -1,11 +1,9 @@
 import { FC, lazy } from 'react';
 import { useLocation } from 'react-router';
-import { routesConfig } from '@app/routes/config/routes';
-import { RouteWithOutlet } from '@app/routes/config/types';
-import { CustomOutletNames } from '@app/routes/ui/layout/ui/CustomOutlet/types';
+import { getRoutes } from '@app/routes/ui/Layout/CustomOutlet/utils/getRoutes';
 
-import { getMatchingRoute } from './utils/getMatchingRoute';
-import { getRouterPaths } from './utils/getRouterPaths';
+import { getRoutePaths } from './utils/getRoutePaths';
+import { CustomOutletNames } from './types';
 
 const NotFoundPage = lazy(() => import('@pages/not-found')); //TODO: Заменить на компонент по макету, когда появится
 
@@ -22,24 +20,13 @@ const CustomOutlet: FC<CustomOutletProps> = ({
 }) => {
     const location = useLocation();
 
-    const outlets: Array<RouteWithOutlet | null> = [];
-
     let paths: string[] = [ROOT_PATH];
 
     if (location.pathname !== ROOT_PATH) {
-        paths = getRouterPaths(location.pathname);
+        paths = getRoutePaths(location.pathname);
     }
 
-    paths.forEach((item) => {
-        const outlet = getMatchingRoute(item, routesConfig);
-        console.log(outlet);
-        outlets.push(outlet.route);
-    });
-
-    for (let i = 0; i < paths.length; i++) {
-        const outlet = getMatchingRoute(paths[i], routesConfig);
-        outlets.push(outlet.route);
-    }
+    const outlets = getRoutes(paths);
 
     const route = outlets.find((item) => name === item?.outlet);
 
