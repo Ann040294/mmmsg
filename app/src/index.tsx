@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 
+import './shared/i18n';
+
 import App from './app/App';
 
 import '@app/style/index.scss';

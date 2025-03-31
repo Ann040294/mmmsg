@@ -1,4 +1,5 @@
 import { FC } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import { ButtonItems, ButtonItemType } from './ButtonItems';
 
@@ -15,11 +16,13 @@ const HeaderPage: FC<HeaderPageProps> = ({
     leftButtons,
     rightButtons,
 }) => {
+    const { t } = useTranslation();
+
     return (
         <div className={css.root}>
             <div className={css.item}>
                 {leftButtons && <ButtonItems options={leftButtons} />}
-                {label}
+                {t(label)}
             </div>
             {rightButtons && <ButtonItems options={rightButtons} />}
         </div>
