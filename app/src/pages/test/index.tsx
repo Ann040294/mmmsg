@@ -2,7 +2,7 @@ import { Layout } from 'ui-kit';
 
 import { ROUTE_CONFIG } from '@shared/config/routeConfig';
 
-import { TestAction } from './ui/TestAction';
+import { TestActions } from './ui/TestActions';
 import { TestAvatars } from './ui/TestAvatars';
 import { TestButtons } from './ui/TestButtons';
 import { TestCards } from './ui/TestCards';
@@ -23,6 +23,9 @@ const Test = () => {
                 <TestIcons />
             </Layout>
             <Layout className={css.row}>
+                <TestActions />
+            </Layout>
+            <Layout className={css.row}>
                 <TestAvatars />
                 <TestCards />
                 <TestDropdowns />
@@ -31,8 +34,9 @@ const Test = () => {
                 <TestNotices />
                 <TestTextViewer/>
                 <TestCircleButtons />
-                <TestAction />
+
             </Layout>
+
         </>
     );
 };
