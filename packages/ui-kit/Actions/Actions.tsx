@@ -1,16 +1,20 @@
-import {FC} from 'react';
-import MenuFoldOutlined from '@ant-design/icons/MenuFoldOutlined';
+import { FC } from 'react';
+import MoreOutlined from '@ant-design/icons/MoreOutlined';
 
-import {DropdownMenu} from '../DropdownMenu';
-import {Icon as IconType} from '../Icon/types';
-import {IconButton, IconButtonSize} from '../IconButton';
-import {PopoverSide} from '../Popover';
+import { DropdownMenu } from '../DropdownMenu';
+import { Icon as IconType } from '../Icon/types';
+import { IconButton, IconButtonSize } from '../IconButton';
+import { PopoverSide } from '../Popover';
 
-export interface ActionProps {
+export interface ActionsProps {
     iconArr: { text: string; icon: IconType }[];
+    onClick?: () => void;
 }
 
-const Actions: FC<ActionProps> = ({ iconArr }) => {
+const Actions: FC<ActionsProps> = ({
+    iconArr,
+    onClick: handleClick
+}) => {
     if (iconArr.length > 3) {
         return (
             <DropdownMenu
@@ -22,8 +26,9 @@ const Actions: FC<ActionProps> = ({ iconArr }) => {
                 }))}
             >
                 <IconButton
-                    icon={MenuFoldOutlined}
+                    icon={MoreOutlined}
                     size={IconButtonSize.EXTRA_SMALL}
+                    onClick={handleClick}
                 />
             </DropdownMenu>
         );
@@ -36,6 +41,7 @@ const Actions: FC<ActionProps> = ({ iconArr }) => {
                     key={item.text}
                     icon={item.icon}
                     size={IconButtonSize.EXTRA_SMALL}
+                    onClick={handleClick}
                 />
             ))}
         </div>
