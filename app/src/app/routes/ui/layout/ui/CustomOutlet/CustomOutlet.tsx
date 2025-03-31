@@ -31,8 +31,15 @@ const CustomOutlet: FC<CustomOutletProps> = ({
     }
 
     paths.forEach((item) => {
-        outlets.push(getMatchingRoute(item, routesConfig));
+        const outlet = getMatchingRoute(item, routesConfig);
+        console.log(outlet);
+        outlets.push(outlet.route);
     });
+
+    for (let i = 0; i < paths.length; i++) {
+        const outlet = getMatchingRoute(paths[i], routesConfig);
+        outlets.push(outlet.route);
+    }
 
     const route = outlets.find((item) => name === item?.outlet);
 
