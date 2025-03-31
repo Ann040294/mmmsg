@@ -34,7 +34,8 @@ export const routesConfig: RouteWithOutlet[] = [
                         outlet: CustomOutletNames.FIRST,
                         children: [
                             {
-                                path: 'settings',
+                                path: ROUTE_CONFIG.PROFILE.children.SETTINGS
+                                    .path,
                                 Component: RegisterPage,
                                 outlet: CustomOutletNames.SECOND,
                             },

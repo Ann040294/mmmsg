@@ -11,6 +11,12 @@ export const ROUTE_CONFIG = {
     PROFILE: {
         path: 'profile',
         title: 'Профиль',
+        children: {
+            SETTINGS: {
+                path: 'settings',
+                title: 'Настройки',
+            },
+        },
     },
     LOGOUT: {
         path: 'logout',
