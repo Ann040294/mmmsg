@@ -5,6 +5,8 @@ import { Layout } from 'ui-kit';
 
 import { Navbar } from '@pages/layout/ui/Navbar';
 
+import Filler from '@shared/ui/Filler/Filler';
+
 import { defaultConfig } from '../config/defaultConfig';
 
 import css from './layout.module.scss';
@@ -18,14 +20,17 @@ const LayoutPage: FC = () => {
             >
                 <Navbar options={defaultConfig} />
             </Layout>
-            <Layout className={css.main}>
+            <Layout className={css.left}>
                 <Outlet />
             </Layout>
             <Layout>
-                <span>
-                    Должен отображаться вложенный маршрут или какой-то
-                    стандартный компонент
-                </span>
+                <Filler
+                    title={'PieChat'}
+                    description={'Lorem ipsum dolor sit amet. Eos similique'}
+                    src={
+                        'https://avatars.mds.yandex.net/i?id=f6814023df5876b2002221a49ac8c93a_l-5224721-images-thumbs&n=13'
+                    }
+                />
             </Layout>
         </div>
     );

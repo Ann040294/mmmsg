@@ -1,7 +1,34 @@
 @use 'ui-kit/styles/color' as colors;
+@use 'ui-kit/styles/typography' as typography;
 
 html, body {
   padding: 0;
   margin: 0;
   background-color: colors.$neutral-silvery-color;
 }
+
+* {
+  font-family: typography.$font-family-primary;
+}
+
+h1 {
+  @include typography.headline-1()
+}
+
+h2 {
+  @include typography.headline-2()
+}
+
+h3 {
+  @include typography.headline-3()
+}
+
+h4 {
+  @include typography.headline-4()
+}
+
+h5 {
+  @include typography.headline-5()
+}
+
+
