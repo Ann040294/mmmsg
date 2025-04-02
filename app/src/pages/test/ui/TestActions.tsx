@@ -9,7 +9,7 @@ import { PopoverPosition, PopoverSide } from 'ui-kit/Popover';
 export const TestActions: FC = () => {
     const handleClickFake = () => alert(42);
 
-    const actionsArr1 = [
+    const actions1 = [
         { id: '1', text: '1', icon: EditOutlined },
         { id: '2', text: '2', icon: PlusCircleOutlined },
         { id: '3', text: '3', icon: PlusCircleOutlined },
@@ -18,7 +18,7 @@ export const TestActions: FC = () => {
         { id: '6', text: '6', icon: PlusCircleOutlined },
     ];
 
-    const actionsArr2 = [
+    const actions2 = [
         { id: '1', text: '1', icon: EditOutlined },
         { id: '2', text: '2', icon: PlusCircleOutlined },
         { id: '3', text: '3', icon: PlusCircleOutlined },
@@ -26,7 +26,7 @@ export const TestActions: FC = () => {
         { id: '5', text: '5', icon: PlusCircleOutlined },
         { id: '6', text: '6', icon: EditOutlined },
     ];
-    const actionsArr3 = [
+    const actions3 = [
         { id: '1', text: '1', icon: EditOutlined },
         { id: '2', text: '2', icon: PlusCircleOutlined },
         { id: '3', text: '3', icon: PlusCircleOutlined },
@@ -45,20 +45,20 @@ export const TestActions: FC = () => {
                 countShow={3}
                 position={PopoverPosition.START}
                 side={PopoverSide.LEFT}
-                actionsArr={actionsArr1}
+                actions={actions1}
                 onClick={handleClickFake}
             ></Actions>
             <Actions
-                actionsArr={[{ id: 1, text: '2', icon: PlusCircleOutlined }]}
+                actions={[{ id: 1, text: '2', icon: PlusCircleOutlined }]}
                 onClick={handleClickFake}
             ></Actions>
             <Actions
                 display={ActionsDisplay.LEFT}
-                actionsArr={actionsArr2}
+                actions={actions2}
             ></Actions>
             <Actions
                 countShow={15}
-                actionsArr={actionsArr3}
+                actions={actions3}
                 onClick={handleClickFake}
             ></Actions>
         </Layout>

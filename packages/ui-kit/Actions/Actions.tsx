@@ -3,16 +3,15 @@ import cn from 'classnames';
 import MoreOutlined from '@ant-design/icons/MoreOutlined';
 
 import { DropdownMenu } from '../DropdownMenu';
-import { Icon as IconType } from '../Icon/types';
 import { IconButton, IconButtonSize } from '../IconButton';
 import { PopoverPosition, PopoverSide } from '../Popover';
 
-import { ActionsDisplay } from './types';
+import { ActionsDisplay, ActionsType } from './types';
 
 import css from './Actions.module.scss';
 
 export interface ActionsProps {
-    actionsArr: { id: string | number; text: string; icon: IconType }[];
+    actions: ActionsType[];
     onClick?: () => void;
     countShow?: number;
     display?: ActionsDisplay;
@@ -21,20 +20,23 @@ export interface ActionsProps {
 }
 
 const Actions: FC<ActionsProps> = ({
-    actionsArr,
+    actions,
     onClick: handleClick,
     countShow = 2,
     display = ActionsDisplay.RIGHT,
     position = PopoverPosition.CENTER,
     side = PopoverSide.BOTTOM,
 }) => {
+    const visibleActions = actions.slice(0, countShow);
+    const dropdownActions = actions.slice(countShow);
+
     return (
         <div className={cn(css.actions, css[display])}>
-            {actionsArr.slice(countShow).length > 0 && (
+            {dropdownActions.length > 0 && (
                 <DropdownMenu
                     side={side}
                     position={position}
-                    options={actionsArr.slice(countShow).map((item) => ({
+                    options={dropdownActions.map((item) => ({
                         id: item.id,
                         text: item.text,
                         onClick: handleClick,
@@ -46,7 +48,7 @@ const Actions: FC<ActionsProps> = ({
                     />
                 </DropdownMenu>
             )}
-            {actionsArr.slice(0, countShow).map((item) => (
+            {visibleActions.map((item) => (
                 <IconButton
                     key={item.id}
                     icon={item.icon}
