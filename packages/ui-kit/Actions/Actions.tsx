@@ -7,30 +7,35 @@ import { Icon as IconType } from '../Icon/types';
 import { IconButton, IconButtonSize } from '../IconButton';
 import { PopoverPosition, PopoverSide } from '../Popover';
 
+import { ActionsDisplay } from './types';
+
 import css from './Actions.module.scss';
-import { ActionsPosition } from './types';
 
 export interface ActionsProps {
-    actionsArr: { text: string; icon: IconType }[];
+    actionsArr: { id: string | number; text: string; icon: IconType }[];
     onClick?: () => void;
-    show?: number;
-    position?: ActionsPosition;
+    countShow?: number;
+    display?: ActionsDisplay;
+    position?: PopoverPosition;
+    side?: PopoverSide;
 }
 
 const Actions: FC<ActionsProps> = ({
     actionsArr,
     onClick: handleClick,
-    show = 2,
-    position = ActionsPosition.RIGHT,
+    countShow = 2,
+    display = ActionsDisplay.RIGHT,
+    position = PopoverPosition.CENTER,
+    side = PopoverSide.BOTTOM,
 }) => {
     return (
-        <div className={cn(css.actions, css[position])}>
-            {actionsArr.slice(show - 1).length > 0 && (
+        <div className={cn(css.actions, css[display])}>
+            {actionsArr.slice(countShow).length > 0 && (
                 <DropdownMenu
-                    side={PopoverSide.BOTTOM}
-                    position={PopoverPosition.CENTER}
-                    options={actionsArr.slice(show).map((item) => ({
-                        id: item.text,
+                    side={side}
+                    position={position}
+                    options={actionsArr.slice(countShow).map((item) => ({
+                        id: item.id,
                         text: item.text,
                         onClick: handleClick,
                     }))}
@@ -41,9 +46,9 @@ const Actions: FC<ActionsProps> = ({
                     />
                 </DropdownMenu>
             )}
-            {actionsArr.slice(0, show - 1).map((item) => (
+            {actionsArr.slice(0, countShow).map((item) => (
                 <IconButton
-                    key={item.text}
+                    key={item.id}
                     icon={item.icon}
                     size={IconButtonSize.EXTRA_SMALL}
                     onClick={handleClick}

@@ -3,59 +3,61 @@ import EditOutlined from '@ant-design/icons/EditOutlined';
 import PlusCircleOutlined from '@ant-design/icons/PlusCircleOutlined';
 
 import { Actions, Layout } from 'ui-kit';
-import { ActionsPosition } from 'ui-kit/Actions';
+import { ActionsDisplay } from 'ui-kit/Actions';
+import { PopoverPosition, PopoverSide } from 'ui-kit/Popover';
 
 export const TestActions: FC = () => {
     const handleClickFake = () => alert(42);
 
     const actionsArr1 = [
-        { text: '1', icon: EditOutlined },
-        { text: '2', icon: PlusCircleOutlined },
-        { text: '3', icon: PlusCircleOutlined },
-        { text: '4', icon: PlusCircleOutlined },
-        { text: '5', icon: PlusCircleOutlined },
-        { text: '6', icon: PlusCircleOutlined },
+        { id: '1', text: '1', icon: EditOutlined },
+        { id: '2', text: '2', icon: PlusCircleOutlined },
+        { id: '3', text: '3', icon: PlusCircleOutlined },
+        { id: '4', text: '4', icon: PlusCircleOutlined },
+        { id: '5', text: '5', icon: PlusCircleOutlined },
+        { id: '6', text: '6', icon: PlusCircleOutlined },
     ];
 
     const actionsArr2 = [
-        { text: '1', icon: EditOutlined },
-        { text: '2', icon: PlusCircleOutlined },
-        { text: '3', icon: PlusCircleOutlined },
-        { text: '4', icon: PlusCircleOutlined },
-        { text: '5', icon: PlusCircleOutlined },
-        { text: '6', icon: EditOutlined },
+        { id: '1', text: '1', icon: EditOutlined },
+        { id: '2', text: '2', icon: PlusCircleOutlined },
+        { id: '3', text: '3', icon: PlusCircleOutlined },
+        { id: '4', text: '4', icon: PlusCircleOutlined },
+        { id: '5', text: '5', icon: PlusCircleOutlined },
+        { id: '6', text: '6', icon: EditOutlined },
     ];
     const actionsArr3 = [
-        { text: '1', icon: EditOutlined },
-        { text: '2', icon: PlusCircleOutlined },
-        { text: '3', icon: PlusCircleOutlined },
-        { text: '4', icon: PlusCircleOutlined },
-        { text: '5', icon: PlusCircleOutlined },
-        { text: '6', icon: PlusCircleOutlined },
-        { text: '7', icon: PlusCircleOutlined },
-        { text: '8', icon: PlusCircleOutlined },
-        { text: '9', icon: PlusCircleOutlined },
-        { text: '10', icon: PlusCircleOutlined },
-        { text: '11', icon: PlusCircleOutlined },
+        { id: '1', text: '1', icon: EditOutlined },
+        { id: '2', text: '2', icon: PlusCircleOutlined },
+        { id: '3', text: '3', icon: PlusCircleOutlined },
+        { id: '4', text: '4', icon: PlusCircleOutlined },
+        { id: '5', text: '5', icon: PlusCircleOutlined },
+        { id: '6', text: '6', icon: PlusCircleOutlined },
+        { id: '7', text: '7', icon: PlusCircleOutlined },
+        { id: '8', text: '8', icon: PlusCircleOutlined },
+        { id: '9', text: '9', icon: PlusCircleOutlined },
+        { id: '10', text: '10', icon: PlusCircleOutlined },
     ];
 
     return (
         <Layout>
             <Actions
-                show={3}
+                countShow={3}
+                position={PopoverPosition.START}
+                side={PopoverSide.LEFT}
                 actionsArr={actionsArr1}
                 onClick={handleClickFake}
             ></Actions>
             <Actions
-                actionsArr={[{ text: '2', icon: PlusCircleOutlined }]}
+                actionsArr={[{ id: 1, text: '2', icon: PlusCircleOutlined }]}
                 onClick={handleClickFake}
             ></Actions>
             <Actions
-                position={ActionsPosition.LEFT}
+                display={ActionsDisplay.LEFT}
                 actionsArr={actionsArr2}
             ></Actions>
             <Actions
-                show={15}
+                countShow={15}
                 actionsArr={actionsArr3}
                 onClick={handleClickFake}
             ></Actions>
