@@ -1,4 +1,5 @@
 import React, { FC, useCallback } from 'react';
+import { useTranslation } from 'react-i18next';
 import cn from 'classnames';
 
 import { Icon } from '../Icon/types';
@@ -20,6 +21,7 @@ export interface InputProps {
     iconLeft?: Icon;
     iconRight?: Icon;
     onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    onFocus?: (e: React.FocusEvent<HTMLInputElement>) => void;
 }
 
 const Input: FC<InputProps> = ({
@@ -32,6 +34,7 @@ const Input: FC<InputProps> = ({
     placeholder,
     value,
     onChange,
+    onFocus,
     iconLeft: IconLeftComponent,
     iconRight: IconRightComponent,
     ...props
@@ -43,9 +46,22 @@ const Input: FC<InputProps> = ({
         [onChange],
     );
 
+    const handleFocus = useCallback(
+        (e: React.FocusEvent<HTMLInputElement>) => {
+            onFocus?.(e);
+        },
+        [onFocus],
+    );
+
+    const { t } = useTranslation();
+
     return (
         <div className={cn(css.wrapper, className, css[validateType!])}>
-            {label && <label className={css.label}>{label}</label>}
+            {label && (
+                <label className={cn(css.label, css[validateType!])}>
+                    {label}
+                </label>
+            )}
 
             <div
                 className={cn(
@@ -57,7 +73,7 @@ const Input: FC<InputProps> = ({
                 {IconLeftComponent && <IconLeftComponent />}
 
                 <input
-                    placeholder={placeholder}
+                    placeholder={placeholder || t('home.search.placeholder')}
                     value={value}
                     disabled={isDisabled}
                     className={cn(
@@ -65,6 +81,7 @@ const Input: FC<InputProps> = ({
                         !!validateType && css[validateType],
                     )}
                     onChange={handleChange}
+                    onFocus={handleFocus}
                     {...props}
                 />
 
