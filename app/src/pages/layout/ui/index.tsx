@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import { Outlet } from 'react-router';
+import MessageTwoTone from '@ant-design/icons/MessageTwoTone';
 
 import { Layout } from 'ui-kit';
 
@@ -26,10 +27,8 @@ const LayoutPage: FC = () => {
             <Layout>
                 <Filler
                     title={'PieChat'}
-                    description={'Lorem ipsum dolor sit amet. Eos similique'}
-                    src={
-                        'https://avatars.mds.yandex.net/i?id=f6814023df5876b2002221a49ac8c93a_l-5224721-images-thumbs&n=13'
-                    }
+                    description={'Спасибо за интерес к нашему мессенджеру!'}
+                    icon={MessageTwoTone}
                 />
             </Layout>
         </div>

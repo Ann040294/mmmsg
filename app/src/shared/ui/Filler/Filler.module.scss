@@ -43,16 +43,13 @@
   transform: translateX(-50%);
 }
 
-.wrapperAvatar {
-  padding: 10px;
-  border-radius: 30px;
-  background-color: white;
+.icon {
+  font-size: 120px;
+  padding: 20px;
+  background-color: colors.$neutral-white-color;
   display: flex;
-
-  .avatar {
-    --avatar-size: 120px;
-    box-shadow: 0 0 8px 5px rgba(colors.$neutral-dark-color, 0.2);
-  }
+  border-radius: 50%;
+  box-shadow: 0 0 8px 5px rgba(colors.$neutral-dark-color, 0.2);
 }
 
 .fish {
@@ -68,7 +65,7 @@
     background-color: var(--second-fish-color);
     border-radius: 10px;
     position: absolute;
-    height: 10px;
+    height: 10px;;
   }
 
   &::before {
