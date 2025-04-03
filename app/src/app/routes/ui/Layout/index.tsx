@@ -19,7 +19,7 @@ const LayoutPage: FC = () => {
             >
                 <Navbar options={defaultConfig} />
             </Layout>
-            <Layout className={css.main}>
+            <Layout className={css.left}>
                 <CustomOutlet name={CustomOutletNames.FIRST} />
             </Layout>
             <Layout>

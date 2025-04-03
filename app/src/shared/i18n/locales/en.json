@@ -31,5 +31,9 @@
   },
   "notFound": {
     "title": "Page Not Found"
+  },
+  "filler": {
+    "title": "PieChat",
+    "description": "Thank you for your interest in our messenger!"
   }
 }

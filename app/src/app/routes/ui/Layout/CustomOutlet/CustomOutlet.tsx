@@ -5,7 +5,7 @@ import { getRoutes } from '@app/routes/ui/Layout/CustomOutlet/utils/getRoutes';
 import { getRoutePaths } from './utils/getRoutePaths';
 import { CustomOutletNames } from './types';
 
-const NotFoundPage = lazy(() => import('@pages/not-found')); //TODO: Заменить на компонент по макету, когда появится
+const Filler = lazy(() => import('@shared/ui/Filler/Filler'));
 
 interface CustomOutletProps {
     name: CustomOutletNames;
@@ -16,7 +16,7 @@ const ROOT_PATH = '/';
 
 const CustomOutlet: FC<CustomOutletProps> = ({
     name,
-    NotFoundFilled = NotFoundPage,
+    NotFoundFilled = Filler,
 }) => {
     const location = useLocation();
 
