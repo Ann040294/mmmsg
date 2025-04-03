@@ -1,17 +1,17 @@
 import { FC } from 'react';
 import cn from 'classnames';
 
-import { SpinnerDuration, SpinnerSizes } from './types';
+import { SpinnerDuration, SpinnerSize } from './types';
 
 import css from './Spinner.module.scss';
 
 interface SpinnerProps {
-    size?: SpinnerSizes;
+    size?: SpinnerSize;
     duration?: SpinnerDuration;
 }
 
 const Spinner: FC<SpinnerProps> = ({
-    size = SpinnerSizes.MEDIUM,
+    size = SpinnerSize.MEDIUM,
     duration = SpinnerDuration.AVERAGE,
 }) => {
     return <div className={cn(css.spinner, css[size], css[duration])}></div>;

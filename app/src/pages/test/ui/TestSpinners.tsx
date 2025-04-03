@@ -1,22 +1,21 @@
 import { FC } from 'react';
 
-import { Layout } from 'ui-kit';
-import Spinner from 'ui-kit/Spinner/Spinner';
-import { SpinnerDuration, SpinnerSizes } from 'ui-kit/Spinner/types';
+import { Layout, Spinner } from 'ui-kit';
+import { SpinnerDuration, SpinnerSize } from 'ui-kit/Spinner/types';
 
 const TestSpinners: FC = () => {
     return (
         <Layout>
             <Spinner
-                size={SpinnerSizes.SMALL}
+                size={SpinnerSize.SMALL}
                 duration={SpinnerDuration.LOW}
             />
             <Spinner
-                size={SpinnerSizes.MEDIUM}
+                size={SpinnerSize.MEDIUM}
                 duration={SpinnerDuration.AVERAGE}
             />
             <Spinner
-                size={SpinnerSizes.LARGE}
+                size={SpinnerSize.LARGE}
                 duration={SpinnerDuration.FAST}
             />
         </Layout>

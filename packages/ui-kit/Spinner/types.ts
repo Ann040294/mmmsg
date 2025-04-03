@@ -1,4 +1,4 @@
-export enum SpinnerSizes {
+export enum SpinnerSize {
     SMALL = 'small',
     MEDIUM = 'medium',
     LARGE = 'large',
