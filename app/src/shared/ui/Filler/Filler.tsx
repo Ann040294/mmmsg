@@ -1,12 +1,12 @@
 import { FC } from 'react';
 import cn from 'classnames';
+import { t } from 'i18next';
+import MessageTwoTone from '@ant-design/icons/MessageTwoTone';
 
 import { Icon } from 'ui-kit';
 import { Icon as IconType } from 'ui-kit/Icon/types';
 
 import css from './Filler.module.scss';
-import MessageTwoTone from '@ant-design/icons/MessageTwoTone';
-import { t } from 'i18next';
 
 interface FillerProps {
     hasGradient?: boolean;
@@ -23,14 +23,12 @@ const Filler: FC<FillerProps> = ({
 }) => {
     return (
         <div className={cn(css.root, { [css.gradient]: hasGradient })}>
-            {icon && (
-                <Icon
-                    icon={icon}
-                    className={css.icon}
-                />
-            )}
-            {title && <h2 className={css.title}>{t(title)}</h2>}
-            {description && <p className={css.description}>{t(description)}</p>}
+            <Icon
+                icon={icon}
+                className={css.icon}
+            />
+            <h2 className={css.title}>{t(title)}</h2>
+            <p className={css.description}>{t(description)}</p>
             <div className={css.fish} />
         </div>
     );
