@@ -12,7 +12,6 @@ import css from './Actions.module.scss';
 
 export interface ActionsProps {
     actions: ActionsType[];
-    onClick?: () => void;
     countShow?: number;
     display?: ActionsDisplay;
     position?: PopoverPosition;
@@ -21,7 +20,6 @@ export interface ActionsProps {
 
 const Actions: FC<ActionsProps> = ({
     actions,
-    onClick: handleClick,
     countShow = 2,
     display = ActionsDisplay.RIGHT,
     position = PopoverPosition.CENTER,
@@ -32,6 +30,18 @@ const Actions: FC<ActionsProps> = ({
 
     return (
         <div className={cn(css.actions, css[display])}>
+            {visibleActions.map(({
+    id,
+    icon,
+    onClick: handleClick
+}) => (
+                <IconButton
+                    key={id}
+                    icon={icon}
+                    size={IconButtonSize.EXTRA_SMALL}
+                    onClick={handleClick}
+                />
+            ))}
             {dropdownActions.length > 0 && (
                 <DropdownMenu
                     side={side}
@@ -39,7 +49,7 @@ const Actions: FC<ActionsProps> = ({
                     options={dropdownActions.map((item) => ({
                         id: item.id,
                         text: item.text,
-                        onClick: handleClick,
+                        onClick: item.onClick,
                     }))}
                 >
                     <IconButton
@@ -48,14 +58,6 @@ const Actions: FC<ActionsProps> = ({
                     />
                 </DropdownMenu>
             )}
-            {visibleActions.map((item) => (
-                <IconButton
-                    key={item.id}
-                    icon={item.icon}
-                    size={IconButtonSize.EXTRA_SMALL}
-                    onClick={handleClick}
-                />
-            ))}
         </div>
     );
 };

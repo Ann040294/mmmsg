@@ -9,4 +9,5 @@ export interface ActionsType {
     id: string | number;
     text: string;
     icon: IconType;
+    onClick?: () => void;
 }
