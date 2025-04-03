@@ -10,7 +10,12 @@
     "title": "Testing"
   },
   "profile": {
-    "title": "Profile"
+    "title": "Profile",
+    "children": {
+      "settings": {
+        "title": "Settings"
+      }
+    }
   },
   "logout": {
     "title": "Logout"
