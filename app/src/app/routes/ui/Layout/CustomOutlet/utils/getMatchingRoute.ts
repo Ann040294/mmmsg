@@ -2,21 +2,22 @@ import { RouteWithOutlet } from '@app/routes/config/types';
 
 type ResultGetMatchingRoute = {
     route: RouteWithOutlet;
-    locationInObject: string[];
+    pathProperty: string[];
 };
+
 export const getMatchingRoute = (
     locationPathname: string,
     routes: RouteWithOutlet[],
 ): ResultGetMatchingRoute | null => {
-    const locationInObject: string[] = [];
+    const pathProperty: string[] = [];
 
     for (let i = 0; i < routes.length; i++) {
         const route = routes[i];
 
         if (route.path === locationPathname) {
-            locationInObject.push(i.toString());
+            pathProperty.push(i.toString());
 
-            return { route, locationInObject };
+            return { route, pathProperty };
         }
 
         if (route.children) {
@@ -26,13 +27,13 @@ export const getMatchingRoute = (
             );
 
             if (nestedRoute) {
-                locationInObject.push(i.toString());
-                locationInObject.push('children');
-                locationInObject.push(...nestedRoute.locationInObject);
+                pathProperty.push(i.toString());
+                pathProperty.push('children');
+                pathProperty.push(...nestedRoute.pathProperty);
 
                 return {
                     route: nestedRoute.route,
-                    locationInObject,
+                    pathProperty,
                 };
             }
         }

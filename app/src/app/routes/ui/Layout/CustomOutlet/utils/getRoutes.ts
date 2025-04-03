@@ -5,11 +5,11 @@ import { RouteWithOutlet } from '@app/routes/config/types';
 import { getMatchingRoute } from './getMatchingRoute';
 
 export const getRoutes = (paths: string[]): (RouteWithOutlet | null)[] => {
-    const outlets: Array<RouteWithOutlet | null> = [];
-    const locationInObject: string[] = [];
+    const outlets: (RouteWithOutlet | null)[] = [];
+    const pathProperty: string[] = [];
 
     paths.forEach((item) => {
-        const routes = lodash.get(routesConfig, locationInObject, routesConfig);
+        const routes = lodash.get(routesConfig, pathProperty, routesConfig);
 
         const outlet = getMatchingRoute(
             item,
@@ -17,7 +17,7 @@ export const getRoutes = (paths: string[]): (RouteWithOutlet | null)[] => {
         );
 
         if (outlet) {
-            locationInObject.push(...outlet.locationInObject);
+            pathProperty.push(...outlet.pathProperty);
             outlets.push(outlet.route);
         }
     });
