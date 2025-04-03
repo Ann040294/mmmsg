@@ -5,6 +5,8 @@ import { Icon } from 'ui-kit';
 import { Icon as IconType } from 'ui-kit/Icon/types';
 
 import css from './Filler.module.scss';
+import MessageTwoTone from '@ant-design/icons/MessageTwoTone';
+import { t } from 'i18next';
 
 interface FillerProps {
     hasGradient?: boolean;
@@ -13,7 +15,12 @@ interface FillerProps {
     title?: string;
 }
 
-const Filler: FC<FillerProps> = ({ hasGradient, icon, description, title }) => {
+const Filler: FC<FillerProps> = ({
+    hasGradient,
+    icon = MessageTwoTone,
+    description = 'filler.description',
+    title = 'filler.title',
+}) => {
     return (
         <div className={cn(css.root, { [css.gradient]: hasGradient })}>
             {icon && (
@@ -22,8 +29,8 @@ const Filler: FC<FillerProps> = ({ hasGradient, icon, description, title }) => {
                     className={css.icon}
                 />
             )}
-            {title && <h2 className={css.title}>{title}</h2>}
-            {description && <p className={css.description}>{description}</p>}
+            {title && <h2 className={css.title}>{t(title)}</h2>}
+            {description && <p className={css.description}>{t(description)}</p>}
             <div className={css.fish} />
         </div>
     );

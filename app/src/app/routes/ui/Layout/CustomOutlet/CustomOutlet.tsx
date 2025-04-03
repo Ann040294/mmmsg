@@ -1,22 +1,22 @@
-import { FC, lazy, ReactNode } from 'react';
+import { FC, lazy } from 'react';
 import { useLocation } from 'react-router';
 import { getRoutes } from '@app/routes/ui/Layout/CustomOutlet/utils/getRoutes';
 
 import { getRoutePaths } from './utils/getRoutePaths';
 import { CustomOutletNames } from './types';
 
-const NotFoundPage = lazy(() => import('@pages/not-found')); //TODO: Заменить на компонент по макету, когда появится
+const Filler = lazy(() => import('@shared/ui/Filler/Filler'));
 
 interface CustomOutletProps {
     name: CustomOutletNames;
-    NotFoundFilled?: ReactNode;
+    NotFoundFilled?: FC;
 }
 
 const ROOT_PATH = '/';
 
 const CustomOutlet: FC<CustomOutletProps> = ({
     name,
-    NotFoundFilled = <NotFoundPage />,
+    NotFoundFilled = Filler,
 }) => {
     const location = useLocation();
 
@@ -31,7 +31,7 @@ const CustomOutlet: FC<CustomOutletProps> = ({
     const route = outlets.find((item) => name === item?.outlet);
 
     if (!route) {
-        return NotFoundFilled;
+        return <NotFoundFilled />;
     }
 
     const Component = route.Component;

@@ -1,11 +1,8 @@
 import { FC } from 'react';
-import MessageTwoTone from '@ant-design/icons/MessageTwoTone';
 
 import { Layout } from 'ui-kit';
 
 import { Navbar } from '@widgets/Navbar';
-
-import Filler from '@shared/ui/Filler/Filler';
 
 import { defaultConfig } from './config/defaultConfig';
 import CustomOutlet from './CustomOutlet/CustomOutlet';
@@ -26,18 +23,7 @@ const LayoutPage: FC = () => {
                 <CustomOutlet name={CustomOutletNames.FIRST} />
             </Layout>
             <Layout>
-                <CustomOutlet
-                    name={CustomOutletNames.SECOND}
-                    NotFoundFilled={
-                        <Filler
-                            title={'PieChat'}
-                            icon={MessageTwoTone}
-                            description={
-                                'Спасибо за интерес к нашему мессенджеру!'
-                            }
-                        />
-                    }
-                />
+                <CustomOutlet name={CustomOutletNames.SECOND} />
             </Layout>
         </div>
     );
