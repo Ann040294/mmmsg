@@ -1,9 +1,9 @@
 import LogoutOutlined from '@ant-design/icons/LogoutOutlined';
 import MessageOutlined from '@ant-design/icons/MessageOutlined';
 
-import { ROUTE_CONFIG } from '@shared/config/routeConfig';
+import { NavbarItemTypes, NavLinkType } from '@widgets/Navbar/Item';
 
-import { NavbarItemTypes, NavLinkType } from '../ui/Navbar/Item/types';
+import { ROUTE_CONFIG } from '@shared/config/routeConfig';
 
 export const defaultConfig: NavLinkType[][] = [
     [
