@@ -1,4 +1,4 @@
-import { FC, lazy } from 'react';
+import { FC, lazy, ReactNode } from 'react';
 import { useLocation } from 'react-router';
 import { getRoutes } from '@app/routes/ui/Layout/CustomOutlet/utils/getRoutes';
 
@@ -9,14 +9,14 @@ const NotFoundPage = lazy(() => import('@pages/not-found')); //TODO: Замен�
 
 interface CustomOutletProps {
     name: CustomOutletNames;
-    NotFoundFilled?: FC;
+    NotFoundFilled?: ReactNode;
 }
 
 const ROOT_PATH = '/';
 
 const CustomOutlet: FC<CustomOutletProps> = ({
     name,
-    NotFoundFilled = NotFoundPage,
+    NotFoundFilled = <NotFoundPage />,
 }) => {
     const location = useLocation();
 
@@ -31,7 +31,7 @@ const CustomOutlet: FC<CustomOutletProps> = ({
     const route = outlets.find((item) => name === item?.outlet);
 
     if (!route) {
-        return <NotFoundFilled />;
+        return NotFoundFilled;
     }
 
     const Component = route.Component;
