@@ -6,7 +6,7 @@ import { routes } from './routes';
 
 const LayoutPage = lazy(() => import('@pages/layout/ui'));
 const HomePage = lazy(() => import('@pages/home/ui'));
-const ProfilePage = lazy(() => import('@pages/profile'));
+const ProfilePage = lazy(() => import('@pages/profile/ui'));
 const TestPage = lazy(() => import('@pages/test'));
 const LoginPage = lazy(() => import('@pages/login'));
 const RegisterPage = lazy(() => import('@pages/register'));
