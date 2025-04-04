@@ -4,12 +4,12 @@ import LanguageDetector from 'i18next-browser-languagedetector';
 
 import enTranslation from './locales/en.json';
 import ruTranslation from './locales/ru.json';
-import { Languages } from './types';
+import { Language } from './types';
 
 i18n.use(LanguageDetector)
     .use(initReactI18next)
     .init({
-        lng: Languages.RU,
+        lng: Language.RU,
         resources: {
             en: {
                 translation: enTranslation,
@@ -18,7 +18,7 @@ i18n.use(LanguageDetector)
                 translation: ruTranslation,
             },
         },
-        fallbackLng: Languages.EN,
+        fallbackLng: Language.EN,
         debug: process.env.NODE_ENV === 'development',
         interpolation: {
             escapeValue: false,
