@@ -38,5 +38,6 @@ export const ROUTE_CONFIG = {
     NOT_FOUND: {
         path: '*',
         title: 'notFound.title',
+        description: 'notFound.description',
     },
 };

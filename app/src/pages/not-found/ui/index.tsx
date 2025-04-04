@@ -1,6 +1,7 @@
 import { FC } from 'react';
 import StopTwoTone from '@ant-design/icons/StopTwoTone';
 
+import { ROUTE_CONFIG } from '@shared/config/routeConfig';
 import Filler from '@shared/ui/Filler/Filler';
 
 import css from './NotFoundPage.module.scss';
@@ -10,9 +11,10 @@ const NotFoundPage: FC = () => {
         <div className={css.root}>
             <Filler
                 hasGradient
+                hasFish={false}
                 icon={StopTwoTone}
                 title={'404'}
-                description={'Страничка не найдена :('}
+                description={ROUTE_CONFIG.NOT_FOUND.description}
             />
         </div>
     );

@@ -30,7 +30,8 @@
     "title": "Reset Password"
   },
   "notFound": {
-    "title": "Page Not Found"
+    "title": "Page Not Found",
+    "description": "Page is not found :("
   },
   "filler": {
     "title": "PieChat",

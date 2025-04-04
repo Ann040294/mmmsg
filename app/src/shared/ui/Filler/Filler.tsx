@@ -10,6 +10,7 @@ import css from './Filler.module.scss';
 
 interface FillerProps {
     hasGradient?: boolean;
+    hasFish?: boolean;
     icon?: IconType;
     description?: string;
     title?: string;
@@ -17,6 +18,7 @@ interface FillerProps {
 
 const Filler: FC<FillerProps> = ({
     hasGradient,
+    hasFish,
     icon = MessageTwoTone,
     description = 'filler.description',
     title = 'filler.title',
@@ -29,7 +31,7 @@ const Filler: FC<FillerProps> = ({
             />
             <h2 className={css.title}>{t(title)}</h2>
             <p className={css.description}>{t(description)}</p>
-            <div className={css.fish} />
+            {hasFish && <div className={css.fish} />}
         </div>
     );
 };
