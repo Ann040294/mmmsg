@@ -9,6 +9,8 @@ import { InputVariants } from './types';
 import css from './Input.module.scss';
 
 export interface InputProps {
+    name?: string;
+    isRequired?: boolean;
     className?: string;
     label?: string;
     message?: string;
@@ -23,6 +25,8 @@ export interface InputProps {
 }
 
 const Input: FC<InputProps> = ({
+    name,
+    isRequired,
     className,
     label,
     message,
@@ -57,6 +61,8 @@ const Input: FC<InputProps> = ({
                 {IconLeftComponent && <IconLeftComponent />}
 
                 <input
+                    name={name}
+                    required={isRequired}
                     placeholder={placeholder}
                     value={value}
                     disabled={isDisabled}
