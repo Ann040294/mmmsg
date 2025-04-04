@@ -6,6 +6,7 @@ import TestSpinners from '@pages/test/ui/TestSpinners';
 
 import { ROUTE_CONFIG } from '@shared/config/routeConfig';
 
+import { TestActions } from './ui/TestActions';
 import { TestAvatars } from './ui/TestAvatars';
 import { TestButtons } from './ui/TestButtons';
 import { TestCards } from './ui/TestCards';
@@ -26,6 +27,9 @@ const Test = () => {
             <title>{t(ROUTE_CONFIG.TEST.title)}</title>
             <Layout className={css.column}>
                 <TestIcons />
+            </Layout>
+            <Layout className={css.row}>
+                <TestActions />
             </Layout>
             <Layout className={css.row}>
                 <TestSpinners />
