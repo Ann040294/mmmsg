@@ -1,5 +1,4 @@
 import React, { FC, useCallback } from 'react';
-import { useTranslation } from 'react-i18next';
 import cn from 'classnames';
 
 import { Icon } from '../Icon/types';
@@ -53,8 +52,6 @@ const Input: FC<InputProps> = ({
         [onFocus],
     );
 
-    const { t } = useTranslation();
-
     return (
         <div className={cn(css.wrapper, className, css[validateType!])}>
             {label && (
@@ -73,7 +70,7 @@ const Input: FC<InputProps> = ({
                 {IconLeftComponent && <IconLeftComponent />}
 
                 <input
-                    placeholder={placeholder || t('home.search.placeholder')}
+                    placeholder={placeholder}
                     value={value}
                     disabled={isDisabled}
                     className={cn(

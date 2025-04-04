@@ -3,8 +3,7 @@
     "title": "Chats",
     "labelPage": "Chats",
     "search": {
-      "title": "Search...",
-      "placeholder": "Enter text..."
+      "title": "Search..."
     }
   },
   "test": {

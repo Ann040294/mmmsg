@@ -3,8 +3,7 @@
     "title": "Чаты",
     "labelPage": "Чаты",
     "search": {
-      "title": "Поиск...",
-      "placeholder": "Введите текст..."
+      "title": "Поиск..."
     }
   },
   "test": {
