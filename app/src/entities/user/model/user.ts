@@ -4,4 +4,5 @@ export type User = {
     email: string;
     phone: string;
     profession?: string;
+    avatarSrc?: string;
 };
