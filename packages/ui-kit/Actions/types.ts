@@ -1,11 +1,11 @@
-import {Icon as IconType} from '../Icon/types';
+import { Icon as IconType } from '../Icon/types';
 
 export enum ActionsDisplay {
     LEFT = 'left',
     RIGHT = 'right',
 }
 
-export interface ActionsType {
+export interface ActionItem {
     id: string | number;
     text: string;
     icon: IconType;

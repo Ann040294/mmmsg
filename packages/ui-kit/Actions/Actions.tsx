@@ -6,12 +6,12 @@ import { DropdownMenu } from '../DropdownMenu';
 import { IconButton, IconButtonSize } from '../IconButton';
 import { PopoverPosition, PopoverSide } from '../Popover';
 
-import { ActionsDisplay, ActionsType } from './types';
+import { ActionItem, ActionsDisplay } from './types';
 
 import css from './Actions.module.scss';
 
 export interface ActionsProps {
-    actions: ActionsType[];
+    actions: ActionItem[];
     countShow?: number;
     display?: ActionsDisplay;
     position?: PopoverPosition;
@@ -30,11 +30,7 @@ const Actions: FC<ActionsProps> = ({
 
     return (
         <div className={cn(css.actions, css[display])}>
-            {visibleActions.map(({
-    id,
-    icon,
-    onClick: handleClick
-}) => (
+            {visibleActions.map(({ id, icon, onClick: handleClick }) => (
                 <IconButton
                     key={id}
                     icon={icon}
