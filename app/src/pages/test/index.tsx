@@ -14,10 +14,12 @@ import { TestCircleButtons } from './ui/TestCircleButtons';
 import TestDropdowns from './ui/TestDropdowns';
 import { TestIcons } from './ui/TestIcons';
 import { TestInputs } from './ui/TestInputs';
+import { TestMessageItem} from './ui/TestMessageItem';
 import { TestNotices } from './ui/TestNotices';
 import { TestTextViewer } from './ui/TestTextViewer';
 
 import css from './style.module.scss';
+
 
 const Test = () => {
     const { t } = useTranslation();
@@ -27,9 +29,6 @@ const Test = () => {
             <title>{t(ROUTE_CONFIG.TEST.title)}</title>
             <Layout className={css.column}>
                 <TestIcons />
-            </Layout>
-            <Layout className={css.row}>
-                <TestActions />
             </Layout>
             <Layout className={css.row}>
                 <TestSpinners />
@@ -42,7 +41,11 @@ const Test = () => {
                 <TestCards />
                 <TestInputs />
                 <TestButtons />
+            </Layout>
+            <Layout className={css.row}>
+                <TestActions />
                 <TestTextViewer />
+                <TestMessageItem />
             </Layout>
         </>
     );
