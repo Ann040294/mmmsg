@@ -45,12 +45,9 @@ const Input: FC<InputProps> = ({
         [onChange],
     );
 
-    const handleFocus = useCallback(
-        (e: React.FocusEvent<HTMLInputElement>) => {
-            onFocus?.(e);
-        },
-        [onFocus],
-    );
+    const handleFocus = (e: React.FocusEvent<HTMLInputElement>) => {
+        onFocus?.(e);
+    };
 
     return (
         <div className={cn(css.wrapper, className, css[validateType!])}>
