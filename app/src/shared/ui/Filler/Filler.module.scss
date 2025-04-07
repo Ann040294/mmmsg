@@ -61,7 +61,7 @@
   height: var(--default-fish-size);
   position: relative;
   border-radius: 10px;
-  animation: fish 3s linear infinite;
+  animation: fish 10s linear infinite;
 
 
   &::before,
@@ -77,83 +77,80 @@
     width: var(--big-fish-size);
     transform: translateX(-100%);
     left: -50%;
-    animation: left-fish 3s linear infinite;
   }
 
   &::after {
     right: -50%;
     transform: translateX(100%);
     width: 10px;
-    animation: right-fish 3s linear infinite;
+    animation: right-fish 1s linear infinite;
   }
 }
 
 @keyframes fish {
   0% {
-    width: 30px;
+    left: 0;
+    top: 0;
+  }
+
+  12.5% {
+    transform: rotate(-30deg);
   }
 
   25% {
-    width: 10px;
+    left: -35%;
+    top: 20%;
+    transform: rotate(-140deg);
+  }
+
+  37.5% {
+    left: -20%;
+    top: 25%;
   }
 
   50% {
-    width: 30px;
+    top: 20%;
+    left: 0;
+    transform: rotate(-180deg);
+  }
+
+  62.5% {
+    top: 20%;
+    transform: rotate(-235deg);
   }
 
   75% {
-    width: 30px;
+    left: 40%;
+    transform: rotate(-320deg);
+  }
+
+  87.5% {
+    left: 20%;
+    top: -5%;
+    transform: rotate(-360deg)
   }
 
   100% {
-    width: 30px;
-  }
-}
-
-@keyframes left-fish {
-  0% {
-    width: 60px;
-  }
-
-  25% {
-    width: 60px;
-    left: -25%;
-  }
-
-  50% {
-    width: 10px;
-    left: -25%;
-  }
-
-  75% {
-    width: calc(60px / 2);
-    left: -25%;
-  }
-
-  100% {
-    width: 60px;
+    left: 0;
+    top: 0;
+    transform: rotate(-360deg);
   }
 }
 
 @keyframes right-fish {
   0% {
-    width: 10px;
+    transform: translateX(100%) translateY(0)
   }
 
-  25% {
-    width: 10px;
+  33% {
+    transform: translateX(100%) translateY(100%);
   }
 
-  50% {
-    width: 60px;
-    transform: translateX(100%);
-  }
-
-  75% {
-    width: calc(60px / 2);
+  66% {
+    transform: translateX(100%) translateY(-100%);
   }
 
   100% {
-    width: 10px;
+    transform: translateX(100%) translateY(0);
   }
 }
