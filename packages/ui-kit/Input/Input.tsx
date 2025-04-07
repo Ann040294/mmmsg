@@ -22,6 +22,7 @@ export interface InputProps {
     iconLeft?: Icon;
     iconRight?: Icon;
     onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    onFocus?: (e: React.FocusEvent<HTMLInputElement>) => void;
 }
 
 const Input: FC<InputProps> = ({
@@ -36,6 +37,7 @@ const Input: FC<InputProps> = ({
     placeholder,
     value,
     onChange,
+    onFocus: handleFocus,
     iconLeft: IconLeftComponent,
     iconRight: IconRightComponent,
     ...props
@@ -49,7 +51,14 @@ const Input: FC<InputProps> = ({
 
     return (
         <div className={cn(css.wrapper, className, css[validateType!])}>
-            {label && <label className={css.label}>{label}</label>}
+            {label && (
+                <label
+                    htmlFor={name}
+                    className={cn(css.label, css[validateType!])}
+                >
+                    {label}
+                </label>
+            )}
 
             <div
                 className={cn(
@@ -71,6 +80,7 @@ const Input: FC<InputProps> = ({
                         !!validateType && css[validateType],
                     )}
                     onChange={handleChange}
+                    onFocus={handleFocus}
                     {...props}
                 />
 

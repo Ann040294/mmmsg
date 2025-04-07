@@ -140,6 +140,30 @@ export const TestInputs: FC = () => {
                 value=""
                 noticeType={NoticeTypes.ERROR}
             />
+            <br />
+            <Input
+                label="Username"
+                variant={variant}
+                value=""
+                noticeType={NoticeTypes.SUCCESS}
+                message="SUCCESS"
+            />
+            <br />
+            <Input
+                label="Username"
+                variant={variant}
+                value=""
+                noticeType={NoticeTypes.WARNING}
+                message="WARNING"
+            />
+            <br />
+            <Input
+                label="Username"
+                variant={variant}
+                value=""
+                noticeType={NoticeTypes.INFO}
+                message="INFO"
+            />
         </Layout>
     );
 };
