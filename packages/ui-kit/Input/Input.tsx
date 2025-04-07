@@ -33,7 +33,7 @@ const Input: FC<InputProps> = ({
     placeholder,
     value,
     onChange,
-    onFocus,
+    onFocus: handleFocus,
     iconLeft: IconLeftComponent,
     iconRight: IconRightComponent,
     ...props
@@ -44,10 +44,6 @@ const Input: FC<InputProps> = ({
         },
         [onChange],
     );
-
-    const handleFocus = (e: React.FocusEvent<HTMLInputElement>) => {
-        onFocus?.(e);
-    };
 
     return (
         <div className={cn(css.wrapper, className, css[validateType!])}>
