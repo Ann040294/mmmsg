@@ -1,0 +1,46 @@
+@use '../styles/color' as colors;
+
+.spinner {
+  --border-size: 8px;
+  --border-style: solid;
+
+  width: var(--spinner-size);
+  height: var(--spinner-size);
+  border: var(--border-size) var(--border-style) colors.$neutral-light-color;
+  border-top: var(--border-size) var(--border-style) colors.$brand-primary-color;
+  border-radius: 50%;
+  animation: spin var(--spinner-duration) linear infinite;
+}
+
+.small {
+  --spinner-size: 30px;
+}
+
+.medium {
+  --spinner-size: 60px;
+}
+
+.large {
+  --spinner-size: 90px;
+}
+
+.low {
+  --spinner-duration: 4s;
+}
+
+.average {
+  --spinner-duration: 2s;
+}
+
+.fast {
+  --spinner-duration: 1s;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

@@ -10,7 +10,12 @@
     "title": "Тестирование"
   },
   "profile": {
-    "title": "Профиль"
+    "title": "Профиль",
+    "children": {
+      "settings": {
+        "title": "Настройки"
+      }
+    }
   },
   "logout": {
     "title": "Выход"
@@ -26,5 +31,9 @@
   },
   "notFound": {
     "title": "Страница не найдена"
+  },
+  "filler": {
+    "title": "PieChat",
+    "description": "Спасибо за интерес к нашему мессенджеру!"
   }
 }

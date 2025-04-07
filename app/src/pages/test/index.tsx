@@ -2,8 +2,11 @@ import { useTranslation } from 'react-i18next';
 
 import { Layout } from 'ui-kit';
 
+import TestSpinners from '@pages/test/ui/TestSpinners';
+
 import { ROUTE_CONFIG } from '@shared/config/routeConfig';
 
+import { TestActions } from './ui/TestActions';
 import { TestAvatars } from './ui/TestAvatars';
 import { TestButtons } from './ui/TestButtons';
 import { TestCards } from './ui/TestCards';
@@ -26,14 +29,20 @@ const Test = () => {
                 <TestIcons />
             </Layout>
             <Layout className={css.row}>
+                <TestActions />
+            </Layout>
+            <Layout className={css.row}>
+                <TestSpinners />
                 <TestAvatars />
-                <TestCards />
+                <TestNotices />
                 <TestDropdowns />
+                <TestCircleButtons />
+            </Layout>
+            <Layout className={css.row}>
+                <TestCards />
                 <TestInputs />
                 <TestButtons />
-                <TestNotices />
                 <TestTextViewer />
-                <TestCircleButtons />
             </Layout>
         </>
     );

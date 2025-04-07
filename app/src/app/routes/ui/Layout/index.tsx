@@ -1,11 +1,12 @@
 import { FC } from 'react';
-import { Outlet } from 'react-router';
 
 import { Layout } from 'ui-kit';
 
-import { Navbar } from '@pages/layout/ui/Navbar';
+import { Navbar } from '@widgets/Navbar';
 
-import { defaultConfig } from '../config/defaultConfig';
+import { defaultConfig } from './config/defaultConfig';
+import CustomOutlet from './CustomOutlet/CustomOutlet';
+import { CustomOutletNames } from './CustomOutlet/types';
 
 import css from './layout.module.scss';
 
@@ -18,14 +19,11 @@ const LayoutPage: FC = () => {
             >
                 <Navbar options={defaultConfig} />
             </Layout>
-            <Layout className={css.main}>
-                <Outlet />
+            <Layout className={css.left}>
+                <CustomOutlet name={CustomOutletNames.FIRST} />
             </Layout>
             <Layout>
-                <span>
-                    Должен отображаться вложенный маршрут или какой-то
-                    стандартный компонент
-                </span>
+                <CustomOutlet name={CustomOutletNames.SECOND} />
             </Layout>
         </div>
     );
