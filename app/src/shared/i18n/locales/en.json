@@ -15,6 +15,12 @@
       "settings": {
         "title": "Settings"
       }
+    },
+    "inputs": {
+      "name": "Name",
+      "phone": "Phone",
+      "email": "Email",
+      "profession": "Profession"
     }
   },
   "logout": {

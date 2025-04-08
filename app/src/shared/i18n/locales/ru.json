@@ -15,6 +15,12 @@
       "settings": {
         "title": "Настройки"
       }
+    },
+    "inputs": {
+      "name": "Имя",
+      "phone": "Телефон",
+      "email": "Email",
+      "profession": "Профессия"
     }
   },
   "logout": {
