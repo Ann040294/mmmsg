@@ -16,11 +16,12 @@
         "title": "Настройки"
       }
     },
-    "inputs": {
+    "form": {
       "name": "Имя",
       "phone": "Телефон",
       "email": "Email",
-      "profession": "Профессия"
+      "profession": "Профессия",
+      "button": "Сохранить изменения"
     }
   },
   "logout": {

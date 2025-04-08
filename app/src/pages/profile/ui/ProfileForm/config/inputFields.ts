@@ -7,19 +7,19 @@ type InputFieldsType = {
 
 export const INPUT_FIELDS: InputFieldsType[] = [
     {
-        label: 'profile.inputs.name',
+        label: 'profile.form.name',
         name: 'name',
     },
     {
-        label: 'profile.inputs.profession',
+        label: 'profile.form.profession',
         name: 'profession',
     },
     {
-        label: 'profile.inputs.phone',
+        label: 'profile.form.phone',
         name: 'phone',
     },
     {
-        label: 'profile.inputs.email',
+        label: 'profile.form.email',
         name: 'email',
     },
 ];

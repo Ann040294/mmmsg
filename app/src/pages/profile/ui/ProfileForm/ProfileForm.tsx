@@ -91,7 +91,7 @@ const ProfileForm: FC = () => {
                         onChange={handleOnChange}
                     />
                 ))}
-                <Button text={'Сохранить изменения'} />
+                <Button text={t('profile.form.button')} />
             </form>
         </div>
     );

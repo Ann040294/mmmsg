@@ -16,11 +16,12 @@
         "title": "Settings"
       }
     },
-    "inputs": {
+    "form": {
       "name": "Name",
       "phone": "Phone",
       "email": "Email",
-      "profession": "Profession"
+      "profession": "Profession",
+      "button": "Save changes"
     }
   },
   "logout": {
