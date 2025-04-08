@@ -1,0 +1,12 @@
+.actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.left {
+  flex-direction: row-reverse;
+}
+
+.right {
+  flex-direction: row;
+}

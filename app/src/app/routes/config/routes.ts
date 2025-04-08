@@ -15,6 +15,7 @@ const LoginPage = lazy(() => import('@pages/login'));
 const RegisterPage = lazy(() => import('@pages/register'));
 const ResetPage = lazy(() => import('@pages/reset'));
 const NotFoundPage = lazy(() => import('@pages/not-found'));
+const SettingsPage = lazy(() => import('@pages/settings'));
 
 export const routesConfig: RouteWithOutlet[] = [
     {
@@ -36,7 +37,7 @@ export const routesConfig: RouteWithOutlet[] = [
                             {
                                 path: ROUTE_CONFIG.PROFILE.children.SETTINGS
                                     .path,
-                                Component: RegisterPage,
+                                Component: SettingsPage,
                                 outlet: CustomOutletNames.SECOND,
                             },
                         ],
