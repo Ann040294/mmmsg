@@ -6,6 +6,8 @@ import Filler from '@shared/ui/Filler/Filler';
 
 import css from './NotFoundPage.module.scss';
 
+const NOT_FOUND_HTTP_CODE = '404';
+
 const NotFoundPage: FC = () => {
     return (
         <div className={css.root}>
@@ -13,7 +15,7 @@ const NotFoundPage: FC = () => {
                 hasGradient
                 hasFish={false}
                 icon={StopTwoTone}
-                title={'404'}
+                title={NOT_FOUND_HTTP_CODE}
                 description={ROUTE_CONFIG.NOT_FOUND.description}
             />
         </div>
