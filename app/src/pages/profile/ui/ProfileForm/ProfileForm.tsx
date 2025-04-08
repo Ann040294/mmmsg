@@ -6,12 +6,14 @@ import {
     useEffect,
     useState,
 } from 'react';
-import FormOutlined from '@ant-design/icons/FormOutlined';
+import { t } from 'i18next';
 
 import { Avatar, InputVariants, Spinner } from 'ui-kit';
 import { AvatarSizes } from 'ui-kit/Avatar';
 import { Button } from 'ui-kit/Button';
 import Input from 'ui-kit/Input/Input';
+
+import { INPUT_FIELDS } from '@pages/profile/ui/ProfileForm/config/inputFields';
 
 import { updateUserInfo } from '@entities/user/api/user';
 import { userMock } from '@entities/user/mock/userMock';
@@ -78,35 +80,17 @@ const ProfileForm: FC = () => {
                 className={css.form}
                 onSubmit={handleOnSubmit}
             >
-                <Input
-                    variant={InputVariants.OUTLINED}
-                    placeholder={'Имя'}
-                    label={'Имя'}
-                    value={initialValue.name}
-                    onChange={handleOnChange}
-                />
-                <Input
-                    variant={InputVariants.OUTLINED}
-                    placeholder={'Профессия'}
-                    label={'Профессия'}
-                    value={initialValue.profession}
-                    onChange={handleOnChange}
-                />
-                <Input
-                    variant={InputVariants.OUTLINED}
-                    placeholder={'Телефон'}
-                    label={'Телефон'}
-                    value={initialValue.phone}
-                    onChange={handleOnChange}
-                />
-                <Input
-                    variant={InputVariants.OUTLINED}
-                    placeholder={'Email'}
-                    label={'Email'}
-                    value={initialValue.email}
-                    iconRight={FormOutlined}
-                    onChange={handleOnChange}
-                />
+                {INPUT_FIELDS.map((item) => (
+                    <Input
+                        isRequired
+                        key={item.name}
+                        variant={InputVariants.OUTLINED}
+                        label={t(item.label)}
+                        name={item.name}
+                        value={initialValue[item.name]}
+                        onChange={handleOnChange}
+                    />
+                ))}
                 <Button text={'Сохранить изменения'} />
             </form>
         </div>
