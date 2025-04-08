@@ -51,32 +51,3 @@
   border-radius: 50%;
   box-shadow: 0 0 8px 5px rgba(colors.$neutral-dark-color, 0.2);
 }
-
-.fish {
-  background-color: var(--main-fish-color);
-  width: 10px;
-  height: 10px;
-  position: relative;
-  border-radius: 10px;
-
-  &::before,
-  &::after {
-    content: '';
-    background-color: var(--second-fish-color);
-    border-radius: 10px;
-    position: absolute;
-    height: 10px;;
-  }
-
-  &::before {
-    width: 60px;
-    transform: translateX(-100%);
-    left: -100%;
-  }
-
-  &::after {
-    right: -100%;
-    transform: translateX(100%);
-    width: 10px;
-  }
-}

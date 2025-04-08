@@ -6,6 +6,8 @@ import MessageTwoTone from '@ant-design/icons/MessageTwoTone';
 import { Icon } from 'ui-kit';
 import { Icon as IconType } from 'ui-kit/Icon/types';
 
+import Fish from '@shared/ui/Fish/Fish';
+
 import css from './Filler.module.scss';
 
 interface FillerProps {
@@ -29,7 +31,7 @@ const Filler: FC<FillerProps> = ({
             />
             <h2 className={css.title}>{t(title)}</h2>
             <p className={css.description}>{t(description)}</p>
-            <div className={css.fish} />
+            <Fish />
         </div>
     );
 };
