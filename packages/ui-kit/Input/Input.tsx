@@ -9,6 +9,8 @@ import { InputVariants } from './types';
 import css from './Input.module.scss';
 
 export interface InputProps {
+    name?: string;
+    isRequired?: boolean;
     className?: string;
     label?: string;
     message?: string;
@@ -20,9 +22,12 @@ export interface InputProps {
     iconLeft?: Icon;
     iconRight?: Icon;
     onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    onFocus?: (e: React.FocusEvent<HTMLInputElement>) => void;
 }
 
 const Input: FC<InputProps> = ({
+    name,
+    isRequired,
     className,
     label,
     message,
@@ -32,6 +37,7 @@ const Input: FC<InputProps> = ({
     placeholder,
     value,
     onChange,
+    onFocus: handleFocus,
     iconLeft: IconLeftComponent,
     iconRight: IconRightComponent,
     ...props
@@ -45,7 +51,14 @@ const Input: FC<InputProps> = ({
 
     return (
         <div className={cn(css.wrapper, className, css[validateType!])}>
-            {label && <label className={css.label}>{label}</label>}
+            {label && (
+                <label
+                    htmlFor={name}
+                    className={cn(css.label, css[validateType!])}
+                >
+                    {label}
+                </label>
+            )}
 
             <div
                 className={cn(
@@ -57,6 +70,8 @@ const Input: FC<InputProps> = ({
                 {IconLeftComponent && <IconLeftComponent />}
 
                 <input
+                    name={name}
+                    required={isRequired}
                     placeholder={placeholder}
                     value={value}
                     disabled={isDisabled}
@@ -65,6 +80,7 @@ const Input: FC<InputProps> = ({
                         !!validateType && css[validateType],
                     )}
                     onChange={handleChange}
+                    onFocus={handleFocus}
                     {...props}
                 />
 

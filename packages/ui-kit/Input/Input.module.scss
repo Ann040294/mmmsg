@@ -20,6 +20,22 @@
     color: color.$neutral-darken-gray-color;
     z-index: 1;
 
+    &.error {
+      color: color.$state-error-color;
+    }
+
+    &.success {
+      color: color.$state-success-color;
+    }
+
+    &.warning {
+      color: color.$state-warning-color;
+    }
+
+    &.info {
+      color: color.$state-info-color;
+    }
+
     &::before {
       position: relative;
       display: block;
@@ -32,11 +48,6 @@
     }
   }
 
-  &.error {
-    .label {
-      color: color.$state-error-color;
-    }
-  }
 
   .inputWrapper {
     display: flex;
@@ -75,16 +86,43 @@
           background-color: color.$neutral-light-gray-color;
         }
       }
+
+      &.success {
+        background: color.$neutral-white-color;
+        border-color: color.$state-success-color;
+      }
+
+      &.warning {
+        background: color.$neutral-white-color;
+        border-color: color.$state-warning-color;
+      }
+
+      &.info {
+        background: color.$neutral-white-color;
+        border-color: color.$state-info-color;
+      }
     }
 
     &.filled {
       background: color.$neutral-light-color;
       border-radius: 5px;
       padding: 0 10px;
-    }
 
-    &.error {
-      background-color: color.$state-error-bg;
+      &.error {
+        background-color: color.$state-error-bg;
+      }
+
+      &.success {
+        background-color: color.$state-success-bg;
+      }
+
+      &.warning {
+        background-color: color.$state-warning-bg;
+      }
+
+      &.info {
+        background-color: color.$state-info-bg;
+      }
     }
 
     .input {
