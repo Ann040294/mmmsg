@@ -13,11 +13,11 @@ import { AvatarSizes } from 'ui-kit/Avatar';
 import { Button } from 'ui-kit/Button';
 import Input from 'ui-kit/Input/Input';
 
-import { INPUT_FIELDS } from '@pages/profile/ui/ProfileForm/config/inputFields';
-
 import { updateUserInfo } from '@entities/user/api/user';
 import { userMock } from '@entities/user/mock/userMock';
 import { User } from '@entities/user/model/user';
+
+import { INPUT_FIELDS } from './config/inputFields';
 
 import css from './ProfileForm.module.scss';
 
