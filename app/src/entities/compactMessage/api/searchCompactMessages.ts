@@ -8,7 +8,7 @@ import {
 
 export const searchCompactMessages = (
     substring: string,
-    PaginationSettings: PaginationSettings,
+    paginationSettings: PaginationSettings,
 ): Promise<CompactMessage[]> => {
     return new Promise<CompactMessage[]>((resolve) => {
         const array = compactMessagesMock.filter((compactMessage) =>
@@ -17,8 +17,13 @@ export const searchCompactMessages = (
             ),
         );
 
-        return resolve(
-            getPaginationArray<CompactMessage>(array, PaginationSettings),
+        const compactMessages = getPaginationArray<CompactMessage>(
+            array,
+            paginationSettings,
         );
+
+        setTimeout(() => {
+            resolve(compactMessages);
+        }, 1000);
     });
 };

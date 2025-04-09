@@ -7,10 +7,12 @@ import {
     useState,
 } from 'react';
 import { useTranslation } from 'react-i18next';
+import cn from 'classnames';
 import SearchOutlined from '@ant-design/icons/SearchOutlined';
 
 import { Card, Input, Spinner } from 'ui-kit';
 import { InputVariants } from 'ui-kit/Input';
+import { SpinnerSize } from 'ui-kit/Spinner/types';
 
 import { getAllCompactMessages } from '@entities/compactMessage/api/getAllCompactMessages';
 import { searchCompactMessages } from '@entities/compactMessage/api/searchCompactMessages';
@@ -22,7 +24,6 @@ import { useInfiniteScroll } from '@shared/lib/hooks/useInfiniteScroll';
 import { useIsToggled } from '@shared/lib/hooks/useIsToggled';
 
 import css from './MessageList.module.scss';
-import { SpinnerSize } from 'ui-kit/Spinner/types';
 
 const MAX_SIZE_ON_PAGE = 15;
 
@@ -106,12 +107,6 @@ const MessageList: FC = () => {
         setValueInput(event.target.value);
     }, []);
 
-    console.log(compactMessages);
-
-    // if (isLoading) {
-    //     return <Spinner size={SpinnerSize.LARGE} />;
-    // }
-
     return (
         <>
             <Input
@@ -122,7 +117,7 @@ const MessageList: FC = () => {
                 onChange={handleChange}
             />
             <div
-                className={css.cardList}
+                className={cn(css.cardList, { [css.loading]: isLoading })}
                 ref={rootElement}
             >
                 {compactMessages.map((item) => (
@@ -135,7 +130,12 @@ const MessageList: FC = () => {
                     />
                 ))}
             </div>
-            {isLoading && <Spinner size={SpinnerSize.SMALL} />}
+            {isLoading && (
+                <Spinner
+                    className={css.spinner}
+                    size={SpinnerSize.SMALL}
+                />
+            )}
         </>
     );
 };
