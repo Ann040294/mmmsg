@@ -9,7 +9,7 @@ import {
 import { useTranslation } from 'react-i18next';
 import SearchOutlined from '@ant-design/icons/SearchOutlined';
 
-import { Card, Input } from 'ui-kit';
+import { Card, Input, Spinner } from 'ui-kit';
 import { InputVariants } from 'ui-kit/Input';
 
 import { getAllCompactMessages } from '@entities/compactMessage/api/getAllCompactMessages';
@@ -22,6 +22,7 @@ import { useInfiniteScroll } from '@shared/lib/hooks/useInfiniteScroll';
 import { useIsToggled } from '@shared/lib/hooks/useIsToggled';
 
 import css from './MessageList.module.scss';
+import { SpinnerSize } from 'ui-kit/Spinner/types';
 
 const MAX_SIZE_ON_PAGE = 15;
 
@@ -31,6 +32,8 @@ const MessageList: FC = () => {
         [],
     );
 
+    const [isLoading, setIsLoading] = useState<boolean>(false);
+
     const rootElement = useRef<HTMLDivElement | null>(null);
 
     const valueDebounce = useDebounce<string>(valueInput, 500);
@@ -39,6 +42,8 @@ const MessageList: FC = () => {
 
     const { count: page, set: setPage, increase } = useCounter(1);
 
+    const { t } = useTranslation();
+
     useEffect(() => {
         if (isToggled === undefined) {
             return;
@@ -46,9 +51,11 @@ const MessageList: FC = () => {
 
         let isMounted = true;
 
-        let messages: CompactMessage[] = [];
-
         (async () => {
+            setIsLoading(true);
+
+            let messages: CompactMessage[] = [];
+
             if (valueDebounce === '') {
                 messages = await getAllCompactMessages({
                     page: page,
@@ -62,11 +69,13 @@ const MessageList: FC = () => {
                     });
                 }
             }
-        })();
 
-        if (isMounted) {
-            setCompactMessages((prev) => [...prev, ...messages]);
-        }
+            if (isMounted) {
+                setCompactMessages((prev) => [...prev, ...messages]);
+            }
+
+            setIsLoading(false);
+        })();
 
         return () => {
             isMounted = false;
@@ -97,7 +106,11 @@ const MessageList: FC = () => {
         setValueInput(event.target.value);
     }, []);
 
-    const { t } = useTranslation();
+    console.log(compactMessages);
+
+    // if (isLoading) {
+    //     return <Spinner size={SpinnerSize.LARGE} />;
+    // }
 
     return (
         <>
@@ -122,6 +135,7 @@ const MessageList: FC = () => {
                     />
                 ))}
             </div>
+            {isLoading && <Spinner size={SpinnerSize.SMALL} />}
         </>
     );
 };

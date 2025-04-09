@@ -9,10 +9,15 @@ import {
 export const getAllCompactMessages = (
     paginationSettings: PaginationSettings,
 ): Promise<CompactMessage[]> => {
-    return Promise.resolve(
-        getPaginationArray<CompactMessage>(
-            compactMessagesMock,
-            paginationSettings,
-        ),
-    );
+    return new Promise((resolve) => {
+        const compactMessages: CompactMessage[] =
+            getPaginationArray<CompactMessage>(
+                compactMessagesMock,
+                paginationSettings,
+            );
+
+        setTimeout(() => {
+            resolve(compactMessages);
+        }, 1000);
+    });
 };
