@@ -88,6 +88,7 @@ const ProfileForm: FC = () => {
                         label={t(item.label)}
                         name={item.name}
                         value={initialValue[item.name]}
+                        iconRight={item.iconRight}
                         onChange={handleOnChange}
                     />
                 ))}
