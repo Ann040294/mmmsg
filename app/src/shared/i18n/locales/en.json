@@ -31,6 +31,7 @@
   },
   "notFound": {
     "title": "Page Not Found",
+    "labelPage": "404",
     "description": "Page is not found :("
   },
   "filler": {

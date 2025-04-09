@@ -38,6 +38,7 @@ export const ROUTE_CONFIG = {
     NOT_FOUND: {
         path: '*',
         title: 'notFound.title',
+        labelPage: 'notFound.labelPage',
         description: 'notFound.description',
     },
 };
