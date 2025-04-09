@@ -1,0 +1,64 @@
+@use '../../../../packages/ui-kit/styles/typography' as typ;
+@use '../../../../packages/ui-kit/styles/color' as color;
+
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+
+.registerPage {
+  display: flex;
+  height: 100vh;
+
+  .left,
+  .right {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .left {
+    flex-direction: column;
+    //background-color: color.$neutral-light-gray-color;
+  }
+
+  .right {
+
+  }
+
+  .title {
+    margin: 0;
+    padding: 0;
+  }
+
+  .subtitle {
+    margin: 20px 0;
+  }
+
+  .registerInput {
+    max-width: 350px;
+    margin-bottom: 20px;
+  }
+
+  .checkboxLabel {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-family: typ.$font-family-primary;
+    font-size: typ.$font-size-text-primary-desktop;
+    margin-bottom: 20px;
+  }
+
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    .left,
+    .right {
+      width: 100%;
+      height: auto;
+    }
+  }
+}
