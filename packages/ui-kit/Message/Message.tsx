@@ -6,11 +6,11 @@ import { Actions } from '../index';
 import { PopoverPosition, PopoverSide } from '../Popover';
 import { TextViewer, TextViewerVariant } from '../TextViewer';
 
-import { MessageItemVariant } from './types';
+import { MessageVariant } from './types';
 
-import css from './MessageItem.module.scss';
+import css from './Message.module.scss';
 
-export interface MessageItemProps {
+export interface MessageProps {
     textTextViewer: string;
     actions: ActionItem[];
     countShowActions?: number;
@@ -18,10 +18,10 @@ export interface MessageItemProps {
     sideActions?: PopoverSide;
     titleTextViewer?: string;
     subTextTextViewer?: string;
-    variant?: MessageItemVariant;
+    variant?: MessageVariant;
 }
 
-const MessageItem: FC<MessageItemProps> = ({
+const MessageItem: FC<MessageProps> = ({
     actions,
     countShowActions,
     positionActions,
@@ -29,18 +29,18 @@ const MessageItem: FC<MessageItemProps> = ({
     titleTextViewer,
     textTextViewer,
     subTextTextViewer,
-    variant = MessageItemVariant.PRIMARY,
+    variant = MessageVariant.PRIMARY,
 }) => {
     const { variantTextViewer, displayActions } = useMemo(() => {
         let vVariant: TextViewerVariant;
         let aActions: ActionsDisplay;
 
         switch (variant) {
-            case MessageItemVariant.PRIMARY:
+            case MessageVariant.PRIMARY:
                 vVariant = TextViewerVariant.PRIMARY;
                 aActions = ActionsDisplay.RIGHT;
                 break;
-            case MessageItemVariant.SECONDARY:
+            case MessageVariant.SECONDARY:
                 vVariant = TextViewerVariant.SECONDARY;
                 aActions = ActionsDisplay.LEFT;
                 break;

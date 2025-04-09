@@ -11,4 +11,4 @@ export { default as TextViewer } from './TextViewer/TextViewer';
 export { default as IconButton } from './IconButton/IconButton';
 export { default as Spinner } from './Spinner/Spinner';
 export { default as Actions } from './Actions/Actions';
-export { default as MessageItem } from './MessageItem/MessageItem';
+export { default as Message } from './Message/Message';

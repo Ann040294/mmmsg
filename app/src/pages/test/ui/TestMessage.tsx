@@ -2,10 +2,10 @@ import { FC } from 'react';
 import EditOutlined from '@ant-design/icons/EditOutlined';
 import PlusCircleOutlined from '@ant-design/icons/PlusCircleOutlined';
 
-import { Layout, MessageItem } from 'ui-kit';
-import { MessageItemVariant } from 'ui-kit/MessageItem/types';
+import { Layout, Message } from 'ui-kit';
+import { MessageVariant } from 'ui-kit/Message/types';
 
-export const TestMessageItem: FC = () => {
+export const TestMessage: FC = () => {
     const handleClickFake = () => alert(42);
 
     const actions1 = [
@@ -25,20 +25,21 @@ export const TestMessageItem: FC = () => {
     return (
         <div>
             <Layout>
-                <MessageItem
-                    variant={MessageItemVariant.SECONDARY}
+                <Message
+                    variant={MessageVariant.SECONDARY}
                     textTextViewer={'Test'}
                     subTextTextViewer={'12:00'}
                     actions={actions1}
                 />
-                <MessageItem
-                    variant={MessageItemVariant.PRIMARY}
-                    textTextViewer={'Test'}
+                <Message
+                    variant={MessageVariant.PRIMARY}
+                    textTextViewer={'\n' +
+                        '            1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111'}
                     subTextTextViewer={'12:00'}
                     actions={actions1}
                 />
-                <MessageItem
-                    variant={MessageItemVariant.PRIMARY}
+                <Message
+                    variant={MessageVariant.PRIMARY}
                     textTextViewer={'Test'}
                     subTextTextViewer={'12:00'}
                     actions={actions1}
