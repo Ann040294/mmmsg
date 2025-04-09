@@ -14,7 +14,7 @@ const TestPage = lazy(() => import('@pages/test'));
 const LoginPage = lazy(() => import('@pages/login'));
 const RegisterPage = lazy(() => import('@pages/register'));
 const ResetPage = lazy(() => import('@pages/reset'));
-const NotFoundPage = lazy(() => import('@pages/not-found'));
+const NotFoundPage = lazy(() => import('@pages/not-found/ui'));
 const SettingsPage = lazy(() => import('@pages/settings'));
 
 export const routesConfig: RouteWithOutlet[] = [

@@ -12,6 +12,7 @@ import css from './Filler.module.scss';
 
 interface FillerProps {
     hasGradient?: boolean;
+    hasLoading?: boolean;
     icon?: IconType;
     description?: string;
     title?: string;
@@ -19,6 +20,7 @@ interface FillerProps {
 
 const Filler: FC<FillerProps> = ({
     hasGradient,
+    hasLoading,
     icon = MessageTwoTone,
     description = 'filler.description',
     title = 'filler.title',
@@ -31,7 +33,7 @@ const Filler: FC<FillerProps> = ({
             />
             <h2 className={css.title}>{t(title)}</h2>
             <p className={css.description}>{t(description)}</p>
-            <Fish />
+            {hasLoading && <Fish />}
         </div>
     );
 };

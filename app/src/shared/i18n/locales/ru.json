@@ -30,7 +30,9 @@
     "title": "Смена пароля"
   },
   "notFound": {
-    "title": "Страница не найдена"
+    "title": "Страница не найдена",
+    "labelPage": "404",
+    "description": "Страничка не найдена :("
   },
   "filler": {
     "title": "PieChat",
