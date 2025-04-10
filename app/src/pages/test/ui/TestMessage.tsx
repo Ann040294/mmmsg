@@ -2,8 +2,10 @@ import { FC } from 'react';
 import EditOutlined from '@ant-design/icons/EditOutlined';
 import PlusCircleOutlined from '@ant-design/icons/PlusCircleOutlined';
 
-import { Layout, Message } from 'ui-kit';
-import { MessageVariant } from 'ui-kit/Message/types';
+import { Layout} from 'ui-kit';
+
+import {Message} from '@widgets/Message';
+import { MessageVariant } from '@widgets/Message';
 
 export const TestMessage: FC = () => {
     const handleClickFake = () => alert(42);
@@ -27,23 +29,28 @@ export const TestMessage: FC = () => {
             <Layout>
                 <Message
                     variant={MessageVariant.SECONDARY}
-                    textTextViewer={'Test'}
-                    subTextTextViewer={'12:00'}
+                    text={'Test'}
+                    subText={'12:00'}
+                    actions={actions1}
+                />
+                <Message
+                    variant={MessageVariant.SECONDARY}
+                    text={'TestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTest'}
+                    subText={'12:00'}
                     actions={actions1}
                 />
                 <Message
                     variant={MessageVariant.PRIMARY}
-                    textTextViewer={'\n' +
-                        '            1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111'}
-                    subTextTextViewer={'12:00'}
+                    text={'TestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTest'}
+                    subText={'12:00'}
                     actions={actions1}
                 />
                 <Message
                     variant={MessageVariant.PRIMARY}
-                    textTextViewer={'Test'}
-                    subTextTextViewer={'12:00'}
+                    text={'Test'}
+                    subText={'12:00'}
                     actions={actions1}
-                    countShowActions={0}
+                    countShow={0}
                 />
             </Layout>
         </div>
