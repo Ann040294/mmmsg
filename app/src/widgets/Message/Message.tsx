@@ -6,7 +6,8 @@ import { ActionItem } from 'ui-kit/Actions';
 import { PopoverPosition, PopoverSide } from 'ui-kit/Popover';
 import { TextViewer } from 'ui-kit/TextViewer';
 
-import { useMessageVariant } from './utils/useMessageVariant';
+import { useMessageVariant } from '@widgets/Message/hooks/useMessageVariant';
+
 import { MessageVariant } from './types';
 
 import css from './Message.module.scss';
