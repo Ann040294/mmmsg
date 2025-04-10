@@ -13,8 +13,7 @@ import { AvatarSizes } from 'ui-kit/Avatar';
 import { Button } from 'ui-kit/Button';
 import Input from 'ui-kit/Input/Input';
 
-import { updateUserInfo } from '@entities/user/api/user';
-import { userMock } from '@entities/user/mock/userMock';
+import { getUser, updateUserInfo } from '@entities/user/api/user';
 import { User } from '@entities/user/model/user';
 
 import { INPUT_FIELDS } from './config/inputFields';
@@ -26,9 +25,14 @@ const ProfileForm: FC = () => {
     const [isLoading, setLoading] = useState<boolean>(false);
 
     useEffect(() => {
-        setTimeout(() => {
-            setInitialValue(userMock);
-        }, 1000);
+        setLoading(true);
+
+        (async () => {
+            const user = await getUser();
+            setInitialValue(user);
+        })();
+
+        setLoading(false);
     }, []);
 
     const handleOnChange = useCallback(
@@ -50,10 +54,11 @@ const ProfileForm: FC = () => {
     const handleOnSubmit = useCallback(
         async (event: FormEvent<HTMLFormElement>) => {
             event.preventDefault();
+
             setLoading(true);
 
             if (initialValue) {
-                const newUserInfo = await updateUserInfo(initialValue);
+                const newUserInfo = await updateUserInfo();
                 setInitialValue(newUserInfo);
             }
 
@@ -65,7 +70,7 @@ const ProfileForm: FC = () => {
     if (!initialValue || isLoading) {
         return (
             <div className={css.root}>
-                <Spinner />
+                <Spinner className={css.spinner} />
             </div>
         );
     }
