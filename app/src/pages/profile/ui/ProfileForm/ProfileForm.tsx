@@ -6,6 +6,7 @@ import {
     useEffect,
     useState,
 } from 'react';
+import cn from 'classnames';
 import { t } from 'i18next';
 
 import { Avatar, InputVariants, Spinner } from 'ui-kit';
@@ -23,6 +24,8 @@ import css from './ProfileForm.module.scss';
 const ProfileForm: FC = () => {
     const [initialValue, setInitialValue] = useState<User>();
     const [isLoading, setLoading] = useState<boolean>(false);
+
+    const isPendingData = !initialValue || isLoading;
 
     useEffect(() => {
         setLoading(true);
@@ -67,38 +70,41 @@ const ProfileForm: FC = () => {
         [initialValue],
     );
 
-    if (!initialValue || isLoading) {
-        return (
-            <div className={css.root}>
-                <Spinner className={css.spinner} />
-            </div>
-        );
-    }
-
     return (
         <div className={css.root}>
-            <Avatar
-                size={AvatarSizes.LARGE}
-                src={initialValue.avatarSrc}
-            />
-            <form
-                className={css.form}
-                onSubmit={handleOnSubmit}
+            {isPendingData && (
+                <div className={css.spinner}>
+                    <Spinner />
+                </div>
+            )}
+            <div
+                className={cn(css.formWrapper, {
+                    [css.blurred]: isPendingData,
+                })}
             >
-                {INPUT_FIELDS.map((item) => (
-                    <Input
-                        isRequired
-                        key={item.name}
-                        variant={InputVariants.OUTLINED}
-                        label={t(item.label)}
-                        name={item.name}
-                        value={initialValue[item.name]}
-                        iconRight={item.iconRight}
-                        onChange={handleOnChange}
-                    />
-                ))}
-                <Button text={t('profile.form.button')} />
-            </form>
+                <Avatar
+                    size={AvatarSizes.LARGE}
+                    src={initialValue?.avatarSrc}
+                />
+                <form
+                    className={css.form}
+                    onSubmit={handleOnSubmit}
+                >
+                    {INPUT_FIELDS.map((item) => (
+                        <Input
+                            isRequired
+                            key={item.name}
+                            variant={InputVariants.OUTLINED}
+                            label={t(item.label)}
+                            name={item.name}
+                            value={initialValue?.[item.name]}
+                            iconRight={item.iconRight}
+                            onChange={handleOnChange}
+                        />
+                    ))}
+                    <Button text={t('profile.form.button')} />
+                </form>
+            </div>
         </div>
     );
 };
