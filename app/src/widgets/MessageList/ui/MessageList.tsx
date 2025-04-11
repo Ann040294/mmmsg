@@ -32,8 +32,12 @@ const MessageList: FC = () => {
         [],
     );
 
-    const [isLoading, setIsLoading] = useState<boolean>(false);
-    const isLoadingRef = useRef<boolean>(false);
+    const {
+        isToggled: isLoading,
+        isToggledRef: isLoadingRef,
+        toggleOn: loadingOn,
+        toggleOff: loadingOff,
+    } = useIsToggled(false);
 
     const rootElement = useRef<HTMLDivElement | null>(null);
 
@@ -52,7 +56,7 @@ const MessageList: FC = () => {
 
         let isMounted = true;
 
-        setIsLoading(true);
+        loadingOn();
 
         (async () => {
             let messages: CompactMessage[] = [];
@@ -75,17 +79,13 @@ const MessageList: FC = () => {
                 setCompactMessages((prev) => [...prev, ...messages]);
             }
 
-            setIsLoading(false);
+            loadingOff();
         })();
 
         return () => {
             isMounted = false;
         };
     }, [isToggled]);
-
-    useEffect(() => {
-        isLoadingRef.current = isLoading;
-    }, [isLoading]);
 
     useEffect(() => {
         if (rootElement.current) {
