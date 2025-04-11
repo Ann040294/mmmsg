@@ -1,0 +1,31 @@
+@use 'ui-kit/styles/color' as colors;
+
+.loader {
+  --border-radius-size: 2px;
+
+  width: 100%;
+  height: 4px;
+  position: relative;
+  background-color: colors.$neutral-light-color;
+  border-radius: var(--border-radius-size);
+  overflow: hidden;
+
+  .bar {
+    position: absolute;
+    width: 30%;
+    height: 100%;
+    background-color: colors.$neutral-light-blue-color;
+    border-radius: var(--border-radius-size);
+    animation: load 2s infinite linear;
+  }
+}
+
+@keyframes load {
+  0% {
+    left: -50%;
+  }
+
+  100% {
+    left: 100%;
+  }
+}
