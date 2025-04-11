@@ -17,9 +17,7 @@ const Spinner: FC<SpinnerProps> = ({
     className,
 }) => {
     return (
-        <div
-            className={cn(css.spinner, css[size], css[duration], className)}
-        ></div>
+        <div className={cn(css.spinner, css[size], css[duration], className)} />
     );
 };
 

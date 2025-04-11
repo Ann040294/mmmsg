@@ -6,10 +6,13 @@ import MessageTwoTone from '@ant-design/icons/MessageTwoTone';
 import { Icon } from 'ui-kit';
 import { Icon as IconType } from 'ui-kit/Icon/types';
 
+import Fish from '@shared/ui/Fish/Fish';
+
 import css from './Filler.module.scss';
 
 interface FillerProps {
     hasGradient?: boolean;
+    hasLoading?: boolean;
     icon?: IconType;
     description?: string;
     title?: string;
@@ -17,6 +20,7 @@ interface FillerProps {
 
 const Filler: FC<FillerProps> = ({
     hasGradient,
+    hasLoading,
     icon = MessageTwoTone,
     description = 'filler.description',
     title = 'filler.title',
@@ -29,7 +33,7 @@ const Filler: FC<FillerProps> = ({
             />
             <h2 className={css.title}>{t(title)}</h2>
             <p className={css.description}>{t(description)}</p>
-            <div className={css.fish} />
+            {hasLoading && <Fish />}
         </div>
     );
 };
