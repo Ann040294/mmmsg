@@ -33,7 +33,7 @@ const MessageList: FC = () => {
     );
 
     const [isLoading, setIsLoading] = useState<boolean>(false);
-    const isFetching = useRef<boolean>(false);
+    const isLoadingRef = useRef<boolean>(false);
 
     const rootElement = useRef<HTMLDivElement | null>(null);
 
@@ -84,7 +84,7 @@ const MessageList: FC = () => {
     }, [isToggled]);
 
     useEffect(() => {
-        isFetching.current = isLoading;
+        isLoadingRef.current = isLoading;
     }, [isLoading]);
 
     useEffect(() => {
@@ -97,7 +97,7 @@ const MessageList: FC = () => {
     }, [valueDebounce]);
 
     const handleInfiniteScroll = useCallback(() => {
-        if (!isFetching.current) {
+        if (!isLoadingRef.current) {
             increase();
             toggle();
         }
