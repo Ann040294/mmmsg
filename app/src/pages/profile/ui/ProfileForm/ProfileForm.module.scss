@@ -1,0 +1,32 @@
+.root {
+  position: relative;
+
+  .formWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+
+    .form {
+      width: 100%;
+      display: flex;
+      gap: 15px;
+      flex-direction: column;
+    }
+  }
+
+  .spinner {
+    position: absolute;
+    z-index: 100;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.blurred {
+  filter: blur(10px);
+  pointer-events: none;
+}
+
+

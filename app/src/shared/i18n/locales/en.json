@@ -15,6 +15,13 @@
       "settings": {
         "title": "Settings"
       }
+    },
+    "form": {
+      "name": "Name",
+      "phone": "Phone",
+      "email": "Email",
+      "profession": "Profession",
+      "button": "Save changes"
     }
   },
   "logout": {
