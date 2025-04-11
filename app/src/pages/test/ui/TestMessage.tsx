@@ -2,9 +2,9 @@ import { FC } from 'react';
 import EditOutlined from '@ant-design/icons/EditOutlined';
 import PlusCircleOutlined from '@ant-design/icons/PlusCircleOutlined';
 
-import { Layout} from 'ui-kit';
+import { Layout } from 'ui-kit';
 
-import {Message} from '@widgets/Message';
+import { Message } from '@widgets/Message';
 import { MessageVariant } from '@widgets/Message';
 
 export const TestMessage: FC = () => {
@@ -35,15 +35,19 @@ export const TestMessage: FC = () => {
                 />
                 <Message
                     variant={MessageVariant.SECONDARY}
-                    text={'TestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTest'}
                     subText={'12:00'}
                     actions={actions1}
+                    text={
+                        'TestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTest'
+                    }
                 />
                 <Message
                     variant={MessageVariant.PRIMARY}
-                    text={'TestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTest'}
                     subText={'12:00'}
                     actions={actions1}
+                    text={
+                        'TestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTest'
+                    }
                 />
                 <Message
                     variant={MessageVariant.PRIMARY}
