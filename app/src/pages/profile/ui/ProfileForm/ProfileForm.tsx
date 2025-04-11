@@ -56,7 +56,7 @@ const ProfileForm: FC = () => {
         });
     }, []);
 
-    const handleOnSubmit = useCallback(
+    const handleSubmit = useCallback(
         async (event: FormEvent<HTMLFormElement>) => {
             event.preventDefault();
 
@@ -94,7 +94,7 @@ const ProfileForm: FC = () => {
                 />
                 <form
                     className={css.form}
-                    onSubmit={handleOnSubmit}
+                    onSubmit={handleSubmit}
                 >
                     {INPUT_FIELDS.map((item) => (
                         <Input
