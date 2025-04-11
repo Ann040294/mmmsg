@@ -21,10 +21,12 @@
     "title": "Выход"
   },
   "login": {
-    "title": "Авторизация"
+    "title": "Авторизация",
+    "label": "Войти"
   },
   "register": {
-    "title": "Регистрация"
+    "title": "Регистрация",
+    "subtitle": "Создайте свой аккаунт"
   },
   "reset": {
     "title": "Смена пароля"
@@ -35,5 +37,25 @@
   "filler": {
     "title": "PieChat",
     "description": "Спасибо за интерес к нашему мессенджеру!"
-  }
+  },
+  "input": {
+    "name": {
+      "label": "Имя",
+      "placeholder": "Введите имя здесь"
+    },
+    "email": {
+      "label": "E-mail",
+      "placeholder": "Введите e-mail здесь"
+    },
+    "password": {
+      "label": "Пароль",
+      "placeholder": "Введите пароль здесь"
+    },
+    "confirmPassword": {
+      "label": "Подтвердите пароль",
+      "placeholder": "Подтвердите пароль здесь"
+    }
+  },
+  "agreeTerms": "Я согласен с условиями",
+  "haveAccount": "Уже есть аккаунт ?"
 }

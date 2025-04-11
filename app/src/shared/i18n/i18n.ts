@@ -9,7 +9,7 @@ import { Language } from './types';
 i18n.use(LanguageDetector)
     .use(initReactI18next)
     .init({
-        lng: Language.RU,
+        lng: Language.EN,
         resources: {
             en: {
                 translation: enTranslation,

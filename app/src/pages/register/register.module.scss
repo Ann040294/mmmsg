@@ -1,16 +1,10 @@
-@use '../../../../packages/ui-kit/styles/typography' as typ;
-@use '../../../../packages/ui-kit/styles/color' as color;
-
-html, body {
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-}
-
+@use 'ui-kit/styles/typography' as typography;
+@use 'ui-kit/styles/color' as color;
 
 .registerPage {
   display: flex;
-  height: 100vh;
+  height: calc(100vh - 20px);
+  padding: 10px;
 
   .left,
   .right {
@@ -22,7 +16,6 @@ html, body {
 
   .left {
     flex-direction: column;
-    //background-color: color.$neutral-light-gray-color;
   }
 
   .right {
@@ -30,26 +23,33 @@ html, body {
   }
 
   .title {
+    font-size: typography.$font-size-h1-desktop;
     margin: 0;
     padding: 0;
   }
 
   .subtitle {
-    margin: 20px 0;
+    font-size: typography.$font-size-text-primary-desktop;
+    margin: 25px 0;
   }
 
   .registerInput {
     max-width: 350px;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
   }
 
   .checkboxLabel {
     display: inline-flex;
     align-items: center;
     gap: 5px;
-    font-family: typ.$font-family-primary;
-    font-size: typ.$font-size-text-primary-desktop;
+    font-family: typography.$font-family-primary;
+    font-size: typography.$font-size-text-primary-desktop;
     margin-bottom: 20px;
+  }
+
+  .link {
+    text-decoration: none;
+    color: #0A7DBD;
   }
 
 

@@ -1,39 +1,44 @@
 import { FC } from 'react';
+import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router';
 
 import { Input, InputVariants, Layout } from 'ui-kit';
 import { Button, ButtonSize, ButtonVariants } from 'ui-kit/Button';
 
+import { ROUTE_CONFIG } from '@shared/config/routeConfig';
 import Filler from '@shared/ui/Filler/Filler';
 
 import css from './register.module.scss';
 
 const RegisterPage: FC = () => {
+    const { t } = useTranslation();
+
     return (
         <Layout className={css.registerPage}>
             <div className={css.left}>
-                <h1 className={css.title}>Get Started</h1>
-                <p className={css.subtitle}>Lorem ipsum dolor sit amet</p>
+                <h1 className={css.title}>{t('register.title')}</h1>
+                <p className={css.subtitle}>Создайте свой аккаунт</p>
                 <Input
-                    label="Name"
-                    placeholder="Enter name here"
+                    label={t('input.name.label')}
+                    placeholder={t('input.name.placeholder')}
                     variant={InputVariants.OUTLINED}
                     className={css.registerInput}
                 />
                 <Input
-                    label="Email"
-                    placeholder="Enter email here"
+                    label={t('input.email.label')}
+                    placeholder={t('input.email.placeholder')}
                     variant={InputVariants.OUTLINED}
                     className={css.registerInput}
                 />
                 <Input
-                    label="Password"
-                    placeholder="Enter password here"
+                    label={t('input.password.label')}
+                    placeholder={t('input.password.placeholder')}
                     variant={InputVariants.OUTLINED}
                     className={css.registerInput}
                 />
                 <Input
-                    label="Confirm Password"
-                    placeholder="Confirm password here"
+                    label={t('input.confirmPassword.label')}
+                    placeholder={t('input.confirmPassword.placeholder')}
                     variant={InputVariants.OUTLINED}
                     className={css.registerInput}
                 />
@@ -47,15 +52,21 @@ const RegisterPage: FC = () => {
                         type="checkbox"
                         id="agree"
                     />
-                    Я согласен с условиями
+                    {t('agreeTerms')}
                 </label>
                 <Button
                     variant={ButtonVariants.PRIMARY}
-                    size={ButtonSize.MEDIUM}
-                    text={'Signup'}
+                    size={ButtonSize.LARGE}
+                    text={t('login.label')}
                 ></Button>
                 <p>
-                    Уже есть аккаунт ? <a href="#">Войти</a>
+                    {t('haveAccount') + ' '}
+                    <Link
+                        to={ROUTE_CONFIG.LOGIN.path}
+                        className={css.link}
+                    >
+                        {t('login.label')}
+                    </Link>
                 </p>
             </div>
             <div className={css.right}>
