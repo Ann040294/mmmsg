@@ -9,65 +9,67 @@ import {
 import cn from 'classnames';
 import { t } from 'i18next';
 
-import { Avatar, InputVariants, Spinner } from 'ui-kit';
+import { Avatar, Button, Input, InputVariants, Spinner } from 'ui-kit';
 import { AvatarSizes } from 'ui-kit/Avatar';
-import { Button } from 'ui-kit/Button';
-import Input from 'ui-kit/Input/Input';
 
 import { getUser, updateUserInfo } from '@entities/user/api/user';
 import { User } from '@entities/user/model/user';
+
+import { useIsToggled } from '@shared/lib/hooks/useIsToggled';
 
 import { INPUT_FIELDS } from './config/inputFields';
 
 import css from './ProfileForm.module.scss';
 
 const ProfileForm: FC = () => {
-    const [initialValue, setInitialValue] = useState<User>();
-    const [isLoading, setLoading] = useState<boolean>(false);
+    const [value, setValue] = useState<User>();
 
-    const isPendingData = !initialValue || isLoading;
+    const {
+        isToggled: isLoading,
+        toggleOn: loadingOn,
+        toggleOff: loadingOff,
+    } = useIsToggled(false);
+
+    const isPendingData = !value || isLoading;
 
     useEffect(() => {
-        setLoading(true);
+        loadingOn();
 
         (async () => {
             const user = await getUser();
-            setInitialValue(user);
+            setValue(user);
         })();
 
-        setLoading(false);
+        loadingOff();
     }, []);
 
-    const handleOnChange = useCallback(
-        (event: ChangeEvent<HTMLInputElement>) => {
-            setInitialValue((prevState) => {
-                if (prevState) {
-                    return {
-                        ...prevState,
-                        [event.target.name]: event.target.value,
-                    };
-                }
+    const handleChange = useCallback((event: ChangeEvent<HTMLInputElement>) => {
+        setValue((prevState) => {
+            if (prevState) {
+                return {
+                    ...prevState,
+                    [event.target.name]: event.target.value,
+                };
+            }
 
-                return undefined;
-            });
-        },
-        [],
-    );
+            return undefined;
+        });
+    }, []);
 
     const handleOnSubmit = useCallback(
         async (event: FormEvent<HTMLFormElement>) => {
             event.preventDefault();
 
-            setLoading(true);
+            loadingOn();
 
-            if (initialValue) {
+            if (value) {
                 const newUserInfo = await updateUserInfo();
-                setInitialValue(newUserInfo);
+                setValue(newUserInfo);
             }
 
-            setLoading(false);
+            loadingOff();
         },
-        [initialValue],
+        [value],
     );
 
     return (
@@ -84,7 +86,7 @@ const ProfileForm: FC = () => {
             >
                 <Avatar
                     size={AvatarSizes.LARGE}
-                    src={initialValue?.avatarSrc}
+                    src={value?.avatarSrc}
                 />
                 <form
                     className={css.form}
@@ -97,9 +99,8 @@ const ProfileForm: FC = () => {
                             variant={InputVariants.OUTLINED}
                             label={t(item.label)}
                             name={item.name}
-                            value={initialValue?.[item.name]}
-                            iconRight={item.iconRight}
-                            onChange={handleOnChange}
+                            value={value?.[item.name]}
+                            onChange={handleChange}
                         />
                     ))}
                     <Button text={t('profile.form.button')} />
