@@ -16,8 +16,8 @@ export interface MessageProps {
     text: string;
     actions: ActionItem[];
     countShow?: number;
-    position?: PopoverPosition;
-    side?: PopoverSide;
+    positionActions?: PopoverPosition;
+    sideActions?: PopoverSide;
     title?: string;
     subText?: string;
     variant?: MessageVariant;
@@ -25,30 +25,25 @@ export interface MessageProps {
 
 const MessageItem: FC<MessageProps> = ({
     actions,
-    countShow,
-    position,
-    side,
-    title,
-    text,
-    subText,
     variant = MessageVariant.PRIMARY,
+    ...props
 }) => {
     const { variantTextViewer, displayActions } = useMessageVariant(variant);
 
     return (
         <div className={cn(css.content, css[variant])}>
             <TextViewer
-                text={text}
-                title={title}
+                text={props.text}
+                title={props.title}
                 variant={variantTextViewer}
-                subText={subText}
+                subText={props.subText}
             />
             <Actions
                 actions={actions}
-                countShow={countShow}
+                countShow={props.countShow}
                 display={displayActions}
-                position={position}
-                side={side}
+                position={props.positionActions}
+                side={props.sideActions}
             />
         </div>
     );
