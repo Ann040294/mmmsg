@@ -10,9 +10,8 @@ import { useTranslation } from 'react-i18next';
 import cn from 'classnames';
 import SearchOutlined from '@ant-design/icons/SearchOutlined';
 
-import { Card, Input, Spinner } from 'ui-kit';
+import { Card, Input, LinearLoader } from 'ui-kit';
 import { InputVariants } from 'ui-kit/Input';
-import { SpinnerSize } from 'ui-kit/Spinner/types';
 
 import { getAllCompactMessages } from '@entities/compactMessage/api/getAllCompactMessages';
 import { searchCompactMessages } from '@entities/compactMessage/api/searchCompactMessages';
@@ -34,6 +33,7 @@ const MessageList: FC = () => {
     );
 
     const [isLoading, setIsLoading] = useState<boolean>(false);
+    const isFetching = useRef<boolean>(false);
 
     const rootElement = useRef<HTMLDivElement | null>(null);
 
@@ -46,15 +46,15 @@ const MessageList: FC = () => {
     const { t } = useTranslation();
 
     useEffect(() => {
-        if (isToggled === undefined) {
+        if (isToggled === undefined || isLoading) {
             return;
         }
 
         let isMounted = true;
 
-        (async () => {
-            setIsLoading(true);
+        setIsLoading(true);
 
+        (async () => {
             let messages: CompactMessage[] = [];
 
             if (valueDebounce === '') {
@@ -84,6 +84,10 @@ const MessageList: FC = () => {
     }, [isToggled]);
 
     useEffect(() => {
+        isFetching.current = isLoading;
+    }, [isLoading]);
+
+    useEffect(() => {
         if (rootElement.current) {
             rootElement.current.scrollTop = 0;
             setCompactMessages([]);
@@ -93,8 +97,10 @@ const MessageList: FC = () => {
     }, [valueDebounce]);
 
     const handleInfiniteScroll = useCallback(() => {
-        increase();
-        toggle();
+        if (!isFetching.current) {
+            increase();
+            toggle();
+        }
     }, []);
 
     useInfiniteScroll<HTMLDivElement | null>(
@@ -117,7 +123,7 @@ const MessageList: FC = () => {
                 onChange={handleChange}
             />
             <div
-                className={cn(css.cardList, { [css.loading]: isLoading })}
+                className={cn(css.cardList)}
                 ref={rootElement}
             >
                 {compactMessages.map((item) => (
@@ -130,12 +136,7 @@ const MessageList: FC = () => {
                     />
                 ))}
             </div>
-            {isLoading && (
-                <Spinner
-                    className={css.spinner}
-                    size={SpinnerSize.SMALL}
-                />
-            )}
+            <div className={css.loader}>{isLoading && <LinearLoader />}</div>
         </>
     );
 };

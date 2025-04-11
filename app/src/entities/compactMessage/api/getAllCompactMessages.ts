@@ -18,6 +18,6 @@ export const getAllCompactMessages = (
 
         setTimeout(() => {
             resolve(compactMessages);
-        }, 1000);
+        }, 5000);
     });
 };
