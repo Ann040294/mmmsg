@@ -21,6 +21,9 @@ import { INPUT_FIELDS } from './config/inputFields';
 
 import css from './ProfileForm.module.scss';
 
+const FORM_KEY = 'profileForm';
+const LOADER_FORM_KEY = 'loaderProfileForm';
+
 const ProfileForm: FC = () => {
     const [value, setValue] = useState<User>();
 
@@ -75,11 +78,15 @@ const ProfileForm: FC = () => {
     return (
         <div className={css.root}>
             {isPendingData && (
-                <div className={css.spinner}>
+                <div
+                    key={LOADER_FORM_KEY}
+                    className={css.spinner}
+                >
                     <Spinner />
                 </div>
             )}
             <div
+                key={FORM_KEY}
                 className={cn(css.formWrapper, {
                     [css.blurred]: isPendingData,
                 })}
@@ -99,7 +106,7 @@ const ProfileForm: FC = () => {
                             variant={InputVariants.OUTLINED}
                             label={t(item.label)}
                             name={item.name}
-                            value={value?.[item.name]}
+                            value={value?.[item.name] || ''}
                             onChange={handleChange}
                         />
                     ))}
