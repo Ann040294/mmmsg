@@ -12,7 +12,10 @@ import { t } from 'i18next';
 import { Avatar, Button, Input, InputVariants, Spinner } from 'ui-kit';
 import { AvatarSizes } from 'ui-kit/Avatar';
 
-import { getUser, updateUserInfo } from '@entities/user/api/user';
+import {
+    useLazyGetUserQuery,
+    useUpdateUserMutation,
+} from '@entities/user/api/slice';
 import { User } from '@entities/user/model/user';
 
 import { useIsToggled } from '@shared/lib/hooks/useIsToggled';
@@ -23,6 +26,8 @@ import css from './ProfileForm.module.scss';
 
 const ProfileForm: FC = () => {
     const [value, setValue] = useState<User>();
+    const [getUser] = useLazyGetUserQuery();
+    const [updateUser] = useUpdateUserMutation();
 
     const {
         isToggled: isLoading,
@@ -36,7 +41,7 @@ const ProfileForm: FC = () => {
         loadingOn();
 
         (async () => {
-            const user = await getUser();
+            const user = await getUser().unwrap();
             setValue(user);
         })();
 
@@ -63,7 +68,7 @@ const ProfileForm: FC = () => {
             loadingOn();
 
             if (value) {
-                const newUserInfo = await updateUserInfo();
+                const newUserInfo = await updateUser(value).unwrap();
                 setValue(newUserInfo);
             }
 
