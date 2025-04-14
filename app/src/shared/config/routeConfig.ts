@@ -39,6 +39,5 @@ export const ROUTE_CONFIG = {
         path: '*',
         title: 'notFound.title',
         labelPage: 'notFound.labelPage',
-        description: 'notFound.description',
     },
 };
