@@ -18,10 +18,6 @@
     flex-direction: column;
   }
 
-  .right {
-
-  }
-
   .title {
     font-size: typography.$font-size-h1-desktop;
     margin: 0;
@@ -39,11 +35,6 @@
   }
 
   .checkboxLabel {
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-    font-family: typography.$font-family-primary;
-    font-size: typography.$font-size-text-primary-desktop;
     margin-bottom: 20px;
   }
 

@@ -31,7 +31,9 @@
     "title": "Login"
   },
   "register": {
-    "title": "Registration"
+    "title": "Registration",
+    "subtitle": "Create your account",
+    "label": "Signup"
   },
   "reset": {
     "title": "Reset Password"

@@ -1,0 +1,32 @@
+@use '../styles/typography' as typ;
+@use '../styles/color' as color;
+
+.checkbox {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  accent-color: color.$neutral-dark-color;
+
+  input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    margin: 0;
+    cursor: pointer;
+  }
+
+  .label {
+    font-family: typ.$font-family-primary;
+    font-size: typ.$font-size-text-primary-desktop;
+    color: color.$neutral-dark-gray-color;
+    cursor: pointer;
+  }
+}
+
+.checkbox:has(input:disabled) {
+  opacity: 0.6;
+  cursor: not-allowed;
+
+  .label {
+    cursor: not-allowed;
+  }
+}

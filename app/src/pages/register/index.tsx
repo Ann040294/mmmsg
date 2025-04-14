@@ -2,8 +2,8 @@ import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router';
 
-import { Input, InputVariants, Layout } from 'ui-kit';
-import { Button, ButtonSize, ButtonVariants } from 'ui-kit/Button';
+import { Button, Checkbox, Input, InputVariants, Layout } from 'ui-kit';
+import { ButtonSize, ButtonVariants } from 'ui-kit/Button';
 
 import { ROUTE_CONFIG } from '@shared/config/routeConfig';
 import Filler from '@shared/ui/Filler/Filler';
@@ -17,7 +17,7 @@ const RegisterPage: FC = () => {
         <Layout className={css.registerPage}>
             <div className={css.left}>
                 <h1 className={css.title}>{t('register.title')}</h1>
-                <p className={css.subtitle}>Создайте свой аккаунт</p>
+                <p className={css.subtitle}>{t('register.subtitle')}</p>
                 <Input
                     label={t('input.name.label')}
                     placeholder={t('input.name.placeholder')}
@@ -43,21 +43,15 @@ const RegisterPage: FC = () => {
                     className={css.registerInput}
                 />
 
-                <label
-                    htmlFor="agree"
+                <Checkbox
+                    label={t('agreeTerms')}
                     className={css.checkboxLabel}
-                >
-                    <input
-                        required
-                        type="checkbox"
-                        id="agree"
-                    />
-                    {t('agreeTerms')}
-                </label>
+                />
+
                 <Button
                     variant={ButtonVariants.PRIMARY}
                     size={ButtonSize.LARGE}
-                    text={t('login.label')}
+                    text={t('register.label')}
                 ></Button>
                 <p>
                     {t('haveAccount') + ' '}
@@ -65,12 +59,12 @@ const RegisterPage: FC = () => {
                         to={ROUTE_CONFIG.LOGIN.path}
                         className={css.link}
                     >
-                        {t('login.label')}
+                        {t('login.title')}
                     </Link>
                 </p>
             </div>
             <div className={css.right}>
-                <Filler hasGradient={true} />
+                <Filler hasGradient />
             </div>
         </Layout>
     );
