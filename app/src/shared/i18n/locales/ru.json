@@ -15,6 +15,13 @@
       "settings": {
         "title": "Настройки"
       }
+    },
+    "form": {
+      "name": "Имя",
+      "phone": "Телефон",
+      "email": "Email",
+      "profession": "Профессия",
+      "button": "Сохранить изменения"
     }
   },
   "logout": {
@@ -32,7 +39,9 @@
     "title": "Смена пароля"
   },
   "notFound": {
-    "title": "Страница не найдена"
+    "title": "Страница не найдена",
+    "labelPage": "404",
+    "description": "Страничка не найдена :("
   },
   "filler": {
     "title": "PieChat",

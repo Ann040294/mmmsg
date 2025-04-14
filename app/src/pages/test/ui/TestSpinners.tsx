@@ -1,6 +1,7 @@
 import { FC } from 'react';
 
 import { Layout, Spinner } from 'ui-kit';
+import LinearLoader from 'ui-kit/LinearLoader/LinearLoader';
 import { SpinnerDuration, SpinnerSize } from 'ui-kit/Spinner/types';
 
 const TestSpinners: FC = () => {
@@ -18,6 +19,7 @@ const TestSpinners: FC = () => {
                 size={SpinnerSize.LARGE}
                 duration={SpinnerDuration.FAST}
             />
+            <LinearLoader />
         </Layout>
     );
 };

@@ -7,9 +7,10 @@ import {
     useState,
 } from 'react';
 import { useTranslation } from 'react-i18next';
+import cn from 'classnames';
 import SearchOutlined from '@ant-design/icons/SearchOutlined';
 
-import { Card, Input } from 'ui-kit';
+import { Card, Input, LinearLoader } from 'ui-kit';
 import { InputVariants } from 'ui-kit/Input';
 
 import { getAllCompactMessages } from '@entities/compactMessage/api/getAllCompactMessages';
@@ -31,6 +32,13 @@ const MessageList: FC = () => {
         [],
     );
 
+    const {
+        isToggled: isLoading,
+        isToggledRef: isLoadingRef,
+        toggleOn: loadingOn,
+        toggleOff: loadingOff,
+    } = useIsToggled(false);
+
     const rootElement = useRef<HTMLDivElement | null>(null);
 
     const valueDebounce = useDebounce<string>(valueInput, 500);
@@ -39,16 +47,20 @@ const MessageList: FC = () => {
 
     const { count: page, set: setPage, increase } = useCounter(1);
 
+    const { t } = useTranslation();
+
     useEffect(() => {
-        if (isToggled === undefined) {
+        if (isToggled === undefined || isLoading) {
             return;
         }
 
         let isMounted = true;
 
-        let messages: CompactMessage[] = [];
+        loadingOn();
 
         (async () => {
+            let messages: CompactMessage[] = [];
+
             if (valueDebounce === '') {
                 messages = await getAllCompactMessages({
                     page: page,
@@ -62,11 +74,13 @@ const MessageList: FC = () => {
                     });
                 }
             }
-        })();
 
-        if (isMounted) {
-            setCompactMessages((prev) => [...prev, ...messages]);
-        }
+            if (isMounted) {
+                setCompactMessages((prev) => [...prev, ...messages]);
+            }
+
+            loadingOff();
+        })();
 
         return () => {
             isMounted = false;
@@ -83,8 +97,10 @@ const MessageList: FC = () => {
     }, [valueDebounce]);
 
     const handleInfiniteScroll = useCallback(() => {
-        increase();
-        toggle();
+        if (!isLoadingRef.current) {
+            increase();
+            toggle();
+        }
     }, []);
 
     useInfiniteScroll<HTMLDivElement | null>(
@@ -97,8 +113,6 @@ const MessageList: FC = () => {
         setValueInput(event.target.value);
     }, []);
 
-    const { t } = useTranslation();
-
     return (
         <>
             <Input
@@ -109,7 +123,7 @@ const MessageList: FC = () => {
                 onChange={handleChange}
             />
             <div
-                className={css.cardList}
+                className={cn(css.cardList)}
                 ref={rootElement}
             >
                 {compactMessages.map((item) => (
@@ -122,6 +136,7 @@ const MessageList: FC = () => {
                     />
                 ))}
             </div>
+            <div className={css.loader}>{isLoading && <LinearLoader />}</div>
         </>
     );
 };
