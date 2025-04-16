@@ -10,6 +10,33 @@ import Filler from '@shared/ui/Filler/Filler';
 
 import css from './register.module.scss';
 
+const registrationFields = [
+    {
+        name: 'name',
+        labelKey: 'input.name.label',
+        placeholderKey: 'input.name.placeholder',
+        type: 'text',
+    },
+    {
+        name: 'email',
+        labelKey: 'input.email.label',
+        placeholderKey: 'input.email.placeholder',
+        type: 'email',
+    },
+    {
+        name: 'password',
+        labelKey: 'input.password.label',
+        placeholderKey: 'input.password.placeholder',
+        type: 'password',
+    },
+    {
+        name: 'confirmPassword',
+        labelKey: 'input.confirmPassword.label',
+        placeholderKey: 'input.confirmPassword.placeholder',
+        type: 'password',
+    },
+];
+
 const RegisterPage: FC = () => {
     const { t } = useTranslation();
 
@@ -18,30 +45,18 @@ const RegisterPage: FC = () => {
             <div className={css.left}>
                 <h1 className={css.title}>{t('register.title')}</h1>
                 <p className={css.subtitle}>{t('register.subtitle')}</p>
-                <Input
-                    label={t('input.name.label')}
-                    placeholder={t('input.name.placeholder')}
-                    variant={InputVariants.OUTLINED}
-                    className={css.registerInput}
-                />
-                <Input
-                    label={t('input.email.label')}
-                    placeholder={t('input.email.placeholder')}
-                    variant={InputVariants.OUTLINED}
-                    className={css.registerInput}
-                />
-                <Input
-                    label={t('input.password.label')}
-                    placeholder={t('input.password.placeholder')}
-                    variant={InputVariants.OUTLINED}
-                    className={css.registerInput}
-                />
-                <Input
-                    label={t('input.confirmPassword.label')}
-                    placeholder={t('input.confirmPassword.placeholder')}
-                    variant={InputVariants.OUTLINED}
-                    className={css.registerInput}
-                />
+
+                {registrationFields.map((field) => (
+                    <Input
+                        key={field.name}
+                        name={field.name}
+                        label={t(field.labelKey)}
+                        placeholder={t(field.placeholderKey)}
+                        variant={InputVariants.OUTLINED}
+                        className={css.registerInput}
+                        type={field.type}
+                    />
+                ))}
 
                 <Checkbox
                     label={t('agreeTerms')}

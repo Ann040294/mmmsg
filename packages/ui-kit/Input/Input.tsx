@@ -1,4 +1,4 @@
-import React, { FC, useCallback } from 'react';
+import React, { FC, HTMLInputTypeAttribute, useCallback } from 'react';
 import cn from 'classnames';
 
 import { Icon } from '../Icon/types';
@@ -9,6 +9,7 @@ import { InputVariants } from './types';
 import css from './Input.module.scss';
 
 export interface InputProps {
+    type?: HTMLInputTypeAttribute;
     name?: string;
     isRequired?: boolean;
     className?: string;
@@ -27,6 +28,7 @@ export interface InputProps {
 
 const Input: FC<InputProps> = ({
     name,
+    type,
     isRequired,
     className,
     label,
@@ -71,6 +73,7 @@ const Input: FC<InputProps> = ({
 
                 <input
                     name={name}
+                    type={type}
                     required={isRequired}
                     placeholder={placeholder}
                     value={value}
