@@ -18,34 +18,23 @@ import {
 } from '@entities/user/api/slice';
 import { User } from '@entities/user/model/user';
 
-import { useIsToggled } from '@shared/lib/hooks/useIsToggled';
-
 import { INPUT_FIELDS } from './config/inputFields';
 
 import css from './ProfileForm.module.scss';
 
 const ProfileForm: FC = () => {
     const [value, setValue] = useState<User>();
-    const [getUser] = useLazyGetUserQuery();
-    const [updateUser] = useUpdateUserMutation();
+    const [getUser, { isLoading: isLoadingUser }] = useLazyGetUserQuery();
+    const [updateUser, { isLoading: isLoadingUpdateUser }] =
+        useUpdateUserMutation();
 
-    const {
-        isToggled: isLoading,
-        toggleOn: loadingOn,
-        toggleOff: loadingOff,
-    } = useIsToggled(false);
-
-    const isPendingData = !value || isLoading;
+    const isPendingData = isLoadingUser || isLoadingUpdateUser;
 
     useEffect(() => {
-        loadingOn();
-
         (async () => {
             const user = await getUser().unwrap();
             setValue(user);
         })();
-
-        loadingOff();
     }, []);
 
     const handleChange = useCallback((event: ChangeEvent<HTMLInputElement>) => {
@@ -65,14 +54,10 @@ const ProfileForm: FC = () => {
         async (event: FormEvent<HTMLFormElement>) => {
             event.preventDefault();
 
-            loadingOn();
-
             if (value) {
                 const newUserInfo = await updateUser(value).unwrap();
                 setValue(newUserInfo);
             }
-
-            loadingOff();
         },
         [value],
     );

@@ -17,6 +17,7 @@ export const userApiSlice = apiSlice.injectEndpoints({
             queryFn: async () => {
                 return { data: await updateUserInfo() };
             },
+            invalidatesTags: ['User'],
         }),
     }),
 });

@@ -4,6 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
+    "@ant-design/icons": "^6.0.0",
     "@reduxjs/toolkit": "^2.6.1",
     "@types/lodash": "^4.17.16",
     "@types/react-redux": "^7.1.34",
