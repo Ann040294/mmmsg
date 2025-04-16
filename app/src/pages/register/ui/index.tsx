@@ -8,34 +8,9 @@ import { ButtonSize, ButtonVariants } from 'ui-kit/Button';
 import { ROUTE_CONFIG } from '@shared/config/routeConfig';
 import Filler from '@shared/ui/Filler/Filler';
 
-import css from './register.module.scss';
+import { registrationFields } from './config/registrationFields';
 
-const registrationFields = [
-    {
-        name: 'name',
-        labelKey: 'input.name.label',
-        placeholderKey: 'input.name.placeholder',
-        type: 'text',
-    },
-    {
-        name: 'email',
-        labelKey: 'input.email.label',
-        placeholderKey: 'input.email.placeholder',
-        type: 'email',
-    },
-    {
-        name: 'password',
-        labelKey: 'input.password.label',
-        placeholderKey: 'input.password.placeholder',
-        type: 'password',
-    },
-    {
-        name: 'confirmPassword',
-        labelKey: 'input.confirmPassword.label',
-        placeholderKey: 'input.confirmPassword.placeholder',
-        type: 'password',
-    },
-];
+import css from './register.module.scss';
 
 const RegisterPage: FC = () => {
     const { t } = useTranslation();

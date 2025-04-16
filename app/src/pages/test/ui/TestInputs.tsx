@@ -164,6 +164,13 @@ export const TestInputs: FC = () => {
                 noticeType={NoticeTypes.INFO}
                 message="INFO"
             />
+            <Input
+                label="Username"
+                variant={variant}
+                value={value}
+                type="password"
+                onChange={handleChange}
+            />
         </Layout>
     );
 };
