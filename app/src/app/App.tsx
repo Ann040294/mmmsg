@@ -5,11 +5,9 @@ import { store } from '@app/store/store';
 
 const App: FC = () => {
     return (
-        <>
-            <Provider store={store}>
-                <AppRouter />
-            </Provider>
-        </>
+        <Provider store={store}>
+            <AppRouter />
+        </Provider>
     );
 };
 

@@ -9,11 +9,12 @@ import {
 import cn from 'classnames';
 import { t } from 'i18next';
 
-import { Avatar, Button, Input, InputVariants, Spinner } from 'ui-kit';
+import { Avatar, Button, Input, InputVariants, Notice, Spinner } from 'ui-kit';
 import { AvatarSizes } from 'ui-kit/Avatar';
+import { NoticeTypes } from 'ui-kit/Notice';
 
 import {
-    useLazyGetUserQuery,
+    useGetUserQuery,
     useUpdateUserMutation,
 } from '@entities/user/api/slice';
 import { User } from '@entities/user/model/user';
@@ -24,18 +25,22 @@ import css from './ProfileForm.module.scss';
 
 const ProfileForm: FC = () => {
     const [value, setValue] = useState<User>();
-    const [getUser, { isLoading: isLoadingUser }] = useLazyGetUserQuery();
-    const [updateUser, { isLoading: isLoadingUpdateUser }] =
-        useUpdateUserMutation();
+    const {
+        data: user,
+        isLoading: isLoadingUser,
+        isError: isErrorUser,
+    } = useGetUserQuery();
+    const [
+        updateUser,
+        { isLoading: isLoadingUpdateUser, isError: isErrorUpdateUser },
+    ] = useUpdateUserMutation();
 
     const isPendingData = isLoadingUser || isLoadingUpdateUser;
+    const isErrorData = isErrorUser || isErrorUpdateUser;
 
     useEffect(() => {
-        (async () => {
-            const user = await getUser().unwrap();
-            setValue(user);
-        })();
-    }, []);
+        setValue(user);
+    }, [user]);
 
     const handleChange = useCallback((event: ChangeEvent<HTMLInputElement>) => {
         setValue((prevState) => {
@@ -55,8 +60,7 @@ const ProfileForm: FC = () => {
             event.preventDefault();
 
             if (value) {
-                const newUserInfo = await updateUser(value).unwrap();
-                setValue(newUserInfo);
+                updateUser(value);
             }
         },
         [value],
@@ -99,6 +103,14 @@ const ProfileForm: FC = () => {
                     ))}
                     <Button text={t('profile.form.button')} />
                 </form>
+                {isErrorData && (
+                    <Notice
+                        hasBorder
+                        key={'errorProfile'}
+                        type={NoticeTypes.ERROR}
+                        message="Ошибка"
+                    />
+                )}
             </div>
         </div>
     );
