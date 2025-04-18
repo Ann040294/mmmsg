@@ -1,15 +1,15 @@
-import React, { ChangeEvent, FC, useCallback } from 'react';
+import React, { ChangeEvent, FC } from 'react';
 import cn from 'classnames';
 
 import css from './Checkbox.module.scss';
 
 export interface CheckboxProps {
     name?: string;
+    label?: string;
+    className?: string;
     isChecked?: boolean;
     isRequired?: boolean;
     isDisabled?: boolean;
-    label?: string;
-    className?: string;
     onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
@@ -20,15 +20,8 @@ const Checkbox: FC<CheckboxProps> = ({
     isDisabled,
     label,
     className,
-    onChange,
+    onChange: handleChange,
 }) => {
-    const handleChange = useCallback(
-        (e: React.ChangeEvent<HTMLInputElement>) => {
-            onChange?.(e);
-        },
-        [onChange],
-    );
-
     return (
         <label
             htmlFor={name}

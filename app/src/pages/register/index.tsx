@@ -13,26 +13,26 @@ import css from './register.module.scss';
 const registrationFields = [
     {
         name: 'name',
-        labelKey: 'input.name.label',
-        placeholderKey: 'input.name.placeholder',
+        labelKey: 'register.input.name.label',
+        placeholderKey: 'register.input.name.placeholder',
         type: 'text',
     },
     {
         name: 'email',
-        labelKey: 'input.email.label',
-        placeholderKey: 'input.email.placeholder',
+        labelKey: 'register.input.email.label',
+        placeholderKey: 'register.input.email.placeholder',
         type: 'email',
     },
     {
         name: 'password',
-        labelKey: 'input.password.label',
-        placeholderKey: 'input.password.placeholder',
+        labelKey: 'register.input.password.label',
+        placeholderKey: 'register.input.password.placeholder',
         type: 'password',
     },
     {
         name: 'confirmPassword',
-        labelKey: 'input.confirmPassword.label',
-        placeholderKey: 'input.confirmPassword.placeholder',
+        labelKey: 'register.input.confirmPassword.label',
+        placeholderKey: 'register.input.confirmPassword.placeholder',
         type: 'password',
     },
 ];
@@ -59,17 +59,17 @@ const RegisterPage: FC = () => {
                 ))}
 
                 <Checkbox
-                    label={t('agreeTerms')}
+                    label={t('register.agreeTerms')}
                     className={css.checkboxLabel}
                 />
 
                 <Button
                     variant={ButtonVariants.PRIMARY}
                     size={ButtonSize.LARGE}
-                    text={t('register.label')}
+                    text={t('register.mainButton.label')}
                 ></Button>
                 <p>
-                    {t('haveAccount') + ' '}
+                    {t('register.haveAccount') + ' '}
                     <Link
                         to={ROUTE_CONFIG.LOGIN.path}
                         className={css.link}
