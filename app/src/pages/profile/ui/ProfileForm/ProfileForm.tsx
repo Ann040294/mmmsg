@@ -106,9 +106,9 @@ const ProfileForm: FC = () => {
                 {isErrorData && (
                     <Notice
                         hasBorder
-                        key={'errorProfile'}
+                        key="errorProfile"
                         type={NoticeTypes.ERROR}
-                        message="Ошибка"
+                        message={t('notice.error')}
                     />
                 )}
             </div>
