@@ -33,21 +33,9 @@
   "register": {
     "title": "Registration",
     "subtitle": "Create your account",
-    "label": "Signup"
-  },
-  "reset": {
-    "title": "Reset Password"
-  },
-  "notFound": {
-    "title": "Page Not Found",
-    "labelPage": "404",
-    "description": "Page is not found :("
-  },
-  "filler": {
-    "title": "PieChat",
-    "description": "Thank you for your interest in our messenger!"
-  },
-  "input": {
+    "mainButton": {
+      "label": "Signup"
+    },
     "name": {
       "label": "Name",
       "placeholder": "Enter name here"
@@ -63,8 +51,20 @@
     "confirmPassword": {
       "label": "Confirm Password",
       "placeholder": "Confirm Password here"
-    }
+    },
+    "agreeTerms": "I agree to the terms",
+    "haveAccount": "Already have an account ?"
   },
-  "agreeTerms": "I agree to the terms",
-  "haveAccount": "Already have an account ?"
+  "reset": {
+    "title": "Reset Password"
+  },
+  "notFound": {
+    "title": "Page Not Found",
+    "labelPage": "404",
+    "description": "Page is not found :("
+  },
+  "filler": {
+    "title": "PieChat",
+    "description": "Thank you for your interest in our messenger!"
+  }
 }

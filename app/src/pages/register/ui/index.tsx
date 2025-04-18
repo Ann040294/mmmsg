@@ -34,17 +34,17 @@ const RegisterPage: FC = () => {
                 ))}
 
                 <Checkbox
-                    label={t('agreeTerms')}
+                    label={t('register.agreeTerms')}
                     className={css.checkboxLabel}
                 />
 
                 <Button
                     variant={ButtonVariants.PRIMARY}
                     size={ButtonSize.LARGE}
-                    text={t('register.label')}
+                    text={t('register.mainButton.label')}
                 ></Button>
                 <p>
-                    {t('haveAccount') + ' '}
+                    {t('register.haveAccount') + ' '}
                     <Link
                         to={ROUTE_CONFIG.LOGIN.path}
                         className={css.link}

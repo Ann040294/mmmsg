@@ -33,21 +33,9 @@
   "register": {
     "title": "Регистрация",
     "subtitle": "Создайте свой аккаунт",
-    "label": "Зарегистрироваться"
-  },
-  "reset": {
-    "title": "Смена пароля"
-  },
-  "notFound": {
-    "title": "Страница не найдена",
-    "labelPage": "404",
-    "description": "Страничка не найдена :("
-  },
-  "filler": {
-    "title": "PieChat",
-    "description": "Спасибо за интерес к нашему мессенджеру!"
-  },
-  "input": {
+    "mainButton": {
+      "label": "Зарегистрироваться"
+    },
     "name": {
       "label": "Имя",
       "placeholder": "Введите имя здесь"
@@ -63,8 +51,20 @@
     "confirmPassword": {
       "label": "Подтвердите пароль",
       "placeholder": "Подтвердите пароль здесь"
-    }
+    },
+    "agreeTerms": "Я согласен с условиями",
+    "haveAccount": "Уже есть аккаунт ?"
   },
-  "agreeTerms": "Я согласен с условиями",
-  "haveAccount": "Уже есть аккаунт ?"
+  "reset": {
+    "title": "Смена пароля"
+  },
+  "notFound": {
+    "title": "Страница не найдена",
+    "labelPage": "404",
+    "description": "Страничка не найдена :("
+  },
+  "filler": {
+    "title": "PieChat",
+    "description": "Спасибо за интерес к нашему мессенджеру!"
+  }
 }
