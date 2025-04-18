@@ -1,0 +1,55 @@
+@use 'ui-kit/styles/typography' as typography;
+@use 'ui-kit/styles/color' as color;
+
+.registerPage {
+  display: flex;
+  height: calc(100vh - 20px);
+  padding: 10px;
+
+  .left,
+  .right {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .left {
+    flex-direction: column;
+  }
+
+  .title {
+    font-size: typography.$font-size-h1-desktop;
+    margin: 0;
+    padding: 0;
+  }
+
+  .subtitle {
+    font-size: typography.$font-size-text-primary-desktop;
+    margin: 25px 0;
+  }
+
+  .registerInput {
+    max-width: 350px;
+    margin-bottom: 25px;
+  }
+
+  .checkboxLabel {
+    margin-bottom: 20px;
+  }
+
+  .link {
+    text-decoration: none;
+    color: #0A7DBD;
+  }
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+
+    .left,
+    .right {
+      width: 100%;
+      height: auto;
+    }
+  }
+}

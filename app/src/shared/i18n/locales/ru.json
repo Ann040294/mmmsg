@@ -31,7 +31,29 @@
     "title": "Авторизация"
   },
   "register": {
-    "title": "Регистрация"
+    "title": "Регистрация",
+    "subtitle": "Создайте свой аккаунт",
+    "mainButton": {
+      "label": "Зарегистрироваться"
+    },
+    "name": {
+      "label": "Имя",
+      "placeholder": "Введите имя здесь"
+    },
+    "email": {
+      "label": "E-mail",
+      "placeholder": "Введите e-mail здесь"
+    },
+    "password": {
+      "label": "Пароль",
+      "placeholder": "Введите пароль здесь"
+    },
+    "confirmPassword": {
+      "label": "Подтвердите пароль",
+      "placeholder": "Подтвердите пароль здесь"
+    },
+    "agreeTerms": "Я согласен с условиями",
+    "haveAccount": "Уже есть аккаунт ?"
   },
   "reset": {
     "title": "Смена пароля"
