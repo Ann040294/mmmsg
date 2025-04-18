@@ -66,5 +66,8 @@
   "filler": {
     "title": "PieChat",
     "description": "Спасибо за интерес к нашему мессенджеру!"
+  },
+  "notice": {
+    "error": "Ошибка"
   }
 }

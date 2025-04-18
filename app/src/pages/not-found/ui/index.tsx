@@ -12,7 +12,6 @@ const NotFoundPage: FC = () => {
         <div className={css.root}>
             <Filler
                 hasGradient
-                hasLoader={false}
                 icon={StopTwoTone}
                 title={t(ROUTE_CONFIG.NOT_FOUND.labelPage)}
                 description={t('notFound.description')}
