@@ -6,5 +6,5 @@ export const apiSlice = createApi({
     reducerPath: 'api',
     baseQuery: fetchBaseQuery({ baseUrl: BASE_URL }),
     endpoints: () => ({}),
-    tagTypes: ['User'],
+    tagTypes: ['User', 'CompactMessages'],
 });
