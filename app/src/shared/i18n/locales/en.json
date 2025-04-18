@@ -31,7 +31,29 @@
     "title": "Login"
   },
   "register": {
-    "title": "Register"
+    "title": "Registration",
+    "subtitle": "Create your account",
+    "mainButton": {
+      "label": "Signup"
+    },
+    "name": {
+      "label": "Name",
+      "placeholder": "Enter name here"
+    },
+    "email": {
+      "label": "E-mail",
+      "placeholder": "Enter E-mail here"
+    },
+    "password": {
+      "label": "Password",
+      "placeholder": "Enter password here"
+    },
+    "confirmPassword": {
+      "label": "Confirm Password",
+      "placeholder": "Confirm Password here"
+    },
+    "agreeTerms": "I agree to the terms",
+    "haveAccount": "Already have an account ?"
   },
   "reset": {
     "title": "Reset Password"
