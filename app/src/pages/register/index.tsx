@@ -13,26 +13,26 @@ import css from './register.module.scss';
 const registrationFields = [
     {
         name: 'name',
-        labelKey: 'register.input.name.label',
-        placeholderKey: 'register.input.name.placeholder',
+        labelKey: 'register.name.label',
+        placeholderKey: 'register.name.placeholder',
         type: 'text',
     },
     {
         name: 'email',
-        labelKey: 'register.input.email.label',
-        placeholderKey: 'register.input.email.placeholder',
+        labelKey: 'register.email.label',
+        placeholderKey: 'register.email.placeholder',
         type: 'email',
     },
     {
         name: 'password',
-        labelKey: 'register.input.password.label',
-        placeholderKey: 'register.input.password.placeholder',
+        labelKey: 'register.password.label',
+        placeholderKey: 'register.password.placeholder',
         type: 'password',
     },
     {
         name: 'confirmPassword',
-        labelKey: 'register.input.confirmPassword.label',
-        placeholderKey: 'register.input.confirmPassword.placeholder',
+        labelKey: 'register.confirmPassword.label',
+        placeholderKey: 'register.confirmPassword.placeholder',
         type: 'password',
     },
 ];
