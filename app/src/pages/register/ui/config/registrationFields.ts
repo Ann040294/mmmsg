@@ -1,26 +1,26 @@
 export const registrationFields = [
     {
         name: 'name',
-        labelKey: 'input.name.label',
-        placeholderKey: 'input.name.placeholder',
+        labelKey: 'register.name.label',
+        placeholderKey: 'register.name.placeholder',
         type: 'text',
     },
     {
         name: 'email',
-        labelKey: 'input.email.label',
-        placeholderKey: 'input.email.placeholder',
+        labelKey: 'register.email.label',
+        placeholderKey: 'register.email.placeholder',
         type: 'email',
     },
     {
         name: 'password',
-        labelKey: 'input.password.label',
-        placeholderKey: 'input.password.placeholder',
+        labelKey: 'register.password.label',
+        placeholderKey: 'register.password.placeholder',
         type: 'password',
     },
     {
         name: 'confirmPassword',
-        labelKey: 'input.confirmPassword.label',
-        placeholderKey: 'input.confirmPassword.placeholder',
+        labelKey: 'register.confirmPassword.label',
+        placeholderKey: 'register.confirmPassword.placeholder',
         type: 'password',
     },
 ];
