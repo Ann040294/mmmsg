@@ -5,26 +5,26 @@ import { CompactMessage } from '@entities/compactMessage/model/compactMessage';
 import { apiSlice } from '@shared/lib/slices/apiSlice';
 import { PaginationSettings } from '@shared/lib/utils/getPaginationArray';
 
+type QueryConfigType = {
+    search: string;
+    paginationSettings: PaginationSettings;
+};
+
 export const compactMessageSlice = apiSlice.injectEndpoints({
     endpoints: (builder) => ({
-        getCompactMessages: builder.query<
-            CompactMessage[],
-            { search: string; paginationSettings: PaginationSettings }
-        >({
+        getCompactMessages: builder.query<CompactMessage[], QueryConfigType>({
             //TODO: Заменить на query, когда будет backend
-            queryFn: async (settings) => {
-                if (settings.search === '') {
+            queryFn: async ({ search, paginationSettings }) => {
+                if (search === '') {
                     return {
-                        data: await getAllCompactMessages(
-                            settings.paginationSettings,
-                        ),
+                        data: await getAllCompactMessages(paginationSettings),
                     };
                 }
 
                 return {
                     data: await searchCompactMessages(
-                        settings.search,
-                        settings.paginationSettings,
+                        search,
+                        paginationSettings,
                     ),
                 };
             },
