@@ -30,12 +30,12 @@ export const TestMessage: FC = () => {
                 <Message
                     variant={MessageVariant.SECONDARY}
                     text={'Test'}
-                    subText={'12:00'}
+                    meta={'12:00'}
                     actions={actions1}
                 />
                 <Message
                     variant={MessageVariant.SECONDARY}
-                    subText={'12:00'}
+                    meta={'12:00'}
                     actions={actions1}
                     text={
                         'TestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTest'
@@ -43,7 +43,7 @@ export const TestMessage: FC = () => {
                 />
                 <Message
                     variant={MessageVariant.PRIMARY}
-                    subText={'12:00'}
+                    meta={'12:00'}
                     actions={actions1}
                     text={
                         'TestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTest'
@@ -52,7 +52,7 @@ export const TestMessage: FC = () => {
                 <Message
                     variant={MessageVariant.PRIMARY}
                     text={'Test'}
-                    subText={'12:00'}
+                    meta={'12:00'}
                     actions={actions1}
                     countShowActions={0}
                 />

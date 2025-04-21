@@ -19,8 +19,8 @@ export interface MessageProps {
     countShowActions?: number;
     positionActions?: PopoverPosition;
     sideActions?: PopoverSide;
-    title?: string;
-    subText?: string;
+    user?: string;
+    meta?: string;
     variant?: MessageVariant;
 }
 
@@ -37,9 +37,9 @@ const MessageItem: FC<MessageProps> = ({
         <div className={cn(css.content, css[variant])}>
             <TextViewer
                 text={props.text}
-                title={props.title}
+                title={props.user}
                 variant={variantTextViewer}
-                subText={props.subText}
+                subText={props.meta}
             />
             <Actions
                 actions={actions}
