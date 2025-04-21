@@ -54,8 +54,9 @@ export const TestMessage: FC = () => {
                     text={'Test'}
                     subText={'12:00'}
                     actions={actions1}
-                    countShow={0}
+                    countShowActions={0}
                 />
+                <Message text={'TestActionDefault'} />
             </Layout>
         </div>
     );

@@ -20,7 +20,6 @@ import { TestTextViewer } from './ui/TestTextViewer';
 
 import css from './style.module.scss';
 
-
 const Test = () => {
     const { t } = useTranslation();
 

@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import cn from 'classnames';
+import EditOutlined from '@ant-design/icons/EditOutlined';
 
 import { Actions } from 'ui-kit';
 import { ActionItem } from 'ui-kit/Actions';
@@ -14,8 +15,8 @@ import css from './Message.module.scss';
 
 export interface MessageProps {
     text: string;
-    actions: ActionItem[];
-    countShow?: number;
+    actions?: ActionItem[];
+    countShowActions?: number;
     positionActions?: PopoverPosition;
     sideActions?: PopoverSide;
     title?: string;
@@ -23,8 +24,10 @@ export interface MessageProps {
     variant?: MessageVariant;
 }
 
+const actionDefault = [{ id: '1', text: 'Редактировать', icon: EditOutlined }];
+
 const MessageItem: FC<MessageProps> = ({
-    actions,
+    actions = actionDefault,
     variant = MessageVariant.PRIMARY,
     ...props
 }) => {
@@ -40,7 +43,7 @@ const MessageItem: FC<MessageProps> = ({
             />
             <Actions
                 actions={actions}
-                countShow={props.countShow}
+                countShow={props.countShowActions}
                 display={displayActions}
                 position={props.positionActions}
                 side={props.sideActions}
