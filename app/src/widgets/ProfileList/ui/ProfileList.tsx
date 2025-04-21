@@ -10,76 +10,54 @@ import { useTranslation } from 'react-i18next';
 import cn from 'classnames';
 import SearchOutlined from '@ant-design/icons/SearchOutlined';
 
-import { Card, Input, LinearLoader } from 'ui-kit';
-import { InputVariants } from 'ui-kit/Input';
+import { Card, Input, InputVariants, LinearLoader } from 'ui-kit';
 
-import { getAllCompactMessages } from '@entities/compactMessage/api/getAllCompactMessages';
-import { searchCompactMessages } from '@entities/compactMessage/api/searchCompactMessages';
-import { CompactMessage } from '@entities/compactMessage/model/compactMessage';
+import css from '@widgets/MessageList/ui/MessageList.module.scss';
+import { useLazyGetAllContactsQuery } from '@entities/contacts/api/slice';
+import { Contact } from '@entities/contacts/model/contact';
 
 import { useCounter } from '@shared/lib/hooks/useCounter';
 import { useDebounce } from '@shared/lib/hooks/useDebounce';
 import { useInfiniteScroll } from '@shared/lib/hooks/useInfiniteScroll';
 import { useIsToggled } from '@shared/lib/hooks/useIsToggled';
 
-import css from './MessageList.module.scss';
-
-const MAX_SIZE_ON_PAGE = 15;
-
-const MessageList: FC = () => {
+const ProfileList: FC = () => {
     const [valueInput, setValueInput] = useState<string>('');
-    const [compactMessages, setCompactMessages] = useState<CompactMessage[]>(
-        [],
-    );
-
-    const {
-        isToggled: isLoading,
-        isToggledRef: isLoadingRef,
-        toggleOn: loadingOn,
-        toggleOff: loadingOff,
-    } = useIsToggled(false);
+    const [contacts, setContacts] = useState<Contact[]>([]);
 
     const rootElement = useRef<HTMLDivElement | null>(null);
+    const isLoadingRef = useRef<boolean>(false);
 
-    const valueDebounce = useDebounce<string>(valueInput, 500);
+    const [getAllContacts, { isFetching, isError }] =
+        useLazyGetAllContactsQuery();
+
+    const { t } = useTranslation();
 
     const { isToggled, toggle } = useIsToggled();
 
     const { count: page, set: setPage, increase } = useCounter(1);
 
-    const { t } = useTranslation();
+    const valueDebounce = useDebounce<string>(valueInput, 500);
 
     useEffect(() => {
-        if (isToggled === undefined || isLoading) {
+        isLoadingRef.current = isFetching;
+    }, [isFetching]);
+
+    useEffect(() => {
+        if (isToggled === undefined) {
             return;
         }
 
         let isMounted = true;
 
-        loadingOn();
-
         (async () => {
-            let messages: CompactMessage[] = [];
+            const result = await getAllContacts({ page, maxSize: 15 }).unwrap();
 
-            if (valueDebounce === '') {
-                messages = await getAllCompactMessages({
-                    page: page,
-                    maxSize: MAX_SIZE_ON_PAGE,
-                });
-            } else {
-                if (rootElement.current) {
-                    messages = await searchCompactMessages(valueDebounce, {
-                        page: page,
-                        maxSize: MAX_SIZE_ON_PAGE,
-                    });
-                }
+            const isAllowChange = isMounted && result && !isError;
+
+            if (isAllowChange) {
+                setContacts((prevState) => [...prevState, ...result]);
             }
-
-            if (isMounted) {
-                setCompactMessages((prev) => [...prev, ...messages]);
-            }
-
-            loadingOff();
         })();
 
         return () => {
@@ -90,7 +68,7 @@ const MessageList: FC = () => {
     useEffect(() => {
         if (rootElement.current) {
             rootElement.current.scrollTop = 0;
-            setCompactMessages([]);
+            setContacts([]);
             setPage(1);
             toggle();
         }
@@ -103,14 +81,18 @@ const MessageList: FC = () => {
         }
     }, []);
 
-    useInfiniteScroll<HTMLDivElement | null>(
+    useInfiniteScroll(
         rootElement,
-        compactMessages?.at(-1)?.idUser || '',
+        contacts.at(-1)?.idUser || '',
         handleInfiniteScroll,
     );
 
     const handleChange = useCallback((event: ChangeEvent<HTMLInputElement>) => {
         setValueInput(event.target.value);
+    }, []);
+
+    const handleClick = useCallback((id: string) => {
+        console.log('id', id);
     }, []);
 
     return (
@@ -126,19 +108,19 @@ const MessageList: FC = () => {
                 className={cn(css.cardList)}
                 ref={rootElement}
             >
-                {compactMessages.map((item) => (
+                {contacts.map((item) => (
                     <Card
                         key={item.idUser}
                         avatarSrc={item.avatarSrc}
                         className={css.card}
-                        description={item.message}
                         title={item.fullName}
+                        onClick={() => handleClick(item.idUser)}
                     />
                 ))}
             </div>
-            <div className={css.loader}>{isLoading && <LinearLoader />}</div>
+            <div className={css.loader}>{isFetching && <LinearLoader />}</div>
         </>
     );
 };
 
-export default MessageList;
+export default ProfileList;
