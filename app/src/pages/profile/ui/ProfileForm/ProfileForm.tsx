@@ -9,13 +9,15 @@ import {
 import cn from 'classnames';
 import { t } from 'i18next';
 
-import { Avatar, Button, Input, InputVariants, Spinner } from 'ui-kit';
+import { Avatar, Button, Input, InputVariants, Notice, Spinner } from 'ui-kit';
 import { AvatarSizes } from 'ui-kit/Avatar';
+import { NoticeTypes } from 'ui-kit/Notice';
 
-import { getUser, updateUserInfo } from '@entities/user/api/user';
+import {
+    useGetUserQuery,
+    useUpdateUserMutation,
+} from '@entities/user/api/slice';
 import { User } from '@entities/user/model/user';
-
-import { useIsToggled } from '@shared/lib/hooks/useIsToggled';
 
 import { INPUT_FIELDS } from './config/inputFields';
 
@@ -23,25 +25,22 @@ import css from './ProfileForm.module.scss';
 
 const ProfileForm: FC = () => {
     const [value, setValue] = useState<User>();
-
     const {
-        isToggled: isLoading,
-        toggleOn: loadingOn,
-        toggleOff: loadingOff,
-    } = useIsToggled(false);
+        data: user,
+        isLoading: isLoadingUser,
+        isError: isErrorUser,
+    } = useGetUserQuery();
+    const [
+        updateUser,
+        { isLoading: isLoadingUpdateUser, isError: isErrorUpdateUser },
+    ] = useUpdateUserMutation();
 
-    const isPendingData = !value || isLoading;
+    const isPendingData = isLoadingUser || isLoadingUpdateUser;
+    const isErrorData = isErrorUser || isErrorUpdateUser;
 
     useEffect(() => {
-        loadingOn();
-
-        (async () => {
-            const user = await getUser();
-            setValue(user);
-        })();
-
-        loadingOff();
-    }, []);
+        setValue(user);
+    }, [user]);
 
     const handleChange = useCallback((event: ChangeEvent<HTMLInputElement>) => {
         setValue((prevState) => {
@@ -60,14 +59,9 @@ const ProfileForm: FC = () => {
         async (event: FormEvent<HTMLFormElement>) => {
             event.preventDefault();
 
-            loadingOn();
-
             if (value) {
-                const newUserInfo = await updateUserInfo();
-                setValue(newUserInfo);
+                updateUser(value);
             }
-
-            loadingOff();
         },
         [value],
     );
@@ -109,6 +103,14 @@ const ProfileForm: FC = () => {
                     ))}
                     <Button text={t('profile.form.button')} />
                 </form>
+                {isErrorData && (
+                    <Notice
+                        hasBorder
+                        key="errorProfile"
+                        type={NoticeTypes.ERROR}
+                        message={t('notice.error')}
+                    />
+                )}
             </div>
         </div>
     );
