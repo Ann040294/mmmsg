@@ -1,9 +1,15 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 export const useIsToggled = (initialState?: boolean) => {
     const [isToggled, setIsToggle] = useState<boolean | undefined>(
         initialState,
     );
+
+    const isToggledRef = useRef<boolean | undefined>(initialState);
+
+    useEffect(() => {
+        isToggledRef.current = isToggled;
+    }, [isToggled]);
 
     const toggle = useCallback(() => {
         setIsToggle((prevState) => !prevState);
@@ -19,6 +25,7 @@ export const useIsToggled = (initialState?: boolean) => {
 
     return {
         isToggled,
+        isToggledRef,
         toggleOn,
         toggleOff,
         toggle,

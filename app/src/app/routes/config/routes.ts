@@ -9,10 +9,10 @@ import { ROUTE_CONFIG } from '@shared/config/routeConfig';
 
 const Layout = lazy(() => import('@app/routes/ui/Layout'));
 const HomePage = lazy(() => import('@pages/home/ui'));
-const ProfilePage = lazy(() => import('@pages/profile'));
+const ProfilePage = lazy(() => import('@pages/profile/ui'));
 const TestPage = lazy(() => import('@pages/test'));
 const LoginPage = lazy(() => import('@pages/login'));
-const RegisterPage = lazy(() => import('@pages/register'));
+const RegisterPage = lazy(() => import('@pages/register/ui'));
 const ResetPage = lazy(() => import('@pages/reset'));
 const NotFoundPage = lazy(() => import('@pages/not-found/ui'));
 const SettingsPage = lazy(() => import('@pages/settings'));
