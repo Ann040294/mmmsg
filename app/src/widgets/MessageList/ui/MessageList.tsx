@@ -66,7 +66,9 @@ const MessageList: FC = () => {
                 },
             });
 
-            if (isMounted && messages && !isError) {
+            const isAllowAction = isMounted && messages && !isError;
+
+            if (isAllowAction) {
                 setCompactMessages((prev) => [...prev, ...messages]);
             }
         })();
