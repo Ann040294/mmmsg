@@ -8,6 +8,7 @@ import {
 } from 'react';
 import { useTranslation } from 'react-i18next';
 import cn from 'classnames';
+import lodash from 'lodash';
 import SearchOutlined from '@ant-design/icons/SearchOutlined';
 
 import { Card, Input, LinearLoader } from 'ui-kit';
@@ -51,7 +52,9 @@ const MessageList: FC = () => {
     }, [isFetching]);
 
     useEffect(() => {
-        if (isToggled === undefined || isFetching) {
+        const isNotReadyFetch = lodash.isUndefined(isToggled) || isFetching;
+
+        if (isNotReadyFetch) {
             return;
         }
 
