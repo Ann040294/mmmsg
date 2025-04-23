@@ -42,6 +42,16 @@
     --message-color: #{color.$neutral-dark-color};
   }
 
+  &.toaster {
+    background-color: #{notice.$notice-toaster-bg};
+    --text-color: #{notice.$notice-toaster-color};
+    --border-color: transparent;
+    box-shadow: #{notice.$notice-toaster-shadow};
+    padding: 16px;
+    border-radius: 8px;
+    font-size: notice.$notice-text-toaster-size;
+  }
+
   &.border {
     border: 1px solid var(--border-color, transparent);
   }

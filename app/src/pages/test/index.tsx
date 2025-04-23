@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { Layout } from 'ui-kit';
 
 import TestSpinners from '@pages/test/ui/TestSpinners';
+import { TestToast } from '@pages/test/ui/TestToast';
 
 import { ROUTE_CONFIG } from '@shared/config/routeConfig';
 
@@ -35,6 +36,7 @@ const Test = () => {
                 <TestNotices />
                 <TestDropdowns />
                 <TestCircleButtons />
+                <TestToast />
             </Layout>
             <Layout className={css.row}>
                 <TestCards />

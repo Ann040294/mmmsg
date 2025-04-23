@@ -13,3 +13,8 @@ $notice-warning-bg: color.$state-warning-bg;
 
 $notice-text-default-size: 14px;
 $notice-icon-size: 18px;
+
+$notice-toaster-bg:           color.$neutral-dark-color;
+$notice-toaster-color:        color.$neutral-white-color;
+$notice-toaster-shadow:       0 4px 12px rgba(0, 0, 0, 0.15);
+$notice-text-toaster-size:    16px;
