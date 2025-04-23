@@ -3,7 +3,16 @@ export const ROUTE_CONFIG = {
         path: '/',
         title: 'home.title',
         labelPage: 'home.labelPage',
-        searchTitle: 'home.searchTitle',
+        children: {
+            DIALOG: {
+                path: ':id',
+            },
+        },
+    },
+    NEW_CHAT: {
+        path: 'new-chat',
+        title: 'new-chat.title',
+        labelPage: 'new-chat.labelPage',
     },
     TEST: {
         path: 'test',
