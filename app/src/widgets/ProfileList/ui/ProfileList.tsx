@@ -8,11 +8,14 @@ import {
 } from 'react';
 import { useTranslation } from 'react-i18next';
 import cn from 'classnames';
+import isUndefined from 'lodash/isUndefined';
 import SearchOutlined from '@ant-design/icons/SearchOutlined';
 
-import { Card, Input, InputVariants, LinearLoader } from 'ui-kit';
+import { Button, Card, Input, InputVariants, LinearLoader } from 'ui-kit';
+import { ButtonSize, ButtonVariants } from 'ui-kit/Button';
 
 import css from '@widgets/MessageList/ui/MessageList.module.scss';
+
 import { useLazyGetAllContactsQuery } from '@entities/contacts/api/slice';
 import { Contact } from '@entities/contacts/model/contact';
 
@@ -20,6 +23,7 @@ import { useCounter } from '@shared/lib/hooks/useCounter';
 import { useDebounce } from '@shared/lib/hooks/useDebounce';
 import { useInfiniteScroll } from '@shared/lib/hooks/useInfiniteScroll';
 import { useIsToggled } from '@shared/lib/hooks/useIsToggled';
+import { useNavigate } from 'react-router';
 
 const ProfileList: FC = () => {
     const [valueInput, setValueInput] = useState<string>('');
@@ -37,6 +41,8 @@ const ProfileList: FC = () => {
 
     const { count: page, set: setPage, increase } = useCounter(1);
 
+    const navigate = useNavigate();
+
     const valueDebounce = useDebounce<string>(valueInput, 500);
 
     useEffect(() => {
@@ -44,7 +50,9 @@ const ProfileList: FC = () => {
     }, [isFetching]);
 
     useEffect(() => {
-        if (isToggled === undefined) {
+        const isNotReadyFetch = isUndefined(isToggled) || isFetching;
+
+        if (isNotReadyFetch) {
             return;
         }
 
@@ -92,7 +100,7 @@ const ProfileList: FC = () => {
     }, []);
 
     const handleClick = useCallback((id: string) => {
-        console.log('id', id);
+        navigate();
     }, []);
 
     return (
@@ -104,6 +112,10 @@ const ProfileList: FC = () => {
                 iconLeft={SearchOutlined}
                 onChange={handleChange}
             />
+            <Button
+                text={'Создать чат'}
+                variant={ButtonVariants.SECONDARY}
+            />
             <div
                 className={cn(css.cardList)}
                 ref={rootElement}
@@ -114,6 +126,7 @@ const ProfileList: FC = () => {
                         avatarSrc={item.avatarSrc}
                         className={css.card}
                         title={item.fullName}
+                        description={item.email}
                         onClick={() => handleClick(item.idUser)}
                     />
                 ))}
