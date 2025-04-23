@@ -1,4 +1,6 @@
 export { default as Input } from './Input/Input';
+export { default as ToasterProvider } from './Toaster/ToasterProvider';
+export { default as Toast } from './Toaster/Toast';
 export { InputVariants } from './Input/types';
 export { default as Notice } from './Notice/Notice';
 export { default as Icon } from './Icon/Icon';

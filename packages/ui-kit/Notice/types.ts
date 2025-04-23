@@ -15,6 +15,7 @@ export enum NoticeTypes {
 export enum NoticeVariant {
     DEFAULT = 'default',
     FILLED = 'filled',
+    TOASTER = 'toaster',
 }
 
 export const NoticeTypesMap: Readonly<Record<NoticeTypes, Icon>> = {
