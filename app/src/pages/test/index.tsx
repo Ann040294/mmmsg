@@ -14,6 +14,7 @@ import { TestCircleButtons } from './ui/TestCircleButtons';
 import TestDropdowns from './ui/TestDropdowns';
 import { TestIcons } from './ui/TestIcons';
 import { TestInputs } from './ui/TestInputs';
+import { TestMessage } from './ui/TestMessage';
 import { TestNotices } from './ui/TestNotices';
 import { TestTextViewer } from './ui/TestTextViewer';
 
@@ -29,9 +30,6 @@ const Test = () => {
                 <TestIcons />
             </Layout>
             <Layout className={css.row}>
-                <TestActions />
-            </Layout>
-            <Layout className={css.row}>
                 <TestSpinners />
                 <TestAvatars />
                 <TestNotices />
@@ -42,7 +40,11 @@ const Test = () => {
                 <TestCards />
                 <TestInputs />
                 <TestButtons />
+            </Layout>
+            <Layout className={css.row}>
+                <TestActions />
                 <TestTextViewer />
+                <TestMessage />
             </Layout>
         </>
     );
