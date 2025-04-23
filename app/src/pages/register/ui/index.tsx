@@ -23,7 +23,7 @@ const RegisterPage: FC = () => {
                 <p>
                     {t('register.haveAccount') + ' '}
                     <Link
-                        to={ROUTE_CONFIG.LOGIN.path}
+                        to={`/${ROUTE_CONFIG.LOGIN.path}`}
                         className={css.link}
                     >
                         {t('login.title')}

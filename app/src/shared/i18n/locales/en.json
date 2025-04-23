@@ -53,7 +53,12 @@
       "placeholder": "Confirm Password here"
     },
     "agreeTerms": "I agree to the terms",
-    "haveAccount": "Already have an account ?"
+    "haveAccount": "Already have an account ?",
+    "required": "Please fill in this field.",
+    "invalidName": "The name must contain from 2 to 50 characters.",
+    "invalidEmail": "Enter the correct email address",
+    "invalidPassword": "The password must be at least 8 characters long and contain one uppercase letter, a number, and a special character.",
+    "passwordsMismatch": "Passwords don't match"
   },
   "reset": {
     "title": "Reset Password"

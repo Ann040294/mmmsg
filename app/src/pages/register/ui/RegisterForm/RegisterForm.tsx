@@ -46,27 +46,30 @@ export const RegisterForm: React.FC = () => {
                     key={field.name}
                     name={field.name}
                     control={control}
-                    render={({ field: f }) => (
-                        <Input
-                            {...f}
-                            type={field.type}
-                            variant={InputVariants.OUTLINED}
-                            className={css.registerInput}
-                            label={t(`register.${field.name}.label`)}
-                            message={errors[field.name]?.message as string}
-                            placeholder={t(
-                                `register.${field.name}.placeholder`,
-                            )}
-                            noticeType={
-                                errors[field.name]
-                                    ? NoticeTypes.ERROR
-                                    : undefined
-                            }
-                        />
-                    )}
+                    render={({ field: f }) => {
+                        const messageKey = errors[field.name]?.message;
+
+                        return (
+                            <Input
+                                {...f}
+                                type={field.type}
+                                variant={InputVariants.OUTLINED}
+                                className={css.registerInput}
+                                label={t(`register.${field.name}.label`)}
+                                message={messageKey ? t(messageKey) : undefined}
+                                placeholder={t(
+                                    `register.${field.name}.placeholder`,
+                                )}
+                                noticeType={
+                                    errors[field.name]
+                                        ? NoticeTypes.ERROR
+                                        : undefined
+                                }
+                            />
+                        );
+                    }}
                 />
             ))}
-
             <Controller
                 name="agree"
                 control={control}
@@ -79,7 +82,6 @@ export const RegisterForm: React.FC = () => {
                     />
                 )}
             />
-
             <Button
                 text={t('register.mainButton.label')}
                 variant={ButtonVariants.PRIMARY}
