@@ -6,8 +6,8 @@ import {
     useEffect,
     useState,
 } from 'react';
+import { useTranslation } from 'react-i18next';
 import cn from 'classnames';
-import { t } from 'i18next';
 
 import { Avatar, Button, Input, InputVariants, Notice, Spinner } from 'ui-kit';
 import { AvatarSizes } from 'ui-kit/Avatar';
@@ -25,15 +25,19 @@ import css from './ProfileForm.module.scss';
 
 const ProfileForm: FC = () => {
     const [value, setValue] = useState<User>();
+
     const {
         data: user,
         isLoading: isLoadingUser,
         isError: isErrorUser,
     } = useGetUserQuery();
+
     const [
         updateUser,
         { isLoading: isLoadingUpdateUser, isError: isErrorUpdateUser },
     ] = useUpdateUserMutation();
+
+    const { t } = useTranslation();
 
     const isPendingData = isLoadingUser || isLoadingUpdateUser;
     const isErrorData = isErrorUser || isErrorUpdateUser;

@@ -8,13 +8,13 @@ import {
 } from 'react';
 import { useTranslation } from 'react-i18next';
 import cn from 'classnames';
+import isUndefined from 'lodash/isUndefined';
 import SearchOutlined from '@ant-design/icons/SearchOutlined';
 
 import { Card, Input, LinearLoader } from 'ui-kit';
 import { InputVariants } from 'ui-kit/Input';
 
-import { getAllCompactMessages } from '@entities/compactMessage/api/getAllCompactMessages';
-import { searchCompactMessages } from '@entities/compactMessage/api/searchCompactMessages';
+import { useLazyGetCompactMessagesQuery } from '@entities/compactMessage/api/slice';
 import { CompactMessage } from '@entities/compactMessage/model/compactMessage';
 
 import { useCounter } from '@shared/lib/hooks/useCounter';
@@ -32,12 +32,10 @@ const MessageList: FC = () => {
         [],
     );
 
-    const {
-        isToggled: isLoading,
-        isToggledRef: isLoadingRef,
-        toggleOn: loadingOn,
-        toggleOff: loadingOff,
-    } = useIsToggled(false);
+    const [getCompactMessages, { isFetching, isError }] =
+        useLazyGetCompactMessagesQuery();
+
+    const isFetchingRef = useRef<boolean>(false);
 
     const rootElement = useRef<HTMLDivElement | null>(null);
 
@@ -50,36 +48,32 @@ const MessageList: FC = () => {
     const { t } = useTranslation();
 
     useEffect(() => {
-        if (isToggled === undefined || isLoading) {
+        isFetchingRef.current = isFetching;
+    }, [isFetching]);
+
+    useEffect(() => {
+        const isNotReadyFetch = isUndefined(isToggled) || isFetching;
+
+        if (isNotReadyFetch) {
             return;
         }
 
         let isMounted = true;
 
-        loadingOn();
-
         (async () => {
-            let messages: CompactMessage[] = [];
-
-            if (valueDebounce === '') {
-                messages = await getAllCompactMessages({
-                    page: page,
+            const { data: messages } = await getCompactMessages({
+                search: valueDebounce,
+                paginationSettings: {
+                    page,
                     maxSize: MAX_SIZE_ON_PAGE,
-                });
-            } else {
-                if (rootElement.current) {
-                    messages = await searchCompactMessages(valueDebounce, {
-                        page: page,
-                        maxSize: MAX_SIZE_ON_PAGE,
-                    });
-                }
-            }
+                },
+            });
 
-            if (isMounted) {
+            const isAllowAction = isMounted && messages && !isError;
+
+            if (isAllowAction) {
                 setCompactMessages((prev) => [...prev, ...messages]);
             }
-
-            loadingOff();
         })();
 
         return () => {
@@ -97,7 +91,7 @@ const MessageList: FC = () => {
     }, [valueDebounce]);
 
     const handleInfiniteScroll = useCallback(() => {
-        if (!isLoadingRef.current) {
+        if (!isFetchingRef.current) {
             increase();
             toggle();
         }
@@ -120,6 +114,7 @@ const MessageList: FC = () => {
                 placeholder={t('input-placeholder.search.title')}
                 value={valueInput}
                 iconLeft={SearchOutlined}
+                isDisabled={isFetching}
                 onChange={handleChange}
             />
             <div
@@ -136,7 +131,15 @@ const MessageList: FC = () => {
                     />
                 ))}
             </div>
-            <div className={css.loader}>{isLoading && <LinearLoader />}</div>
+            <div className={css.loader}>{isFetching && <LinearLoader />}</div>
+            {/*{isError && ( //TODO: Переделать после того, как исправят компонент, в данном случае работа будет неверной при ошибке */}
+            {/*    <Notice*/}
+            {/*        hasBorder*/}
+            {/*        key="errorMessageList"*/}
+            {/*        type={NoticeTypes.ERROR}*/}
+            {/*        message={t('notice.error')}*/}
+            {/*    />*/}
+            {/*)}*/}
         </>
     );
 };
