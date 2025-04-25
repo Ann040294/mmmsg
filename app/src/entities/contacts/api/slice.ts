@@ -18,12 +18,11 @@ export const contactsApiSlice = apiSlice.injectEndpoints({
         getAllContacts: builder.query<Contact[], QueryConfigType>({
             queryFn: async ({ search, paginationSettings }) => {
                 if (search === '') {
-                    console.log('all');
                     return {
                         data: await getAllContacts(paginationSettings),
                     };
                 }
-                console.log('search');
+
                 return {
                     data: await searchContacts(search, paginationSettings),
                 };

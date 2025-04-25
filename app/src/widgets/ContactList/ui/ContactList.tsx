@@ -28,7 +28,7 @@ import { useDebounce } from '@shared/lib/hooks/useDebounce';
 import { useInfiniteScroll } from '@shared/lib/hooks/useInfiniteScroll';
 import { useIsToggled } from '@shared/lib/hooks/useIsToggled';
 
-const ProfileList: FC = () => {
+const ContactList: FC = () => {
     const [valueInput, setValueInput] = useState<string>('');
     const [contacts, setContacts] = useState<Contact[]>([]);
 
@@ -171,4 +171,4 @@ const ProfileList: FC = () => {
     );
 };
 
-export default ProfileList;
+export default ContactList;
