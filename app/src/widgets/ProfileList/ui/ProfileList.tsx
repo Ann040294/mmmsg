@@ -7,23 +7,26 @@ import {
     useState,
 } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router';
 import cn from 'classnames';
 import isUndefined from 'lodash/isUndefined';
 import SearchOutlined from '@ant-design/icons/SearchOutlined';
 
-import { Button, Card, Input, InputVariants, LinearLoader } from 'ui-kit';
-import { ButtonSize, ButtonVariants } from 'ui-kit/Button';
+import { Card, Input, InputVariants, LinearLoader } from 'ui-kit';
 
 import css from '@widgets/MessageList/ui/MessageList.module.scss';
 
-import { useLazyGetAllContactsQuery } from '@entities/contacts/api/slice';
+import {
+    useAddContactMutation,
+    useLazyGetAllContactsQuery,
+} from '@entities/contacts/api/slice';
 import { Contact } from '@entities/contacts/model/contact';
 
+import { FIND_USER_REGEX_MASK } from '@shared/config/regexMasks';
 import { useCounter } from '@shared/lib/hooks/useCounter';
 import { useDebounce } from '@shared/lib/hooks/useDebounce';
 import { useInfiniteScroll } from '@shared/lib/hooks/useInfiniteScroll';
 import { useIsToggled } from '@shared/lib/hooks/useIsToggled';
-import { useNavigate } from 'react-router';
 
 const ProfileList: FC = () => {
     const [valueInput, setValueInput] = useState<string>('');
@@ -35,6 +38,9 @@ const ProfileList: FC = () => {
     const [getAllContacts, { isFetching, isError }] =
         useLazyGetAllContactsQuery();
 
+    const [addContact, { isLoading: isLoadingAddContact }] =
+        useAddContactMutation();
+
     const { t } = useTranslation();
 
     const { isToggled, toggle } = useIsToggled();
@@ -44,6 +50,11 @@ const ProfileList: FC = () => {
     const navigate = useNavigate();
 
     const valueDebounce = useDebounce<string>(valueInput, 500);
+
+    const canNotAddContact =
+        !FIND_USER_REGEX_MASK.test(valueDebounce) ||
+        isFetching ||
+        isLoadingAddContact;
 
     useEffect(() => {
         isLoadingRef.current = isFetching;
@@ -59,12 +70,15 @@ const ProfileList: FC = () => {
         let isMounted = true;
 
         (async () => {
-            const result = await getAllContacts({ page, maxSize: 15 }).unwrap();
+            const { data } = await getAllContacts({
+                search: valueDebounce,
+                paginationSettings: { page, maxSize: 15 },
+            });
 
-            const isAllowChange = isMounted && result && !isError;
+            const isAllowChange = isMounted && data && !isError;
 
             if (isAllowChange) {
-                setContacts((prevState) => [...prevState, ...result]);
+                setContacts((prevState) => [...prevState, ...data]);
             }
         })();
 
@@ -99,8 +113,21 @@ const ProfileList: FC = () => {
         setValueInput(event.target.value);
     }, []);
 
-    const handleClick = useCallback((id: string) => {
-        navigate();
+    const handleClickButton = useCallback(async () => {
+        try {
+            await addContact(valueDebounce);
+
+            //TODO: Работа с toast, когда появится
+            console.log('Контакт добавлен');
+            setValueInput('');
+        } catch (error) {
+            //TODO: Работа с toast, когда появится
+            console.log('Error', error);
+        }
+    }, []);
+
+    const handleClickContact = useCallback((id: string) => {
+        navigate('/chat/1'); //TODO: Исправить на использование RouteConfig, когда будет фикс CustomOutlet
     }, []);
 
     return (
@@ -112,10 +139,17 @@ const ProfileList: FC = () => {
                 iconLeft={SearchOutlined}
                 onChange={handleChange}
             />
-            <Button
-                text={'Создать чат'}
-                variant={ButtonVariants.SECONDARY}
-            />
+            {/*TODO: Добавить кнопку, когда появится disabled*/}
+            {/*<Button*/}
+            {/*    text={'Создать чат'}*/}
+            {/*    variant={ButtonVariants.SECONDARY}*/}
+            {/*/>*/}
+            <button
+                disabled={canNotAddContact}
+                onClick={handleClickButton}
+            >
+                Создать чат
+            </button>
             <div
                 className={cn(css.cardList)}
                 ref={rootElement}
@@ -127,11 +161,12 @@ const ProfileList: FC = () => {
                         className={css.card}
                         title={item.fullName}
                         description={item.email}
-                        onClick={() => handleClick(item.idUser)}
+                        onClick={() => handleClickContact(item.idUser)}
                     />
                 ))}
             </div>
             <div className={css.loader}>{isFetching && <LinearLoader />}</div>
+            {/*TODO: Добавить Toast для ошибок*/}
         </>
     );
 };
