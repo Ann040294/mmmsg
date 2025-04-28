@@ -1,3 +1,4 @@
+import { matchPath } from 'react-router';
 import { RouteWithOutlet } from '@app/routes/config/types';
 
 type ResultGetMatchingRoute = {
@@ -14,10 +15,14 @@ export const getMatchingRoute = (
     for (let i = 0; i < routes.length; i++) {
         const route = routes[i];
 
-        if (route.path === locationPathname) {
-            pathProperty.push(i.toString());
+        if (route.path) {
+            const match = matchPath(route.path, locationPathname);
 
-            return { route, pathProperty };
+            if (match?.pathname === locationPathname) {
+                pathProperty.push(i.toString());
+
+                return { route, pathProperty };
+            }
         }
 
         if (route.children) {

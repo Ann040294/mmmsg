@@ -24,19 +24,11 @@ const CustomOutlet: FC<CustomOutletProps> = ({
 
     if (location.pathname !== ROOT_PATH) {
         paths = getRoutePaths(location.pathname);
-
-        if (paths.length === 1 && parseInt(paths[0])) {
-            paths.unshift('/');
-        }
     }
 
     const outlets = getRoutes(paths);
 
     const route = outlets.find((item) => name === item?.outlet);
-
-    console.log('custom', name);
-    console.log('paths', paths);
-    console.log('outlets', outlets);
 
     if (!route) {
         return <NotFoundFilled />;

@@ -44,12 +44,12 @@ export const routesConfig: RouteWithOutlet[] = [
                         ],
                     },
                     {
-                        path: 'chat',
+                        path: ROUTE_CONFIG.CHAT.path,
                         outlet: CustomOutletNames.FIRST,
                         Component: HomePage,
                         children: [
                             {
-                                path: ROUTE_CONFIG.HOME.children.DIALOG.path,
+                                path: ROUTE_CONFIG.CHAT.children.DIALOG.path,
                                 Component: DialogUserPage,
                                 outlet: CustomOutletNames.SECOND,
                             },
