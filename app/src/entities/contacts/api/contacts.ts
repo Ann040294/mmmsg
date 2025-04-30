@@ -1,3 +1,4 @@
+import { contactMock } from '@entities/contacts/mock/contactMock';
 import { contactsMock } from '@entities/contacts/mock/contactsMock';
 import { Contact } from '@entities/contacts/model/contact';
 
@@ -5,7 +6,6 @@ import {
     getPaginationArray,
     PaginationSettings,
 } from '@shared/lib/utils/getPaginationArray';
-import { contactMock } from '@entities/contacts/mock/contactMock';
 
 export const getAllContacts = (
     paginationSettings: PaginationSettings,

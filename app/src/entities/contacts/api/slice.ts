@@ -29,8 +29,8 @@ export const contactsApiSlice = apiSlice.injectEndpoints({
             },
             providesTags: ['Contacts'],
         }),
-        addContact: builder.mutation<Contact, string>({
-            queryFn: async (ip) => {
+        addContact: builder.mutation<Contact, { ip: string }>({
+            queryFn: async ({ ip }) => {
                 return { data: await addContact(ip) };
             },
         }),

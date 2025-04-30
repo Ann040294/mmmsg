@@ -115,7 +115,7 @@ const ContactList: FC = () => {
 
     const handleClickButton = useCallback(async () => {
         try {
-            await addContact(valueDebounce);
+            await addContact({ ip: valueDebounce });
 
             //TODO: Работа с toast, когда появится
             console.log('Контакт добавлен');
