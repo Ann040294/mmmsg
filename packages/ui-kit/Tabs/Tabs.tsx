@@ -32,10 +32,10 @@ const Tabs: FC<TabsProps> = ({ items, alignItems }) => {
                 {items.map((tab, index) => (
                     <div
                         key={tab.key}
-                        onClick={() => handleClickTab(index)}
                         className={cn(css.tab, {
                             [css.active]: activeTabI === index,
                         })}
+                        onClick={() => handleClickTab(index)}
                     >
                         {tab.title}
                     </div>

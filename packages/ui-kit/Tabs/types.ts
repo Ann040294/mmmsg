@@ -1,7 +1,7 @@
-import {FunctionComponent} from 'react';
+import { FunctionComponent } from 'react';
 
 export type Tab = {
-    key: string
+    key: string;
     title: string;
-    Component: FunctionComponent<any>
-}
+    Component: FunctionComponent;
+};
