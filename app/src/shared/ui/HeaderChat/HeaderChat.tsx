@@ -20,7 +20,12 @@ interface HeaderChatProps {
 
 const HeaderChat: FC<HeaderChatProps> = (props) => {
     const { t } = useTranslation();
-    const dropdownActions = props.actions;
+    const dropdownActions = props.actions.map((item) => ({
+        id: item.id,
+        text: item.text,
+        icon: item.icon,
+        onClick: item.onClick,
+    }));
 
     return (
         <div className={css.root}>
@@ -35,12 +40,7 @@ const HeaderChat: FC<HeaderChatProps> = (props) => {
                 <DropdownMenu
                     side={PopoverSide.BOTTOM}
                     position={PopoverPosition.CENTER}
-                    options={dropdownActions.map((item) => ({
-                        id: item.id,
-                        text: item.text,
-                        icon: item.icon,
-                        onClick: item.onClick,
-                    }))}
+                    options={dropdownActions}
                 >
                     <IconButton
                         icon={MoreOutlined}
