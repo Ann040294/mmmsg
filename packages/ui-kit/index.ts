@@ -14,3 +14,4 @@ export { default as Actions } from './Actions/Actions';
 export { default as Button } from './Button/Button';
 export { default as LinearLoader } from './LinearLoader/LinearLoader';
 export { default as Checkbox } from './Checkbox/Checkbox';
+export { default as Tabs } from './Tabs';
