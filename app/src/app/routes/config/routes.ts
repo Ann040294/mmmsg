@@ -16,6 +16,7 @@ const RegisterPage = lazy(() => import('@pages/register/ui'));
 const ResetPage = lazy(() => import('@pages/reset'));
 const NotFoundPage = lazy(() => import('@pages/not-found/ui'));
 const SettingsPage = lazy(() => import('@pages/settings'));
+const DialogUserPage = lazy(() => import('@pages/dialog/ui'));
 
 export const routesConfig: RouteWithOutlet[] = [
     {
@@ -38,6 +39,18 @@ export const routesConfig: RouteWithOutlet[] = [
                                 path: ROUTE_CONFIG.PROFILE.children.SETTINGS
                                     .path,
                                 Component: SettingsPage,
+                                outlet: CustomOutletNames.SECOND,
+                            },
+                        ],
+                    },
+                    {
+                        path: ROUTE_CONFIG.CHAT.path,
+                        outlet: CustomOutletNames.FIRST,
+                        Component: HomePage,
+                        children: [
+                            {
+                                path: ROUTE_CONFIG.CHAT.children.DIALOG.path,
+                                Component: DialogUserPage,
                                 outlet: CustomOutletNames.SECOND,
                             },
                         ],
