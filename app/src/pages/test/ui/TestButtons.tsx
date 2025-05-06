@@ -1,6 +1,6 @@
 import { FC, useState } from 'react';
-import { Layout } from 'ui-kit';
 
+import { Layout } from 'ui-kit';
 import { Button, ButtonSize, ButtonVariants } from 'ui-kit/Button';
 
 import css from '../style.module.scss';
@@ -31,8 +31,7 @@ export const TestButtons: FC = () => {
                 onClick={handleAnyClick}
             />
             <Button
-                isFullWidth
-                text={'test it: ' + variant}
+                text={'click & see: ' + variant}
                 variant={ButtonVariants.SECONDARY}
                 size={ButtonSize.SMALL}
                 onClick={handleButton}
@@ -72,13 +71,15 @@ export const TestButtons: FC = () => {
                 text={'text text text text text'}
                 onClick={handleAnyClick}
             />
+            <div style={{width: '20%', display: 'inline-block'}}>
             <Button
                 variant={variant}
                 text={
-                    'text text text text text text text text text text text text text text text text text text text text text text text text text text text text text'
+                    'width 20% screen text text text text text text text text text text text text text text text text text text text text text text text text text text text text text'
                 }
                 onClick={handleAnyClick}
             />
+            </div>
             <h5>Full Width</h5>
             <Button
                 variant={variant}

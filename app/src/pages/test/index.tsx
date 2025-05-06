@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 
-import { Layout } from 'ui-kit';
+import { Tabs } from 'ui-kit';
 
 import TestSpinners from '@pages/test/ui/TestSpinners';
 
@@ -17,8 +17,7 @@ import { TestInputs } from './ui/TestInputs';
 import { TestMessage } from './ui/TestMessage';
 import { TestNotices } from './ui/TestNotices';
 import { TestTextViewer } from './ui/TestTextViewer';
-
-import css from './style.module.scss';
+import { TestTabs } from './ui/TestTabs';
 
 const Test = () => {
     const { t } = useTranslation();
@@ -26,26 +25,87 @@ const Test = () => {
     return (
         <>
             <title>{t(ROUTE_CONFIG.TEST.title)}</title>
-            <Layout className={css.column}>
-                <TestIcons />
-            </Layout>
-            <Layout className={css.row}>
-                <TestSpinners />
-                <TestAvatars />
-                <TestNotices />
-                <TestDropdowns />
-                <TestCircleButtons />
-            </Layout>
-            <Layout className={css.row}>
-                <TestCards />
-                <TestInputs />
-                <TestButtons />
-            </Layout>
-            <Layout className={css.row}>
-                <TestActions />
-                <TestTextViewer />
-                <TestMessage />
-            </Layout>
+            <h4>UI-Kit</h4>
+            <Tabs
+                items={[
+                    {
+                        key: 'TestIcons',
+                        title: 'Icons',
+                        Component: TestIcons,
+                    },
+                    {
+                        key: 'TestTabs',
+                        title: 'Tabs',
+                        Component: TestTabs,
+                    },
+                    {
+                        key: 'TestSpinners',
+                        title: 'Spinners',
+                        Component: TestSpinners,
+                    },
+                    {
+                        key: 'TestAvatars',
+                        title: 'Avatars',
+                        Component: TestAvatars,
+                    },
+                    {
+                        key: 'TestNotices',
+                        title: 'Notices',
+                        Component: TestNotices,
+                    },
+                    {
+                        key: 'TestDropdowns',
+                        title: 'Dropdowns',
+                        Component: TestDropdowns,
+                    },
+                    {
+                        key: 'TestActions',
+                        title: 'Actions',
+                        Component: TestActions,
+                    },
+                    {
+                        key: 'TestCards',
+                        title: 'Cards',
+                        Component: TestCards,
+                    },
+                    {
+                        key: 'TestInputs',
+                        title: 'Inputs',
+                        Component: TestInputs,
+                    },
+                    {
+                        key: 'TestTextViewer',
+                        title: 'Text View',
+                        Component: TestTextViewer,
+                    },
+                    {
+                        key: 'TestMessage',
+                        title: 'Message',
+                        Component: TestMessage,
+                    },
+                    {
+                        key: 'TestButtons',
+                        title: 'Buttons',
+                        Component: TestButtons,
+                    },
+                    {
+                        key: 'TestCircleButtons',
+                        title: 'Circle Buttons',
+                        Component: TestCircleButtons,
+                    },
+                ]}
+            />
+
+            <h4>For Messenger</h4>
+            <Tabs
+                items={[
+                    {
+                        key: 'TestMessage',
+                        title: 'Message',
+                        Component: TestMessage,
+                    },
+                ]}
+            />
         </>
     );
 };

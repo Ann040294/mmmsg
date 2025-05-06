@@ -1,7 +1,10 @@
 import { FC } from 'react';
+import { useParams } from 'react-router';
 
-const DialogPage: FC = () => {
-    return <div>Диалог</div>;
+const DialogUserPage: FC = () => {
+    const { userID } = useParams();
+
+    return <div>ID пользователя {userID}</div>;
 };
 
-export default DialogPage;
+export default DialogUserPage;
