@@ -13,11 +13,15 @@ interface CardProps {
     isHiddenAvatar?: boolean;
     avatarShape?: AvatarShapes;
     avatarSrc?: string;
+    onClick?: () => void;
 }
 
 const Card: FC<CardProps> = (props) => {
     return (
-        <div className={cn(css.root, props.className)}>
+        <div
+            className={cn(css.root, props.className)}
+            onClick={props.onClick}
+        >
             {!props.isHiddenAvatar && (
                 <Avatar
                     shape={props.avatarShape}

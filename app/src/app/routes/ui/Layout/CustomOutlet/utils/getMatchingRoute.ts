@@ -16,9 +16,9 @@ export const getMatchingRoute = (
         const route = routes[i];
 
         if (route.path) {
-            const match = matchPath(route.path, locationPathname);
+            const pathname = matchPath(route.path, locationPathname)?.pathname;
 
-            if (match?.pathname === locationPathname) {
+            if (pathname === locationPathname) {
                 pathProperty.push(i.toString());
 
                 return { route, pathProperty };

@@ -1,10 +1,12 @@
 {
   "home": {
     "title": "Чаты",
-    "labelPage": "Чаты",
-    "search": {
-      "title": "Поиск..."
-    }
+    "labelPage": "Чаты"
+  },
+  "new-chat": {
+    "title": "Новый чат",
+    "labelPage": "Новый чат",
+    "create-button": "Создать чат"
   },
   "test": {
     "title": "Тестирование"
@@ -69,5 +71,10 @@
   },
   "notice": {
     "error": "Ошибка"
+  },
+  "input-placeholder": {
+    "search": {
+      "title": "Поиск..."
+    }
   }
 }
