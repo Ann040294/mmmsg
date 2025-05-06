@@ -32,6 +32,11 @@ export const routesConfig: RouteWithOutlet[] = [
                         outlet: CustomOutletNames.FIRST,
                     },
                     {
+                        path: ROUTE_CONFIG.NEW_CHAT.path,
+                        Component: NewChatPage,
+                        outlet: CustomOutletNames.FIRST,
+                    },
+                    {
                         path: ROUTE_CONFIG.PROFILE.path,
                         Component: ProfilePage,
                         outlet: CustomOutletNames.FIRST,
