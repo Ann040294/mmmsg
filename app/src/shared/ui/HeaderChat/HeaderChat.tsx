@@ -2,50 +2,31 @@ import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 import MoreOutlined from '@ant-design/icons/MoreOutlined';
 
-import { Avatar } from 'ui-kit';
-import { ActionItem } from 'ui-kit/Actions';
-import { AvatarShapes } from 'ui-kit/Avatar';
-import { DropdownMenu } from 'ui-kit/DropdownMenu';
-import { IconButton, IconButtonSize } from 'ui-kit/IconButton';
-import { PopoverPosition, PopoverSide } from 'ui-kit/Popover';
+import { Avatar, DropdownMenu, IconButton } from 'ui-kit';
+import { MenuItemProps } from 'ui-kit/DropdownMenu/Item';
 
 import css from './HeaderChat.module.scss';
 
 interface HeaderChatProps {
     label: string;
-    actions: ActionItem[];
-    avatarShape?: AvatarShapes;
+    actions: MenuItemProps[];
     avatarSrc?: string;
 }
 
-const HeaderChat: FC<HeaderChatProps> = (props) => {
+const HeaderChat: FC<HeaderChatProps> = ({ label, actions, avatarSrc }) => {
     const { t } = useTranslation();
-    const dropdownActions = props.actions.map((item) => ({
-        id: item.id,
-        text: item.text,
-        icon: item.icon,
-        onClick: item.onClick,
-    }));
 
     return (
         <div className={css.root}>
             <div className={css.item}>
-                <Avatar
-                    shape={props.avatarShape}
-                    src={props.avatarSrc}
-                />
-                {t(props.label)}
+                <Avatar src={avatarSrc} />
+                {t(label)}
             </div>
             <div>
-                <DropdownMenu
-                    side={PopoverSide.BOTTOM}
-                    position={PopoverPosition.CENTER}
-                    options={dropdownActions}
-                >
-                    <IconButton
-                        icon={MoreOutlined}
-                        size={IconButtonSize.MEDIUM}
-                    />
+                {' '}
+                {/*TODO: https://github.com/Ann040294/mmmsg/issues/216 убрать div*/}
+                <DropdownMenu options={actions}>
+                    <IconButton icon={MoreOutlined} />
                 </DropdownMenu>
             </div>
         </div>
