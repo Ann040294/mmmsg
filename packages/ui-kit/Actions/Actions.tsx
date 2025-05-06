@@ -42,11 +42,7 @@ const Actions: FC<ActionsProps> = ({
                 <DropdownMenu
                     side={side}
                     position={position}
-                    options={dropdownActions.map((item) => ({
-                        id: item.id,
-                        text: item.text,
-                        onClick: item.onClick,
-                    }))}
+                    options={dropdownActions}
                 >
                     <IconButton
                         icon={MoreOutlined}
