@@ -9,7 +9,6 @@ import { PopoverPosition, PopoverSide } from '../Popover';
 import { ActionItem, ActionsDisplay } from './types';
 
 import css from './Actions.module.scss';
-import {MenuItemProps} from "../DropdownMenu/Item";
 
 export interface ActionsProps {
     actions: ActionItem[];
