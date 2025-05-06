@@ -5,7 +5,8 @@
   },
   "new-chat": {
     "title": "New chat",
-    "labelPage": "New chat"
+    "labelPage": "New chat",
+    "create-button": "Create chat"
   },
   "test": {
     "title": "Testing"

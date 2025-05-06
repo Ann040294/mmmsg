@@ -5,7 +5,8 @@
   },
   "new-chat": {
     "title": "Новый чат",
-    "labelPage": "Новый чат"
+    "labelPage": "Новый чат",
+    "create-button": "Создать чат"
   },
   "test": {
     "title": "Тестирование"

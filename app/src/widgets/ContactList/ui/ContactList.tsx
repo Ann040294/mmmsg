@@ -23,6 +23,7 @@ import {
 import { Contact } from '@entities/contacts/model/contact';
 
 import { FIND_USER_REGEX_MASK } from '@shared/config/regexMasks';
+import { ROUTE_CONFIG } from '@shared/config/routeConfig';
 import { useCounter } from '@shared/lib/hooks/useCounter';
 import { useDebounce } from '@shared/lib/hooks/useDebounce';
 import { useInfiniteScroll } from '@shared/lib/hooks/useInfiniteScroll';
@@ -117,7 +118,7 @@ const ContactList: FC = () => {
         try {
             await addContact({ ip: valueDebounce });
 
-            //TODO: Работа с toast, когда появится
+            //TODO: Работа с toast, когда появится (item #207)
             console.log('Контакт добавлен');
             setValueInput('');
         } catch (error) {
@@ -127,7 +128,7 @@ const ContactList: FC = () => {
     }, []);
 
     const handleClickContact = useCallback((id: string) => {
-        navigate('/chat/1'); //TODO: Исправить на использование RouteConfig, когда будет фикс CustomOutlet
+        navigate(`${ROUTE_CONFIG.NEW_CHAT.path}/${id}`);
     }, []);
 
     return (
@@ -139,7 +140,7 @@ const ContactList: FC = () => {
                 iconLeft={SearchOutlined}
                 onChange={handleChange}
             />
-            {/*TODO: Добавить кнопку, когда появится disabled*/}
+            {/*TODO: Добавить кнопку, когда появится disabled (item #209)*/}
             {/*<Button*/}
             {/*    text={'Создать чат'}*/}
             {/*    variant={ButtonVariants.SECONDARY}*/}
@@ -148,7 +149,7 @@ const ContactList: FC = () => {
                 disabled={canNotAddContact}
                 onClick={handleClickButton}
             >
-                Создать чат
+                {t('new-chat.create-button')}
             </button>
             <div
                 className={cn(css.cardList)}
@@ -166,7 +167,7 @@ const ContactList: FC = () => {
                 ))}
             </div>
             <div className={css.loader}>{isFetching && <LinearLoader />}</div>
-            {/*TODO: Добавить Toast для ошибок*/}
+            {/*TODO: Добавить Toast для ошибок (item #207)*/}
         </>
     );
 };
