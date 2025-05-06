@@ -30,7 +30,7 @@ export const TestCircleButtons: FC = () => {
     }, [activeButton, handleClick]);
 
     return (
-        <>
+        <div style={{ background: 'gray' }}>
             {circleButtons}
 
             <CircleButton
@@ -47,6 +47,6 @@ export const TestCircleButtons: FC = () => {
                 size={CircleButtonSize.LARGE}
                 onClick={() => handleClick(4)}
             />
-        </>
+        </div>
     );
 };

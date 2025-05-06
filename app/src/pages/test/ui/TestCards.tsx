@@ -85,7 +85,7 @@ export const TestCards: FC = () => {
             <Card
                 description={avatar1}
                 badge={'123'}
-                title={'три точки в конце три точки в конце три точки в конце'}
+                title={'три точки в конце три точки в конце три точки в конце три точки в конце три точки в конце три точки в концетри точки в конце три точки в конце три точки в концетри точки в конце три точки в конце три точки в конце три точки в конце три точки в конце три точки в конце'}
                 avatarSrc={
                     'https://png.pn g tree.c om/thumb_back/fw 800/background /20230610/pngtree-picture-of-a-blue-bird-on-a-black-background-image_2937385'
                 }

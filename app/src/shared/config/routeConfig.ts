@@ -3,14 +3,26 @@ export const ROUTE_CONFIG = {
         path: '/',
         title: 'home.title',
         labelPage: 'home.labelPage',
-        searchTitle: 'home.searchTitle',
+    },
+    CHAT: {
+        path: '/chat',
+        children: {
+            DIALOG: {
+                path: ':userID',
+            },
+        },
+    },
+    NEW_CHAT: {
+        path: '/new-chat',
+        title: 'new-chat.title',
+        labelPage: 'new-chat.labelPage',
     },
     TEST: {
-        path: 'test',
+        path: '/test',
         title: 'test.title',
     },
     PROFILE: {
-        path: 'profile',
+        path: '/profile',
         title: 'profile.title',
         children: {
             SETTINGS: {
@@ -20,19 +32,19 @@ export const ROUTE_CONFIG = {
         },
     },
     LOGOUT: {
-        path: 'logout',
+        path: '/logout',
         title: 'logout.title',
     },
     LOGIN: {
-        path: 'login',
+        path: '/login',
         title: 'login.title',
     },
     REGISTER: {
-        path: 'register',
+        path: '/register',
         title: 'register.title',
     },
     RESET: {
-        path: 'reset-password',
+        path: '/reset-password',
         title: 'reset.title',
     },
     NOT_FOUND: {

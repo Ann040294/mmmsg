@@ -25,39 +25,37 @@ export const TestMessage: FC = () => {
     ];
 
     return (
-        <div>
-            <Layout>
-                <Message
-                    variant={MessageVariant.SECONDARY}
-                    text={'Test'}
-                    meta={'12:00'}
-                    actions={actions1}
-                />
-                <Message
-                    variant={MessageVariant.SECONDARY}
-                    meta={'12:00'}
-                    actions={actions1}
-                    text={
-                        'TestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTest'
-                    }
-                />
-                <Message
-                    variant={MessageVariant.PRIMARY}
-                    meta={'12:00'}
-                    actions={actions1}
-                    text={
-                        'TestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTest'
-                    }
-                />
-                <Message
-                    variant={MessageVariant.PRIMARY}
-                    text={'Test'}
-                    meta={'12:00'}
-                    actions={actions1}
-                    countShowActions={0}
-                />
-                <Message text={'TestActionDefault'} />
-            </Layout>
-        </div>
+        <Layout>
+            <Message
+                variant={MessageVariant.SECONDARY}
+                text={'Test'}
+                meta={'12:00'}
+                actions={actions1}
+            />
+            <Message
+                variant={MessageVariant.SECONDARY}
+                meta={'12:00'}
+                actions={actions1}
+                text={
+                    'TestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTest'
+                }
+            />
+            <Message
+                variant={MessageVariant.PRIMARY}
+                meta={'12:00'}
+                actions={actions1}
+                text={
+                    'TestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTest'
+                }
+            />
+            <Message
+                variant={MessageVariant.PRIMARY}
+                text={'Test'}
+                meta={'12:00'}
+                actions={actions1}
+                countShowActions={0}
+            />
+            <Message text={'TestActionDefault'} />
+        </Layout>
     );
 };

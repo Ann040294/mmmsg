@@ -1,0 +1,4 @@
+@use "../styles/color.scss" as color;
+
+$tab-color: color.$brand-secondary-color;
+$tab-active-color: color.$brand-primary-color;

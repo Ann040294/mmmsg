@@ -25,8 +25,9 @@ export const TestInputs: FC = () => {
     };
 
     return (
-        <Layout className={css.inputs}>
+        <Layout>
             <h5>variant / full</h5>
+            <h6>OUTLINED</h6>
             <Input
                 variant={InputVariants.OUTLINED}
                 placeholder={InputVariants.OUTLINED}
@@ -36,6 +37,7 @@ export const TestInputs: FC = () => {
                 value={value}
                 onChange={handleChange}
             />
+            <h6>FILLED</h6>
             <Input
                 variant={InputVariants.FILLED}
                 placeholder={InputVariants.FILLED}
@@ -45,9 +47,9 @@ export const TestInputs: FC = () => {
                 value={value}
                 onChange={handleChange}
             />
+            <h6>try it</h6>
             <Button
-                isFullWidth
-                text={'test it: ' + variant}
+                text={'click & see: ' + variant}
                 variant={ButtonVariants.SECONDARY}
                 size={ButtonSize.SMALL}
                 onClick={handleButton}
