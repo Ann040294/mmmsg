@@ -1,5 +1,11 @@
-import React, { FC, HTMLInputTypeAttribute, useCallback } from 'react';
+import React, {
+    FC,
+    HTMLInputTypeAttribute,
+    useCallback,
+    useState,
+} from 'react';
 import cn from 'classnames';
+import { EyeInvisibleOutlined, EyeOutlined } from '@ant-design/icons';
 
 import { Icon } from '../Icon/types';
 import Notice, { NoticeTypes } from '../Notice';
@@ -28,7 +34,7 @@ export interface InputProps {
 
 const Input: FC<InputProps> = ({
     name,
-    type,
+    type = 'text',
     isRequired,
     className,
     label,
@@ -50,6 +56,16 @@ const Input: FC<InputProps> = ({
         },
         [onChange],
     );
+
+    const [showPassword, setShowPassword] = useState(false);
+
+    const isPasswordField = type === 'password';
+
+    const handleTogglePassword = () => {
+        setShowPassword(!showPassword);
+    };
+
+    const inputType = isPasswordField && showPassword ? 'text' : type;
 
     return (
         <div className={cn(css.wrapper, className, css[validateType!])}>
@@ -73,7 +89,7 @@ const Input: FC<InputProps> = ({
 
                 <input
                     name={name}
-                    type={type}
+                    type={inputType}
                     required={isRequired}
                     placeholder={placeholder}
                     value={value}
@@ -86,6 +102,19 @@ const Input: FC<InputProps> = ({
                     onFocus={handleFocus}
                     {...props}
                 />
+
+                {isPasswordField && !IconRightComponent && (
+                    <span
+                        className={css.eyeIcon}
+                        onClick={handleTogglePassword}
+                    >
+                        {showPassword ? (
+                            <EyeOutlined />
+                        ) : (
+                            <EyeInvisibleOutlined />
+                        )}
+                    </span>
+                )}
 
                 {IconRightComponent && <IconRightComponent />}
             </div>

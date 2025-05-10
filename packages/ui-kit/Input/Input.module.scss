@@ -149,6 +149,24 @@
         font-size: typography.$font-size-text-placeholder;
         line-height: 14px;
       }
+
+      &[type="password"] {
+        &::-ms-reveal,
+        &::-ms-clear {
+          display: none;
+        }
+
+        &::-webkit-textfield-decoration-container,
+        &::-webkit-textfield-decoration-container button {
+          display: none;
+        }
+      }
+    }
+
+    .eyeIcon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
     }
   }
 }
