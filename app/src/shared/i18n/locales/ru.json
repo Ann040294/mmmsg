@@ -76,5 +76,8 @@
     "search": {
       "title": "Поиск..."
     }
+  },
+  "download-story": {
+    "title": "Скачать историю"
   }
 }
