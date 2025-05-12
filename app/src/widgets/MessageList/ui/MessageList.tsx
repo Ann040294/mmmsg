@@ -111,7 +111,7 @@ const MessageList: FC = () => {
         <>
             <Input
                 variant={InputVariants.FILLED}
-                placeholder={t('home.search.title')}
+                placeholder={t('input-placeholder.search.title')}
                 value={valueInput}
                 iconLeft={SearchOutlined}
                 isDisabled={isFetching}
