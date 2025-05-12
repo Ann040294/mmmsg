@@ -1,6 +1,7 @@
 import { FC } from 'react';
 import cn from 'classnames';
-import EditOutlined from '@ant-design/icons/EditOutlined';
+import { MoreOutlined } from '@ant-design/icons';
+import RollbackOutlined from '@ant-design/icons/RollbackOutlined';
 
 import { Actions } from 'ui-kit';
 import { ActionItem } from 'ui-kit/Actions';
@@ -24,7 +25,10 @@ export interface MessageProps {
     variant?: MessageVariant;
 }
 
-const actionDefault = [{ id: '1', text: 'Редактировать', icon: EditOutlined }];
+const actionDefault = [
+    { id: '1', text: 'Редактировать', icon: MoreOutlined },
+    { id: '2', text: 'Переслать', icon: RollbackOutlined },
+]; //TODO: добавить i18n
 
 const MessageItem: FC<MessageProps> = ({
     actions = actionDefault,
