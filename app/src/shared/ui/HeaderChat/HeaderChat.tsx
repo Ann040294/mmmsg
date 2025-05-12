@@ -6,6 +6,7 @@ import { Avatar, DropdownMenu, IconButton } from 'ui-kit';
 import { MenuItemProps } from 'ui-kit/DropdownMenu/Item';
 
 import css from './HeaderChat.module.scss';
+import { PopoverPosition } from 'ui-kit/Popover';
 
 interface HeaderChatProps {
     label: string;
@@ -25,7 +26,10 @@ const HeaderChat: FC<HeaderChatProps> = ({ label, actions, avatarSrc }) => {
             <div>
                 {' '}
                 {/*TODO: https://github.com/Ann040294/mmmsg/issues/216 убрать div*/}
-                <DropdownMenu options={actions}>
+                <DropdownMenu
+                    options={actions}
+                    position={PopoverPosition.END}
+                >
                     <IconButton icon={MoreOutlined} />
                 </DropdownMenu>
             </div>
